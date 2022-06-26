@@ -1,20 +1,4 @@
 
-## Equipe
-| Integrante       | DS | GitHub         |
-|------------------|---|----------------|
-| Bruna de Lima    |MDS| libruna        |
-| Giulia Domingues |MDS| alcantaragiubs |
-| Guilherme Franca |MDS| guilhereme     |
-| Samuel Sato      |MDS| samuel-sato    |
-| Ciro Costa       |REQ| ciro-c         |
-| Laura Pino       |REQ| laura          |
-| Matheus Raphael  |REQ| matheus        |
-| Nicolas Roberto  |REQ| nicolas        |
-| Pedro Henrique   |REQ| PedroMoraes39  |
-
-
-
-
 # Unidade 1
 
 ### Tecnologias 
@@ -23,10 +7,11 @@ A definir
 ## Proposta de Processo de Desenvolvimento
 ### Metodologia de Desenvolovimento: Ágil (Scrum)<br>
 Questões organizacionais
-1) Especificação do projeto: 
-2) Feedback:
-3) Representantes no time:
-4) Questões culturais:
+
+1) Especificação do projeto: <br>
+2) Feedback:<br>
+3) Representantes no time:<br>
+4) Questões culturais:<br>
 
 ### Modelo de Ciclo de Vida: Evolutivo (XP)
 - Requisitos revisitados no inicio de cada cíclo
