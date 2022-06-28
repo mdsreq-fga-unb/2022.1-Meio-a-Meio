@@ -6,7 +6,7 @@ Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB
 |------------------|---|----------------|
 | Bruna de Lima    |MDS| libruna        |
 | Giulia Domingues |MDS| alcantaragiubs |
-| Guilherme Franca |MDS| guilhereme     |
+| Guilherme Franca |MDS| guidib     |
 | Samuel Sato      |MDS| samuel-sato    |
 | Ciro Costa       |REQ| ciro-c         |
 | Laura Pino       |REQ| laura          |
