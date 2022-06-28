@@ -10,6 +10,6 @@ Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB
 | Samuel Sato      |MDS| samuel-sato    |
 | Ciro Costa       |REQ| ciro-c         |
 | Laura Pino       |REQ| laura          |
-| Matheus Raphael  |REQ| matheus        |
+<!-- | Matheus Raphael  |REQ| matheus        | -->
 | Nicolas Roberto  |REQ| nicolas        |
-| Pedro Henrique   |REQ| PedroMoraes39  |
+<!-- | Pedro Henrique   |REQ| PedroMoraes39  | -->
