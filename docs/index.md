@@ -8,7 +8,7 @@ A definir
 ### Metodologia de Desenvolovimento: Ágil (Scrum)<br>
 Questões organizacionais
 
-1) Especificação do projeto: <br>
+1) Especificações do projeto: <br>
 2) Feedback:<br>
 3) Representantes no time:<br>
 4) Questões culturais:<br>
