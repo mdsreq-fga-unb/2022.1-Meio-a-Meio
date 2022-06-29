@@ -34,7 +34,7 @@ Definição do projeto - OK
 # REQ
 Definição do produto<br>
 Proposta do processi de engenharia de requisitos<br>
-Visão do produto(Tamplate)<br>
+Visão do produto(Template)<br>
 Planejamento do projeto<br>
 Vídeo de apresentação<br>
 
