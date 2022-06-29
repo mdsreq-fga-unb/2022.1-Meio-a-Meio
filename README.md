@@ -10,7 +10,7 @@ Site https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/
 | Samuel Sato      |MDS| [samuel-sato](https://github.com/samuel-sato)    |
 | Ciro Costa       |REQ| [ciro-c](https://github.com/ciro-c)         |
 | Laura Pino       |REQ| [laura](https://github.com/)          |
-| Nicolas Roberto  |REQ| [Nicolas-Roberto]([https://github.com/](https://github.com/Nicolas-Roberto))        |
+| Nicolas Roberto  |REQ| [Nicolas-Roberto](https://github.com/Nicolas-Roberto)        |
 | Matheus Raphael  |REQ| [matheus](https://github.com/)        |
 
 <!-- | Pedro Henrique   |REQ| PedroMoraes39  | -->
