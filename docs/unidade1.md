@@ -1,4 +1,11 @@
 <h1 align="center"> Unidade 1 </h1>
+<br>
+
+| Data | Versão | Descrição | Autor |
+|---|---|---|---|
+| 30/06/2022 | 1.0 | Criação do documento, adicionada proposta de desenvolvimento de software e tecnologias | Bruna, Samuel |
+
+<br>
 
 ## 1. Abordagem de Desenvolvimento de Software
 
