@@ -14,6 +14,7 @@
 * [Badges](#badges)
 * [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
+* [Funcionalidades](#funcionalidades)
 * [Status do Projeto](#status-do-projeto)
 * [Acesso ao Projeto](#acesso-ao-projeto)
 * [Equipe](#equipe)
@@ -21,6 +22,12 @@
 ## Descrição do Projeto
 
 - `Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB.`
+
+## Funcionalidades
+
+### :hammer: Funcionalidades do projeto
+
+- `Criação de um sistema de gerenciamento de cursos e alunos direcionado ao núcleo de profissionais de medicina.`
 
 ## Status do Projeto
 
