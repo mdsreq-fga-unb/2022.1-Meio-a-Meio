@@ -49,7 +49,7 @@ $ cd 2022.1-Meio-a-Meio
 | [<img src="https://avatars.githubusercontent.com/u/83987201?v=4" width=100><br><sub>Bruna Lima</sub>](https://github.com/libruna)
 | :---: | 
 
-| [<img src="https://avatars.githubusercontent.com/u/71887345?v=4" width=100><br><sub>Guilherme Franca</sub>](https://github.com/GuiDib)
+| [<img src="https://avatars.githubusercontent.com/u/71887345?v=4" width=100><br><sub>Guilherme França</sub>](https://github.com/GuiDib)
 | :---: | 
 
 | [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Samuel Sato</sub>](https://github.com/samuel-sato)
