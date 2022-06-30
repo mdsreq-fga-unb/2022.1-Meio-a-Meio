@@ -13,6 +13,7 @@
 |27/06/2022 | 0.1 | Criação do documento | [Ciro Costa](https://github.com/ciro-c)|
 |29/06/2022 | 0.2 | Atualização do documento | [Ciro Costa](https://github.com/ciro-c)|
 |29/06/2022 | 0.3 | Atualização das tecnologias | [Samuel Sato](https://github.com/samuel-sato)|
+|30/06/2022 | 0.3 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
 
 ## Sumário
 
@@ -64,6 +65,7 @@
    - [NestJS](https://nestjs.com/)
    - [NextJS](https://nextjs.org/)
    - [MySQL](https://www.mysql.com/)
+   - [Figma](https://www.figma.com/)
 
 ## VISÃO GERAL DO PROJETO 
 ### 2.1 Organização do Projeto 
