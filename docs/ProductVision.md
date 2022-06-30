@@ -3,7 +3,7 @@
     <h3>Galdi</h3>
  <h2>VISÃO DO PRODUTO E PROJETO</h2>
 
- <p>Versão 0.3</p>
+ <p>Versão 0.5</p>
 </div>
 
 ## Histórico de Revisão
@@ -14,8 +14,8 @@
 |29/06/2022 | 0.2 | Atualização do documento | [Ciro Costa](https://github.com/ciro-c)|
 |29/06/2022 | 0.2 | Atualização dos documentos | [Giulia Alcantara](https://github.com/alcantaragiubs)|
 |29/06/2022 | 0.3 | Atualização das tecnologias | [Samuel Sato](https://github.com/samuel-sato)|
-|29/06/2022 | 0.3 | Atualização das tecnologias | [Guilherme França](https://github.com/GuiDib)|
-|30/06/2022 | 0.3 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
+|29/06/2022 | 0.4 | Atualização das tecnologias | [Guilherme França](https://github.com/GuiDib)|
+|30/06/2022 | 0.5 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
 
 ## Sumário
 
@@ -29,8 +29,9 @@
     - 2.3 Matriz de Comunicação 
     - 2.4 Gerenciamento de Riscos 
     - 2.5 Critérios de Replanejamento 
- - [PROCESSO DE DESENVOLVIMENTO DE SOFTWARE](#processo-de-desenvolvimento-de-software)
-    - 3.1 Atividade 1 
+ - [ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE](#abordagem-de-desenvolvimento-de-software)
+    - 3.1 Metodologia
+    - 3.2 Processo e procedimentos
  - [PROCESSO DE ENGENHARIA DE REQUISITOS](#processo-de-engenharia-de-requisitos) 
     - 4.1 Elicitação de Requisitos 
     - 4.2 Análise de Requisitos 
@@ -136,6 +137,12 @@ Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questõ
    
    - <b>Existem questões culturais que possam afetar o desenvolvimento do sistema?</b> Não.<br>
 
+Considerando os resultados obtidos e as necessidades da equipe de priorizar a flexibilidade e o desenvolvimento iterativo, a metodologia ágil foi escolhida. Assim, a abordagem SCRUM foi adotada como ciclo de vida e processo de desenvolvimento baseado no XP (Extreme programming) pelos seguintes motivos: 
+
+- O feedback contínuo do cliente e os requisitos que são construídos junto com o software permitem que qualquer mudança necessária seja feita sem prejudicar o desenvolvimento da aplicação.
+
+- Realização controle das atividades da sprint de forma eficiente
+
 
 ### 3.2 Processo e procedimentos
 
@@ -144,7 +151,7 @@ Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questõ
 |Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
 |Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma |entrega|
 |Construção| atividade | Método | ferramenta |entrega|
-|Teste| atividade | Método | ferramenta |entrega|
+|Teste| Testes unitários | Criação de classes de teste | Jest |entrega|
 
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
