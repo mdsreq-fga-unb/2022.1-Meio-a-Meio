@@ -55,10 +55,10 @@
 - `Metodologia de Desenvolovimento: Ágil (Scrum)`
 - `Questões organizacionais` 
 
-  1) Especificações do projeto: <br>
-  2) Feedback:<br>
-  3) Representantes no time:<br>
-  4) Questões culturais:<br>
+  * Especificações do projeto
+  * Feedback
+  * Representantes no time
+  * Questões culturais
   
 ### 🛠️ Modelo de Ciclo de Vida: 
 - `Evolutivo (XP)`
