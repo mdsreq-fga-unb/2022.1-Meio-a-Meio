@@ -150,7 +150,7 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 |----|----|----|----|----|
 |Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
 |Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma |entrega|
-|Construção| Definição de user Stro | Método | ferramenta |entrega|
+|Construção| Definição de user story | Método | ferramenta |entrega|
 |Construção| Modelagem do banco de dados | Método | ferramenta |entrega|
 |Construção| Desenvovimento backend | Método | ferramenta |entrega|
 |Construção| Desenvovimento Frontend | Método | ferramenta |entrega|
