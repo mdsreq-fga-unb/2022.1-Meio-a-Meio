@@ -15,6 +15,7 @@
 
 ## Documentos
  :open_file_folder: [Documento de visão do projeto e produto](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/ProductVision)
+ :open_file_folder: [Proposta de Desenvolvimento](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade1)
  
 ## Desenvolvimento
 ### 🛠️ Tecnologias Utilizadas:
