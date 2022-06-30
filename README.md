@@ -23,7 +23,7 @@
 
 :open_file_folder: **Para mais informações sobre o projeto acesse nossa <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">documentação</a> ou abra por um servidor web**
 
-### Clonando o repositório
+## Clonando o repositório
 ```bash
 $ git clone https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio.git
 $ cd 2022.1-Meio-a-Meio
