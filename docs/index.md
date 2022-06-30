@@ -10,10 +10,12 @@
 
 * [Badges](#badges)
 * [Índice](#índice)
+* [Documentos](#documentos)
 * [Desenvolvimento](#desenvolvimento)
 
 ## Documentos
-  [Documento de visão do projeto e produto](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/ProductVision)
+ :open_file_folder: [Documento de visão do projeto e produto](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/ProductVision)
+ 
 ## Desenvolvimento
 ### 🛠️ Tecnologias Utilizadas:
 
