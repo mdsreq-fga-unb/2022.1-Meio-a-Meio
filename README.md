@@ -1,8 +1,5 @@
-## Título
 <h1 align="center"> Meio a Meio </h1>
 <h3 align="center"> 2022.1 </h3>
-
-## Badges
 
 <p align="center">
 <img src="http://img.shields.io/static/v1?label=STATUS&message=PROCESSING&color=GREEN&style=for-the-badge"/>
@@ -10,36 +7,12 @@
 
 ## Índice 
 
-* [Título](#título)
-* [Badges](#badges)
-* [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
-* [Funcionalidades](#funcionalidades)
-* [Status do Projeto](#status-do-projeto)
-* [Acesso ao Projeto](#acesso-ao-projeto)
 * [Equipe](#equipe)
 
 ## Descrição do Projeto
 
-- `Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB.`
-
-## Funcionalidades
-
-### :hammer: Funcionalidades do projeto
-
-- `Criação de um sistema de gerenciamento de cursos e alunos direcionado ao núcleo de profissionais de medicina.`
-
-## Status do Projeto
-
-<h4 align="center"> 
-    :white_check_mark:  Projeto Em Andamento  :white_check_mark:
-</h4>
-
-## Acesso ao Projeto
-
-### 📁 Acesso ao projeto
-
-- **Você pode <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">acessar por aqui</a>**
+O GALDI é um projeto desenvolvido pelos alunos das disciplinas de Métodos de Desenvolvimentos de Software e Requisitos de Software da Universidade de Brasília com o objetivo de facilitar a gestão de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados. 
 
 ## Equipe
 
