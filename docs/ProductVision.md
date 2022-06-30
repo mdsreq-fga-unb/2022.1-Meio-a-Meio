@@ -125,11 +125,11 @@ Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questõ
    
    - <b>Como está organizado o time de desenvolvimento?</b> Os desenvolvedores estão dividos entre o front-end e o back-end da aplicação.<br>
    
-   - <b>Quais são as tecnologias disponíveis para apoiar o desenvolvimento do sistema?</b> A princípio: Github para versionamento e Trello para controlar as atividades.
+   - <b>Quais são as tecnologias disponíveis para apoiar o desenvolvimento do sistema?</b> A princípio o Github para versionamento e Trello para gerenciar o fluxo de atividades.
 
 - Questões organizacionais:
 
-   - <b>É importante ter uma especificação e um projeto (design) bem detalhados antes de passar para a implementação - talvez por motivos contratuais?</b> 
+   - <b>É importante ter uma especificação e um projeto (design) bem detalhados antes de passar para a implementação - talvez por motivos contratuais?</b> Como será utilizada uma metodologia de design orientado a função, não tem necessidade de ser bem definido antes da implementação.
    
    - <b>É realista uma estratégia de entrega incremental, na qual o software é entregue aos clientes ou outros stakeholders e um rápido feedback é obtido?</b> Por conta da proximidade do Product Owner(PO) com o cliente e a equipe de desenvolvimento, é realista.<br>
    
