@@ -113,7 +113,7 @@ Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questõ
 
 - Questões técnicas:
 
-   - <b>Qual é o tamanho do sistema que está sendo desenvolvido?</b> É um software de médio.<br>
+   - <b>Qual é o tamanho do sistema que está sendo desenvolvido?</b> É um software de médio porte.<br>
    
    - <b>Que tipo de sistema está sendo desenvolvido?</b> Aplicação Web.<br>
    
