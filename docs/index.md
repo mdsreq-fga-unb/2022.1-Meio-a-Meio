@@ -41,7 +41,7 @@
 - **Você pode <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">acessar por aqui</a>**
 
 ## Desenvolvimento
-### 🛠️ Tecnologias Utilizadas
+### 🛠️ Tecnologias Utilizadas:
 
 - `JavaScript`
 - `TypeScript`
@@ -50,7 +50,7 @@
 - `MySQL`
 - `Tecnologia REST`
 
-### 🛠️ Proposta de Processo de Desenvolvimento
+### 🛠️ Proposta de Processo de Desenvolvimento:
 
 - `Metodologia de Desenvolovimento: Ágil (Scrum)`
 - `Questões organizacionais` 
