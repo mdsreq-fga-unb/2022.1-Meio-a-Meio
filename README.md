@@ -11,15 +11,16 @@
 
 * [Descrição do Projeto](#descrição-do-projeto)
 * [Equipe](#equipe)
-* [Documentação](#Documentação)
-* [Instalação](#Instalação)
+* [Documentação](#documentação)
+* [Instalação](#instalação)
 
 ## Descrição do Projeto
 
-O GALDI é um projeto desenvolvido pelos alunos das disciplinas de Métodos de Desenvolvimentos de Software e Requisitos de Software da Universidade de Brasília com o objetivo de facilitar a gestão de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados. 
+:pushpin: `O GALDI é um projeto desenvolvido pelos alunos das disciplinas de Métodos de Desenvolvimentos de Software e Requisitos de Software da Universidade de Brasília com o objetivo de facilitar a gestão de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados.` 
 
 ## Documentação
-Para mais informações sobre o projeto acesse nossa [documentação](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/).
+
+**Para mais informações sobre o projeto acesse nossa <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">documentação</a> ou abra por um servidor web**
 
 ### Clonando o repositório
 ```bash
@@ -29,7 +30,7 @@ $ cd 2022.1-Meio-a-Meio
 <!-- ### Executando o projeto -->
 
 ## Instalação
-Para utilização do aplicativo será necessário:
+:page_facing_up: `Para utilização do aplicativo será necessário: `
 
 - [Git](https://git-scm.com/)
 - [Node](https://nodejs.org/en/)
@@ -40,9 +41,7 @@ Para utilização do aplicativo será necessário:
 <!-- - [Docker](https://www.docker.com/get-started) -->
 ## Equipe
 
-### :pencil2: Autores
-
-#### :computer: MDS
+### :computer: MDS
 | [<img src="https://avatars.githubusercontent.com/u/54143767?v=4" width=100><br><sub>Giulia Alcantara</sub>](https://github.com/alcantaragiubs)
 | :---: |  
 
@@ -55,7 +54,7 @@ Para utilização do aplicativo será necessário:
 | [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Samuel Sato</sub>](https://github.com/samuel-sato)
 | :---: | 
 
-#### :computer: REQ
+### :computer: REQ
 
 | [<img src="https://avatars.githubusercontent.com/u/54088490?v=4" width=100><br><sub>Ciro Costa</sub>](https://github.com/ciro-c)
 | :---: | 
