@@ -106,7 +106,7 @@ Reuniões serão feitas no Discord, ou Google meets.
 
 | Disciplina |Atividade| Método | Ferramenta | Entrega|
 |----|----|----|----|----|
-|Analise/Design| atividade | Método | ferramenta |entrega|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
 |Construção| atividade | Método | ferramenta |entrega|
 |Teste| atividade | Método | ferramenta |entrega|
 
