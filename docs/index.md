@@ -21,6 +21,7 @@
 - `NestJS`
 - `Next`
 - `MySQL`
+- `Figma`
 
 ### 🛠️ Proposta de Processo de Desenvolvimento:
 
