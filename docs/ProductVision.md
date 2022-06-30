@@ -142,6 +142,7 @@ Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questõ
 | Disciplina |Atividade| Método | Ferramenta | Entrega|
 |----|----|----|----|----|
 |Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
+|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma |entrega|
 |Construção| atividade | Método | ferramenta |entrega|
 |Teste| atividade | Método | ferramenta |entrega|
 
