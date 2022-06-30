@@ -47,7 +47,17 @@
 ### 1.1 Declaração de Posição do Produto 
 
  <!-- O Galdi (Gestão de Alunos e Didáticos) é um produto que visa gestão de clientes e alunos. A diferença entre o Galdi e outros softwares de gestão como o Pipefy é que o Galdi é focado em négocios voltados para o setor de educação. Tendo como cliente principal instituições de ensino particulares. O principal atrativo do Galdi é a pouca necessidade de customização em relação a outros CRM. -->
-  O Galdi (Gestão de Alunos e Didáticos) é um produto que visa gestão de alunos envolvidos na área da saúde. A diferença entre o Galdi e outros softwares de gestão como o da [datalogica](http://datalogica.net/site2/) é que o Galdi é focado em négocios voltados para o setor de educação da área da sáude. Tendo como cliente principal instituições de ensino particulares. O principal atrativo do Galdi é a pouca necessidade de customização em relação a outros CRMs, que, normalmente, não apresentam esse foco nessa área.
+  O Galdi (Gestão de Alunos e Didáticos) é um produto que visa gestão de alunos envolvidos na área da saúde. A diferença entre o Galdi e outros softwares de gestão como o da [datalogica](http://datalogica.net/site2/) é que o Galdi é focado em négocios voltados para o setor de educação da área da sáude. Tendo como cliente principal instituições de ensino particulares. O principal atrativo do Galdi é a pouca necessidade de customização em relação a outros softwares de gestão, que, normalmente, não apresentam esse foco nessa área.Além de ter custo baixo de aquisição.
+
+   | | |
+   |--|--|
+   |Para| Jovens e adultos que mexem com sistemas de gerencia|
+   |Quem| Deseja agilidade com processos envolvendo a área da saúde |
+   |O Galdi|é um sistema de gestão de alunos na área da saúde|
+   |Que| tem custo baixo de aquisição |
+   |Ao contrário do |[datalogica](http://datalogica.net/site2/)|
+   | Nosso produto |necessita de pouca customização por ser focado para essa área|
+
 ### 1.2 Objetivos do Produto 
 
  <!-- O principal objetivo do Galdi é facilitar a gestão de clientes com a gerência de alunos da instituição centralizando os esforços. -->
