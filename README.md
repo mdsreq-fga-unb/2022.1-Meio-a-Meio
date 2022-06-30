@@ -1,6 +1,9 @@
 # 2022.1-Meio-a-Meio
 Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB.
-Site https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/
+
+## Documentação
+Para mais informações sobre o projeto acesse nossa [documentação](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/).
+
 ## Equipe
 | Integrante       | DS | GitHub         |
 |------------------|---|----------------|
@@ -14,3 +17,22 @@ Site https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/
 | Matheus Raphael  |REQ| [matheus](https://github.com/)        |
 
 <!-- | Pedro Henrique   |REQ| PedroMoraes39  | -->
+
+## Instalação
+Para utilização do aplicativo será necessário:
+
+- [Git](https://git-scm.com/)
+- [Node](https://nodejs.org/en/)
+- [Nest.js](https://nestjs.com/)
+- [Yarn](https://yarnpkg.com/)
+
+<!-- - [Docker-Compose](https://docs.docker.com/compose/install/) -->
+<!-- - [Docker](https://www.docker.com/get-started) -->
+
+### Clonando o repositório
+```bash
+$ git clone https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio.git
+$ cd 2022.1-Meio-a-Meio
+```
+<!-- ### Executando o projeto -->
+
