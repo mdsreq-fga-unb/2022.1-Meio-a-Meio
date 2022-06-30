@@ -38,7 +38,7 @@
 
 ### 📁 Acesso ao projeto
 
-- **Você pode <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">acessar o código fonte original</a> ou abrir por um servidor web**
+- **Você pode <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">acessar por aqui</a>**
 
 ## Desenvolvimento
 ### 🛠️ Tecnologias Utilizadas
