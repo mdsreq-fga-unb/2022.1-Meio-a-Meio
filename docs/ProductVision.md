@@ -16,28 +16,28 @@
 
 ## Sumário
 
- - 1 VISÃO GERAL DO PRODUTO 
+ - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
     - 1.1 Declaração de Posição do Produto 
     - 1.2 Objetivos do Produto 
     - 1.3 Tecnologias a Serem Utilizadas 
- - 2 VISÃO GERAL DO PROJETO 
+ - [VISÃO GERAL DO PROJETO](#visão-geral-do-projeto)
     - 2.1 Organização do Projeto 
     - 2.2 Planejamento das Fases e/ou Iterações do Projeto 
     - 2.3 Matriz de Comunicação 
     - 2.4 Gerenciamento de Riscos 
     - 2.5 Critérios de Replanejamento 
- - 3 PROCESSO DE DESENVOLVIMENTO DE SOFTWARE 
+ - [PROCESSO DE DESENVOLVIMENTO DE SOFTWARE](#processo-de-desenvolvimento-de-software)
     - 3.1 Atividade 1 
- - 4 PROCESSO DE ENGENHARIA DE REQUISITOS 
+ - [PROCESSO DE ENGENHARIA DE REQUISITOS](#processo-de-engenharia-de-requisitos) 
     - 4.1 Elicitação de Requisitos 
     - 4.2 Análise de Requisitos 
     - 4.3 Documentação de Requisitos 
     - 4.4 Verificação e Validação de Requisitos 
     - 4.5 Gerenciamento de Requisitos 
- - 5 LIÇÕES APRENDIDAS 
- - 6 REFERÊNCIAS BIBLIOGRÁFICAS 
+ - [LIÇÕES APRENDIDAS](#lições-aprendidas)
+ - [REFERÊNCIAS BIBLIOGRÁFICAS](#referências-bibliográficas) 
 
-## 1 VISÃO GERAL DO PRODUTO 
+## VISÃO GERAL DO PRODUTO 
 
 ### 1.1 Declaração de Posição do Produto 
 
@@ -65,7 +65,7 @@
    - [NextJS](https://nextjs.org/)
    - [MySQL](https://www.mysql.com/)
 
-## 2 VISÃO GERAL DO PROJETO 
+## VISÃO GERAL DO PROJETO 
 ### 2.1 Organização do Projeto 
 
 |Papel|Atribuições| Responsavel |Participantes|
@@ -101,7 +101,7 @@ Reuniões serão feitas no Discord, ou Google meets.
  - 2 sprints seguidas com tarefas atrasadas, indicação de processos errados.
  - 3 sprints com requisitos repetidos, indicação de requisitos errados.
 
-## 3 PROCESSO DE DESENVOLVIMENTO DE SOFTWARE 
+## PROCESSO DE DESENVOLVIMENTO DE SOFTWARE 
 ### 3.1 Atividade 1 
 
 | Disciplina |Atividade| Método | Ferramenta | Entrega|
@@ -111,7 +111,7 @@ Reuniões serão feitas no Discord, ou Google meets.
 |Teste| atividade | Método | ferramenta |entrega|
 
 
-## 4 PROCESSO DE ENGENHARIA DE REQUISITOS 
+## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
 Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.
 
@@ -146,7 +146,7 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 |----|----|----|
 |Planejamento Sprint| Reunião | Discord ou google meets|
 
-## 5 LIÇÕES APRENDIDAS 
+## LIÇÕES APRENDIDAS 
  <!-- ### 5.1 Unidade 1 
  ### 5.1.1 MDS 
  ### 5.1.2 Requisitos 
@@ -164,4 +164,4 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
  ### 5.4.2 Requisitos 
  ### 5.4.3 MDS-Requisitos  -->
 
-## 6 REFERÊNCIAS BIBLIOGRÁFICAS 
+## REFERÊNCIAS BIBLIOGRÁFICAS 
