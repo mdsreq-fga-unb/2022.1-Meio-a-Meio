@@ -10,9 +10,10 @@
 ## Índice 
 
 * [Descrição do Projeto](#descrição-do-projeto)
-* [Equipe](#equipe)
 * [Documentação](#documentação)
+* [Clonando o Repositório](#clonando-o-repositório)
 * [Instalação](#instalação)
+* [Equipe](#equipe)
 
 ## Descrição do Projeto
 
@@ -20,7 +21,7 @@
 
 ## Documentação
 
-**Para mais informações sobre o projeto acesse nossa <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">documentação</a> ou abra por um servidor web**
+:open_file_folder: **Para mais informações sobre o projeto acesse nossa <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/">documentação</a> ou abra por um servidor web**
 
 ### Clonando o repositório
 ```bash
