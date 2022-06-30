@@ -104,14 +104,12 @@ Reuniões serão feitas no Discord, ou Google meets.
 ## 3 PROCESSO DE DESENVOLVIMENTO DE SOFTWARE 
 ### 3.1 Atividade 1 
 
-|Disciplina|Atividade| Método | Ferramenta | Entrega|
+| Disciplina |Atividade| Método | Ferramenta | Entrega|
 |----|----|----|----|----|
-|Analise/Design| atividade | Método | ferramenta |-|
-|Construção| atividade | Método | ferramenta |-|
-|Teste| atividade | Método | ferramenta |-|
-<!-- ### 3.2 Atividade 2 
-### 3.3 Atividade 3 
-### 3.4 Atividade ‘N’  -->
+|Analise/Design| atividade | Método | ferramenta |entrega|
+|Construção| atividade | Método | ferramenta |entrega|
+|Teste| atividade | Método | ferramenta |entrega|
+
 
 ## 4 PROCESSO DE ENGENHARIA DE REQUISITOS 
 
