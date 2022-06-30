@@ -60,7 +60,7 @@ $ cd 2022.1-Meio-a-Meio
 | [<img src="https://avatars.githubusercontent.com/u/54088490?v=4" width=100><br><sub>Ciro Costa</sub>](https://github.com/ciro-c)
 | :---: | 
 
-| [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Laura Pino</sub>](https://github.com/samuel-sato)
+| [<img src="https://avatars.githubusercontent.com/u/62102447?v=4" width=100><br><sub>Laura Pinos</sub>](https://github.com/laurapinos)
 | :---: | 
 
 | [<img src="https://avatars.githubusercontent.com/u/66215835?v=4" width=100><br><sub>Nicolas Roberto</sub>](https://github.com/Nicolas-Roberto)
