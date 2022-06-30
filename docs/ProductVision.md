@@ -3,7 +3,7 @@
     <h3>Galdi</h3>
  <h2>VISÃO DO PRODUTO E PROJETO</h2>
 
- <p>Versão 0.5</p>
+ <p>Versão 0.6</p>
 </div>
 
 ## Histórico de Revisão
@@ -12,10 +12,10 @@
 |----|----|----|----|
 |27/06/2022 | 0.1 | Criação do documento | [Ciro Costa](https://github.com/ciro-c)|
 |29/06/2022 | 0.2 | Atualização do documento | [Ciro Costa](https://github.com/ciro-c)|
-|29/06/2022 | 0.2 | Atualização dos documentos | [Giulia Alcantara](https://github.com/alcantaragiubs)|
-|29/06/2022 | 0.3 | Atualização das tecnologias | [Samuel Sato](https://github.com/samuel-sato)|
-|29/06/2022 | 0.4 | Atualização das tecnologias | [Guilherme França](https://github.com/GuiDib)|
-|30/06/2022 | 0.5 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
+|29/06/2022 | 0.3 | Atualização dos documentos | [Giulia Alcantara](https://github.com/alcantaragiubs)|
+|29/06/2022 | 0.4 | Atualização das tecnologias | [Samuel Sato](https://github.com/samuel-sato)|
+|29/06/2022 | 0.5 | Atualização das tecnologias | [Guilherme França](https://github.com/GuiDib)|
+|30/06/2022 | 0.6 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
 
 ## Sumário
 
@@ -151,7 +151,7 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 |Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
 |Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma |entrega|
 |Construção| atividade | Método | ferramenta |entrega|
-|Teste| Testes unitários | Criação de classes de teste | Jest |entrega|
+|Teste| Criar cenários de teste para verificar se todos os requisitos foram atendidos com sucesso e corrigir possíveis falhas | Testes unitários | Jest |entrega|
 
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
