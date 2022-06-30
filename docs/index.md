@@ -18,6 +18,8 @@
 - <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/ProductVision">Visão do Produto e Projeto</a>
 - <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade1">Proposta de Desenvolvimento</a>
 
+## Video de Apresentação
+- <a href="https://youtu.be/W_HwiKt1FIA"> Apresentação GALDI</a> 
 ## Desenvolvimento
 ### 🛠️ Tecnologias Utilizadas:
 
