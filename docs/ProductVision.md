@@ -19,6 +19,12 @@
     - 1.1 Declaração de Posição do Produto 
     - 1.2 Objetivos do Produto 
     - 1.3 Tecnologias a Serem Utilizadas 
+        - `JavaScript`
+        - `TypeScript`
+        - `NestJS`
+        - `Next`
+        - `MySQL`
+        - `Tecnologia REST`
  - 2 VISÃO GERAL DO PROJETO 
     - 2.1 Organização do Projeto 
     - 2.2 Planejamento das Fases e/ou Iterações do Projeto 

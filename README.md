@@ -1,22 +1,32 @@
-# 2022.1-Meio-a-Meio
-Projeto realizado entre as disciplinas de MDS e REQ, Engenharia de Software, UnB.
+
+
+<h1 align="center"> Meio a Meio </h1>
+<h3 align="center"> 2022.1 </h3>
+
+<p align="center">
+<img src="http://img.shields.io/static/v1?label=STATUS&message=PROCESSING&color=GREEN&style=for-the-badge"/>
+</p>
+
+## Índice 
+
+* [Descrição do Projeto](#descrição-do-projeto)
+* [Equipe](#equipe)
+* [Documentação](#Documentação)
+* [Instalação](#Instalação)
+
+## Descrição do Projeto
+
+O GALDI é um projeto desenvolvido pelos alunos das disciplinas de Métodos de Desenvolvimentos de Software e Requisitos de Software da Universidade de Brasília com o objetivo de facilitar a gestão de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados. 
 
 ## Documentação
 Para mais informações sobre o projeto acesse nossa [documentação](https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/).
 
-## Equipe
-| Integrante       | DS | GitHub         |
-|------------------|---|----------------|
-| Bruna de Lima    |MDS| [libruna](https://github.com/libruna)        |
-| Giulia Domingues |MDS| [alcantaragiubs](https://github.com/alcantaragiubs) |
-| Guilherme Franca |MDS| [guidib](https://github.com/GuiDib)     |
-| Samuel Sato      |MDS| [samuel-sato](https://github.com/samuel-sato)    |
-| Ciro Costa       |REQ| [ciro-c](https://github.com/ciro-c)         |
-| Laura Pino       |REQ| [laura](https://github.com/)          |
-| Nicolas Roberto  |REQ| [Nicolas-Roberto](https://github.com/Nicolas-Roberto)        |
-| Matheus Raphael  |REQ| [matheus](https://github.com/)        |
-
-<!-- | Pedro Henrique   |REQ| PedroMoraes39  | -->
+### Clonando o repositório
+```bash
+$ git clone https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio.git
+$ cd 2022.1-Meio-a-Meio
+```
+<!-- ### Executando o projeto -->
 
 ## Instalação
 Para utilização do aplicativo será necessário:
@@ -28,11 +38,36 @@ Para utilização do aplicativo será necessário:
 
 <!-- - [Docker-Compose](https://docs.docker.com/compose/install/) -->
 <!-- - [Docker](https://www.docker.com/get-started) -->
+## Equipe
 
-### Clonando o repositório
-```bash
-$ git clone https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio.git
-$ cd 2022.1-Meio-a-Meio
-```
-<!-- ### Executando o projeto -->
+### :pencil2: Autores
 
+#### :computer: MDS
+| [<img src="https://avatars.githubusercontent.com/u/54143767?v=4" width=100><br><sub>Giulia Alcantara</sub>](https://github.com/alcantaragiubs)
+| :---: |  
+
+| [<img src="https://avatars.githubusercontent.com/u/83987201?v=4" width=100><br><sub>Bruna Lima</sub>](https://github.com/libruna)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/71887345?v=4" width=100><br><sub>Guilherme Franca</sub>](https://github.com/GuiDib)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Samuel Sato</sub>](https://github.com/samuel-sato)
+| :---: | 
+
+#### :computer: REQ
+
+| [<img src="https://avatars.githubusercontent.com/u/54088490?v=4" width=100><br><sub>Ciro Costa</sub>](https://github.com/ciro-c)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Laura Pino</sub>](https://github.com/samuel-sato)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/66215835?v=4" width=100><br><sub>Nicolas Roberto</sub>](https://github.com/Nicolas-Roberto)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Matheus Raphael</sub>](https://github.com/matheus)
+| :---: | 
+
+| [<img src="https://avatars.githubusercontent.com/u/78734372?v=4" width=100><br><sub>Pedro Henrique</sub>](https://github.com/PedroMoraes39)
+| :---: | 
