@@ -34,7 +34,6 @@ Baseado na proposta do Sommerville (2018), foi levantado um conjunto de questõe
 
 - `Framework: Scrum`
 
-
     * Sprint com duração de 1 semana
     * Incremento do produto potencialmente utilizavel
     * Feedback 
