@@ -1,4 +1,3 @@
-## Título
 <h1 align="center"> Unidade 1 </h1>
 
 ## Badges
@@ -9,7 +8,6 @@
 
 ## Índice 
 
-* [Título](#título)
 * [Badges](#badges)
 * [Índice](#índice)
 * [Desenvolvimento](#desenvolvimento)
