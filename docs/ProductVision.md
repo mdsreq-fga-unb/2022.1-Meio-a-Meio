@@ -3,7 +3,7 @@
     <h3>Galdi</h3>
  <h2>VISÃO DO PRODUTO E PROJETO</h2>
 
- <p>Versão 0.2</p>
+ <p>Versão 0.3</p>
 </div>
 
 ## Histórico de Revisão
@@ -12,6 +12,7 @@
 |----|----|----|----|
 |27/06/2022 | 0.1 | Criação do documento | [Ciro Costa](https://github.com/ciro-c)|
 |29/06/2022 | 0.2 | Atualização do documento | [Ciro Costa](https://github.com/ciro-c)|
+|29/06/2022 | 0.3 | Atualização das tecnologias | [Samuel Sato](https://github.com/samuel-sato)|
 
 ## Sumário
 
@@ -19,12 +20,6 @@
     - 1.1 Declaração de Posição do Produto 
     - 1.2 Objetivos do Produto 
     - 1.3 Tecnologias a Serem Utilizadas 
-        - `JavaScript`
-        - `TypeScript`
-        - `NestJS`
-        - `Next`
-        - `MySQL`
-        - `Tecnologia REST`
  - 2 VISÃO GERAL DO PROJETO 
     - 2.1 Organização do Projeto 
     - 2.2 Planejamento das Fases e/ou Iterações do Projeto 
@@ -40,12 +35,6 @@
     - 4.4 Verificação e Validação de Requisitos 
     - 4.5 Gerenciamento de Requisitos 
  - 5 LIÇÕES APRENDIDAS 
-
-    <!-- - 5.1 Unidade 1 
-    - 5.1.1 MDS 
-    - 5.1.2 Requisitos 
-    - 5.1.3 MDS-Requisitos  -->
-
  - 6 REFERÊNCIAS BIBLIOGRÁFICAS 
 
 ## 1 VISÃO GERAL DO PRODUTO 
@@ -70,6 +59,11 @@
 
  O principal objetivo do Galdi é facilitar a gestão de alunos, da área da saúde, da instituição reduzindo os esforços de gestão e aumentar a fidelidade dos dados.
 ### 1.3 Tecnologias a Serem Utilizadas 
+
+   - [TypeScript](https://www.typescriptlang.org/)
+   - [NestJS](https://nestjs.com/)
+   - [NextJS](https://nextjs.org/)
+   - [MySQL](https://www.mysql.com/)
 
 ## 2 VISÃO GERAL DO PROJETO 
 ### 2.1 Organização do Projeto 
