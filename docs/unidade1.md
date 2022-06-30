@@ -61,3 +61,4 @@ Baseado na proposta do Sommerville (2018), foi levantado um conjunto de questõe
 - `Next`
 - `MySQL`
 - `Tecnologia REST`
+- `Figma`
