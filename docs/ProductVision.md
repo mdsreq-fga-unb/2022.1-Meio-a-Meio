@@ -16,6 +16,7 @@
 |29/06/2022 | 0.4 | Atualização das tecnologias | [Guilherme França](https://github.com/GuiDib)|
 |30/06/2022 | 0.5 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
 |30/06/2022 | 0.6 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
+|04/06/2022 | 0.7 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 
 ## Sumário
 
@@ -146,16 +147,15 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 ### 3.2 Processo e procedimentos
 
-| Disciplina |Atividade| Método | Ferramenta | Entrega|
-|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma |entrega|
-|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma |entrega|
-|Construção| Definição de user story | Casos de uso | Trello |entrega|
-|Construção| Criação do banco de dados | Modelagem de dados | Lucidchart |entrega|
-|Construção| Desenvovimento backend | Método | VScode |entrega|
-|Construção| Desenvovimento Frontend | Método | VScode |entrega|
-|Construção| Integração | Método | ferramenta |entrega|
-|Teste| Criar cenários de teste para verificar se todos os requisitos foram atendidos com sucesso e corrigir possíveis falhas | Testes unitários | Jest |entrega|
+| Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|----|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma | Responsável |entrega|
+|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma | Responsável |Protótipo de página|
+|Construção| Definição de user story | User story | Trello | Responsável | Backlog sprint |
+|Construção| Criação do banco de dados | Modelagem de dados | Lucidchart | Responsável |Banco de Dados|
+|Construção| Desenvovimento backend | Método | VScode | Responsável |entrega|
+|Construção| Desenvovimento Frontend | Método | VScode | Responsável |Interface gráfica|
+|Teste| Criar cenários de teste para verificar se todos os requisitos foram atendidos com sucesso e corrigir possíveis falhas | Testes unitários | Jest | Responsável |entrega|
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
