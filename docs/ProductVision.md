@@ -17,6 +17,7 @@
 |30/06/2022 | 0.5 | Adicionada abordagem de software | [Bruna Lima](https://github.com/libruna)|
 |30/06/2022 | 0.6 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 |04/06/2022 | 0.7 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
+|05/06/2022 | 0.8 | Atualização das atividades e participantes | [Ciro Costa](https://github.com/ciro-c)|
 
 ## Sumário
 
@@ -80,12 +81,20 @@
 |Analista de Qualidade|Garantir a qualidade das entregas e se cumprem a ideia proposta| Ciro | Laura, Nicolas|
 |Dono do Produto | Atualizar o escopo e validar entregas| Laura | Nicolas, Ciro |
 |Mestre do Scrum | Delegar tarefas, duração sprint e sprint review | Nicolas | Ciro, Laura|
+|Cliente| Relatar para a equipe as funcionalidades do software e validar as entregas feitas | Gustavo Ian | Ciro,Laura, Nicolas |
 
 ### 2.2 Planejamento das Fases e/ou Iterações do Projeto 
 
 |Sprint|Entrega|Início|Fim|
 |--|--|--|--|
 |1|Definição do produto|20/06/2022|30/06/2022|
+|2|Reorganização da equipe e registros de requisitos|30/06/2022|05/07/2022|
+|3|Sprint 01|05/07/2022|12/07/2022|
+|4|Sprint 02|12/07/2022|19/07/2022|
+|5|Sprint 03|19/07/2022|26/07/2022|
+|6|Sprint 04|26/07/2022|02/08/2022|
+|7|Sprint 05|02/08/2022|09/08/2022|
+
 
 ### 2.3 Matriz de Comunicação 
 
@@ -95,6 +104,7 @@ Reuniões serão feitas no Discord, ou Google meets.
 |Descrição|Envolvidos|Periodicidade|Produtos Gerados
 |--|--|--|--|
 |Sprint Review| Equipe Projeto e Cliente | Semanalmente | Relatório Sprint Review|
+|Sprint Planning| Equipe Projeto e Cliente | No mesmo dia da Sprint Review | Relatório Sprint Planning|
 |Daily | Equipe Projeto | Diariamente | Ata da Reunião |
 |Comunicar situação do projeto| Equipe Projeto e Professor| Aproximadamente 21 dias | Apresentação|
 
