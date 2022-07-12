@@ -65,9 +65,3 @@ $ cd 2022.1-Meio-a-Meio
 
 | [<img src="https://avatars.githubusercontent.com/u/66215835?v=4" width=100><br><sub>Nicolas Roberto</sub>](https://github.com/Nicolas-Roberto)
 | :---: | 
-
-| [<img src="https://avatars.githubusercontent.com/u/69944666?v=4" width=100><br><sub>Matheus Raphael</sub>](https://github.com/matheus)
-| :---: | 
-
-| [<img src="https://avatars.githubusercontent.com/u/78734372?v=4" width=100><br><sub>Pedro Henrique</sub>](https://github.com/PedroMoraes39)
-| :---: | 

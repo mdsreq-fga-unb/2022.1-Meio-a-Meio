@@ -20,6 +20,10 @@
 
 ## Video de Apresentação
 - <a href="https://youtu.be/W_HwiKt1FIA"> Apresentação GALDI</a> 
+
+## Videos com cliente
+
+- <a href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/ClientVideos">Proposta de Desenvolvimento</a>
 ## Desenvolvimento
 ### 🛠️ Tecnologias Utilizadas:
 

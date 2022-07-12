@@ -18,6 +18,7 @@
 |30/06/2022 | 0.6 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 |04/06/2022 | 0.7 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 |05/06/2022 | 0.8 | Atualização das atividades e participantes | [Ciro Costa](https://github.com/ciro-c)|
+|11/06/2022 | 0.9 | Atualização do planejamento | [Ciro Costa](https://github.com/ciro-c)|
 
 ## Sumário
 
@@ -89,11 +90,9 @@
 |--|--|--|--|
 |1|Definição do produto|20/06/2022|30/06/2022|
 |2|Reorganização da equipe e registros de requisitos|30/06/2022|05/07/2022|
-|3|Sprint 01|05/07/2022|12/07/2022|
-|4|Sprint 02|12/07/2022|19/07/2022|
-|5|Sprint 03|19/07/2022|26/07/2022|
-|6|Sprint 04|26/07/2022|02/08/2022|
-|7|Sprint 05|02/08/2022|09/08/2022|
+|3|Sprint 01|05/07/2022|19/07/2022|
+|4|Sprint 02|19/07/2022|02/08/2022|
+|5|Sprint 03|02/08/2022|16/08/2022|
 
 
 ### 2.3 Matriz de Comunicação 
