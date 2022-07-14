@@ -65,5 +65,3 @@ $ cd 2022.1-Meio-a-Meio
 
 | [<img src="https://avatars.githubusercontent.com/u/66215835?v=4" width=100><br><sub>Nicolas Roberto</sub>](https://github.com/Nicolas-Roberto)
 | :---: | 
-
-
