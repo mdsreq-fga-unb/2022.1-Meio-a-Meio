@@ -19,8 +19,8 @@
 |04/06/2022 | 0.7 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 |05/06/2022 | 0.8 | Atualização das atividades e participantes | [Ciro Costa](https://github.com/ciro-c)|
 |11/06/2022 | 0.9 | Atualização do planejamento | [Ciro Costa](https://github.com/ciro-c)|
-|08/07/2022 | 0.9 | Atualização Processo de engenharia de requisitos  | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
-
+|08/07/2022 | 1.0 | Atualização Processo de engenharia de requisitos  | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+|13/07/2022 | 1.1 | Atualização da matriz de comunicação  | [Ciro Costa](https://github.com/ciro-c) |
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -105,7 +105,7 @@ Reuniões serão feitas no Discord, ou Google meets.
 |--|--|--|--|
 |Sprint Review| Equipe Projeto e Cliente | Semanalmente | Relatório Sprint Review|
 |Sprint Planning| Equipe Projeto e Cliente | No mesmo dia da Sprint Review | Relatório Sprint Planning|
-|Daily | Equipe Projeto | Diariamente | Ata da Reunião |
+|Daily | Equipe Projeto | Diariamente | - |
 |Comunicar situação do projeto| Equipe Projeto e Professor| Aproximadamente 21 dias | Apresentação|
 
 ### 2.4 Gerenciamento de Riscos 
