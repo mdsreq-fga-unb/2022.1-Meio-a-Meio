@@ -19,6 +19,7 @@
 |04/06/2022 | 0.7 | Atualização das atividades | [Samuel Sato](https://github.com/samuel-sato)|
 |05/06/2022 | 0.8 | Atualização das atividades e participantes | [Ciro Costa](https://github.com/ciro-c)|
 |11/06/2022 | 0.9 | Atualização do planejamento | [Ciro Costa](https://github.com/ciro-c)|
+|08/07/2022 | 0.9 | Atualização Processo de engenharia de requisitos  | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 
 ## Sumário
 
@@ -174,32 +175,34 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
 |Atividade|Método|Ferramenta|
 |----|----|----|
-|Análise do problema e necessidade do cliente| Entrevista aberta com cliente | google meets |
+|Identificação de requisitos | Reunião | google meets |
 
 ### 4.2 Análise de Requisitos 
 
 |Atividade|Método|Ferramenta|
 |----|----|----|
-|Organização e agrupamento de requisitos| Reunião da equipe | Discord ou google meets |
-|Discussão viabilidade dos requisitos| Reunião com cliente | google meets |
+|Definição de requisitos| Brainstorming | Discord ou google meets |
+|Definição de prioridades| Brainstorming | google meets |
 
 ### 4.3 Documentação de Requisitos 
 
 |Atividade|Método|Ferramenta|
 |----|----|----|
-|Documentação dos requisitos no backlog do projeto| Construção de histórias de usuário | Github e discord |
+|Documentação de requisitos | BackLog do Produto(SAFe) | Github e MIRO |
 
 ### 4.4 Verificação e Validação de Requisitos 
 
 |Atividade|Método|Ferramenta|
 |----|----|----|
-| Refinar os requisitos do que foi feito com o cliente | Walkthrough | google meets |
+| Verificação | Revisão de requisitos | Discord |
+| Validação | Inspeção de requisitos | Discord |
 
 ### 4.5 Gerenciamento de Requisitos 
 
 |Atividade|Método|Ferramenta|
 |----|----|----|
-|Planejamento Sprint| Reunião | Discord ou google meets|
+|Padronização| Padronizar nome e identificação | Github|
+|Armazenamento| Registrar no github-pages | Github|
 
 ## LIÇÕES APRENDIDAS 
  <!-- ### 5.1 Unidade 1 
