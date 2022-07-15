@@ -20,7 +20,8 @@
 |05/06/2022 | 0.8 | Atualização das atividades e participantes | [Ciro Costa](https://github.com/ciro-c)|
 |11/06/2022 | 0.9 | Atualização do planejamento | [Ciro Costa](https://github.com/ciro-c)|
 |08/07/2022 | 1.0 | Atualização Processo de engenharia de requisitos  | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
-|13/07/2022 | 1.1 | Atualização da matriz de comunicação  | [Ciro Costa](https://github.com/ciro-c) |
+|13/07/2022 | 1.1 | Atualização da matriz de comunicação  | [Ciro Costa](https://github.com/ciro-c) |]
+|14/07/2022 | 1.2 | Atualização de processos e procedimento e adição de lições aprendidas  | [Samuel Sato](https://github.com/samuel-sato) |
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -159,13 +160,13 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 | Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma | Responsável |entrega|
-|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma | Responsável |Protótipo de página|
-|Construção| Definição de user story | User story | Trello | Responsável | Backlog sprint |
-|Construção| Criação do banco de dados | Modelagem de dados | Lucidchart | Responsável |Banco de Dados|
-|Construção| Desenvovimento backend | Método | VScode | Responsável |entrega|
-|Construção| Desenvovimento Frontend | Método | VScode | Responsável |Interface gráfica|
-|Teste| Criar cenários de teste para verificar se todos os requisitos foram atendidos com sucesso e corrigir possíveis falhas | Testes unitários | Jest | Responsável |entrega|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma | Giulia |entrega|
+|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma | Guilherme |Protótipo de página|
+|Construção| Definição de user story | User story | Trello | Samuel | Backlog sprint |
+|Construção| Criação do banco de dados | *Modelagem de dados* | Lucidchart | Bruna |Banco de Dados|
+|Construção| Desenvovimento backend | Método | VScode | Samuel |API|
+|Construção| Desenvovimento Frontend | Método | VScode | Giulia |Interface gráfica|
+|Teste| Criar cenários de teste para verificar se todos os requisitos foram atendidos com sucesso e corrigir possíveis falhas | Testes unitários | Jest | Bruna |Testes unitários|
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
@@ -205,11 +206,16 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 |Armazenamento| Registrar no github-pages | Github|
 
 ## LIÇÕES APRENDIDAS 
- <!-- ### 5.1 Unidade 1 
+ ### 5.1 Unidade 1 
  ### 5.1.1 MDS 
+    - Disciplinas da Engenharia de Software
+    - Metodologias de Desenvolvimento de Software. Em especial, Ágil.
+    - Ciclo de vida
+    - Rituais do Scrum
+    - Práticas do XP
  ### 5.1.2 Requisitos 
  ### 5.1.3 MDS-Requisitos 
- ### 5.2 Unidade 2 
+ <!-- ### 5.2 Unidade 2 
  ### 5.2.1 MDS 
  ### 5.2.2 Requisitos 
  ### 5.2.3 MDS-Requisitos 
