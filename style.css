@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarala:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #389bd9;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+}
+
+h2 {
+    font-size: 18px;
+    font-family: 'Sarala', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #389bd9;
+    text-align: center;
+}
+
+main, section {
+    margin-left: 48px;
+    margin-right: 48px;
+    font-family: 'Sarala', sans-serif;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 48px;
+}
+
+li {
+    font-size: 15px;
+    font-family: 'Sarala', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #161c20;
+}
+
+ul, ol {
+    margin-left: 50px;
+}
+
+footer {
+    padding: 32px;
+}
+
+html {
+    background-color: #E4E9ED;
+}
+
+p {
+    text-align: justify;
+}
+
+.list-unidade {
+    font-size: 15px;
+    font-family: 'Sarala', sans-serif;
+    text-transform: uppercase;
+    color: #161c20;
+    gap: 32px;
+}
+
+.header-item {
+    color: #fff;
+    font-family: 'Sarala', sans-serif;
+    transition: 0.3s;
+}
+
+a:hover { 
+    opacity: 0.7;
+}
+
+.logo {
+    color: #fff;
+    transition: 0.3s;
+    font-size: 24px;
+    font-family: 'Righteous', cursive;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+#table-equipe {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#table-equipe td, #table-equipe th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#table-equipe tr:nth-child(even){background-color: #f2f2f2;}
+  
+#table-equipe tr:hover {background-color: #ddd;}
+  
+#table-equipe th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #389bd9;
+    color: white;
+}
