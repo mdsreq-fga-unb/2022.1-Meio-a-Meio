@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Unidade1 - Meio a Meio</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Meio a Meio</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Início</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produto <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../ProductVision/" class="dropdown-item">Visão</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../tecnologias.md" class="nav-link">Tecnologia</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/edit/master/docs/unidade1.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#1-abordagem-de-desenvolvimento-de-software" class="nav-link">1. Abordagem de Desenvolvimento de Software</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 align="center"> Unidade 1 </h1>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30/06/2022</td>
+<td>1.0</td>
+<td>Criação do documento, adicionada proposta de desenvolvimento de software e tecnologias</td>
+<td>Bruna, Samuel</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="1-abordagem-de-desenvolvimento-de-software">1. Abordagem de Desenvolvimento de Software</h2>
+<h3 id="11-metodologia">1.1 Metodologia</h3>
+<p>Baseado na proposta do Sommerville (2018), foi levantado um conjunto de questões a serem respondidas para definir a abordagem que melhor se encaixasse ao time.</p>
+<ul>
+<li>
+<p>Questões técnicas:</p>
+</li>
+<li>
+<p><b>Qual é o tamanho do sistema que está sendo desenvolvido?</b> É um software de médio.<br></p>
+</li>
+<li>
+<p><b>Que tipo de sistema está sendo desenvolvido?</b> Aplicação Web.<br></p>
+</li>
+<li>
+<p><b>O sistema está sujeito a controle externo?</b> Sim, o sistema será consumido pela instituição de ensino.</p>
+</li>
+<li>
+<p>Questões humanas:</p>
+</li>
+<li>
+<p><b>Qual é o nível de competência dos projetistas e programadores do time de desenvolvimento?</b> Os integrantes possuem nível básico-intermediário.<br></p>
+</li>
+<li>
+<p><b>Como está organizado o time de desenvolvimento?</b> Os desenvolvedores estão dividos entre o front-end e o back-end da aplicação.<br></p>
+</li>
+<li>
+<p><b>Quais são as tecnologias disponíveis para apoiar o desenvolvimento do sistema?</b> A princípio: Github para versionamento e Trello para controlar as atividades.</p>
+</li>
+<li>
+<p>Questões organizacionais:</p>
+</li>
+<li>
+<p><b>É importante ter uma especificação e um projeto (design) bem detalhados antes de passar para a implementação - talvez por motivos contratuais?</b> </p>
+</li>
+<li>
+<p><b>É realista uma estratégia de entrega incremental, na qual o software é entregue aos clientes ou outros stakeholders e um rápido feedback é obtido?</b> Por conta da proximidade do Product Owner(PO) com o cliente e a equipe de desenvolvimento, é realista.<br></p>
+</li>
+<li>
+<p><b>Os representantes do cliente estarão disponíveis e dispostos a participar do time de desenvolvimento?</b> Sim, uma vez que o representante faz parte da equipe.</p>
+</li>
+<li>
+<p><b>Existem questões culturais que possam afetar o desenvolvimento do sistema?</b> Não.<br></p>
+</li>
+<li>
+<p><code>Framework: Scrum</code></p>
+<ul>
+<li>Sprint com duração de 1 semana</li>
+<li>Incremento do produto potencialmente utilizavel</li>
+<li>Feedback </li>
+<li>Representantes no time</li>
+<li>Questões culturais</li>
+</ul>
+</li>
+</ul>
+<h3 id="modelo-de-ciclo-de-vida">🛠️ Modelo de Ciclo de Vida:</h3>
+<ul>
+<li><code>Evolutivo</code></li>
+<li><code>Processo de Desenvolvimento: Extreme Programming (XP)</code></li>
+<li><code>Requisitos revisitados no inicio de cada cíclo</code></li>
+</ul>
+<h4 id="praticas">Praticas:</h4>
+<pre><code>Planejamento do jogo
+Programação em pares
+Refatoração
+Integração contínua
+</code></pre>
+<h3 id="tecnologias-utilizadas">🛠️ Tecnologias Utilizadas:</h3>
+<ul>
+<li><code>JavaScript</code></li>
+<li><code>TypeScript</code></li>
+<li><code>NestJS</code></li>
+<li><code>Next</code></li>
+<li><code>MySQL</code></li>
+<li><code>Tecnologia REST</code></li>
+<li><code>Figma</code></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
