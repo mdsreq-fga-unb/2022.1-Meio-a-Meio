@@ -93,9 +93,9 @@
 |--|--|--|--|
 |1|Definição do produto|20/06/2022|30/06/2022|
 |2|Reorganização da equipe e registros de requisitos|30/06/2022|05/07/2022|
-|3|Sprint 01|05/07/2022|19/07/2022|
-|4|Sprint 02|19/07/2022|02/08/2022|
-|5|Sprint 03|02/08/2022|16/08/2022|
+|3|Definição do Produto, Visão de Produto, Definição do Backlog do Produto|05/07/2022|19/07/2022|
+|4|Implementação e entrega do MVP1|19/07/2022|02/08/2022|
+|5|Implementação e entrega do MVP2.|02/08/2022|16/08/2022|
 
 
 ### 2.3 Matriz de Comunicação 
@@ -107,7 +107,7 @@ Reuniões serão feitas no Discord, ou Google meets.
 |--|--|--|--|
 |Sprint Review| Equipe Projeto e Cliente | Semanalmente | Relatório Sprint Review|
 |Sprint Planning| Equipe Projeto e Cliente | No mesmo dia da Sprint Review | Relatório Sprint Planning|
-|Daily | Equipe Projeto | Diariamente | - |
+|Daily | Equipe Projeto | Diariamente | Atualização do andamento do projeto |
 |Comunicar situação do projeto| Equipe Projeto e Professor| Aproximadamente 21 dias | Apresentação|
 
 ### 2.4 Gerenciamento de Riscos 
