@@ -1,6 +1,8 @@
 ## Período
 Duração: 05/07/2022  à 19/07/2022
 
+Para acontecer
+
 <!-- ### Presenças Sprint Plaining + Sprint Review
 | Membros  |  Planning  |Review  |
 | ------------------- | ------------------- |------------------- |
@@ -11,7 +13,7 @@ Duração: 05/07/2022  à 19/07/2022
 |  Erick |  ✔  |  ✔  |
 |  Paulo Vitor |  x  |  ✔  | -->
 
-## Status das Tarefas no Fim da Sprint
+<!-- ## Status das Tarefas no Fim da Sprint
 | **Issue** | **Resposáveis** | **Status** |
 |--|--|--|
 |  #  | Todos  | Done |
@@ -51,4 +53,4 @@ Duração: 05/07/2022  à 19/07/2022
 - Sem dívida
 
 ### Análise do Scrum Master
-    Sem análise
+    Sem análise -->

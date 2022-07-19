@@ -1,0 +1,64 @@
+#### Funcionais
+
+  - O sistema deve ser capaz de integrar o sistema acadêmico com o financeiro
+  - O sistema deve ser capaz de permitir cadastro de administradores
+  - O sistema deve ser capaz de permitir acesso de administradores por login e senha
+  - O sistema deve ser capaz de gerar ficha de matrícula
+  - O sistema deve ser capaz de guardar informações dos alunos ( matricula, idade….)
+  - O sistema deve ser capaz de alterar informações dos alunos
+  - O sistema deve ser capaz de visualizar informações dos alunos
+  - O sistema deve ser capaz de guardar informações dos professores
+  - O sistema deve ser capaz de permitir acesso dos professores por login e senha
+  - O sistema deve ser capaz de alterar informações dos professores
+  - O sistema deve ser capaz de visualizar informações dos professores
+  - O sistema deve ser capaz de cadastrar cursos
+  - O sistema deve ser capaz de visualizar informações dos cursos
+  - O sistema deve ser capaz de cadastrar disciplinas
+  - O sistema deve ser capaz de cadastrar disciplinas em cursos
+  - O sistema deve ser capaz de visualizar informações das disciplinas
+  - O sistema deve ser capaz de cadastrar sub-disciplinas
+  - O sistema deve ser capaz de visualizar informações das sub-disciplinas
+  - O sistema deve ser capaz de cadastrar disciplinas especiais
+  - O sistema deve ser capaz de visualizar informações das disciplinas especiais
+  - O sistema deve ser capaz de criar turmas das disciplinas.
+  - O sistema deve ser capaz de visualizar das turmas
+  - O sistema deve ser capaz de cadastrar o professor em turmas
+  - O sistema deve ser capaz de ser possível cadastrar alunos em turmas
+  - O sistema deve ser capaz de gerar diário de aula
+  - O sistema deve ser capaz de guardar diário de aula
+  - O sistema deve ser capaz de visualizar informações dos diários de aula
+  - O sistema deve ser capaz de guardar provas de alunos utilizadas em aula
+  - O sistema deve ser capaz de visualizar provas guardadas
+  - O sistema deve ser capaz de guardar notas de atividades dos alunos
+  - O sistema deve ser capaz de visualizar notas de atividades dos alunos
+  - O sistema deve ser capaz de guardar notas de provas dos alunos
+  - O sistema deve ser capaz de visualizar notas de provas dos alunos
+  - O sistema deve ser capaz de gerar lista de presença em aula
+  - O sistema deve ser capaz de visualizar lista de presença em aula
+  - O sistema deve ser capaz de guardar lista de presença em aula
+  - O sistema deve ser capaz de gerar abonos para falta em aula
+  - O sistema deve ser capaz de visualizar abonos para falta em aula
+  - O sistema deve ser capaz de gerar relatórios de aula
+  - O sistema deve ser capaz de guardar o calendário escolar
+  - O sistema deve ser capaz de visualizar calendário escolar
+  - O sistema deve ser capaz de guardar eventos do calendário escolar
+  - O sistema deve ser capaz de gerar histórico escolar do aluno
+  - O sistema deve ser capaz de gerar atestado de matrícula
+  - O sistema deve ser capaz de gerar ficha do aluno
+  - O sistema deve ser capaz de gerar boletim do aluno
+  - O sistema deve ser capaz de gerar declarações
+  - O sistema deve ser capaz de guardar contratos relacionados ao aluno
+  - O sistema deve ser capaz de guardar contratos relacionados ao professor
+  - O sistema deve ser capaz de guardar contratos relacionados ao curso
+  - O sistema deve ser capaz de apurar automaticamente resultado acadêmico dos alunos
+  - O sistema deve ser capaz de cadastrar alunos em estágios
+  - O sistema deve ser capaz de fazer rematrícula automática de alunos
+  - O sistema deve ser capaz de cadastrar disciplinas já feitas por aluno
+  - O sistema deve ser capaz de realizar aproveitamento de disciplina
+
+#### Não Funcionais
+
+  - O sistema deve ser atualizável 
+  - O sistema deve guardar as senhas utilizando criptografia
+  - O sistema deve obedecer lgpd 
+  - O sistema deve enviar certificado de conclusão de curso por email

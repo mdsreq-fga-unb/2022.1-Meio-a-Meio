@@ -5,7 +5,10 @@ nav:
 # - Projeto: ProductVision.md
 - Produto:
   - 'Visão': ProductVision.md
-- Tecnologia: tecnologias.md
+- Sprints planing:
+  - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
+- Sprints Review:
+  - 'Sprint 01': Sprints/Sprint01/SprintReview.md
 
 theme: 
   name: mkdocs
