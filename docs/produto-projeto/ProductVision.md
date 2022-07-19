@@ -24,6 +24,7 @@
 |14/07/2022 | 1.2 | Atualização de processos e procedimento e adição de lições aprendidas  | [Samuel Sato](https://github.com/samuel-sato) |
 |17/07/2022 | 1.3 | Atualização de processos e procedimento  | [Samuel Sato](https://github.com/samuel-sato) |
 |19/07/2022 | 1.4 | Atualização de Sprints e gerenciamento de riscos  | [Laura Pinos](https://github.com/laurapinos) |
+|19/07/2022 | 1.5 | Retirada dos requisitos do documento e Atualização das lições aprendidas  | [Ciro Costa](https://github.com/ciro-c) |
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -76,6 +77,7 @@
    - [NextJS](https://nextjs.org/)
    - [MySQL](https://www.mysql.com/)
    - [Figma](https://www.figma.com/)
+   - [Miro](https://www.miro.com/)
 
 ## VISÃO GERAL DO PROJETO 
 ### 2.1 Organização do Projeto 
@@ -234,76 +236,28 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
   - Práticas do XP
 
 ### 5.1.2 Requisitos 
-   Funcionais
--O sistema deve ser capaz de integrar o sistema acadêmico com o financeiro
--O sistema deve ser capaz de permitir cadastro de administradores
--O sistema deve ser capaz de permitir acesso de administradores por login e senha
--O sistema deve ser capaz de gerar ficha de matrícula
--O sistema deve ser capaz de guardar informações dos alunos ( matricula, idade….)
--O sistema deve ser capaz de alterar informações dos alunos
--O sistema deve ser capaz de visualizar informações dos alunos
--O sistema deve ser capaz de guardar informações dos professores
--O sistema deve ser capaz de permitir acesso dos professores por login e senha
--O sistema deve ser capaz de alterar informações dos professores
--O sistema deve ser capaz de visualizar informações dos professores
--O sistema deve ser capaz de cadastrar cursos
--O sistema deve ser capaz de visualizar informações dos cursos
--O sistema deve ser capaz de cadastrar disciplinas
--O sistema deve ser capaz de cadastrar disciplinas em cursos
--O sistema deve ser capaz de visualizar informações das disciplinas
--O sistema deve ser capaz de cadastrar sub-disciplinas
--O sistema deve ser capaz de visualizar informações das sub-disciplinas
--O sistema deve ser capaz de cadastrar disciplinas especiais
--O sistema deve ser capaz de visualizar informações das disciplinas especiais
--O sistema deve ser capaz de criar turmas das disciplinas.
--O sistema deve ser capaz de visualizar das turmas
--O sistema deve ser capaz de cadastrar o professor em turmas
--O sistema deve ser capaz de ser possível cadastrar alunos em turmas
--O sistema deve ser capaz de gerar diário de aula
--O sistema deve ser capaz de guardar diário de aula
--O sistema deve ser capaz de visualizar informações dos diários de aula
--O sistema deve ser capaz de guardar provas de alunos utilizadas em aula
--O sistema deve ser capaz de visualizar provas guardadas
--O sistema deve ser capaz de guardar notas de atividades dos alunos
--O sistema deve ser capaz de visualizar notas de atividades dos alunos
--O sistema deve ser capaz de guardar notas de provas dos alunos
--O sistema deve ser capaz de visualizar notas de provas dos alunos
--O sistema deve ser capaz de gerar lista de presença em aula
--O sistema deve ser capaz de visualizar lista de presença em aula
--O sistema deve ser capaz de guardar lista de presença em aula
--O sistema deve ser capaz de gerar abonos para falta em aula
--O sistema deve ser capaz de visualizar abonos para falta em aula
--O sistema deve ser capaz de gerar relatórios de aula
--O sistema deve ser capaz de guardar o calendário escolar
--O sistema deve ser capaz de visualizar calendário escolar
--O sistema deve ser capaz de guardar eventos do calendário escolar
--O sistema deve ser capaz de gerar histórico escolar do aluno
--O sistema deve ser capaz de gerar atestado de matrícula
--O sistema deve ser capaz de gerar ficha do aluno
--O sistema deve ser capaz de gerar boletim do aluno
--O sistema deve ser capaz de gerar declarações
--O sistema deve ser capaz de guardar contratos relacionados ao aluno
--O sistema deve ser capaz de guardar contratos relacionados ao professor
--O sistema deve ser capaz de guardar contratos relacionados ao curso
--O sistema deve ser capaz de apurar automaticamente resultado acadêmico dos alunos
--O sistema deve ser capaz de cadastrar alunos em estágios
--O sistema deve ser capaz de fazer rematrícula automática de alunos
--O sistema deve ser capaz de cadastrar disciplinas já feitas por aluno
--O sistema deve ser capaz de realizar aproveitamento de disciplina
 
-   Não Funcionais
--O sistema deve ser atualizável 
--O sistema deve guardar as senhas utilizando criptografia
--O sistema deve obedecer lgpd 
--O sistema deve enviar certificado de conclusão de curso por email
+   - Ter comunicação mais clara com os membros
+   - Ter uma comunicação mais ativa com o cliente
+   - Não gravar os vídeos em cima da hora
 
 ### 5.1.3 MDS-Requisitos 
 
- <!-- ### 5.2 Unidade 2 
+   - Buscar uma comunicação mais ativa entre os grupos
+   - Alinhar espectativas
+   - Centralizar forma de comunicação entre os times
+   - Buscar sanar dúvidas de forma mais rápida
+
+  ### 5.2 Unidade 2 
  ### 5.2.1 MDS 
  ### 5.2.2 Requisitos 
+
+   - Buscar de forma mais ativa a resolução de tarefas
+
  ### 5.2.3 MDS-Requisitos 
- ### 5.3 Unidade 3 
+
+
+ <!--### 5.3 Unidade 3 
  ### 5.3.1 MDS 
  ### 5.3.2 Requisitos 
  ### 5.3.3 MDS-Requisitos 
