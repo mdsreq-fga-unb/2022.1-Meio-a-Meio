@@ -23,6 +23,7 @@
 |13/07/2022 | 1.1 | Atualização da matriz de comunicação  | [Ciro Costa](https://github.com/ciro-c) |]
 |14/07/2022 | 1.2 | Atualização de processos e procedimento e adição de lições aprendidas  | [Samuel Sato](https://github.com/samuel-sato) |
 |17/07/2022 | 1.3 | Atualização de processos e procedimento  | [Samuel Sato](https://github.com/samuel-sato) |
+|19/07/2022 | 1.4 | Atualização de Sprints e gerenciamento de riscos  | [Laura Pinos](https://github.com/laurapinos) |
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -107,10 +108,24 @@ Reuniões serão feitas no Discord, ou Google meets.
 |--|--|--|--|
 |Sprint Review| Equipe Projeto e Cliente | Semanalmente | Relatório Sprint Review|
 |Sprint Planning| Equipe Projeto e Cliente | No mesmo dia da Sprint Review | Relatório Sprint Planning|
-|Daily | Equipe Projeto | Diariamente | Atualização do andamento do projeto |
+|Daily | Equipe Projeto | Diariamente | Atualização sobre andamento do projeto |
 |Comunicar situação do projeto| Equipe Projeto e Professor| Aproximadamente 21 dias | Apresentação|
 
 ### 2.4 Gerenciamento de Riscos 
+
+   <p>A análise e gestão de risco auxiliam a equipe a entender problemas e avaliar possíveis riscos encontrados ao desenvolver do projeto, assim, guiando o usuário e desenvolvedor a contenção dos prejuízos. </p>
+   
+   Segundo Charette, existem três tipos de riscos de Software (PRESSMAN,2006):
+   
+   Riscos de projeto mostram problemas potenciais de orçamento, cronograma, organizacionais que impactam o projeto. (PRESSMAN,2006)
+   
+   Riscos técnicos pertuba a qualidade e a entrega do software. Também mostram problemas potenciais de projeto, implementação, interface, verificação e manutenção. (PRESSMAN,2006)
+   
+   Riscos de negócio ameaçam a viabilidadea do software e o produto. Existem cinco principais riscos de negócios que são:  (1) criar um excelente produto ou sistema que ninguém realmente quer (risco de mercado), (2) criar um produto que não se encaixe mais na estratégia geral de negócios da empresa (risco estratégico), (3) criar um produto que a equipe de vendas não sabe como vender (risco de vendas), (4) perda de suporte da alta gerência devido à mudança no foco ou mudança de profissionais (risco gerencial), e (5)perda do orçamento ou do comprometimento dos profissionais (riscos de orçamento). (PRESSMAN,2006)
+   
+   ![image](https://user-images.githubusercontent.com/62102447/179772030-2f71e9c3-31ad-4af4-971f-ec481a6b240b.png)
+
+Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
 
 ### 2.5 Critérios de Replanejamento
 
@@ -219,6 +234,68 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
   - Práticas do XP
 
 ### 5.1.2 Requisitos 
+   Funcionais
+-O sistema deve ser capaz de integrar o sistema acadêmico com o financeiro
+-O sistema deve ser capaz de permitir cadastro de administradores
+-O sistema deve ser capaz de permitir acesso de administradores por login e senha
+-O sistema deve ser capaz de gerar ficha de matrícula
+-O sistema deve ser capaz de guardar informações dos alunos ( matricula, idade….)
+-O sistema deve ser capaz de alterar informações dos alunos
+-O sistema deve ser capaz de visualizar informações dos alunos
+-O sistema deve ser capaz de guardar informações dos professores
+-O sistema deve ser capaz de permitir acesso dos professores por login e senha
+-O sistema deve ser capaz de alterar informações dos professores
+-O sistema deve ser capaz de visualizar informações dos professores
+-O sistema deve ser capaz de cadastrar cursos
+-O sistema deve ser capaz de visualizar informações dos cursos
+-O sistema deve ser capaz de cadastrar disciplinas
+-O sistema deve ser capaz de cadastrar disciplinas em cursos
+-O sistema deve ser capaz de visualizar informações das disciplinas
+-O sistema deve ser capaz de cadastrar sub-disciplinas
+-O sistema deve ser capaz de visualizar informações das sub-disciplinas
+-O sistema deve ser capaz de cadastrar disciplinas especiais
+-O sistema deve ser capaz de visualizar informações das disciplinas especiais
+-O sistema deve ser capaz de criar turmas das disciplinas.
+-O sistema deve ser capaz de visualizar das turmas
+-O sistema deve ser capaz de cadastrar o professor em turmas
+-O sistema deve ser capaz de ser possível cadastrar alunos em turmas
+-O sistema deve ser capaz de gerar diário de aula
+-O sistema deve ser capaz de guardar diário de aula
+-O sistema deve ser capaz de visualizar informações dos diários de aula
+-O sistema deve ser capaz de guardar provas de alunos utilizadas em aula
+-O sistema deve ser capaz de visualizar provas guardadas
+-O sistema deve ser capaz de guardar notas de atividades dos alunos
+-O sistema deve ser capaz de visualizar notas de atividades dos alunos
+-O sistema deve ser capaz de guardar notas de provas dos alunos
+-O sistema deve ser capaz de visualizar notas de provas dos alunos
+-O sistema deve ser capaz de gerar lista de presença em aula
+-O sistema deve ser capaz de visualizar lista de presença em aula
+-O sistema deve ser capaz de guardar lista de presença em aula
+-O sistema deve ser capaz de gerar abonos para falta em aula
+-O sistema deve ser capaz de visualizar abonos para falta em aula
+-O sistema deve ser capaz de gerar relatórios de aula
+-O sistema deve ser capaz de guardar o calendário escolar
+-O sistema deve ser capaz de visualizar calendário escolar
+-O sistema deve ser capaz de guardar eventos do calendário escolar
+-O sistema deve ser capaz de gerar histórico escolar do aluno
+-O sistema deve ser capaz de gerar atestado de matrícula
+-O sistema deve ser capaz de gerar ficha do aluno
+-O sistema deve ser capaz de gerar boletim do aluno
+-O sistema deve ser capaz de gerar declarações
+-O sistema deve ser capaz de guardar contratos relacionados ao aluno
+-O sistema deve ser capaz de guardar contratos relacionados ao professor
+-O sistema deve ser capaz de guardar contratos relacionados ao curso
+-O sistema deve ser capaz de apurar automaticamente resultado acadêmico dos alunos
+-O sistema deve ser capaz de cadastrar alunos em estágios
+-O sistema deve ser capaz de fazer rematrícula automática de alunos
+-O sistema deve ser capaz de cadastrar disciplinas já feitas por aluno
+-O sistema deve ser capaz de realizar aproveitamento de disciplina
+
+   Não Funcionais
+-O sistema deve ser atualizável 
+-O sistema deve guardar as senhas utilizando criptografia
+-O sistema deve obedecer lgpd 
+-O sistema deve enviar certificado de conclusão de curso por email
 
 ### 5.1.3 MDS-Requisitos 
 
@@ -236,3 +313,4 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
  ### 5.4.3 MDS-Requisitos  -->
 
 ## REFERÊNCIAS BIBLIOGRÁFICAS 
+PRESSMAN, R S. Engenharia de Software. 6.ed. São Paulo: Mc Graw Hill Internacional, 2006
