@@ -29,23 +29,22 @@ Duração: 05/07/2022  à 19/07/2022
 ## Backlog
 | Issue | Descrição  | Responsáveis | Status | 
 | ------------------- | ------------------- | ------------------- | ------------------- |
-| **#**  | Verificar Definição do produto no documento de visão | Laura  | A fazer  |   
-| **#**  | Refinar backlog para Historias de usúario | REQ  | A fazer  |   
-| **#**  | Verificar planejamento do projeto do documento de visão | Ciro  | A fazer  |   
-| **#**  | Verificar Atividades de Requisitos do documento de visão | Nicolas  | A fazer  |   
-| **#**  | Definir em reunião com cliente o escopo do mvp | REQ   | A fazer  |   
-| **#**  | Definir pull request template | Ciro  | A fazer  |   
-| **#**  | Definir lições aprendidas no documento de visão | Todos  | A fazer  |   
-| **#**  | Definir commit template | Nicolas  | A fazer  |   
-| **#**  | Estudar tecnologia do back-end (nest.js) | MDS  | A fazer  |   
-| **#**  | Estudar tecnologia do front-end (next.js) | MDS  | A fazer  |   
-| **#**  | Criar base do site no repositorio | MDS  | A fazer  |    
-| **#**  | Criar base da api no repositorio | MDS  | A fazer  |    
-| **#**  | Fazer as alterações necessárias no gitpage das Unidades 1 e 2 | Bruna e Samuel  | A fazer  |    
-| **#**  | Conectar o back-end com o banco de dados | MDS  | A fazer  |    
-| **#**  | Fazer slides do Workshop e criar perguntas para apresentação | Bruna, Guilia, Samuel  | A fazer  |    
-| **#**  | Desenvolver desafios para o workshop | Bruna, Guilia, Samuel| A fazer  |    
-| **#**  | Criar base do site no repositorio | Samuel | A fazer  |    
+| **#1**  | Verificar Definição do produto no documento de visão | Laura  | A fazer  |   
+| **#2**  | Refinar backlog para Historias de usúario | REQ  | A fazer  |   
+| **#3**  | Verificar planejamento do projeto do documento de visão | Ciro  | A fazer  |   
+| **#4**  | Verificar Atividades de Requisitos do documento de visão | Nicolas  | A fazer  |   
+| **#5**  | Definir em reunião com cliente o escopo do mvp | REQ   | A fazer  |   
+| **#6**  | Definir pull request template | Ciro  | A fazer  |   
+| **#7**  | Definir lições aprendidas no documento de visão | Todos  | A fazer  |   
+| **#8**  | Definir commit template | Nicolas  | A fazer  |   
+| **#9**  | Estudar tecnologia do back-end (nest.js) | MDS  | A fazer  |   
+| **#10**  | Estudar tecnologia do front-end (next.js) | MDS  | A fazer  |   
+| **#11**  | Criar base do site no repositorio | MDS  | A fazer  |    
+| **#12**  | Criar base da api no repositorio | MDS  | A fazer  |    
+| **#13**  | Fazer as alterações necessárias no gitpage das Unidades 1 e 2 | Bruna e Samuel  | A fazer  |    
+| **#14**  | Conectar o back-end com o banco de dados | MDS  | A fazer  |    
+| **#15**  | Fazer slides do Workshop e criar perguntas para apresentação | Bruna, Guilia, Samuel  | A fazer  |    
+| **#16**  | Desenvolver desafios para o workshop | Bruna, Guilia, Samuel| A fazer  |    
 
 
 ## Pareamento
