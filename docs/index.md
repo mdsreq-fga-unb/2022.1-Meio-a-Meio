@@ -26,7 +26,10 @@
   Unidade 3
   
   <h2>Links gerais</h2>
+  
   - [Miro mvp](https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640)
+  - [Lista requisitos](/produto-projeto/Requisitos)
+  - [Videos cliente](/reunioes-cliente/Reunioes)
 
   <h2>COLABORADORES</h2>
   |Nome|GitHub|Disciplina|
