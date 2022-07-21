@@ -12,18 +12,18 @@
 
 ## Testes Unitários
 
-<h4>Definição</h4>
+<h3 align="center">Definição</h3>
 
   - O teste unitário consiste em verificar o comportamento das menores unidades em uma aplicação.
   - Funcionalmente, pode ser um conjunto de classes intimamente relacionadas. Como um "Cervo" e suas classes de suporte "Cabeça", "Rabo" e "Movimento".
 
-<h4>Funcionamento</h4>
+<h3 align="center">Funcionamento</h3>
 
   - Os teste unitários precisam funcionar isoladamente
   - Todo o conjunto de teste unitários de uma aplicação precisa funcionar em minutos, de preferência em segundos.
   - Se um código de teste fizer E/S(Entrada, Saída) ou acessar qualquer coisa fora do processo, não é um teste unitário, e sim um teste de integração.
 
-<h4>Benefícios</h4>
+<h3 align="center">Benefícios</h3>
 
   - Economia de tempo.
   - Facilidade de detecção de bugs e erros.
@@ -32,7 +32,7 @@
 ## Jest
 Jest é um delicioso JavaScript Testing Framework com foco na simplicidade.
 
-<h3>Instalação</h3>
+<h3 align="center">Instalação</h3>
 <h4>Pré-requisitos</h4>
   - NodeJs
   
