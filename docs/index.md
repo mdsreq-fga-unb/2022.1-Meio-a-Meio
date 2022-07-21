@@ -24,7 +24,7 @@
   
   Unidade 2
 
-  - [WorkShop: Testes Unitários com Jest](./unidade-02/workshop)
+  - [WorkShop: Testes Unitários com Jest](./unidade-02_MDS/workshop)
 
   Unidade 3
   
