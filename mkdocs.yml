@@ -5,7 +5,7 @@ nav:
 - Início: index.md
 # - Projeto: ProductVision.md
 - Produto:
-  - 'Visão': ProductVision.md
+  - 'Visão': ./produto-projeto/ProductVision.md
 - Sprints planing:
   - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
 - Sprints Review:
