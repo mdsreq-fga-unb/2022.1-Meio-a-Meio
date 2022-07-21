@@ -58,12 +58,12 @@
 
    | | |
    |--|--|
-   |Para| Jovens e adultos que mexem com sistemas de gerencia|
+   |Para| Pessoas que mexem com sistemas de gerencia|
    |Quem| Deseja agilidade com processos envolvendo a área da saúde |
    |O Galdi|é um sistema de gestão de alunos na área da saúde|
    |Que| tem custo baixo de aquisição |
-   |Ao contrário do |[datalogica](http://datalogica.net/site2/)|
-   | Nosso produto |necessita de pouca customização por ser focado para essa área|
+   |Ao contrário do |[datalogica](http://datalogica.net/site2/), [SIGAA](https://sig.unb.br/sipac/)|
+   | Nosso produto |será intuitivo e dedicado para a área|
 
 ### 1.2 Objetivos do Produto 
 
