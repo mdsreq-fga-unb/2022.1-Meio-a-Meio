@@ -1,5 +1,6 @@
 site_name: Meio a Meio
 repo_url: https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio
+site_url: https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/
 nav:
 - Início: index.md
 # - Projeto: ProductVision.md
