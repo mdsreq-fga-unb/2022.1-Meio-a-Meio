@@ -14,14 +14,17 @@
   <div>
       <label>Acesse: <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio">Repositório do Projeto no GitHub</a></label>
   </div>
-  <h2>ENTREGAS</h2>
-  
+
+## Entregas
+
   Unidade 1
 
   - [Visão do Produto e Projeto](/produto-projeto/ProductVision)
   - [Vídeo de Apresentação](https://youtu.be/W_HwiKt1FIA)
   
   Unidade 2
+
+  - [WorkShop: Testes Unitários com Jest](/unidade-02/workshop)
 
   Unidade 3
   
