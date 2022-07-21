@@ -19,21 +19,21 @@
 
   Unidade 1
 
-  - [Visão do Produto e Projeto](/produto-projeto/ProductVision)
+  - [Visão do Produto e Projeto](./produto-projeto/ProductVision)
   - [Vídeo de Apresentação](https://youtu.be/W_HwiKt1FIA)
   
   Unidade 2
 
-  - [WorkShop: Testes Unitários com Jest](/unidade-02/workshop)
+  - [WorkShop: Testes Unitários com Jest](./unidade-02/workshop)
 
   Unidade 3
   
   <h2>Links gerais</h2>
   
   - [Miro mvp](https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640)
-  - [Lista requisitos](/produto-projeto/Requisitos)
-  - [Videos cliente](/reunioes-cliente/Reunioes)
-  - [Politica de commits](/produto-projeto/commit_policy)
+  - [Lista requisitos](./produto-projeto/Requisitos)
+  - [Videos cliente](./reunioes-cliente/Reunioes)
+  - [Politica de commits](./produto-projeto/commit_policy)
 
   <h2>COLABORADORES</h2>
   |Nome|GitHub|Disciplina|
