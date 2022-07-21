@@ -4,26 +4,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Meio a Meio</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Workshop - Meio a Meio</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="js/jquery-1.10.2.min.js" defer></script>
-        <script src="js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">Meio a Meio</a>
+                <a class="navbar-brand" href="../..">Meio a Meio</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -33,15 +33,15 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Início</a>
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Início</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produto <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="ProductVision.md" class="dropdown-item">Visão</a>
+    <a href="../../ProductVision.md" class="dropdown-item">Visão</a>
 </li>
                                 </ul>
                             </li>
@@ -50,7 +50,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="Sprints/Sprint01/SprintPlanning/" class="dropdown-item">Sprint 01</a>
+    <a href="../../Sprints/Sprint01/SprintPlanning/" class="dropdown-item">Sprint 01</a>
 </li>
                                 </ul>
                             </li>
@@ -59,7 +59,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="Sprints/Sprint01/SprintReview/" class="dropdown-item">Sprint 01</a>
+    <a href="../../Sprints/Sprint01/SprintReview/" class="dropdown-item">Sprint 01</a>
 </li>
                                 </ul>
                             </li>
@@ -72,17 +72,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="Sprints/Sprint01/SprintPlanning/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/edit/master/docs/index.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                                <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/edit/master/docs/unidade-02/workshop.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
                             </li>
                     </ul>
                 </div>
@@ -102,12 +92,22 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#galdi" class="nav-link">Galdi</a>
+            <li class="nav-item" data-level="2"><a href="#testes-unitarios-com-jest" class="nav-link">Testes Unitários com Jest</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#entregas" class="nav-link">Entregas</a>
+            <li class="nav-item" data-level="2"><a href="#integrantes" class="nav-link">Integrantes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#testes-unitarios" class="nav-link">Testes Unitários</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#jest" class="nav-link">Jest</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -116,85 +116,68 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p><title>GALDI</title></p>
-<h2 id="galdi">Galdi</h2>
-<h2>SOBRE</h2>
-<p>
-      Essa página é destinada a documentação do <strong>GALDI</strong>, um sistema de gestão de atividades acadêmicas desenvolvido
-      pela equipe <strong>Meio a Meio</strong> das disciplinas de <strong>Métodos de Desenvolvimentos de Software</strong> e
-      <strong>Requisitos de Software</strong> 2022.1 da Universidade de Brasília. O software tem o objetivo de facilitar o
-      controle de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados.
-  </p>
-<div>
-      <label>Acesse: <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio">Repositório do Projeto no GitHub</a></label>
-  </div>
-
-<h2 id="entregas">Entregas</h2>
-<p>Unidade 1</p>
+<p><title>WORKSHOP</title></p>
+<h2 id="testes-unitarios-com-jest">Testes Unitários com Jest</h2>
+<h2 id="integrantes">Integrantes</h2>
 <ul>
-<li><a href="/produto-projeto/ProductVision">Visão do Produto e Projeto</a></li>
-<li><a href="https://youtu.be/W_HwiKt1FIA">Vídeo de Apresentação</a></li>
+<li>Bruna Lima</li>
+<li>Giulia Alcantara</li>
+<li>Guilherme França</li>
+<li>Samuel Sato</li>
 </ul>
-<p>Unidade 2</p>
-<ul>
-<li><a href="/unidade-02/workshop">WorkShop: Testes Unitários com Jest</a></li>
-</ul>
-<p>Unidade 3</p>
-<h2>Links gerais</h2>
+<h2 id="testes-unitarios">Testes Unitários</h2>
+<h5>Definição</h5>
 
 <ul>
-<li><a href="https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640">Miro mvp</a></li>
-<li><a href="/produto-projeto/Requisitos">Lista requisitos</a></li>
+<li>O teste unitário consiste em verificar o comportamento das menores unidades em uma aplicação.</li>
+<li>Funcionalmente, pode ser um conjunto de classes intimamente relacionadas. Como um "Cervo" e suas classes de suporte "Cabeça", "Rabo" e "Movimento".</li>
+</ul>
+<h5>Funcionamento</h5>
+
+<ul>
+<li>Os teste unitários precisam funcionar isoladamente</li>
+<li>Todo o conjunto de teste unitários de uma aplicação precisa funcionar em minutos, de preferência em segundos.</li>
+<li>Se um código de teste fizer E/S(Entrada, Saída) ou acessar qualquer coisa fora do processo, não é um teste unitário, e sim um teste de integração.</li>
+</ul>
+<h5>Benefícios</h5>
+
+<ul>
+<li>Economia de tempo.</li>
+<li>Facilidade de detecção de bugs e erros.</li>
+<li>Feedback instantâneo da implementação</li>
+</ul>
+<h2 id="jest">Jest</h2>
+<p>Jest é um delicioso JavaScript Testing Framework com foco na simplicidade.</p>
+<h2>Instalação</h2>
+<h5>Pré-requisitos</h5>
+<ul>
+<li>NodeJs</li>
+<li>Npm</li>
+</ul>
+<h5>Comandos</h5>
+
+<pre><code>npm install --save-dev jest
+yarn add --dev jest
+</code></pre>
+<ul>
+<li>Adicione <em>"test": "jest"</em> ao scripts do package.json</li>
+<li>Para executar os testes: <em>yarn test</em> ou <em>npm run test</em></li>
+</ul>
+<h2>Matchers</h2>
+<h2>Mocks</h2>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/docs/unidade-02/material/apresenta%C3%A7%C3%A3o.pdf">Apresentação</a></li>
+</ul>
+<h2>Referências bibliográficas</h2>
+
+<ul>
+<li><a href="https://jestjs.io/docs/getting-started">Jest</a></li>
 <li><a href="/reunioes-cliente/Reunioes">Videos cliente</a></li>
 <li><a href="/produto-projeto/commit_policy">Politica de commits</a></li>
-</ul>
-<h2>COLABORADORES</h2>
-<table>
-<thead>
-<tr>
-<th>Nome</th>
-<th>GitHub</th>
-<th>Disciplina</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bruna Lima</td>
-<td>@libruna</td>
-<td>MDS</td>
-</tr>
-<tr>
-<td>Giulia Alcantara</td>
-<td>@alcantaragiubs</td>
-<td>MDS</td>
-</tr>
-<tr>
-<td>Guilherme França</td>
-<td>@GuiDib</td>
-<td>MDS</td>
-</tr>
-<tr>
-<td>Samuel Sato</td>
-<td>@samuel-sato</td>
-<td>MDS</td>
-</tr>
-<tr>
-<td>Ciro Costa</td>
-<td>@ciro-c</td>
-<td>REQ</td>
-</tr>
-<tr>
-<td>Laura Pinos</td>
-<td>@laurapinos</td>
-<td>REQ</td>
-</tr>
-<tr>
-<td>Nicolas Roberto</td>
-<td>@Nicolas-Roberto</td>
-<td>REQ</td>
-</tr>
-</tbody>
-</table></div>
+</ul></div>
             </div>
         </div>
 
@@ -203,11 +186,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = ".",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js" defer></script>
-        <script src="search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -272,8 +255,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.3.0
-Build Date UTC : 2022-07-21 05:25:04.477350+00:00
--->
