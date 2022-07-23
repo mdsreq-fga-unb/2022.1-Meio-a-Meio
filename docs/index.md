@@ -25,6 +25,7 @@
   Unidade 2
 
   - [WorkShop: Testes Unitários com Jest](./unidade-02_MDS/workshop)
+  - [Video de Apresentação Requisitos](https://youtu.be/KKSIrfcIbdQ)
 
   Unidade 3
   
