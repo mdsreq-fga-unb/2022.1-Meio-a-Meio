@@ -178,13 +178,13 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 | Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme |Documento|
-|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Guilherme |Protótipo de página|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme |Documento de arquitetura|
+|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme |Protótipo de página|
 |Construção| Definição de user story | User story | Trello | Laura | Backlog sprint |
-|Construção| Modelagem Banco de Dados | Modelagem de dados | Lucidchart | Bruna, Samuel |Diagrama UML DB|
-|Construção| Programação backend | Método | NestJs | Bruna, Samuel |Código|
-|Construção| Programação Frontend | Método | NextJs | Giulia, Guilherme |Código|
-|Teste| Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas | Testes unitários | Jest | Bruna, Samuel |Testes unitários|
+|Construção| Modelagem Banco de Dados | Modelagem de dados | DrawIo | Bruna, Samuel | Diagrama UML |
+|Construção| Programação backend | Método | NestJs | Bruna, Samuel | Implementação da regra de negócio |
+|Construção| Programação Frontend | Método | NextJs | Giulia, Guilherme | Interface gráfica do usuário |
+|Teste| Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas | Testes unitários | Jest | Bruna, Samuel | Validar se a aplicação está funcionando corretamente |
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
