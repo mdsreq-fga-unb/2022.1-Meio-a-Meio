@@ -11,7 +11,7 @@ import { User } from './entitys/user.entity';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123456',
+      password: '123456', //alterar senha
       database: 'teste',
       entities: [User],
       synchronize: true
