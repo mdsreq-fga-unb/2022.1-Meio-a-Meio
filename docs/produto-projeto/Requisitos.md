@@ -1,3 +1,26 @@
+
+<div style="text-align:center">
+    <h3>Galdi</h3>
+ <h2>Requisitos</h2>
+
+ <p>Versão 0.2</p>
+</div>
+
+## Histórico de Revisão
+
+|Data| Versão | Descrição | Autor|
+|----|----|----|----|
+|27/06/2022 | 0.1 | Criação do documento | [Ciro Costa](https://github.com/ciro-c)|
+|29/06/2022 | 0.2 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+
+## Sumário
+
+ - [Escopo do produto](#escopo-do-produto)
+    - 1.1 Requisitos Funcionais
+    - 1.2 Requisitos Não-funcionais 
+    - 1.3 Mínimo Produto Viável (MVP)
+    - 1.4 Backlog do Produto
+
 ## Escopo do produto
 
 ### Requisitos Funcionais
@@ -54,7 +77,7 @@
 | Funcionalidade | O sistema deve ser capaz de realizar aproveitamento de disciplina                  | Média      |
 
 
-## Mínimo Produto Viável (MVP)
+### Mínimo Produto Viável (MVP)
 
 [Link Canvas MVP 1]()
 
