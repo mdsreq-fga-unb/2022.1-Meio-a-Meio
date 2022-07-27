@@ -248,14 +248,21 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
    - Centralizar forma de comunicação entre os times
    - Buscar sanar dúvidas de forma mais rápida
 
-  ### 5.2 Unidade 2 
- ### 5.2.1 MDS 
- ### 5.2.2 Requisitos 
+### 5.2 Unidade 2 
+### 5.2.1 MDS 
+
+   - Boa divisão tarefas e atividades para uma apresentação em conjunto
+   - Conhecimento de díversos frameworks linguagens de programação apresentados
+   - Conhecimento prático de testes unitários com Jest
+
+### 5.2.2 Requisitos 
 
    - Buscar de forma mais ativa a resolução de tarefas
 
- ### 5.2.3 MDS-Requisitos 
+### 5.2.3 MDS-Requisitos 
 
+   - Resolução de desencontros de tempo e horário
+   - Distribuição de responsabilidades
 
  <!--### 5.3 Unidade 3 
  ### 5.3.1 MDS 
