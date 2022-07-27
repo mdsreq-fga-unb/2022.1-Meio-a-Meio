@@ -178,13 +178,13 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 | Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma | Giulia |Documento|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma | Giulia, Guilherme |Documento|
 |Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma | Guilherme |Protótipo de página|
 |Construção| Definição de user story | User story | Trello | Laura | Backlog sprint |
-|Construção| Modelagem Banco de Dados | Modelagem de dados | Lucidchart | Bruna |Diagrama UML DB|
-|Construção| Programação backend | Método | VScode | Samuel |Código|
-|Construção| Programação Frontend | Método | VScode | Giulia |Código|
-|Teste| Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas | Testes unitários | Jest | Bruna |Testes unitários|
+|Construção| Modelagem Banco de Dados | Modelagem de dados | Lucidchart | Bruna, Samuel |Diagrama UML DB|
+|Construção| Programação backend | Método | VScode | Bruna, Samuel |Código|
+|Construção| Programação Frontend | Método | VScode | Giulia, Guilherme |Código|
+|Teste| Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas | Testes unitários | Jest | Bruna, Samuel |Testes unitários|
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
@@ -192,8 +192,8 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
 ### 4.1 Elicitação de Requisitos 
 
-|Atividade|Método|Ferramenta|
-|----|----|----|
+| Atividade | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|
 |Identificação de requisitos | Reunião | google meets |
 
 ### 4.2 Análise de Requisitos 
