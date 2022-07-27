@@ -178,8 +178,8 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 | Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme |Documento de arquitetura|
-|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme |Protótipo de página|
+|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme | Processo de elaboração |
+|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme | Protótipo de página |
 |Construção| Definição de user story | User story | Trello | Laura | Backlog sprint |
 |Construção| Modelagem Banco de Dados | Modelagem de dados | DrawIo | Bruna, Samuel | Diagrama UML |
 |Construção| Programação backend | Método | NestJs | Bruna, Samuel | Implementação da regra de negócio |
