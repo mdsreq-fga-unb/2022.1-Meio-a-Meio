@@ -30,14 +30,14 @@
 |  RF24 |   Deverá ser possível matricular aluno em estágio |
 |  RF25 |   Deverá ser possível cadastrar diário de aula |
 |  RF26 |   Deverá ser possível visualizar diário de aula |
-|  RF27 |   Deverá ser possível guardar provas de alunos |
+|  RF27 |   Deverá ser possível armazenar provas de alunos |
 |  RF28 |   Deverá ser possível visualizar provas de alunos |
-|  RF29 |   Deverá ser possível guardar notas de alunos |
+|  RF29 |   Deverá ser possível armazenar notas de alunos |
 |  RF30 |   Deverá ser possível visualizar notas de alunos |
-|  RF31 |   Deverá ser possível guardar lista de presença em aula |
+|  RF31 |   Deverá ser possível armazenar lista de presença em aula |
 |  RF32 |   Deverá ser possível visualizar lista de presença em aula |
-|  RF33 |   Deverá ser possível gerar abono |
-|  RF34 |   Deverá ser possível visualizar abono |
+|  RF33 |   Deverá ser possível armazenar registro de abono |
+|  RF34 |   Deverá ser possível visualizar registro de abono |
 |  RF35 |   Deverá ser possível gerar relatório de aula |
 
 
@@ -95,15 +95,15 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP2 |               O professor deve ser capaz de visualizar suas informações.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP3 |               O professor deve ser capaz de cadastrar diário de aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP4 |               O professor deve ser capaz de visualizar informações dos diários de aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP5 |               O professor deve ser capaz de guardar provas de alunos utilizadas em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP5 |               O professor deve ser capaz de armazenar provas de alunos utilizadas em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP6 |               O professor deve ser capaz de visualizar provas guardadas.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP7 |               O professor deve ser capaz de guardar notas de atividades dos alunos.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP7 |               O professor deve ser capaz de armazenar notas de atividades dos alunos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP8 |               O professor deve ser capaz de visualizar notas de atividades dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP9 |               O professor deve ser capaz de guardar notas de provas dos alunos.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP9 |               O professor deve ser capaz de armazenar notas de provas dos alunos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP10 |               O professor deve ser capaz de visualizar notas de provas dos alunos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP11 |               O professor deve ser capaz de gerar lista de presença em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP12 |               O professor deve ser capaz de visualizar lista de presença em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP13 |               O professor deve ser capaz de guardar lista de presença em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP13 |               O professor deve ser capaz de armazenar lista de presença em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP14 |               O professor deve ser capaz de gerar abonos para falta em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP15 |               O professor deve ser capaz de visualizar abonos para falta em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de gerar relatórios de aula.               |    Alta    |
