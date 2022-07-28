@@ -25,6 +25,8 @@
 |17/07/2022 | 1.3 | Atualização de processos e procedimento  | [Samuel Sato](https://github.com/samuel-sato) |
 |19/07/2022 | 1.4 | Atualização de Sprints e gerenciamento de riscos  | [Laura Pinos](https://github.com/laurapinos) |
 |19/07/2022 | 1.5 | Retirada dos requisitos do documento e Atualização das lições aprendidas  | [Ciro Costa](https://github.com/ciro-c) |
+|27/07/2022 | 1.6 |  Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
+
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -198,28 +200,28 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
 ### 4.2 Análise de Requisitos 
 
-|Atividade|Método|Ferramenta|
-|----|----|----|
+| Atividade | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|
 |Definição de requisitos| Brainstorming | Discord ou google meets |
 |Definição de prioridades| Brainstorming | google meets |
 
 ### 4.3 Documentação de Requisitos 
 
-|Atividade|Método|Ferramenta|
-|----|----|----|
+| Atividade | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|
 |Documentação de requisitos | BackLog do Produto(SAFe) | Github e MIRO |
 
 ### 4.4 Verificação e Validação de Requisitos 
 
-|Atividade|Método|Ferramenta|
-|----|----|----|
+| Atividade | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|
 | Verificação | Revisão de requisitos | Discord |
 | Validação | Inspeção de requisitos | Discord |
 
 ### 4.5 Gerenciamento de Requisitos 
 
-|Atividade|Método|Ferramenta|
-|----|----|----|
+| Atividade | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|
 |Padronização| Padronizar nome e identificação | Github|
 |Armazenamento| Registrar no github-pages | Github|
 
