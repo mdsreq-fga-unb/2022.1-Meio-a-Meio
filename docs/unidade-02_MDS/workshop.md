@@ -166,7 +166,7 @@ O objetivo dos exercícios foi demonstrar como era simples começar a construir 
 <h2>Links</h2>
   
 - [Slides da apresentação](https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/docs/unidade-02_MDS/material/apresenta%C3%A7%C3%A3o.pdf)
-- [Código dos exemplos e desafios do Coding Dojo](docs/unidade-02_MDS/Example)
+- [Código dos exemplos e desafios do Coding Dojo](./Example)
 
 <h2>Referências bibliográficas</h2>
 
