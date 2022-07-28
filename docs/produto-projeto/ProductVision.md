@@ -25,8 +25,8 @@
 |17/07/2022 | 1.3 | Atualização de processos e procedimento  | [Samuel Sato](https://github.com/samuel-sato) |
 |19/07/2022 | 1.4 | Atualização de Sprints e gerenciamento de riscos  | [Laura Pinos](https://github.com/laurapinos) |
 |19/07/2022 | 1.5 | Retirada dos requisitos do documento e Atualização das lições aprendidas  | [Ciro Costa](https://github.com/ciro-c) |
-|27/07/2022 | 1.6 |  Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
-
+|27/07/2022 | 1.6 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
+|27/07/2022 | 1.7 | Atualização de tabelas de requisitos  | [Laura Pinos](https://github.com/laurapinos) |
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -131,6 +131,8 @@ Reuniões serão feitas no Discord, ou Google meets.
 
 Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
 
+   Os riscos seram  revistos ao final de cada Sprint e atualizados após a analise da equipe.
+     
 ### 2.5 Critérios de Replanejamento
 
  - Alteração significativa nas regras de negocio do produto ou de escopo.
@@ -182,7 +184,7 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 |----|----|----|----|----|----|
 |Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme | Processo de elaboração |
 |Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme | Protótipo de página |
-|Requisitos| Definição de user story | User story | Trello | Laura | Backlog sprint |
+|Construção| Definição de user story | User story | Trello | Laura | Lista de atividades |
 |Construção| Modelagem Banco de Dados | Modelagem de dados | DrawIo | Bruna, Samuel | Diagrama UML |
 |Construção| Programação backend | Método | NestJs | Bruna, Samuel | Implementação da regra de negócio |
 |Construção| Programação Frontend | Método | NextJs | Giulia, Guilherme | Interface gráfica do usuário |
@@ -196,34 +198,35 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
 | Atividade | Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|
-|Identificação de requisitos | Reunião | google meets |
+|Identificação de requisitos | Reunião | Google Meets | integrantes de Requisitos|lista de requisitos |
 
 ### 4.2 Análise de Requisitos 
 
 | Atividade | Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|
-|Definição de requisitos| Brainstorming | Discord ou google meets |
-|Definição de prioridades| Brainstorming | google meets |
+|Definição de requisitos| Brainstorming | Discord ou google meets | integrantes de Requisitos | lista preliminar de requisitos |
+|Definição de prioridades| Brainstorming | google meets | integrantes de Requisitos |  lista preliminar de prioridade de requisitos |
 
 ### 4.3 Documentação de Requisitos 
 
 | Atividade | Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|
-|Documentação de requisitos | BackLog do Produto(SAFe) | Github e MIRO |
+|Documentação de requisitos | BackLog do Produto(SAFe) | Github e MIRO | integrantes de Requisitos |  lista de requisitos |
 
 ### 4.4 Verificação e Validação de Requisitos 
 
 | Atividade | Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|
-| Verificação | Revisão de requisitos | Discord |
-| Validação | Inspeção de requisitos | Discord |
+| Correção | Correção de requisitos | WhatsApp | Nicolas | Requisitos corrigidos |
+| Verificação | Revisão de requisitos | WhatsApp | Laura | Requisitos revisados |
+| Validação | Inspeção de requisitos | WhatsApp | Laura | Requisitos validados |
 
 ### 4.5 Gerenciamento de Requisitos 
 
 | Atividade | Método | Ferramenta | Responsável | Entrega |
 |----|----|----|----|----|
-|Padronização| Padronizar nome e identificação | Github|
-|Armazenamento| Registrar no github-pages | Github|
+|Padronização| Padronizar nome e identificação | Github | integrantes de Requisitos | nome e identificação padronizados |
+|Armazenamento| Registrar no github-pages | Github | integrantes de Requisitos | requisitos atualizados no Gitpages |
 
 ## LIÇÕES APRENDIDAS
 
@@ -260,6 +263,7 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 ### 5.2.2 Requisitos 
 
    - Buscar de forma mais ativa a resolução de tarefas
+ 
 
 ### 5.2.3 MDS-Requisitos 
 
