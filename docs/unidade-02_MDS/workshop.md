@@ -158,12 +158,18 @@ npm run test
   - Todas as funções de simulação (.mock) possuem esta especial propriedade .mock, que é onde os dados sobre como a função a qual foi chamada são mantidos.
   - Funções mock também podem ser usadas para injetar valores de teste no código durante um teste.
 
+<h2>Coding Dojo</h2>
+Para a dinâmica foram formadas duplas compostas de um piloto e um copiloto, cada dupla tinha 2 minutos para resolver o teste unitário de uma determinada função, caso não conseguisse terminar a implementação, a próxima dupla continuava.
+
+O objetivo dos exercícios foi demonstrar como era simples começar a construir testes unitários com o Jest, por isso foram desenvolvidas funções simples, para facilitar a implementação dos testes.
+
 <h2>Links</h2>
   
-- [Slides da apresentação](https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/docs/unidade-02/material/apresenta%C3%A7%C3%A3o.pdf)
+- [Slides da apresentação](https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/docs/unidade-02_MDS/material/apresenta%C3%A7%C3%A3o.pdf)
+- [Código dos exemplos e desafios do Coding Dojo](docs/unidade-02_MDS/Exampleyo)
 
 <h2>Referências bibliográficas</h2>
 
 - [Documentação do Jest](https://jestjs.io/docs/getting-started)
-- [Vídeo sobre testes unitários](/reunioes-cliente/Reunioes)
+- [Vídeo sobre testes unitários](https://www.youtube.com/watch?v=MQs8_KIj_PU&t=556s)
 - [Explicação sobre mocks](https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c)
