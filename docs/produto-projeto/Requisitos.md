@@ -3,7 +3,7 @@
     <h3>Galdi</h3>
  <h2>Requisitos</h2>
 
- <p>Versão 0.2</p>
+ <p>Versão 0.3</p>
 </div>
 
 ## Histórico de Revisão
@@ -11,7 +11,8 @@
 |Data| Versão | Descrição | Autor|
 |----|----|----|----|
 |27/06/2022 | 0.1 | Criação do documento | [Ciro Costa](https://github.com/ciro-c)|
-|29/06/2022 | 0.2 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+|27/07/2022 | 0.2 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+|29/07/2022 | 0.3 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 
 ## Sumário
 
@@ -38,7 +39,7 @@
 |  RF9 | Deverá ser possível cadastrar disciplinas especiais  |
 |  RF10 | Deverá ser possível cadastrar turmas em disciplina   |
 |  RF11 | Deverá ser possível cadastrar calendário escolar   |
-|  RF12 |   Deverá ser possível cadastrar contrarto relacionado ao curso |
+|  RF12 |   Deverá ser possível cadastrar contrato relacionado ao curso |
 |  RF13 |   Deverá ser possível acessar o sistema por login e senha |
 |  RF14 |   Deverá ser possível gerar ficha de matrícula |
 |  RF15 |   Deverá ser possível visualizar informações dos alunos |
@@ -48,7 +49,7 @@
 |  RF19 |   Deverá ser possível visualizar informações das disciplinas especiais |
 |  RF20 |   Deverá ser possível visualizar informações dos professores |
 |  RF21 |   Deverá ser possível visualizar turmas |
-|  RF22 |   Deverá ser possível visualizar calendário escolaro |
+|  RF22 |   Deverá ser possível visualizar calendário escolar |
 |  RF23 |   Deverá ser possível solicitar matrícula em estágio |
 |  RF24 |   Deverá ser possível matricular aluno em estágio |
 |  RF25 |   Deverá ser possível cadastrar diário de aula |
@@ -68,13 +69,9 @@
 
 | Classificação  | Requisitos Não-funcionais                                          | Prioridade |
 |----------------|--------------------------------------------------------------------|------------|
-| Implementação  | O sistema deve ser documentada através do GitPages                                 | Alta       |
+| Usabilidade    | O sistema deve ser documentada através do GitPages                                 | Alta       |
 | Implementação  | O sistema deve ser desenvolvido em NextJS                                          | Alta       |
-| Implementação  | O versionamento do app deve ser feito pelo GitHub                                  | Alta       |
-| Funcionalidade | O sistema deve ser capaz de apurar automaticamente resultado acadêmico dos alunos  | Alta       |
-| Funcionalidade | O sistema deve ser capaz de guardar contratos relacionados ao aluno                | Alta       |
-| Funcionalidade | O sistema deve ser capaz de fazer rematrícula automática de alunos                 | Média      |
-| Funcionalidade | O sistema deve ser capaz de realizar aproveitamento de disciplina                  | Média      |
+| Implementação  | O versionamento do sistema deve ser feito pelo GitHub                              | Alta       |
 
 
 ### Mínimo Produto Viável (MVP)
@@ -88,7 +85,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 |            Épico            |            Feature           |  ID |                                                         História de usuário                                                        | Prioridade |
 |:---------------------------:|:----------------------------:|:---:|:----------------------------------------------------------------------------------------------------------------------------------:|:----------:|
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM1 |               O administrador deve ser capaz cadastrar outros administradores.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM2 |               O administrador deve ser capaz cadastrar informações dos alunos ( matricula, idade….).               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM2 |               O administrador deve ser capaz cadastrar informações dos alunos (matricula, idade….).               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM3 |               O administrador deve ser capaz de alterar informações dos alunos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM4 |               O administrador deve ser capaz de cadastrar informações dos professores.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM5 |               O administrador deve ser capaz de cadastrar cursos.               |    Alta    |
