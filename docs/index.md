@@ -35,6 +35,7 @@
   - [Lista requisitos](./produto-projeto/Requisitos)
   - [Videos cliente](./reunioes-cliente/Reunioes)
   - [Politica de commits](./produto-projeto/commit_policy)
+  - [Trello](https://trello.com/b/lcWQoS87)
 
   <h2>COLABORADORES</h2>
   |Nome|GitHub|Disciplina|
