@@ -27,6 +27,8 @@
 |19/07/2022 | 1.5 | Retirada dos requisitos do documento e Atualização das lições aprendidas  | [Ciro Costa](https://github.com/ciro-c) |
 |27/07/2022 | 1.6 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 |27/07/2022 | 1.7 | Atualização de tabelas de requisitos  | [Laura Pinos](https://github.com/laurapinos) |
+|02/08/2022 | 1.7 | Detalhamento dos processos da abordagem de software  | [Giulia Alcantara](https://github.com/alcantaragiubs) |
+
 ## Sumário
 
  - [VISÃO GERAL DO PRODUTO](#visão-geral-do-produto)
@@ -176,6 +178,17 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 - O feedback contínuo do cliente e os requisitos que são construídos junto com o software permitem que qualquer mudança necessária seja feita sem prejudicar o desenvolvimento da aplicação.
 
 - Realização controle das atividades da sprint de forma eficiente
+
+Conforme será utilizado o Scrum, será seguido o seu ciclo de abordagem, contendo:
+
+    * Sprints de duas semanas;
+    * Dailys (em que serão feitas correções e verificações);
+    * Plannings (em que será feita a definição a arquiteura,  identificação e definição de requisitos, a definição de prioridade) no primeiro dia da Sprint;
+    * O Backlog do Produto e da Sprint, sendo definidos antes da Planning;
+    * Implementação (em que será feita a modelagem do db, a programação tanto do backend, quanto do frontend, a criação do cenário de teste e a documentação dos requisitos) num período de 8 dias - sem contar fins de semana;
+    * Review, que valida o P.O (em que será feita a verificação, a validação e a reunião com o cliente) no último dia da Sprint; 
+    * Retrospectiva (em que será feita a padronização e o armazenamento) no mesmo dia da review;
+    * E, no fim do ciclo, a entrega (em que serão feitos os documentos dor e dod, que definirão qual o product)
 
 
 ### 3.2 Processo e procedimentos
