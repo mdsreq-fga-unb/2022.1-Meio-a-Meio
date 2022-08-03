@@ -28,6 +28,7 @@
 |27/07/2022 | 1.6 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 |27/07/2022 | 1.7 | Atualização de tabelas de requisitos  | [Laura Pinos](https://github.com/laurapinos) |
 |02/08/2022 | 1.7 | Detalhamento dos processos da abordagem de software  | [Giulia Alcantara](https://github.com/alcantaragiubs) |
+|03/08/2022 | 1.6 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 
 ## Sumário
 
@@ -179,29 +180,32 @@ Considerando os resultados obtidos e as necessidades da equipe de priorizar a fl
 
 - Realização controle das atividades da sprint de forma eficiente
 
-Conforme será utilizado o Scrum, será seguido o seu ciclo de abordagem, contendo:
-
-    * Sprints de duas semanas;
-    * Dailys (em que serão feitas correções e verificações);
-    * Plannings (em que será feita a definição a arquiteura,  identificação e definição de requisitos, a definição de prioridade) no primeiro dia da Sprint;
-    * O Backlog do Produto e da Sprint, sendo definidos antes da Planning;
-    * Implementação (em que será feita a modelagem do db, a programação tanto do backend, quanto do frontend, a criação do cenário de teste e a documentação dos requisitos) num período de 8 dias - sem contar fins de semana;
-    * Review, que valida o P.O (em que será feita a verificação, a validação e a reunião com o cliente) no último dia da Sprint; 
-    * Retrospectiva (em que será feita a padronização e o armazenamento) no mesmo dia da review;
-    * E, no fim do ciclo, a entrega (em que serão feitos os documentos dor e dod, que definirão qual o product)
-
 
 ### 3.2 Processo e procedimentos
 
-| Disciplina |Atividade| Método | Ferramenta | Responsável | Entrega |
-|----|----|----|----|----|----|
-|Analise/Design| Definir a arquitetura | Design Orientado a função | Figma, Miro | Giulia, Guilherme | Processo de elaboração |
-|Analise/Design| Prototipação de Baixa Fidelidade | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme | Protótipo de página |
-|Construção| Definição de user story | User story | Trello | Laura | Lista de atividades |
-|Construção| Modelagem Banco de Dados | Modelagem de dados | DrawIo | Bruna, Samuel | Diagrama UML |
-|Construção| Programação backend | Método | NestJs | Bruna, Samuel | Implementação da regra de negócio |
-|Construção| Programação Frontend | Método | NextJs | Giulia, Guilherme | Interface gráfica do usuário |
-|Teste| Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas | Testes unitários | Jest | Bruna, Samuel | Validar se a aplicação está funcionando corretamente |
+De acordo com a abordagem SCRUM, foram definidos os seguintes processos:
+
+- *Sprint:* com duração de 2 semanas;
+- *Dailys:* momento do dia onde serão apontadas correções e verificações diárias com todo o time;
+-  *Backlog do Produto e da Sprint:* são definidos antes de cada Planning;
+- *Planning:* realizada no primeiro dia de cada sprint, com atividades como: definir arquiteura, identificação e definição de requisitos, definição de prioridades;
+- *Implementação:* codificação, envolve atividades como: modelagem de banco de dados, programação back-ende front-end, criação de cenários de testes e documentação dos requisitos);
+- *Review:* ao final de cada ciclo para validar e verificar os requisitos com o Product Owner e reunião com o cliente.
+- *Retrospectiva:* também ao final de cada ciclo, momento em que o time reflete sobre como foi o desenvolvimento e pontos de melhoria. Além de realizar a padronização e o armazenamento dos requisitos.
+- *Entrega:* realizada de acordo com o que foi definido nos documentos de DOR e DOD.
+
+
+| Disciplina |Atividade| Processo | Método | Ferramenta | Responsável | Entrega |
+|----|----|----|----|----|----|----|
+|Requisitos| Definição de user story | Planning | User story | Trello | Laura | Lista de atividades |
+|Analise/Design| Definir a arquitetura* | Implementação | MVC| Figma, Miro | Giulia, Guilherme | Processo de elaboração |
+|Analise/Design| Prototipação de Baixa Fidelidade* | Implementação | Metáforas e Modelos Conceituais | Figma, Miro | Giulia, Guilherme | Protótipo de página |
+|Construção| Modelagem do Banco de Dados | Implementação | Modelo Relacional | DrawIo | Bruna, Samuel | Diagrama UML |
+|Construção| Implementação da regra de negócio | Implementação | Programação back-end | NestJs | Bruna, Samuel | Funcionalidades server-side |
+|Construção| Interface gráfica do usuário | Implementação | Programação front-end  | NextJs | Giulia, Guilherme | Interface do usuário |
+|Teste| Criar cenários de teste para validar os critérios de aceitação e corrigir possíveis falhas | Implementação | Testes unitários | Jest | Bruna, Samuel | Validar se os requisitos foram implementados corretamente |
+
+<h6> Obs.: Atividades com (*) serão realizadas apenas uma vez, ou seja, não se repetirão por mais de um ciclo.<h6>
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
