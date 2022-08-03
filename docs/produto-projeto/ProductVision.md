@@ -101,8 +101,9 @@
 |1|Definição do produto|20/06/2022|30/06/2022|
 |2|Reorganização da equipe e registros de requisitos|30/06/2022|05/07/2022|
 |3|Definição do Produto, Visão de Produto, Definição do Backlog do Produto|05/07/2022|19/07/2022|
-|4|Implementação e entrega do MVP1|19/07/2022|02/08/2022|
-|5|Implementação e entrega do MVP2.|02/08/2022|16/08/2022|
+|4|Implementação e entrega do MVP1|02/08/2022|16/08/2022|
+|5|Desenvolvimento do MVP2.|16/08/2022|30/08/2022|
+|6|Finalização e entrega do MVP2.|30/08/2022|13/09/2022|
 
 
 ### 2.3 Matriz de Comunicação 
