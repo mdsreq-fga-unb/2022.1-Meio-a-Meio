@@ -205,7 +205,7 @@ De acordo com a abordagem SCRUM, foram definidos os seguintes processos:
 |Construção| Interface gráfica do usuário | Implementação | Programação front-end  | NextJs | Giulia, Guilherme | Interface do usuário |
 |Teste| Criar cenários de teste para validar os critérios de aceitação e corrigir possíveis falhas | Implementação | Testes unitários | Jest | Bruna, Samuel | Validar se os requisitos foram implementados corretamente |
 
-<h6> Obs.: Atividades com (*) serão realizadas apenas uma vez, ou seja, não se repetirão por mais de um ciclo.<h6>
+<h6> Obs.: Atividades com (*) serão realizadas apenas uma vez, ou seja, não se repetirão por mais de um ciclo.</h6>
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
