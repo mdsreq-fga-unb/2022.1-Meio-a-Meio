@@ -28,6 +28,8 @@
 |27/07/2022 | 1.6 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 |27/07/2022 | 1.7 | Atualização de tabelas de requisitos  | [Laura Pinos](https://github.com/laurapinos) |
 |02/08/2022 | 1.7 | Detalhamento dos processos da abordagem de software  | [Giulia Alcantara](https://github.com/alcantaragiubs) |
+|02/08/2022 | 1.8 |  Atualização Gerenciamento de Riscos e Critérios de Replanejamento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+
 
 ## Sumário
 
@@ -129,6 +131,9 @@ Reuniões serão feitas no Discord, ou Google meets.
    
    Riscos de negócio ameaçam a viabilidadea do software e o produto. Existem cinco principais riscos de negócios que são:  (1) criar um excelente produto ou sistema que ninguém realmente quer (risco de mercado), (2) criar um produto que não se encaixe mais na estratégia geral de negócios da empresa (risco estratégico), (3) criar um produto que a equipe de vendas não sabe como vender (risco de vendas), (4) perda de suporte da alta gerência devido à mudança no foco ou mudança de profissionais (risco gerencial), e (5)perda do orçamento ou do comprometimento dos profissionais (riscos de orçamento). (PRESSMAN,2006)
    
+   O gerenciamento de riscos será revisto e atualizado
+na Retro.
+   
    ![image](https://user-images.githubusercontent.com/62102447/179772030-2f71e9c3-31ad-4af4-971f-ec481a6b240b.png)
 
 Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
@@ -136,6 +141,9 @@ Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
    Os riscos seram  revistos ao final de cada Sprint e atualizados após a analise da equipe.
      
 ### 2.5 Critérios de Replanejamento
+
+Os critérios de replanejamento serão acompanhados durante
+a Daily, serão atualizados e aplicados na Review.
 
  - Alteração significativa nas regras de negocio do produto ou de escopo.
  - Desistência de um membro da equipe do projeto.
