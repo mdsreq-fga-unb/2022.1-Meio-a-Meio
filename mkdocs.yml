@@ -8,8 +8,10 @@ nav:
   - 'Visão': ./produto-projeto/ProductVision.md
 - Sprints planing:
   - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
+  - 'Sprint 02': Sprints/Sprint02/SprintPlanning.md
 - Sprints Review:
   - 'Sprint 01': Sprints/Sprint01/SprintReview.md
+  - 'Sprint 02': Sprints/Sprint02/SprintReview.md
 
 theme: 
   name: mkdocs
