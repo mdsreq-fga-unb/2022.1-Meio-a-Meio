@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/produto-projeto/ProductVision/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Visão - Meio a Meio</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Meio a Meio</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Início</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produto <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Visão</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sprints planing <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Sprints/Sprint01/SprintPlanning/" class="dropdown-item">Sprint 01</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint02/SprintPlanning/" class="dropdown-item">Sprint 02</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint03/SprintPlanning/" class="dropdown-item">Sprint 03</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint04/SprintPlanning/" class="dropdown-item">Sprint 04</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sprints Review <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../Sprints/Sprint01/SprintReview/" class="dropdown-item">Sprint 01</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint02/SprintReview/" class="dropdown-item">Sprint 02</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint03/SprintReview/" class="dropdown-item">Sprint 03</a>
+</li>
+                                    
+<li>
+    <a href="../../Sprints/Sprint04/SprintReview/" class="dropdown-item">Sprint 04</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../Sprints/Sprint01/SprintPlanning/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/edit/master/docs/produto-projeto/ProductVision.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#historico-de-revisao" class="nav-link">Histórico de Revisão</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#sumario" class="nav-link">Sumário</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#visao-geral-do-produto" class="nav-link">VISÃO GERAL DO PRODUTO</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#visao-geral-do-projeto" class="nav-link">VISÃO GERAL DO PROJETO</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#abordagem-de-desenvolvimento-de-software" class="nav-link">ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#processo-de-engenharia-de-requisitos" class="nav-link">PROCESSO DE ENGENHARIA DE REQUISITOS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#licoes-aprendidas" class="nav-link">LIÇÕES APRENDIDAS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#referencias-bibliograficas" class="nav-link">REFERÊNCIAS BIBLIOGRÁFICAS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div style="text-align:center">
+    <h3>Galdi</h3>
+ <h2>VISÃO DO PRODUTO E PROJETO</h2>
+
+ <p>Versão 0.6</p>
+</div>
+
+<h2 id="historico-de-revisao">Histórico de Revisão</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Versão</th>
+<th>Descrição</th>
+<th>Autor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>27/06/2022</td>
+<td>0.1</td>
+<td>Criação do documento</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>29/06/2022</td>
+<td>0.2</td>
+<td>Atualização do documento</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>29/06/2022</td>
+<td>0.3</td>
+<td>Atualização dos documentos</td>
+<td><a href="https://github.com/alcantaragiubs">Giulia Alcantara</a></td>
+</tr>
+<tr>
+<td>29/06/2022</td>
+<td>0.4</td>
+<td>Atualização das tecnologias</td>
+<td><a href="https://github.com/GuiDib">Guilherme França</a></td>
+</tr>
+<tr>
+<td>30/06/2022</td>
+<td>0.5</td>
+<td>Adicionada abordagem de software</td>
+<td><a href="https://github.com/libruna">Bruna Lima</a></td>
+</tr>
+<tr>
+<td>30/06/2022</td>
+<td>0.6</td>
+<td>Atualização das atividades</td>
+<td><a href="https://github.com/samuel-sato">Samuel Sato</a></td>
+</tr>
+<tr>
+<td>04/06/2022</td>
+<td>0.7</td>
+<td>Atualização das atividades</td>
+<td><a href="https://github.com/samuel-sato">Samuel Sato</a></td>
+</tr>
+<tr>
+<td>05/06/2022</td>
+<td>0.8</td>
+<td>Atualização das atividades e participantes</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>11/06/2022</td>
+<td>0.9</td>
+<td>Atualização do planejamento</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>08/07/2022</td>
+<td>1.0</td>
+<td>Atualização Processo de engenharia de requisitos</td>
+<td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
+</tr>
+<tr>
+<td>13/07/2022</td>
+<td>1.1</td>
+<td>Atualização da matriz de comunicação</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>14/07/2022</td>
+<td>1.2</td>
+<td>Atualização de processos e procedimento e adição de lições aprendidas</td>
+<td><a href="https://github.com/samuel-sato">Samuel Sato</a></td>
+</tr>
+<tr>
+<td>17/07/2022</td>
+<td>1.3</td>
+<td>Atualização de processos e procedimento</td>
+<td><a href="https://github.com/samuel-sato">Samuel Sato</a></td>
+</tr>
+<tr>
+<td>19/07/2022</td>
+<td>1.4</td>
+<td>Atualização de Sprints e gerenciamento de riscos</td>
+<td><a href="https://github.com/laurapinos">Laura Pinos</a></td>
+</tr>
+<tr>
+<td>19/07/2022</td>
+<td>1.5</td>
+<td>Retirada dos requisitos do documento e Atualização das lições aprendidas</td>
+<td><a href="https://github.com/ciro-c">Ciro Costa</a></td>
+</tr>
+<tr>
+<td>27/07/2022</td>
+<td>1.6</td>
+<td>Atualização dos processos e procedimentos</td>
+<td><a href="https://github.com/libruna">Bruna Lima</a></td>
+</tr>
+<tr>
+<td>27/07/2022</td>
+<td>1.7</td>
+<td>Atualização de tabelas de requisitos</td>
+<td><a href="https://github.com/laurapinos">Laura Pinos</a></td>
+</tr>
+<tr>
+<td>02/08/2022</td>
+<td>1.7</td>
+<td>Detalhamento dos processos da abordagem de software</td>
+<td><a href="https://github.com/alcantaragiubs">Giulia Alcantara</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#visão-geral-do-produto">VISÃO GERAL DO PRODUTO</a><ul>
+<li>1.1 Declaração de Posição do Produto </li>
+<li>1.2 Objetivos do Produto </li>
+<li>1.3 Tecnologias a Serem Utilizadas </li>
+</ul>
+</li>
+<li><a href="#visão-geral-do-projeto">VISÃO GERAL DO PROJETO</a><ul>
+<li>2.1 Organização do Projeto </li>
+<li>2.2 Planejamento das Fases e/ou Iterações do Projeto </li>
+<li>2.3 Matriz de Comunicação </li>
+<li>2.4 Gerenciamento de Riscos </li>
+<li>2.5 Critérios de Replanejamento </li>
+<li>2.6 MVP canvas</li>
+</ul>
+</li>
+<li><a href="#abordagem-de-desenvolvimento-de-software">ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE</a><ul>
+<li>3.1 Metodologia</li>
+<li>3.2 Processo e procedimentos</li>
+</ul>
+</li>
+<li><a href="#processo-de-engenharia-de-requisitos">PROCESSO DE ENGENHARIA DE REQUISITOS</a> <ul>
+<li>4.1 Elicitação de Requisitos </li>
+<li>4.2 Análise de Requisitos </li>
+<li>4.3 Documentação de Requisitos </li>
+<li>4.4 Verificação e Validação de Requisitos </li>
+<li>4.5 Gerenciamento de Requisitos </li>
+</ul>
+</li>
+<li><a href="#lições-aprendidas">LIÇÕES APRENDIDAS</a></li>
+<li><a href="#referências-bibliográficas">REFERÊNCIAS BIBLIOGRÁFICAS</a> </li>
+</ul>
+<h2 id="visao-geral-do-produto">VISÃO GERAL DO PRODUTO</h2>
+<h3 id="11-declaracao-de-posicao-do-produto">1.1 Declaração de Posição do Produto</h3>
+<!-- O Galdi (Gestão de Alunos e Didáticos) é um produto que visa gestão de clientes e alunos. A diferença entre o Galdi e outros softwares de gestão como o Pipefy é que o Galdi é focado em négocios voltados para o setor de educação. Tendo como cliente principal instituições de ensino particulares. O principal atrativo do Galdi é a pouca necessidade de customização em relação a outros CRM. -->
+<p>O Galdi (Gestão de Alunos e Didáticos) é um produto que visa gestão de alunos envolvidos na área da saúde. A diferença entre o Galdi e outros softwares de gestão como o da <a href="http://datalogica.net/site2/">datalogica</a> é que o Galdi é focado em négocios voltados para o setor de educação da área da sáude. Tendo como cliente principal instituições de ensino particulares. O principal atrativo do Galdi é a pouca necessidade de customização em relação a outros softwares de gestão, que, normalmente, não apresentam esse foco nessa área.Além de ter custo baixo de aquisição.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Para</td>
+<td>Pessoas que mexem com sistemas de gerencia</td>
+</tr>
+<tr>
+<td>Quem</td>
+<td>Deseja agilidade com processos envolvendo a área da saúde</td>
+</tr>
+<tr>
+<td>O Galdi</td>
+<td>é um sistema de gestão de alunos na área da saúde</td>
+</tr>
+<tr>
+<td>Que</td>
+<td>tem custo baixo de aquisição</td>
+</tr>
+<tr>
+<td>Ao contrário do</td>
+<td><a href="http://datalogica.net/site2/">datalogica</a>, <a href="https://sig.unb.br/sipac/">SIGAA</a></td>
+</tr>
+<tr>
+<td>Nosso produto</td>
+<td>será intuitivo e dedicado para a área</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-objetivos-do-produto">1.2 Objetivos do Produto</h3>
+<!-- O principal objetivo do Galdi é facilitar a gestão de clientes com a gerência de alunos da instituição centralizando os esforços. -->
+
+<p>O principal objetivo do Galdi é facilitar a gestão de alunos, da área da saúde, da instituição reduzindo os esforços de gestão e aumentar a fidelidade dos dados.</p>
+<h3 id="13-tecnologias-a-serem-utilizadas">1.3 Tecnologias a Serem Utilizadas</h3>
+<ul>
+<li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+<li><a href="https://nestjs.com/">NestJS</a></li>
+<li><a href="https://nextjs.org/">NextJS</a></li>
+<li><a href="https://www.mysql.com/">MySQL</a></li>
+<li><a href="https://www.figma.com/">Figma</a></li>
+<li><a href="https://www.miro.com/">Miro</a></li>
+</ul>
+<h2 id="visao-geral-do-projeto">VISÃO GERAL DO PROJETO</h2>
+<h3 id="21-organizacao-do-projeto">2.1 Organização do Projeto</h3>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Atribuições</th>
+<th>Responsavel</th>
+<th>Participantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desenvolvedor</td>
+<td>Codificar o produto,testes e realizar refatoração</td>
+<td>Samuel</td>
+<td>Bruna, Giulia, Guilherme</td>
+</tr>
+<tr>
+<td>Analista de Qualidade</td>
+<td>Garantir a qualidade das entregas e se cumprem a ideia proposta</td>
+<td>Ciro</td>
+<td>Laura, Nicolas</td>
+</tr>
+<tr>
+<td>Dono do Produto</td>
+<td>Atualizar o escopo e validar entregas</td>
+<td>Laura</td>
+<td>Nicolas, Ciro</td>
+</tr>
+<tr>
+<td>Mestre do Scrum</td>
+<td>Delegar tarefas, duração sprint e sprint review</td>
+<td>Nicolas</td>
+<td>Ciro, Laura</td>
+</tr>
+<tr>
+<td>Cliente</td>
+<td>Relatar para a equipe as funcionalidades do software e validar as entregas feitas</td>
+<td>Gustavo Ian</td>
+<td>Ciro,Laura, Nicolas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-planejamento-das-fases-eou-iteracoes-do-projeto">2.2 Planejamento das Fases e/ou Iterações do Projeto</h3>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Entrega</th>
+<th>Início</th>
+<th>Fim</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Definição do produto</td>
+<td>20/06/2022</td>
+<td>30/06/2022</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Reorganização da equipe e registros de requisitos</td>
+<td>30/06/2022</td>
+<td>05/07/2022</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Definição do Produto, Visão de Produto, Definição do Backlog do Produto</td>
+<td>05/07/2022</td>
+<td>19/07/2022</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Implementação e entrega do MVP1</td>
+<td>19/07/2022</td>
+<td>02/08/2022</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Implementação e entrega do MVP2.</td>
+<td>02/08/2022</td>
+<td>16/08/2022</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-matriz-de-comunicacao">2.3 Matriz de Comunicação</h3>
+<p>A comunicação se dara principalmente por meio da plataforma WhatsApp.
+Reuniões serão feitas no Discord, ou Google meets.</p>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Envolvidos</th>
+<th>Periodicidade</th>
+<th>Produtos Gerados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint Review</td>
+<td>Equipe Projeto e Cliente</td>
+<td>Semanalmente</td>
+<td>Relatório Sprint Review</td>
+</tr>
+<tr>
+<td>Sprint Planning</td>
+<td>Equipe Projeto e Cliente</td>
+<td>No mesmo dia da Sprint Review</td>
+<td>Relatório Sprint Planning</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>Equipe Projeto</td>
+<td>Diariamente</td>
+<td>Atualização sobre andamento do projeto</td>
+</tr>
+<tr>
+<td>Comunicar situação do projeto</td>
+<td>Equipe Projeto e Professor</td>
+<td>Aproximadamente 21 dias</td>
+<td>Apresentação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-gerenciamento-de-riscos">2.4 Gerenciamento de Riscos</h3>
+<p>A análise e gestão de risco auxiliam a equipe a entender problemas e avaliar possíveis riscos encontrados ao desenvolver do projeto, assim, guiando o usuário e desenvolvedor a contenção dos prejuízos. </p>
+
+<p>Segundo Charette, existem três tipos de riscos de Software (PRESSMAN,2006):</p>
+<p>Riscos de projeto mostram problemas potenciais de orçamento, cronograma, organizacionais que impactam o projeto. (PRESSMAN,2006)</p>
+<p>Riscos técnicos pertuba a qualidade e a entrega do software. Também mostram problemas potenciais de projeto, implementação, interface, verificação e manutenção. (PRESSMAN,2006)</p>
+<p>Riscos de negócio ameaçam a viabilidadea do software e o produto. Existem cinco principais riscos de negócios que são:  (1) criar um excelente produto ou sistema que ninguém realmente quer (risco de mercado), (2) criar um produto que não se encaixe mais na estratégia geral de negócios da empresa (risco estratégico), (3) criar um produto que a equipe de vendas não sabe como vender (risco de vendas), (4) perda de suporte da alta gerência devido à mudança no foco ou mudança de profissionais (risco gerencial), e (5)perda do orçamento ou do comprometimento dos profissionais (riscos de orçamento). (PRESSMAN,2006)</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/62102447/179772030-2f71e9c3-31ad-4af4-971f-ec481a6b240b.png" /></p>
+<p>Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)</p>
+<p>Os riscos seram  revistos ao final de cada Sprint e atualizados após a analise da equipe.</p>
+<h3 id="25-criterios-de-replanejamento">2.5 Critérios de Replanejamento</h3>
+<ul>
+<li>Alteração significativa nas regras de negocio do produto ou de escopo.</li>
+<li>Desistência de um membro da equipe do projeto.</li>
+<li>2 sprints seguidas com tarefas atrasadas, indicação de processos errados.</li>
+<li>3 sprints com requisitos repetidos, indicação de requisitos errados.</li>
+</ul>
+<h3 id="26-mvp-canvas">2.6 MVP canvas</h3>
+<ul>
+<li><a href="https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640">Miro mvp</a></li>
+</ul>
+<h4 id="261-proposta">2.6.1 Proposta</h4>
+<p><img alt="proposta" src="../../assets/mvp-proposta.png" /></p>
+<h4 id="262-personas">2.6.2 Personas</h4>
+<p><img alt="personas" src="../../assets/mvp-personas.png" /></p>
+<h4 id="263-jornadas">2.6.3 Jornadas</h4>
+<p><img alt="jornadas" src="../../assets/mvp-jornadas.png" /></p>
+<h4 id="264-funcionalidades">2.6.4 Funcionalidades</h4>
+<p><img alt="funcionalidades" src="../../assets/mvp-funcionalidades.png" /></p>
+<h4 id="265-custos">2.6.5 Custos</h4>
+<p><img alt="custos" src="../../assets/mvp-custos.png" /></p>
+<h4 id="266-resultados">2.6.6 Resultados</h4>
+<p><img alt="resultado" src="../../assets/mvp-resultado.png" /></p>
+<h4 id="267-metricas">2.6.7 Métricas</h4>
+<p><img alt="metricas" src="../../assets/mvp-metricas.png" /></p>
+<h2 id="abordagem-de-desenvolvimento-de-software">ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE</h2>
+<h3 id="31-metodologia">3.1 Metodologia</h3>
+<p>Baseado na proposta do Sommerville (2018), foi respondido um conjunto de questões de naturezas distintas para definir a abordagem que melhor se encaixasse ao projeto e time.</p>
+<ul>
+<li>
+<p>Questões técnicas:</p>
+</li>
+<li>
+<p><b>Qual é o tamanho do sistema que está sendo desenvolvido?</b> É um software de médio porte.<br></p>
+</li>
+<li>
+<p><b>Que tipo de sistema está sendo desenvolvido?</b> Aplicação Web.<br></p>
+</li>
+<li>
+<p><b>O sistema está sujeito a controle externo?</b> Sim, o sistema será consumido pela instituição de ensino.</p>
+</li>
+<li>
+<p>Questões humanas:</p>
+</li>
+<li>
+<p><b>Qual é o nível de competência dos projetistas e programadores do time de desenvolvimento?</b> Os integrantes possuem nível básico-intermediário.<br></p>
+</li>
+<li>
+<p><b>Como está organizado o time de desenvolvimento?</b> Os desenvolvedores estão dividos entre o front-end e o back-end da aplicação.<br></p>
+</li>
+<li>
+<p><b>Quais são as tecnologias disponíveis para apoiar o desenvolvimento do sistema?</b> A princípio o Github para versionamento e Trello para gerenciar o fluxo de atividades.</p>
+</li>
+<li>
+<p>Questões organizacionais:</p>
+</li>
+<li>
+<p><b>É importante ter uma especificação e um projeto (design) bem detalhados antes de passar para a implementação - talvez por motivos contratuais?</b> Como será utilizada uma metodologia de design orientado a função, não tem necessidade de ser bem definido antes da implementação.</p>
+</li>
+<li>
+<p><b>É realista uma estratégia de entrega incremental, na qual o software é entregue aos clientes ou outros stakeholders e um rápido feedback é obtido?</b> Por conta da proximidade do Product Owner(PO) com o cliente e a equipe de desenvolvimento, é realista.<br></p>
+</li>
+<li>
+<p><b>Os representantes do cliente estarão disponíveis e dispostos a participar do time de desenvolvimento?</b> Sim, uma vez que o representante faz parte da equipe.</p>
+</li>
+<li>
+<p><b>Existem questões culturais que possam afetar o desenvolvimento do sistema?</b> Não.<br></p>
+</li>
+</ul>
+<p>Considerando os resultados obtidos e as necessidades da equipe de priorizar a flexibilidade e o desenvolvimento iterativo, a metodologia ágil foi escolhida. Assim, a abordagem SCRUM foi adotada como ciclo de vida e processo de desenvolvimento baseado no XP (Extreme programming) pelos seguintes motivos: </p>
+<ul>
+<li>
+<p>O feedback contínuo do cliente e os requisitos que são construídos junto com o software permitem que qualquer mudança necessária seja feita sem prejudicar o desenvolvimento da aplicação.</p>
+</li>
+<li>
+<p>Realização controle das atividades da sprint de forma eficiente</p>
+</li>
+</ul>
+<p>Conforme será utilizado o Scrum, será seguido o seu ciclo de abordagem, contendo:</p>
+<pre><code>* Sprints de duas semanas;
+* Dailys (em que serão feitas correções e verificações);
+* Plannings (em que será feita a definição a arquiteura,  identificação e definição de requisitos, a definição de prioridade) no primeiro dia da Sprint;
+* O Backlog do Produto e da Sprint, sendo definidos antes da Planning;
+* Implementação (em que será feita a modelagem do db, a programação tanto do backend, quanto do frontend, a criação do cenário de teste e a documentação dos requisitos) num período de 8 dias - sem contar fins de semana;
+* Review, que valida o P.O (em que será feita a verificação, a validação e a reunião com o cliente) no último dia da Sprint; 
+* Retrospectiva (em que será feita a padronização e o armazenamento) no mesmo dia da review;
+* E, no fim do ciclo, a entrega (em que serão feitos os documentos dor e dod, que definirão qual o product)
+</code></pre>
+<h3 id="32-processo-e-procedimentos">3.2 Processo e procedimentos</h3>
+<table>
+<thead>
+<tr>
+<th>Disciplina</th>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analise/Design</td>
+<td>Definir a arquitetura</td>
+<td>Design Orientado a função</td>
+<td>Figma, Miro</td>
+<td>Giulia, Guilherme</td>
+<td>Processo de elaboração</td>
+</tr>
+<tr>
+<td>Analise/Design</td>
+<td>Prototipação de Baixa Fidelidade</td>
+<td>Metáforas e Modelos Conceituais</td>
+<td>Figma, Miro</td>
+<td>Giulia, Guilherme</td>
+<td>Protótipo de página</td>
+</tr>
+<tr>
+<td>Construção</td>
+<td>Definição de user story</td>
+<td>User story</td>
+<td>Trello</td>
+<td>Laura</td>
+<td>Lista de atividades</td>
+</tr>
+<tr>
+<td>Construção</td>
+<td>Modelagem Banco de Dados</td>
+<td>Modelagem de dados</td>
+<td>DrawIo</td>
+<td>Bruna, Samuel</td>
+<td>Diagrama UML</td>
+</tr>
+<tr>
+<td>Construção</td>
+<td>Programação backend</td>
+<td>Método</td>
+<td>NestJs</td>
+<td>Bruna, Samuel</td>
+<td>Implementação da regra de negócio</td>
+</tr>
+<tr>
+<td>Construção</td>
+<td>Programação Frontend</td>
+<td>Método</td>
+<td>NextJs</td>
+<td>Giulia, Guilherme</td>
+<td>Interface gráfica do usuário</td>
+</tr>
+<tr>
+<td>Teste</td>
+<td>Criar cenários de teste para verificar se os critérios de aceitação foram atendidos e corrigir possíveis falhas</td>
+<td>Testes unitários</td>
+<td>Jest</td>
+<td>Bruna, Samuel</td>
+<td>Validar se a aplicação está funcionando corretamente</td>
+</tr>
+</tbody>
+</table>
+<h2 id="processo-de-engenharia-de-requisitos">PROCESSO DE ENGENHARIA DE REQUISITOS</h2>
+<p>Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.</p>
+<h3 id="41-elicitacao-de-requisitos">4.1 Elicitação de Requisitos</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificação de requisitos</td>
+<td>Reunião</td>
+<td>Google Meets</td>
+<td>integrantes de Requisitos</td>
+<td>lista de requisitos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-analise-de-requisitos">4.2 Análise de Requisitos</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definição de requisitos</td>
+<td>Brainstorming</td>
+<td>Discord ou google meets</td>
+<td>integrantes de Requisitos</td>
+<td>lista preliminar de requisitos</td>
+</tr>
+<tr>
+<td>Definição de prioridades</td>
+<td>Brainstorming</td>
+<td>google meets</td>
+<td>integrantes de Requisitos</td>
+<td>lista preliminar de prioridade de requisitos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-documentacao-de-requisitos">4.3 Documentação de Requisitos</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentação de requisitos</td>
+<td>BackLog do Produto(SAFe)</td>
+<td>Github e MIRO</td>
+<td>integrantes de Requisitos</td>
+<td>lista de requisitos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-verificacao-e-validacao-de-requisitos">4.4 Verificação e Validação de Requisitos</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correção</td>
+<td>Correção de requisitos</td>
+<td>WhatsApp</td>
+<td>Nicolas</td>
+<td>Requisitos corrigidos</td>
+</tr>
+<tr>
+<td>Verificação</td>
+<td>Revisão de requisitos</td>
+<td>WhatsApp</td>
+<td>Laura</td>
+<td>Requisitos revisados</td>
+</tr>
+<tr>
+<td>Validação</td>
+<td>Inspeção de requisitos</td>
+<td>WhatsApp</td>
+<td>Laura</td>
+<td>Requisitos validados</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-gerenciamento-de-requisitos">4.5 Gerenciamento de Requisitos</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade</th>
+<th>Método</th>
+<th>Ferramenta</th>
+<th>Responsável</th>
+<th>Entrega</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Padronização</td>
+<td>Padronizar nome e identificação</td>
+<td>Github</td>
+<td>integrantes de Requisitos</td>
+<td>nome e identificação padronizados</td>
+</tr>
+<tr>
+<td>Armazenamento</td>
+<td>Registrar no github-pages</td>
+<td>Github</td>
+<td>integrantes de Requisitos</td>
+<td>requisitos atualizados no Gitpages</td>
+</tr>
+</tbody>
+</table>
+<h2 id="licoes-aprendidas">LIÇÕES APRENDIDAS</h2>
+<h3 id="51-unidade-1">5.1 Unidade 1</h3>
+<h3 id="511-mds">5.1.1 MDS</h3>
+<ul>
+<li>Disciplinas da Engenharia de Software</li>
+<li>Metodologias de Desenvolvimento de Software. Em especial, Ágil.</li>
+<li>Ciclo de vida</li>
+<li>Rituais do Scrum</li>
+<li>Práticas do XP</li>
+</ul>
+<h3 id="512-requisitos">5.1.2 Requisitos</h3>
+<ul>
+<li>Ter comunicação mais clara com os membros</li>
+<li>Ter uma comunicação mais ativa com o cliente</li>
+<li>Não gravar os vídeos em cima da hora</li>
+</ul>
+<h3 id="513-mds-requisitos">5.1.3 MDS-Requisitos</h3>
+<ul>
+<li>Buscar uma comunicação mais ativa entre os grupos</li>
+<li>Alinhar espectativas</li>
+<li>Centralizar forma de comunicação entre os times</li>
+<li>Buscar sanar dúvidas de forma mais rápida</li>
+</ul>
+<h3 id="52-unidade-2">5.2 Unidade 2</h3>
+<h3 id="521-mds">5.2.1 MDS</h3>
+<ul>
+<li>Boa divisão tarefas e atividades para uma apresentação em conjunto</li>
+<li>Conhecimento de díversos frameworks linguagens de programação apresentados</li>
+<li>Conhecimento prático de testes unitários com Jest</li>
+</ul>
+<h3 id="522-requisitos">5.2.2 Requisitos</h3>
+<ul>
+<li>Buscar de forma mais ativa a resolução de tarefas</li>
+</ul>
+<h3 id="523-mds-requisitos">5.2.3 MDS-Requisitos</h3>
+<ul>
+<li>Resolução de desencontros de tempo e horário</li>
+<li>Distribuição de responsabilidades</li>
+</ul>
+<!--### 5.3 Unidade 3 
+ ### 5.3.1 MDS 
+ ### 5.3.2 Requisitos 
+ ### 5.3.3 MDS-Requisitos 
+ ### 5.4 Unidade 4 
+ ### 5.4.1 MDS 
+ ### 5.4.2 Requisitos 
+ ### 5.4.3 MDS-Requisitos  -->
+
+<h2 id="referencias-bibliograficas">REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+<p>PRESSMAN, R S. Engenharia de Software. 6.ed. São Paulo: Mc Graw Hill Internacional, 2006</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
