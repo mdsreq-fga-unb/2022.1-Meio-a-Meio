@@ -4,10 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './entitys/user.entity';
-import { AlunoModule } from './model/aluno/aluno.module';
+import { StudentModule } from './model/student/student.module';
 
 @Module({
-  imports: [AlunoModule, ProfessorModule],
+  imports: [StudentModule, ProfessorModule],
   controllers: [AppController],
   providers: [AppService],
 })
