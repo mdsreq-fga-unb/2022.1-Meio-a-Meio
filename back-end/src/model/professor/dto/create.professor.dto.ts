@@ -2,6 +2,6 @@ export class CreateProfessorDto {
   firstName: string;
   lastName: string;
   cpf: string;
-  born: string;
+  birthDate: string;
   gender: string;
 }

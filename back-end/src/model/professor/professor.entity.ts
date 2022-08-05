@@ -15,7 +15,7 @@ export class Professor {
   cpf: string;
 
   @Column()
-  born: string;
+  birthDate: string;
 
   @Column()
   gender: string;

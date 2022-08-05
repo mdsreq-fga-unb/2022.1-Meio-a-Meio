@@ -3,6 +3,6 @@ export interface CreateStudentDTO {
   name: string;
   lastName: string;
   cpf: string;
-  born: string;
+  birthDate: string;
   gender: string;
 }

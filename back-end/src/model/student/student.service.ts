@@ -21,7 +21,7 @@ export class StudentService {
     aluno.name = data.name;
     aluno.lastName = data.lastName;
     aluno.cpf = data.cpf;
-    aluno.born = data.born;
+    aluno.birthDate = data.birthDate;
     aluno.gender = data.gender;
 
     return this.studentRepository

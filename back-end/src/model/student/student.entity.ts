@@ -15,7 +15,7 @@ export class Student {
   cpf: string;
 
   @Column({ length: 255 })
-  born: string;
+  birthDate: string;
 
   @Column({ length: 255 })
   gender: string;
