@@ -6,6 +6,7 @@ nav:
 # - Projeto: ProductVision.md
 - Produto:
   - 'Visão': ./produto-projeto/ProductVision.md
+  - 'Mvp': ./produto-projeto/MVP.md
 - Sprints planing:
   - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
   - 'Sprint 02': Sprints/Sprint02/SprintPlanning.md
