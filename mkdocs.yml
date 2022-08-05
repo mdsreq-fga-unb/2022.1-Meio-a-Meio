@@ -6,12 +6,18 @@ nav:
 # - Projeto: ProductVision.md
 - Produto:
   - 'Visão': ./produto-projeto/ProductVision.md
+  - 'Mvp': ./produto-projeto/MVP.md
 - Sprints planing:
   - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
   - 'Sprint 02': Sprints/Sprint02/SprintPlanning.md
+  - 'Sprint 03': Sprints/Sprint03/SprintPlanning.md
+  - 'Sprint 04': Sprints/Sprint04/SprintPlanning.md
 - Sprints Review:
   - 'Sprint 01': Sprints/Sprint01/SprintReview.md
   - 'Sprint 02': Sprints/Sprint02/SprintReview.md
+  - 'Sprint 03': Sprints/Sprint03/SprintReview.md
+  - 'Sprint 04': Sprints/Sprint04/SprintReview.md
+
 
 theme: 
   name: mkdocs

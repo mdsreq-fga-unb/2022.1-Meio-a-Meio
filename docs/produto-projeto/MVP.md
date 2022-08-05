@@ -1,4 +1,5 @@
 MVP1
+
  * cadastrar aluno,professor, disciplinas e turma
  * registrar nota de provas e atividades
  * criar e registrar lista de presença
@@ -8,6 +9,7 @@ MVP1
  * registrar inadimplência
 
 MVP2
+
  * cadastrar administrador
  * gerar boletim, histórico, atestado de matrícula
  * visualizar alunos,cursos, professor, diário de turma, aluno em turma e lista de presença

@@ -43,6 +43,7 @@
     - 2.3 Matriz de Comunicação 
     - 2.4 Gerenciamento de Riscos 
     - 2.5 Critérios de Replanejamento 
+    - 2.6 MVP canvas
  - [ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE](#abordagem-de-desenvolvimento-de-software)
     - 3.1 Metodologia
     - 3.2 Processo e procedimentos
@@ -143,6 +144,25 @@ Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
  - Desistência de um membro da equipe do projeto.
  - 2 sprints seguidas com tarefas atrasadas, indicação de processos errados.
  - 3 sprints com requisitos repetidos, indicação de requisitos errados.
+
+### 2.6 MVP canvas
+
+  - [Miro mvp](https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640)
+
+#### 2.6.1 Proposta
+![proposta](../assets/mvp-proposta.png)
+#### 2.6.2 Personas
+![personas](../assets/mvp-personas.png)
+#### 2.6.3 Jornadas
+![jornadas](../assets/mvp-jornadas.png)
+#### 2.6.4 Funcionalidades
+![funcionalidades](../assets/mvp-funcionalidades.png)
+#### 2.6.5 Custos
+![custos](../assets/mvp-custos.png)
+#### 2.6.6 Resultados
+![resultado](../assets/mvp-resultado.png)
+#### 2.6.7 Métricas
+![metricas](../assets/mvp-metricas.png)
 
 ## ABORDAGEM DE DESENVOLVIMENTO DE SOFTWARE 
 ### 3.1 Metodologia

@@ -4,7 +4,7 @@
   <h2>SOBRE</h2>
   <p>
       Essa página é destinada a documentação do <strong>GALDI</strong>, um sistema de gestão de atividades acadêmicas desenvolvido
-      pela equipe <strong>Meio a Meio</strong> das disciplinas de <strong>Métodos de Desenvolvimentos de Software</strong> e
+      para [Unicetrex](https://unicetrex.com.br/) pela equipe <strong>Meio a Meio</strong> das disciplinas de <strong>Métodos de Desenvolvimentos de Software</strong> e
       <strong>Requisitos de Software</strong> 2022.1 da Universidade de Brasília. O software tem o objetivo de facilitar o
       controle de alunos da área da saúde, reduzindo os esforços de gestão e aumentar a fidelidade dos dados.
   </p>
