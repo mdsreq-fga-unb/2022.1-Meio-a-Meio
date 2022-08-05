@@ -1,6 +1,3 @@
-
-<title>GALDI</title>
-
 ## Galdi
 
 
@@ -37,14 +34,15 @@
   - [Politica de commits](./produto-projeto/commit_policy)
   - [Trello](https://trello.com/b/lcWQoS87)
 
-  <h2>COLABORADORES</h2>
-  |Nome|GitHub|Disciplina|
+  <h2>Colaboradores</h2>
+  
+  | Nome | GitHub | Disciplina |
   |----|----|----|
-  |Bruna Lima|@libruna|MDS|
-  |Giulia Alcantara|@alcantaragiubs|MDS|
-  |Guilherme França|@GuiDib|MDS|
-  |Samuel Sato|@samuel-sato|MDS|
-  |Ciro Costa|@ciro-c|REQ|
-  |Laura Pinos|@laurapinos|REQ|
-  |Nicolas Roberto|@Nicolas-Roberto|REQ|
+  | Bruna Lima | @libruna | MDS |
+  | Giulia Alcantara | @alcantaragiubs | MDS |
+  | Guilherme França | @GuiDib | MDS |
+  | Samuel Sato | @samuel-sato | MDS |
+  | Ciro Costa | @ciro-c | REQ |
+  | Laura Pinos | @laurapinos | REQ |
+  | Nicolas Roberto| @Nicolas-Roberto | REQ |
       
