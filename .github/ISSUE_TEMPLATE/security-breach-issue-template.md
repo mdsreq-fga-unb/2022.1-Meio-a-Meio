@@ -7,13 +7,6 @@ assignees: ''
 
 ---
 
-## Histórico de Versões
-| Versão  |  Data  | Autor  |  Descrição  |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-|  1.0 |  03/03/2021 | Carlos Daniel | Issue template |
-|   |   |   |   |
-
-
 
 **Descreva a falha de segurança**
 - Uma descrição breve da falha de segurança.
