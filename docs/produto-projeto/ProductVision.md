@@ -228,6 +228,21 @@ De acordo com a abordagem SCRUM, foram definidos os seguintes processos:
 
 <h6> Obs.: Atividades com (*) serão realizadas apenas uma vez, ou seja, não se repetirão por mais de um ciclo.</h6>
 
+
+### 3.3 Arquitetura do projeto
+### 3.3.1 MVC
+
+Com base nas caracteristicas dos frameworks utilizados e especificação da aplicação, a arquitetura MVC (Model, View, Controller) será usada para o projeto. MVC é um padrão de arquitetura que divide logicamente o programa em 3 partes:
+
+    - Model: Responsável pelo mapeamento do banco de dados e aplicar regras de negócio
+    - View: Camada de apresentação das paginas aos usuários.
+    - Controller: Responsável por interligar Model e View, por meio de requisições e respostas.
+
+
+### 3.3.2 Funcionamento
+Todas as resquisições feitas pelo usuário são processadas pelo controller, manipuladas pelo model e são vistas pela view.
+![metricas](../assets/mvc.png)
+
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
 Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.
