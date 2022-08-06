@@ -43,6 +43,10 @@
 <li>
     <a href="./" class="dropdown-item active">Visão</a>
 </li>
+                                    
+<li>
+    <a href="../MVP/" class="dropdown-item">Mvp</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -101,7 +105,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../Sprints/Sprint01/SprintPlanning/" class="nav-link">
+                                <a rel="next" href="../MVP/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -700,6 +704,16 @@ Reuniões serão feitas no Discord, ou Google meets.</p>
 </table>
 <h6> Obs.: Atividades com (*) serão realizadas apenas uma vez, ou seja, não se repetirão por mais de um ciclo.</h6>
 
+<h3 id="33-arquitetura-do-projeto">3.3 Arquitetura do projeto</h3>
+<h3 id="331-mvc">3.3.1 MVC</h3>
+<p>Com base nas caracteristicas dos frameworks utilizados e especificação da aplicação, a arquitetura MVC (Model, View, Controller) será usada para o projeto. MVC é um padrão de arquitetura que divide logicamente o programa em 3 partes:</p>
+<pre><code>- Model: Responsável pelo mapeamento do banco de dados e aplicar regras de negócio
+- View: Camada de apresentação das paginas aos usuários.
+- Controller: Responsável por interligar Model e View, por meio de requisições e respostas.
+</code></pre>
+<h3 id="332-funcionamento">3.3.2 Funcionamento</h3>
+<p>Todas as resquisições feitas pelo usuário são processadas pelo controller, manipuladas pelo model e são vistas pela view.
+<img alt="metricas" src="../../assets/mvc.png" /></p>
 <h2 id="processo-de-engenharia-de-requisitos">PROCESSO DE ENGENHARIA DE REQUISITOS</h2>
 <p>Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.</p>
 <h3 id="41-elicitacao-de-requisitos">4.1 Elicitação de Requisitos</h3>
