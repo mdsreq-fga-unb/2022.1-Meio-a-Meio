@@ -7,7 +7,7 @@ import { CreateStudentDTO } from './dto/student.create.dto';
 @Injectable()
 export class StudentService {
   constructor(
-    @Inject('ALUNO_REPOSITORY')
+    @Inject('STUDENT_REPOSITORY')
     private studentRepository: Repository<Student>,
   ) {}
 
