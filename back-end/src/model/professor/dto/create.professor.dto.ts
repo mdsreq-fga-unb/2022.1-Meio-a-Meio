@@ -14,11 +14,11 @@ export class CreateProfessorDto {
 
   @IsString()
   @IsNotEmpty()
-  educaçãoPrimaria: string;
+  educacaoPrimaria: string;
 
   @IsString()
   @IsNotEmpty()
-  educaçãoSecundaria: string;
+  educacaoSecundaria: string;
 
   @IsString()
   @IsNotEmpty()

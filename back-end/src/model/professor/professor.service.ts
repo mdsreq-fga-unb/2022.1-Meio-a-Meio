@@ -16,8 +16,8 @@ export class ProfessorService {
     professor.nomeCompleto = data.nomeCompleto;
     professor.cpf = data.cpf;
     professor.dataDeNascimento= data.dataDeNascimento;
-    professor.educaçãoPrimaria = data.educaçãoPrimaria;
-    professor.educacaoSecundaria = data.educaçãoSecundaria;
+    professor.educaçãoPrimaria = data.educacaoPrimaria;
+    professor.educacaoSecundaria = data.educacaoSecundaria;
     professor.observacao = data.observacao;
     
     return this.professorRepository
