@@ -5,18 +5,21 @@ export class Professor {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  firstName: string;
+  @Column({ length: 100 })
+  nomeCompleto: string;
 
-  @Column()
-  lastName: string;
-
-  @Column()
+  @Column({ length: 11 })
   cpf: string;
 
-  @Column()
-  birthDate: string;
+  @Column({ length: 11 })
+  dataDeNascimento: string;
 
-  @Column()
-  gender: string;
+  @Column({ length: 100 })
+  educaçãoPrimaria: string;
+
+  @Column({ length: 100 })
+  educacaoSecundaria: string;
+
+  @Column({ length: 200 })
+  observacao: string;
 }
