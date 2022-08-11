@@ -2,21 +2,26 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Professor {
+  
   @PrimaryGeneratedColumn()
-  id: number;
+  matricula: number;
 
   @Column()
-  firstName: string;
-
-  @Column()
-  lastName: string;
+  nome: string;
 
   @Column()
   cpf: string;
 
   @Column()
-  birthDate: string;
+  dataNascimento: Date;
 
   @Column()
-  gender: string;
+  formacaoPrimaria: string;
+
+  @Column()
+  formacaoSegundaria: string;
+  
+  @Column()
+  observacao: string;
+
 }

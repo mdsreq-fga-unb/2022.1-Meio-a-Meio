@@ -1,13 +1,20 @@
 import { Professor } from './professor.entity';
-import { CreateProfessorDto } from './dto/create.professor.dto';
+import { CreateProfessorDto } from './dto/create-professor.dto';
 import { ProfessorService } from './professor.service';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import {} from 'class-validator'
 
 @Controller('professor')
 export class ProfessorController {
   constructor(private readonly professorService: ProfessorService) {}
 
-  @Post('/create')
+  @Get()
+  Teste(){
+    return this.professorService.findByCPF("123456789");
+     
+  }
+
+  @Post()
   create(@Body() CreateProfessorDto: CreateProfessorDto) {
     return this.professorService.create(CreateProfessorDto);
   }
