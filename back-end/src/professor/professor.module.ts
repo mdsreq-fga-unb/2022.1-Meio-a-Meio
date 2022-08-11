@@ -1,7 +1,7 @@
 import { ProfessorController } from './professor.controller';
 import { Module } from '@nestjs/common';
 import { ProfessorService } from './professor.service';
-import { DatabaseModule } from '../database/database.module';
+import { DatabaseModule } from '../model/database/database.module';
 import { professroProviders } from './professor.providers';
 
 @Module({

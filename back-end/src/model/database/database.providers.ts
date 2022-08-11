@@ -1,3 +1,4 @@
+import { Professor } from 'src/professor/professor.entity';
 import { DataSource } from 'typeorm';
 
 export const databaseProviders = [
@@ -11,7 +12,7 @@ export const databaseProviders = [
         username: 'root',
         password: '010718',
         database: 'meioameio',
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [Professor],
         synchronize: true, //toda vez que rodar a aplicação, o nest vai tentar sincronizar o db com as classes
       });
 

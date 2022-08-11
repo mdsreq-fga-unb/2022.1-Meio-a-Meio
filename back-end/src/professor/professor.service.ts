@@ -3,7 +3,6 @@ import { validate } from 'class-validator';
 import { Injectable, Inject } from '@nestjs/common';
 import { Professor } from './professor.entity';
 import { Repository } from 'typeorm';
-import { async } from 'rxjs';
 
 
 @Injectable()
