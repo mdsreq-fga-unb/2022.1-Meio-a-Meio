@@ -6,7 +6,7 @@ import { User } from './entitys/user.entity';
 import { ProfessorModule } from './model/professor/professor.module';
 import { StudentModule } from './model/student/student.module';
 import { SubjectModule } from './model/subject/subject.module';
-import { TurmaModule } from './model/turma/turma.module';
+import { TurmaModule } from './turma/turma.module';
 
 
 @Module({
