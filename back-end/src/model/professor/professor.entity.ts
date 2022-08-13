@@ -11,7 +11,7 @@ export class Professor {
   @Column({ length: 11 })
   cpf: string;
 
-  @Column({ length: 11 })
+  @Column({ type: 'date' })
   dataDeNascimento: string;
 
   @Column({ length: 100 })
