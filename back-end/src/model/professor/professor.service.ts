@@ -3,6 +3,7 @@ import { CreateProfessorDto } from './dto/create.professor.dto';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { ResultDTO } from 'src/model/dto/result.dto';
+import { IsBoolean } from 'class-validator';
 
 @Injectable()
 export class ProfessorService {
@@ -12,6 +13,10 @@ export class ProfessorService {
   ) {}
 
   async create(data: CreateProfessorDto) {
+    if((await this.validateIfCPFAlreadyExists(data.cpf)).length > 0) {
+      throw new HttpException('Esse cadastro já existe! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
     try {
       const professor = new Professor();
       professor.nomeCompleto = data.nomeCompleto;
@@ -26,4 +31,14 @@ export class ProfessorService {
         throw new HttpException('Erro ao cadastrar professor!', HttpStatus.BAD_REQUEST);
       };
   }
+
+  async validateIfCPFAlreadyExists(cpf: string) {
+    const find = this.professorRepository.find({
+      where: {
+        cpf: cpf
+      }
+    });
+    return find;
+  }
+
 }

@@ -1,8 +1,6 @@
-import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { ProfessorService } from './professor.service';
-import { Body, Controller, Post } from '@nestjs/common';
-import { ResultDTO } from 'src/model/dto/result.dto';
+import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 
 @Controller('professor')
 export class ProfessorController {
