@@ -1,8 +1,8 @@
 import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
+import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { RegisterGenerator } from '../util/register.generator';
 
 @Injectable()
 export class ProfessorService {
