@@ -1,6 +1,6 @@
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { ProfessorService } from './professor.service';
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller('professor')
 export class ProfessorController {

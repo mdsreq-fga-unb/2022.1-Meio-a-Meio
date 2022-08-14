@@ -15,7 +15,7 @@ export class Professor {
   dataDeNascimento: string;
 
   @Column({ length: 100 })
-  educaçãoPrimaria: string;
+  educacaoPrimaria: string;
 
   @Column({ length: 100 })
   educacaoSecundaria: string;

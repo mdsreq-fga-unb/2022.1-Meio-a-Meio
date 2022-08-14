@@ -2,8 +2,6 @@ import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { ResultDTO } from 'src/model/dto/result.dto';
-import { IsBoolean } from 'class-validator';
 
 @Injectable()
 export class ProfessorService {
@@ -13,7 +11,7 @@ export class ProfessorService {
   ) {}
 
   async create(data: CreateProfessorDto) {
-    if((await this.validateIfCPFAlreadyExists(data.cpf)).length > 0) {
+    if((await this.validateIfCPFAlreadyExists(data.cpf))) {
       throw new HttpException('Esse cadastro já existe! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
@@ -22,7 +20,7 @@ export class ProfessorService {
       professor.nomeCompleto = data.nomeCompleto;
       professor.cpf = data.cpf;
       professor.dataDeNascimento = data.dataDeNascimento;
-      professor.educaçãoPrimaria = data.educacaoPrimaria;
+      professor.educacaoPrimaria = data.educacaoPrimaria;
       professor.educacaoSecundaria = data.educacaoSecundaria;
       professor.observacao = data.observacao;
       
@@ -33,12 +31,19 @@ export class ProfessorService {
   }
 
   async validateIfCPFAlreadyExists(cpf: string) {
-    const find = this.professorRepository.find({
+    const professor = await this.professorRepository.findOne({
       where: {
-        cpf: cpf
+        cpf
       }
     });
-    return find;
+    return professor; 
   }
 
+  async matriculaGenerator() {
+    const createdAt: Date = new Date();
+
+    const matricula: string = createdAt.toDateString();
+
+    return matricula;
+  }
 }
