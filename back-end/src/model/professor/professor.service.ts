@@ -2,6 +2,7 @@ import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { RegisterGenerator } from '../util/register.generator';
 
 @Injectable()
 export class ProfessorService {
@@ -17,6 +18,9 @@ export class ProfessorService {
 
     try {
       const professor = new Professor();
+
+      const generator = new RegisterGenerator();
+      professor.matricula = generator.professorMatriculaGenerator();
       professor.nomeCompleto = data.nomeCompleto;
       professor.cpf = data.cpf;
       professor.dataDeNascimento = data.dataDeNascimento;
@@ -37,13 +41,5 @@ export class ProfessorService {
       }
     });
     return professor; 
-  }
-
-  async matriculaGenerator() {
-    const createdAt: Date = new Date();
-
-    const matricula: string = createdAt.toDateString();
-
-    return matricula;
   }
 }

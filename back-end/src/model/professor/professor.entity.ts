@@ -5,6 +5,9 @@ export class Professor {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ length: 7 })
+  matricula: string;
+
   @Column({ length: 100 })
   nomeCompleto: string;
 
