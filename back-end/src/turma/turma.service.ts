@@ -3,20 +3,48 @@ import { Repository } from 'typeorm';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
 import { Turma } from './entities/turma.entity';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class TurmaService {
   constructor(
     @Inject('TURMA_REPOSITORY')
-    private turmaRepository: Repository<Turma>,
+    private turmaRepository: Repository<CreateTurmaDto>,
   ){}
 
-  create(createTurmaDto: CreateTurmaDto) {
+  async create(createTurmaDto: CreateTurmaDto) {
+
+    let turma = new CreateTurmaDto();
+    turma.nomeTurma = createTurmaDto.nomeTurma;
+    turma.disciplina = createTurmaDto.disciplina;
+    turma.professor = createTurmaDto.professor;
+    turma.horarios = createTurmaDto.horarios;
+    turma.dias = createTurmaDto.dias;
+
+    const errors = await validate(turma)
+    if (errors.length > 0) {
+      //Detalhar erro
+      throw new Error(`Validation failed!`);
+    }     
+    else {
+
+      //busca professor
+      
+
+      await this.turmaRepository.save(turma).then(()=>{
+        console.log("Cadastro")
+        return 'Professor cadastrado!';
+      })
+      .catch(()=>{
+        return 'Erro ao cadastrar professor';
+      })
     return 'This action adds a new turma';
+    }
+    
   }
 
-  async findAll(): Promise<Turma[]> {
-    return this.turmaRepository.find();
+  async findAll() {
+    //return this.turmaRepository.find();
   }
 
   findOne(id: number) {

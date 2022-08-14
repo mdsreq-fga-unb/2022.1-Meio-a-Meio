@@ -1,5 +1,5 @@
-import { IsEnum, IsInt, IsNotEmpty, IsString } from "class-validator";
-import { DiaDaSemana } from "../entities/dias.enum";
+import { IsInt, IsNotEmpty, IsString } from "class-validator";
+
 
 export class CreateTurmaDto {
     
@@ -7,9 +7,9 @@ export class CreateTurmaDto {
     @IsNotEmpty()
     nomeTurma: string;
 
-    @IsEnum(DiaDaSemana)
+    @IsString()
     @IsNotEmpty()
-    dias: [DiaDaSemana];
+    dias: string;
 
     @IsString()
     @IsNotEmpty()

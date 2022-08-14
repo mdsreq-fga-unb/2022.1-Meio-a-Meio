@@ -2,13 +2,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
+import { validate } from 'class-validator';
 
 @Controller('turma')
 export class TurmaController {
   constructor(private readonly turmaService: TurmaService) {}
 
   @Post()
-  create(@Body() createTurmaDto: CreateTurmaDto) {
+  create(@Body() createTurmaDto: CreateTurmaDto) {   
     return this.turmaService.create(createTurmaDto);
   }
 
