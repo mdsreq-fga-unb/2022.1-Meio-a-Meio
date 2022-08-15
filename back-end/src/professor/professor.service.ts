@@ -13,14 +13,15 @@ export class ProfessorService {
 
   async create(data: CreateProfessorDto) {
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
-      throw new HttpException('Esse cadastro já existe! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     try {
       const professor = new Professor();
-
       const generator = new RegisterGenerator();
-      professor.matricula = generator.professorMatriculaGenerator();
+      let amount = (await this.professorRepository.count()).valueOf();
+
+      professor.matricula = generator.professorMatriculaGenerator(amount);
       professor.nomeCompleto = data.nomeCompleto;
       professor.cpf = data.cpf;
       professor.dataDeNascimento = data.dataDeNascimento;
