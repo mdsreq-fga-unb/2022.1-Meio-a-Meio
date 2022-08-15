@@ -1,4 +1,5 @@
 import { Professor } from 'src/professor/professor.entity';
+import { Student } from 'src/student/student.entity';
 import { DataSource } from 'typeorm';
 
 export const databaseProviders = [
@@ -10,9 +11,9 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '781781',
+        password: 'password',
         database: 'meioameio',
-        entities: [Professor],
+        entities: [Professor, Student],
         synchronize: true, 
       });
 

@@ -1,14 +1,14 @@
 import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ProfessorService {
   constructor(
-    @Inject('PROFESSOR_REPOSITORY')
-    private professorRepository: Repository<Professor>,
+    @InjectRepository(Professor) private professorRepository: Repository<Professor>,
   ) {}
 
   async create(data: CreateProfessorDto) {
@@ -21,7 +21,7 @@ export class ProfessorService {
       const generator = new RegisterGenerator();
       let amount = (await this.professorRepository.count()).valueOf();
 
-      professor.matricula = generator.professorMatriculaGenerator(amount);
+      professor.matricula = generator.matriculaGenerator(amount, 3);
       professor.nomeCompleto = data.nomeCompleto;
       professor.cpf = data.cpf;
       professor.dataDeNascimento = data.dataDeNascimento;

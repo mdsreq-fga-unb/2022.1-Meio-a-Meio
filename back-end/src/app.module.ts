@@ -4,8 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './entitys/user.entity';
 import { ProfessorModule } from './professor/professor.module';
-import { StudentModule } from './model/student/student.module';
-import { SubjectModule } from './model/subject/subject.module';
+import { StudentModule } from './student/student.module';
+import { SubjectModule } from './subject/subject.module';
 
 @Module({
   imports: [StudentModule, ProfessorModule, SubjectModule],
