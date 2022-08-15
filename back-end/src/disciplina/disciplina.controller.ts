@@ -14,6 +14,7 @@ export class DisciplinaController {
 
   @Get()
   findAll() {
+    console.log(process.env.HOST);
     return this.disciplinaService.findAll();
   }
 

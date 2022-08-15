@@ -8,10 +8,10 @@ import { StudentModule } from './model/student/student.module';
 import { SubjectModule } from './model/subject/subject.module';
 import { TurmaModule } from './turma/turma.module';
 import { DisciplinaModule } from './disciplina/disciplina.module';
-
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [StudentModule, ProfessorModule, SubjectModule, TurmaModule, DisciplinaModule],
+  imports: [StudentModule, ProfessorModule, SubjectModule, TurmaModule, DisciplinaModule, ConfigModule.forRoot({isGlobal: true})],
   controllers: [AppController],
   providers: [AppService],
 })
