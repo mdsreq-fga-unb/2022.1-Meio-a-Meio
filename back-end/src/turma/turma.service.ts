@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
@@ -22,22 +22,17 @@ export class TurmaService {
     turma.dias = createTurmaDto.dias;
 
     const errors = await validate(turma)
-    if (errors.length > 0) {
-      //Detalhar erro
-      throw new Error(`Validation failed!`);
-    }     
-    else {
 
-      //busca professor
-      
-      await this.turmaRepository.save(turma).then(()=>{
-        console.log("Cadastro")
-        return 'Professor cadastrado!';
-      })
-      .catch(()=>{
-        return 'Erro ao cadastrar professor';
-      })
-    return 'This action adds a new turma';
+    if (errors.length > 0) {
+      throw new HttpException(`Validation failed!`, HttpStatus.BAD_REQUEST);
+    }     
+    else {      
+      const turmadto = await this.turmaRepository.save(turma);
+      if(turmadto){
+        return turmadto;
+      } else{
+        return new HttpException(`Erro ao cadastrar turma`, HttpStatus.BAD_REQUEST);
+      }
     }
     
   }
@@ -59,4 +54,8 @@ export class TurmaService {
   remove(id: number) {
     return `This action removes a #${id} turma`;
   }
+
+  //async addAluno(){
+
+  //}
 }

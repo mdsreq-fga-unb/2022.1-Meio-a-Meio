@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { DiaDaSemana } from './dias.enum';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity()
 export class Turma {
@@ -9,15 +8,9 @@ export class Turma {
     @Column()
     nomeTurma: string;
 
-    @Column()
-    dias: string; //[DiaDaSemana];
-
-    @Column()
-    horarios: string;
-
-    @Column()
-    professor: number;
-
-    @Column()
-    disciplina: number;
+    /*
+    @ManyToMany()
+    @JoinTable()
+    alunos: Alunos[]
+    */
 }
