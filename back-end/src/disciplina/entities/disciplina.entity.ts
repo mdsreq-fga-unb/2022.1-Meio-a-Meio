@@ -6,9 +6,12 @@ export class Disciplina {
   id: number;
 
   @Column({ length: 255 })
-  nomeDisciplina: string;
+  nome_disciplina: string;
 
   @Column()
-  cargaHoraria: number;
+  carga_horaria: number;
+
+  @Column()
+  professor: number;
 
 }

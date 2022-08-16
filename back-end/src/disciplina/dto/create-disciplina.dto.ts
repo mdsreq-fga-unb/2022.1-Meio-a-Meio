@@ -4,9 +4,13 @@ export class CreateDisciplinaDto {
 
     @IsString()
     @IsNotEmpty()
-    nomeDisciplina: string;
+    nome_disciplina: string;
 
     @IsNumber()
     @IsNotEmpty()
-    cargaHoraria: number;
+    carga_horaria: number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    professor: number;
 }
