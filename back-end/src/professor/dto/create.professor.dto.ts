@@ -18,9 +18,7 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   educacaoPrimaria: string;
 
-  @IsString()
   educacaoSecundaria: string;
 
-  @IsString()
   observacao: string;
 }
