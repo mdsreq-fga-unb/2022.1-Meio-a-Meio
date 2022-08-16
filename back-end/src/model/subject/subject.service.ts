@@ -10,6 +10,7 @@ export class SubjectService {
     @Inject('SUBJECT_REPOSITORY')
     private subjectRepository: Repository<Subject>,
   ) {}
+  
   async create(data: CreateSubjectDTO): Promise<ResultDTO> {
     const disciplina = new Subject();
 
