@@ -9,7 +9,7 @@ import { validate } from 'class-validator';
 export class TurmaService {
   constructor(
     @Inject('TURMA_REPOSITORY')
-    private turmaRepository: Repository<CreateTurmaDto>,
+    private turmaRepository: Repository<Turma>,
   ){}
 
   async create(createTurmaDto: CreateTurmaDto) {
@@ -30,7 +30,6 @@ export class TurmaService {
 
       //busca professor
       
-
       await this.turmaRepository.save(turma).then(()=>{
         console.log("Cadastro")
         return 'Professor cadastrado!';
@@ -44,11 +43,13 @@ export class TurmaService {
   }
 
   async findAll() {
-    //return this.turmaRepository.find();
+    const turmas = await this.turmaRepository.find()
+    return turmas;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} turma`;
+  async findOne(id: number) {
+    const disciplina = await this.turmaRepository.findOne({where:{id:id}})
+    return disciplina;
   }
 
   update(id: number, updateTurmaDto: UpdateTurmaDto) {

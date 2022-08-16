@@ -7,10 +7,10 @@ import { ProfessorModule } from './model/professor/professor.module';
 import { StudentModule } from './model/student/student.module';
 import { SubjectModule } from './model/subject/subject.module';
 import { TurmaModule } from './turma/turma.module';
-
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [StudentModule, ProfessorModule, SubjectModule, TurmaModule],
+  imports: [StudentModule, ProfessorModule, SubjectModule, TurmaModule, ConfigModule.forRoot({isGlobal:true})],
   controllers: [AppController],
   providers: [AppService],
 })
