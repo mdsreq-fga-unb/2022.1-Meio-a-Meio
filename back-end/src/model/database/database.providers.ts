@@ -9,11 +9,11 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '781781',
-        database: 'meioameio',
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: true, //toda vez que rodar a aplicação, o nest vai tentar sincronizar o db com as classes
-      });
+        password: '781781'DB_,
+        database: 'meioameio',DB_
+        entities: [__dirname +DB_ '/../**entity{.ts,.js}'],
+        synchronize: true, //tDB_oda vez que rodar a aplicação, o nest vai tentar sincronizar o db com as classes
+      });DB_
 
       return dataSource.initialize();
     },
