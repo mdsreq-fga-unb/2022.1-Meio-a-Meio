@@ -14,7 +14,7 @@ export const databaseProviders = [
         username: process.env.USERNAME_DB,
         password: process.env.PASSWORD,
         database: process.env.DATABASE,
-        entities: [ Turma, Disciplina],
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true, //toda vez que rodar a aplicação, o nest vai tentar sincronizar o db com as classes
       });
 
