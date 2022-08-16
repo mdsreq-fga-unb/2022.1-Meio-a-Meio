@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { validate } from 'class-validator';
 import { Repository } from 'typeorm';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
