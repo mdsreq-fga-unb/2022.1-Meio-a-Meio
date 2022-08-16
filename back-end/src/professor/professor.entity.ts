@@ -20,9 +20,9 @@ export class Professor {
   @Column({ length: 100 })
   educacaoPrimaria: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 200, nullable: true })
   educacaoSecundaria: string;
 
-  @Column({ length: 200 })
+  @Column({ length: 200, nullable: true })
   observacao: string;
 }
