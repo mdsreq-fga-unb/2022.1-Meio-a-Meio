@@ -1,5 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
-import { IsCEP, IsCPF, IsDDD, IsPhone } from "brazilian-class-validator";
+import { IsString, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
 
 export class CreateAlunoDto {
  
@@ -18,7 +17,6 @@ export class CreateAlunoDto {
   @IsNotEmpty()
   nacionalidade: string;
 
-  @IsCPF()
   @IsNotEmpty()
   cpf: string;
 
@@ -34,11 +32,9 @@ export class CreateAlunoDto {
   @IsNotEmpty()
   orgao_emissor: string;
 
-  @IsDDD()
   @IsNotEmpty()
   ddd: string;
 
-  @IsPhone()
   @IsNotEmpty()
   celular: string;
 

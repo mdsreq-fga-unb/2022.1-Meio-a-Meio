@@ -3,6 +3,7 @@ import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { isCPF } from "brazilian-values";
 
 @Injectable()
 export class AlunoService {
@@ -12,6 +13,9 @@ export class AlunoService {
   ) {}
 
   async create(data: CreateAlunoDto) {
+    if(isCPF(data.cpf)) {
+      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
       throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
@@ -41,8 +45,8 @@ export class AlunoService {
       aluno.especializacao = data.especializacao;
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
-      aluno.createAt = new Date();
-      aluno.updateAt = new Date();
+      aluno.create_at = new Date();
+      aluno.update_at = new Date();
     
       return this.alunoRepository.save(aluno);
     } catch(error) {

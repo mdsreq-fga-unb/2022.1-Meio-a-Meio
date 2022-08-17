@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-//classe para que se declare que existe um usuario e o que ele é no db
-@Entity() //no mysql vira uma tabela
+
+@Entity() 
 export class Aluno {
   @PrimaryGeneratedColumn()
   id: number;
@@ -57,8 +57,8 @@ export class Aluno {
   observacao: string;
 
   @Column({ type: 'date' })
-  createAt: Date;
+  create_at: Date;
 
   @Column({ type: 'date' })
-  updateAt: Date;
+  update_at: Date;
 }
