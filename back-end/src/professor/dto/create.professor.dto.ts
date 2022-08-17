@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsOptional, IsNumber } from "class-validator";
-import { IsCPF, IsPhone } from "brazilian-class-validator";
+import { IsCPF, IsDDD, IsPhone } from "brazilian-class-validator";
 
 export class CreateProfessorDto {
 
@@ -9,6 +9,10 @@ export class CreateProfessorDto {
 
   @IsNotEmpty()
   data_de_nascimento: string;
+
+  @IsNotEmpty()
+  @IsString()
+  nacionalidade: string;
 
   @IsCPF()
   @IsNotEmpty()
@@ -26,6 +30,10 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   orgao_emissor: string;
 
+  @IsDDD()
+  @IsNotEmpty()
+  ddd: string;
+
   @IsPhone()
   @IsNotEmpty()
   celular: string;
@@ -40,11 +48,15 @@ export class CreateProfessorDto {
 
   @IsString()
   @IsNotEmpty()
+  formacao_academica: string;
+
+  @IsString()
+  @IsNotEmpty()
   especializacao: string;
 
   @IsString()
   @IsNotEmpty()
-  sexo: string;
+  genero: string;
 
   @IsOptional()
   @IsString()

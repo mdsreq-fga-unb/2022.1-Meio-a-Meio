@@ -14,6 +14,9 @@ export class Professor {
   @Column({ type: 'date' })
   data_de_nascimento: string;
 
+  @Column({ length: 30 })
+  nacionalidade: string;
+
   @Column({ length: 11 })
   cpf: string;
 
@@ -27,6 +30,9 @@ export class Professor {
   orgao_emissor: string;
 
   @Column()
+  ddd: string;
+
+  @Column()
   celular: string;
 
   @Column()
@@ -36,10 +42,13 @@ export class Professor {
   uf_crm: string;
 
   @Column({ length: 30 })
+  formacao_academica: string;
+
+  @Column({ length: 30 })
   especializacao: string;
 
   @Column({ length: 20 })
-  sexo: string;
+  genero: string;
 
   @Column({ length: 200, nullable: true })
   observacao: string;
