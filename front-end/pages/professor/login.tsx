@@ -28,19 +28,19 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-export default function Cadastro() {
+export default function Login() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get('email'),
-      senha: data.get('senha'),
+      password: data.get('password'),
     });
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="lg">
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
@@ -54,64 +54,57 @@ export default function Cadastro() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Cadastre-se
+            Entrar no Sistema
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
-          <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="nomeDisciplina"
-                  label="Nome da Disciplina"
-                  name="nomeDisciplina"
-                  autoComplete="nomeDisciplina"
-                />
-              </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  required
-                  fullWidth
-                  id="localizacao"
-                  label="Localização"
-                  name="localizacao"
-                />
-              </Grid>
-
-              </Grid>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="matricula"
+              label="Matrícula"
+              name="matricula"
+              autoComplete="matricula"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="senha"
+              label="Senha"
+              type="senha"
+              id="senha"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Lembre-se de mim"
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Disciplina
+              Entrar
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Esqueceu a senha?
+                </Link>
+              </Grid>
               <Grid item>
-              
+                <Link href="#" variant="body2">
+                  {"Não possui uma conta? Inscreva-se"}
+                </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
 }
-
-/* 
-nome completo
-matrciula
-data de nascimento
-cpf
-rg
-emissora_rg
-uf_rg
-ddd+telefone
-crm
-uf_crm
-sexo
-especializacao
-email
-*/

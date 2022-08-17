@@ -17,8 +17,8 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio">
+        Meio a Meio
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -93,7 +93,7 @@ export default function Cadastro() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Aluno
+              Cadastrar Turma
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
@@ -108,7 +108,7 @@ export default function Cadastro() {
   );
 }
 
-/* 
+
 nome completo
 matrciula
 data de nascimento

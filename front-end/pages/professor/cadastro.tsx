@@ -17,8 +17,8 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio">
+        Meio a Meio
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -54,7 +54,7 @@ export default function Cadastro() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Cadastre-se
+            Dados Cadastrais
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
@@ -207,7 +207,7 @@ export default function Cadastro() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Aluno
+              Cadastrar Professor
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
