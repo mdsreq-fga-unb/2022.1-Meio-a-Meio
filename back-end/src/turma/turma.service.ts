@@ -16,8 +16,6 @@ export class TurmaService {
 
     let turma = new CreateTurmaDto();
     turma.nomeTurma = createTurmaDto.nomeTurma;
-    turma.disciplina = createTurmaDto.disciplina;
-    turma.professor = createTurmaDto.professor;
     turma.horarios = createTurmaDto.horarios;
     turma.dias = createTurmaDto.dias;
 

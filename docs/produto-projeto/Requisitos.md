@@ -51,7 +51,7 @@
 |  RF21 |   Deverá ser possível visualizar turmas |
 |  RF22 |   Deverá ser possível visualizar calendário escolar |
 |  RF23 |   Deverá ser possível solicitar matrícula em estágio |
-|  RF24 |   Deverá ser possível matricular aluno em estágio |
+|  RF24! |   Deverá ser possível matricular aluno em estágio |
 |  RF25 |   Deverá ser possível cadastrar diário de aula |
 |  RF26 |   Deverá ser possível visualizar diário de aula |
 |  RF27 |   Deverá ser possível armazenar provas de alunos |
@@ -76,7 +76,7 @@
 
 ### Mínimo Produto Viável (MVP)
 
-[Link Canvas MVP 1]()
+[Link Canvas MVP 1](https://miro.com/app/board/uXjVOlmuidc=/)
 
 ### Backlog do Produto
 
@@ -91,42 +91,33 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM5 |               O administrador deve ser capaz de cadastrar cursos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM6 |               O administrador deve ser capaz de cadastrar disciplinas.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM7 |               O administrador deve ser capaz de cadastrar disciplinas em cursos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM8 |               O administrador deve ser capaz de cadastrar sub-disciplinas.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM9 |               O administrador deve ser capaz de cadastrar disciplinas especiais.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM10 |               O administrador deve ser capaz de criar turmas das disciplinas.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM11 |               O administrador deve ser capaz de cadastrar o calendário escolar.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM12 |               O administrador deve ser capaz de cadastrar eventos do calendário escolar.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM13 |               O administrador deve ser capaz de cadastrar contratos relacionados ao curso.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM8 |               O administrador deve ser capaz de cadastrar disciplinas especiais.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM9 |               O administrador deve ser capaz de criar turmas das disciplinas.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM10 |               O administrador deve ser capaz de cadastrar o calendário escolar.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM11 |               O administrador deve ser capaz de cadastrar contratos relacionados ao curso.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG1 |               O usuário deve ser capaz de acessar o sistema por login e senha.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG2 |               O usuário deve ser capaz de gerar ficha de matrícula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções geraisr | FG4 |               O usuário deve ser capaz de visualizar informações dos cursos.               |    Alta    |
+| Gerenciamento Acadêmico | Funções gerais | FG4 |               O usuário deve ser capaz de visualizar informações dos cursos.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG5 |               O usuário deve ser capaz de visualizar informações das disciplinas.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG6 |               O usuário deve ser capaz de visualizar informações das sub-disciplinas.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG7 |               O usuário deve ser capaz de visualizar informações das disciplinas especiais.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG8 |               O usuário deve ser capaz de visualizar das turmas.               |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG9 |               O usuário deve ser capaz de visualizar calendário escolar.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA1 |               O aluno deve ser capaz de gerar seu histórico escolar.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA2 |               O aluno deve ser capaz de gerar atestado de matrícula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA3 |               O aluno deve ser capaz de gerar sua ficha de aluno.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA4 |               O aluno deve ser capaz de gerar seu boletim.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA7 |               O aluno deve ser capaz de solicitar matrícula em estágios.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA1 |               O aluno deve ser capaz de solicitar matrícula em estágios.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP1 |               O professor deve ser capaz de alterar suas informações.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP2 |               O professor deve ser capaz de visualizar suas informações.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP3 |               O professor deve ser capaz de cadastrar diário de aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP4 |               O professor deve ser capaz de visualizar informações dos diários de aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP5 |               O professor deve ser capaz de armazenar provas de alunos utilizadas em aula.               |    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP6 |               O professor deve ser capaz de visualizar provas guardadas.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP7 |               O professor deve ser capaz de armazenar notas de atividades dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP8 |               O professor deve ser capaz de visualizar notas de atividades dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP9 |               O professor deve ser capaz de armazenar notas de provas dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP10 |               O professor deve ser capaz de visualizar notas de provas dos alunos.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP11 |               O professor deve ser capaz de gerar lista de presença em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP12 |               O professor deve ser capaz de visualizar lista de presença em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP13 |               O professor deve ser capaz de armazenar lista de presença em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP14 |               O professor deve ser capaz de gerar abonos para falta em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP15 |               O professor deve ser capaz de visualizar abonos para falta em aula.               |    Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de gerar relatórios de aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP7 |               O professor deve ser capaz de armazenar notas de provas dos alunos na disciplina.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP8 |               O professor deve ser capaz de visualizar notas de provas dos alunos.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP9 |               O professor deve ser capaz de gerar lista de presença em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP10 |               O professor deve ser capaz de visualizar lista de presença em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP11 |               O professor deve ser capaz de gerar abonos para falta em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP12 |               O professor deve ser capaz de visualizar abonos para falta em aula.               |    Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP13 |               O professor deve ser capaz de gerar relatórios de aula.               |    Alta    |
 
 
 #### Legenda:

@@ -1,7 +1,7 @@
 import { Column, Entity } from "typeorm";
 
 @Entity()
-export class TuramAluno{
+export class TurmaAluno{
     @Column()
     id: number;
 
