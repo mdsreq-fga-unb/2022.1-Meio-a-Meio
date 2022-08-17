@@ -1,5 +1,4 @@
 import { IsString, IsNotEmpty, IsOptional } from "class-validator";
-import { IsCPF } from "brazilian-class-validator";
 
 export class CreateProfessorDto {
 
@@ -7,7 +6,6 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   nomeCompleto: string;
 
-  @IsCPF()
   @IsNotEmpty()
   cpf: string;
  
