@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { DisciplinaService } from './disciplina.service';
 import { DisciplinaController } from './disciplina.controller';
-import { DatabaseModule } from 'src/model/database/database.module';
+import { DatabaseModule } from '../database/database.module';
 import { disciplinaProviders } from './disciplina.providers';
 
 @Module({

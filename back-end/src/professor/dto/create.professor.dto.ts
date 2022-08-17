@@ -10,7 +10,6 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   data_de_nascimento: string;
 
-  @IsCPF()
   @IsNotEmpty()
   cpf: string;
 
