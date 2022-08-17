@@ -5,7 +5,7 @@ export class Turma {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ length: 50 })
     nomeTurma: string;
 
     /*

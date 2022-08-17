@@ -1,25 +1,20 @@
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsInt, IsNotEmpty, IsString, Length, MaxLength, MinLength } from "class-validator";
+import { DiaDaSemana } from "../entities/turma-dia";
 
 
 export class CreateTurmaDto {
     
     @IsString()
     @IsNotEmpty()
+    @MinLength(4)
+    @MaxLength(50)
     nomeTurma: string;
 
-    @IsString()
     @IsNotEmpty()
-    dias: string;
+    dias: DiaDaSemana[];
 
     @IsString()
     @IsNotEmpty()
     horarios: string;
 
-    @IsInt()
-    @IsNotEmpty()
-    professor: number;
-
-    @IsInt()
-    @IsNotEmpty()
-    disciplina: number;
 }
