@@ -17,6 +17,9 @@ import Head from 'next/head';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
 
 function Copyright(props: any) {
   return (
@@ -184,17 +187,6 @@ export default function Cadastro() {
                  
                 />
               </Grid>
-              <Grid item xs={2.5}> 
-                <TextField
-                  required
-                  fullWidth
-                  name="genero"
-                  label="Gênero"
-                  type="genero"
-                  id="genero"
-                 
-                />
-              </Grid>
               <Grid item xs={4}>
                 <TextField
                   required
@@ -215,6 +207,26 @@ export default function Cadastro() {
                   id="formacao_academica"
                 />
               </Grid>
+              
+              <Grid item xs={2.5}> 
+                <FormControl fullWidth>
+                <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Gênero
+                </InputLabel>
+                    <NativeSelect
+                    defaultValue={30}
+                    inputProps={{
+                    name: 'genero',
+                    id: 'uncontrolled-native',
+                  }}
+                >
+                  <option value={1}>Homem</option>
+                  <option value={2}>Mulher</option>
+                  </NativeSelect>
+                </FormControl>
+                
+              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   fullWidth
