@@ -1,5 +1,4 @@
 import { IsString, IsNotEmpty, IsNumber } from "class-validator";
-import { IsCPF, IsDDD, IsPhone } from "brazilian-class-validator";
 
 export class CreateStudentDto {
  
@@ -7,7 +6,6 @@ export class CreateStudentDto {
   @IsNotEmpty()
   nomeCompleto: string;
 
-  @IsCPF()
   @IsNotEmpty()
   cpf: string;
 
@@ -33,7 +31,6 @@ export class CreateStudentDto {
   @IsNotEmpty()
   ddd: number;
 
-  @IsPhone()
   @IsNotEmpty()
   celular: number;
 
