@@ -14,6 +14,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 function Copyright(props: any) {
   return (
@@ -31,6 +34,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Cadastro() {
+  const [value, setValue] = React.useState<Date | null>(null);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -65,7 +69,7 @@ export default function Cadastro() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-          <Grid item xs={12}>
+          <Grid item xs={4}>
                 <TextField
                   required
                   fullWidth
@@ -75,7 +79,7 @@ export default function Cadastro() {
                   autoComplete="nomeCompleto"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={3}>
                 <TextField
                   autoComplete="given-name"
                   name="matricula"
@@ -86,16 +90,19 @@ export default function Cadastro() {
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="dataNascimento"
+              <Grid item xs={3}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
                   label="Data de Nascimento"
-                  name="dataNascimento"
-                />
+                  value={value}
+                  onChange={(newValue) => {
+                  setValue(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={2}>
                 <TextField
                   required
                   fullWidth
@@ -104,47 +111,8 @@ export default function Cadastro() {
                   type="cpf"
                   id="cpf"
                 />
-              </Grid><Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="especialista"
-                  label="Especialista"
-                  type="especialista"
-                  id="especialista"
-                />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="rg"
-                  label="RG"
-                  type="rg"
-                  id="rg"
-                />
-              </Grid>
-              <Grid item xs={2} >
-                <TextField
-                  required
-                  fullWidth
-                  name="uf_rg"
-                  label="UF RG"
-                  type="uf_rg"
-                  id="uf_rg"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="emissor_rg"
-                  label="Emissor RG"
-                  type="emissor_rg"
-                  id="emissor_rg"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={2}>
                 <TextField
                   required
                   fullWidth
@@ -154,7 +122,47 @@ export default function Cadastro() {
                   id="telefone"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={3}>
+                <TextField
+                  required
+                  fullWidth
+                  name="nacionalidade"
+                  label="Nacionalidade"
+                  type="nacionalidade"
+                  id="nacionalidade"
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <TextField
+                  required
+                  fullWidth
+                  name="rg"
+                  label="RG"
+                  type="rg"
+                  id="rg"
+                />
+              </Grid>
+              <Grid item xs={1}>
+                <TextField
+                  required
+                  fullWidth
+                  name="uf_rg"
+                  label="UF"
+                  type="uf_rg"
+                  id="uf_rg"
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <TextField
+                  required
+                  fullWidth
+                  name="orgao_emissor"
+                  label="Órgao Emissor"
+                  type="orgao_emissor"
+                  id="orgao_emissor"
+                />
+              </Grid>
+              <Grid item xs={2}>
                 <TextField
                   required
                   fullWidth
@@ -165,29 +173,29 @@ export default function Cadastro() {
                  
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={1}>
                 <TextField
                   required
                   fullWidth
                   name="uf_crm"
-                  label="UF CRM"
+                  label="UF"
                   type="uf_crm"
                   id="uf_crm"
                  
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={2.5}> 
                 <TextField
                   required
                   fullWidth
-                  name="sexo"
-                  label="Sexo"
-                  type="sexo"
-                  id="sexo"
+                  name="genero"
+                  label="Gênero"
+                  type="genero"
+                  id="genero"
                  
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={4}>
                 <TextField
                   required
                   fullWidth
@@ -197,14 +205,23 @@ export default function Cadastro() {
                   id="especializacao"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={4.5}>
                 <TextField
                   required
                   fullWidth
-                  name="email"
-                  label="E-mail"
-                  type="email"
-                  id="email"
+                  name="formacao_academica"
+                  label="Formação acadêmica"
+                  type="formacao_academica"
+                  id="formacao_academica"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  name="observacoes"
+                  label="Observações"
+                  type="observacoes"
+                  id="observacoes"
                 />
               </Grid>
             </Grid>
