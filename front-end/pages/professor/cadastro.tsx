@@ -217,8 +217,19 @@ export default function Cadastro() {
             >
               Cadastrar Professor
             </Button>
-
             <Grid container justifyContent="flex-end">
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Esqueceu a senha?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="http://localhost:3000/professor/login" variant="body2">
+                  {"Já possui uma conta? Entrar"}
+                </Link>
+              </Grid>
+            </Grid>
+            <Grid container justifyContent="center">
               <Grid item>
                 <Link href="http://localhost:3000/" variant="body2">
                   {"Retornar ao Menu Principal"}

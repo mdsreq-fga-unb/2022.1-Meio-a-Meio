@@ -23,10 +23,10 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="http://localhost:3000/professor/login" className={styles.card}>
+          {/* <a href="http://localhost:3000/professor/login" className={styles.card}>
             <h2>Login &rarr;</h2>
             <p>Professor ou administrador, acesse sua conta por aqui</p>
-          </a>
+          </a> */}
 
           <a href="http://localhost:3000/professor/cadastro" className={styles.card}>
             <h2>Cadastre-se &rarr;</h2>
