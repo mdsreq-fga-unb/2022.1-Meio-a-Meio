@@ -3,7 +3,6 @@ import { CreateProfessorDto } from './dto/create.professor.dto';
 import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ProfessorService {
@@ -16,6 +15,9 @@ export class ProfessorService {
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
       throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
+    if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
+      throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
 
     try {
       const professor = new Professor();
@@ -23,12 +25,20 @@ export class ProfessorService {
       let amount = (await this.professorRepository.count()).valueOf();
 
       professor.matricula = generator.matriculaGenerator(amount, 3);
-      professor.nomeCompleto = data.nomeCompleto;
+      professor.nome_completo = data.nome_completo;
+      professor.data_de_nascimento = data.data_de_nascimento;
       professor.cpf = data.cpf;
-      professor.dataDeNascimento = data.dataDeNascimento;
-      professor.educacaoPrimaria = data.educacaoPrimaria;
-      professor.educacaoSecundaria = data.educacaoSecundaria;
+      professor.rg_rne = data.rg_rne;
+      professor.uf_rg_rne = data.uf_rg_rne;
+      professor.orgao_emissor = data.orgao_emissor;
+      professor.celular = data.celular;
+      professor.crm = data.crm;
+      professor.uf_crm = data.uf_crm;
+      professor.especializacao = data.especializacao;
+      professor.sexo = data.sexo;
       professor.observacao = data.observacao;
+      professor.create_at = new Date();
+      professor.update_at = new Date();
       
       return this.professorRepository.save(professor);
     } catch(error) {
@@ -40,6 +50,16 @@ export class ProfessorService {
     const professor = await this.professorRepository.findOne({
       where: {
         cpf
+      }
+    });
+    return professor; 
+  }
+
+  async validateIfCrmAndUfAlreadyExists(crm: string, uf_crm: string) {
+    const professor = await this.professorRepository.findOne({
+      where: {
+        crm,
+        uf_crm
       }
     });
     return professor; 
