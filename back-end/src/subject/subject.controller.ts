@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { ResultDTO } from '../dto/result.dto';
+import { ResultDTO } from '../model/dto/result.dto';
 import { CreateSubjectDTO } from './dto/subject.create.dto';
 import { SubjectService } from './subject.service';
 
