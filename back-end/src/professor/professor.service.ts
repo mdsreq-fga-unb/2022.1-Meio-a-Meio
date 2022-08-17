@@ -3,6 +3,7 @@ import { CreateProfessorDto } from './dto/create.professor.dto';
 import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { isCPF } from "brazilian-values";
 
 @Injectable()
 export class ProfessorService {
@@ -12,6 +13,9 @@ export class ProfessorService {
   ) {}
 
   async create(data: CreateProfessorDto) {
+    if(isCPF(data.cpf)) {
+      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
       throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
