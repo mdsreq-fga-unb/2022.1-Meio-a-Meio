@@ -97,6 +97,15 @@ export default function Cadastro() {
                   type="cpf"
                   id="cpf"
                 />
+              </Grid><Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  name="especialista"
+                  label="Especialista"
+                  type="especialista"
+                  id="especialista"
+                />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
