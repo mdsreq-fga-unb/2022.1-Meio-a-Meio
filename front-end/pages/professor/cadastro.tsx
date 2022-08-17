@@ -206,12 +206,16 @@ export default function Cadastro() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="http://localhost:3000/docente"
             >
               Cadastrar Professor
             </Button>
+
             <Grid container justifyContent="flex-end">
               <Grid item>
-              
+                <Link href="http://localhost:3000/" variant="body2">
+                  {"Retornar ao Menu Principal"}
+                </Link>
               </Grid>
             </Grid>
           </Box>

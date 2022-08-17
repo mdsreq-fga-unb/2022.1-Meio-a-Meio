@@ -54,7 +54,7 @@ export default function Cadastro() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Cadastre-se
+            Insira os dados cadastrais da disciplina
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
@@ -84,12 +84,15 @@ export default function Cadastro() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="http://localhost:3000/docente"
             >
               Cadastrar Disciplina
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-              
+              <Link href="http://localhost:3000/docente" variant="body2">
+                  {"Retornar ao Portal do Docente"}
+                </Link>
               </Grid>
             </Grid>
           </Box>

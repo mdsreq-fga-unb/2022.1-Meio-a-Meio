@@ -86,9 +86,11 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="http://localhost:3000/docente"
             >
               Entrar
             </Button>
+            
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -96,8 +98,15 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="http://localhost:3000/professor/cadastro" variant="body2">
                   {"Não possui uma conta? Inscreva-se"}
+                </Link>
+              </Grid>
+            </Grid>
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Link href="http://localhost:3000/" variant="body2">
+                  {"Retornar ao Menu Principal"}
                 </Link>
               </Grid>
             </Grid>
