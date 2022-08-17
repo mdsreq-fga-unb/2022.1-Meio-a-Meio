@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 //classe para que se declare que existe um usuario e o que ele é no db
 @Entity() //no mysql vira uma tabela
-export class Student {
+export class Aluno {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -9,56 +9,56 @@ export class Student {
   matricula: string;
 
   @Column({ length: 100 })
-  nomeCompleto: string;
+  nome_completo: string;
 
-  @Column({ length: 11 })
-  cpf: string;
+  @Column({ length: 20 })
+  genero: string;
 
   @Column({ type: 'date' })
-  dataDeNascimento: string;
+  data_de_nascimento: string;
 
   @Column({ length: 30 })
   nacionalidade: string;
 
+  @Column({ length: 11 })
+  cpf: string;
+
   @Column()
-  rgORrne: number;
+  rg_rne: number;
 
   @Column({ length: 2 })
-  UFrgORrne: string;
+  uf_rg_rne: string;
 
   @Column({ length: 10 })
-  orgaoEmissor: string;
+  orgao_emissor: string;
 
   @Column()
-  ddd: number;
+  ddd: string;
 
   @Column()
-  celular: number;
-
-  @Column({ length: 30 })
-  endereco: string;
+  celular: string;
 
   @Column()
   crm: string;
 
   @Column({ length: 2 })
-  UFcrm: string;
+  uf_crm: string;
+
+  @Column({ length: 30 })
+  formacao_academica: string;
 
   @Column({ length: 30 })
   especializacao: string;
 
-  @Column({ length: 20 })
-  sexo: string;
+  @Column({ length: 50 })
+  status_financeiro: string;
 
-  @Column({ length: 30 })
-  enderecoResidencial: string;
+  @Column({ length: 100, nullable: true })
+  observacao: string;
 
-  @Column({ length: 20 })
-  bairro: string;
+  @Column({ type: 'date' })
+  createAt: Date;
 
-  @Column({ length: 30 })
-  cidade: string;
-
-  @Column()
-  statusEndereco: string;
+  @Column({ type: 'date' })
+  updateAt: Date;
 }
