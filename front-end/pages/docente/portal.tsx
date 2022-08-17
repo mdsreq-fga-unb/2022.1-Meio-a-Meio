@@ -20,7 +20,7 @@ const Docente: NextPage = () => {
         </h1>
 
         <p className={styles.description}>
-          Acesse aqui as infações desejadas{' '}
+          Acesse aqui as informações desejadas{' '}
           {/* <code className={styles.code}>pages/index.tsx</code> */}
         </p>
 
