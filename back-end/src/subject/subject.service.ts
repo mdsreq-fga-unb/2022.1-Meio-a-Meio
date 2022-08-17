@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { ResultDTO } from '../dto/result.dto';
+import { ResultDTO } from '../model/dto/result.dto';
 import { CreateSubjectDTO } from './dto/subject.create.dto';
 import { Subject } from './subject.entity';
 
