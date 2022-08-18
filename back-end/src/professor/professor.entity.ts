@@ -59,6 +59,9 @@ export class Professor {
   @Column({ length: 200, nullable: true })
   observacao: string;
 
+  @Column()
+  status: number;
+
   @Column({ type: 'date' })
   create_at: Date;
 
