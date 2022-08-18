@@ -1,7 +1,7 @@
-import { IsString, IsNotEmpty, IsOptional, IsNumber, IsBoolean, IsEmail } from "class-validator";
+import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
 
-export class CreateProfessorDto {
-
+export class CreateAlunoDto {
+ 
   @IsString()
   @IsNotEmpty()
   nome_completo: string;
@@ -10,11 +10,15 @@ export class CreateProfessorDto {
   @IsString()
   matricula: string;
 
+  @IsString()
+  @IsNotEmpty()
+  sexo: string;
+
   @IsNotEmpty()
   data_de_nascimento: string;
 
-  @IsNotEmpty()
   @IsString()
+  @IsNotEmpty()
   nacionalidade: string;
 
   @IsEmail()
@@ -42,12 +46,12 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   celular: string;
 
-  @IsOptional()
   @IsString()
+  @IsNotEmpty()
   crm: string;
 
-  @IsOptional()
   @IsString()
+  @IsNotEmpty()
   uf_crm: string;
 
   @IsString()
@@ -58,13 +62,9 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   especializacao: string;
 
-  @IsBoolean()
-  @IsNotEmpty()
-  especialista: boolean;
-
   @IsString()
   @IsNotEmpty()
-  sexo: string;
+  status_financeiro: string;
 
   @IsOptional()
   @IsString()
