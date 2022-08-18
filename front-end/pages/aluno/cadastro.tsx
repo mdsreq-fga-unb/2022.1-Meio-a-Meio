@@ -42,11 +42,15 @@ const theme = createTheme();
 export default function Cadastro() {
   const [value, setValue] = useState<Date | null>(null);
   const [gender, setGender] = useState('');
+  const [boolean, setBoolean] = useState('');
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
 
    const handleChange = (event: SelectChangeEvent) => {
     setGender(event.target.value);
+  };
+  const handleBoolean = (event: SelectChangeEvent) => {
+    setBoolean(event.target.value);
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -270,7 +274,7 @@ export default function Cadastro() {
                   value= {data?data.nacionalidade:""}
                 />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2.5}>
                 <TextField
                   required
                   inputProps={{
@@ -304,14 +308,21 @@ export default function Cadastro() {
                   value= {data?data.uf_rg_rne:""}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={2.5}>
                 <TextField
                   required
+                  inputProps={{
+                    maxLength: 6,
+                  }}
+                  error={errors.crm?true:false}
+                  helperText={errors.crm||null}
                   fullWidth
                   name="crm"
                   label="CRM"
                   type="crm"
                   id="crm"
+                  onChange={handleNumber}
+                  value= {data?data.crm:""}
                 />
               </Grid>
               <Grid item xs={1}>
@@ -343,7 +354,7 @@ export default function Cadastro() {
                   value= {data?data.especializacao:""}
                 />
               </Grid>
-              <Grid item xs={2.7}>
+              <Grid item xs={3}>
                 <TextField
                   required
                   error={errors.formacao_academica?true:false}
@@ -357,15 +368,15 @@ export default function Cadastro() {
                   value= {data?data.formacao_academica:""}
                 />
               </Grid>
-              <Grid item xs={1.8}> 
+              <Grid item xs={2}> 
                 <FormControl fullWidth>
                 <InputLabel id="inadimplencia" required>Inadimplência?</InputLabel>
                   <Select
                     labelId="inadimplencia"
                     id="inadimplencia"
                     label="Inadimplência?"
-                    value={gender}
-                    onChange={handleChange}
+                    value={boolean}
+                    onChange={handleBoolean}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -375,7 +386,7 @@ export default function Cadastro() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={2.5}> 
+              <Grid item xs={3}> 
                 <FormControl fullWidth>
                 <InputLabel id="sexo" required>Sexo</InputLabel>
                   <Select
@@ -388,22 +399,12 @@ export default function Cadastro() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>Homem</MenuItem>
-                    <MenuItem value={20}>Mulher</MenuItem>
+                    <MenuItem value={1}>Homem</MenuItem>
+                    <MenuItem value={2}>Mulher</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  name="especializacao"
-                  label="Especialização"
-                  type="especializacao"
-                  id="especializacao"
-                />
-              </Grid>
-              <Grid item xs={2.7}>
+              <Grid item xs={3.5}>
                 <TextField
                   required
                   error={errors.email?true:false}
@@ -417,7 +418,7 @@ export default function Cadastro() {
                   value= {data?data.email:""}
                 />
 				      </Grid>
-              <Grid item xs={2.7}>
+              <Grid item xs={6.5}>
                 <TextField
                   required
                   error={errors.endereco?true:false}
@@ -431,7 +432,7 @@ export default function Cadastro() {
                   value= {data?data.endereco:""}
                 />
 				</Grid>
-				<Grid item xs={2.7}>
+				<Grid item xs={2}>
                 <TextField
                   fullWidth
                   name="telefoneResidencial"
@@ -459,16 +460,6 @@ export default function Cadastro() {
               Cadastrar Aluno
             </Button>
             <Grid container justifyContent="flex-end">
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Esqueceu a senha?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="http://localhost:3000/professor/login" variant="body2">
-                  {"Já possui uma conta? Entrar"}
-                </Link>
-              </Grid>
             </Grid>
             <Grid container justifyContent="center">
               <Grid item>

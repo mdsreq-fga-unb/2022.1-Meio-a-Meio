@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, moment} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -44,13 +44,16 @@ const theme = createTheme();
 export default function Cadastro() {
   const [value, setValue] = useState<Date | null>(null);
   const [gender, setGender] = useState('');
+  const [boolean, setBoolean] = useState('');
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
 
   const handleChange = (event: SelectChangeEvent) => {
     setGender(event.target.value);
   };
-
+  const handleBoolean = (event: SelectChangeEvent) => {
+    setBoolean(event.target.value);
+  };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(handleCheckData()){
@@ -109,7 +112,7 @@ export default function Cadastro() {
       uf_crm,
       especializacao,
       formacao_academica,
- 
+      email
     } = data;
     let emptyFields: any = {}
 
@@ -148,6 +151,9 @@ export default function Cadastro() {
     }
     if(!formacao_academica || formacao_academica.length === 0) {
       emptyFields.formacao_academica = "O campo de formação acadêmica não pode ser vazio"
+    }
+    if(!email || email.length === 0) {
+      emptyFields.email = "O campo de email não pode ser vazio"
     }
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);
@@ -367,8 +373,8 @@ export default function Cadastro() {
                     labelId="especialista"
                     id="especialista"
                     label="Especialista"
-                    value={gender}
-                    onChange={handleChange}
+                    value={boolean}
+                    onChange={handleBoolean}
                   >
                     <MenuItem value="">
                       <em>None</em>
@@ -405,13 +411,26 @@ export default function Cadastro() {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>Homem</MenuItem>
-                    <MenuItem value={20}>Mulher</MenuItem>
+                    <MenuItem value={1}>Homem</MenuItem>
+                    <MenuItem value={2}>Mulher</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-
-              <Grid item xs={12}>
+              <Grid item xs={6}>
+                <TextField
+                  required
+                  error={errors.email?true:false}
+                  helperText={errors.email||null}
+                  fullWidth
+                  name="email"
+                  label="Email"
+                  type="email"
+                  id="email"
+                  onChange={handleText}
+                  value= {data?data.email:""}
+                />
+				      </Grid>
+              <Grid item xs={6}>
                 <TextField
                   fullWidth
                   name="observacoes"
