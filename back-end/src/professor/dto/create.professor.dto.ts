@@ -11,7 +11,7 @@ export class CreateProfessorDto {
   matricula: string;
 
   @IsNotEmpty()
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @IsNotEmpty()
   @IsString()
