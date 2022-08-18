@@ -53,9 +53,9 @@ export default function Cadastro() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // if(handleCheckData()){
-    //   return;
-    // }
+    if(handleCheckData()){
+      return;
+    }
     apiRequest.post('professor/create',{
       "nome_completo": "Bruna",
       "data_de_nascimento": "2000/01/01",
@@ -97,13 +97,13 @@ export default function Cadastro() {
 
   const handleCheckData = () => {
     const {
-      nomeCompleto ,
+      nome_completo ,
       matricula,
       cpf,
-      telefone,
+      celular,
       nacionalidade,
-      rg,
-      uf_rg,
+      rg_rne,
+      uf_rg_rne,
       orgao_emissor,
       crm,
       uf_crm,
@@ -113,41 +113,41 @@ export default function Cadastro() {
     } = data;
     let emptyFields: any = {}
 
-    if(!nomeCompleto || nomeCompleto.length === 0) {
-      emptyFields.nomeCompleto = "Nome Vazio"
+    if(!nome_completo || nome_completo.length === 0) {
+      emptyFields.nome_completo = "O campo de nome não pode ser vazio"
     } 
     // if(!matricula || matricula.length === 0) {
     //   setErrors({...errors, matricula:"Matricula Vazia"})
     // }
     if(!cpf || cpf.length === 0) {
-      emptyFields.cpf = "CPF Vazio"
+      emptyFields.cpf = "O campo de CPF não pode ser vazio"
     }
-    if(!telefone || telefone.length === 0) {
-      emptyFields.telefone = "Telefone Vazio"
+    if(!celular || celular.length === 0) {
+      emptyFields.celular = "O campo de celular não pode ser vazio"
     }
     if(!nacionalidade || nacionalidade.length === 0) {
-      emptyFields.nacionalidade = "Nacionalidade Vazia"
+      emptyFields.nacionalidade = "O campo de nacionalidade não pode ser vazio"
     }
-    if(!rg || rg.length === 0) {
-      emptyFields.rg = "RG Vazio"
+    if(!rg_rne || rg_rne.length === 0) {
+      emptyFields.rg_rne = "O campo de RG não pode ser vazio"
     }
-    if(!uf_rg || uf_rg.length === 0) {
-      emptyFields.uf_rg = "UF Vazio"
+    if(!uf_rg_rne || uf_rg_rne.length === 0) {
+      emptyFields.uf_rg_rne = "Preencha o UF"
     }
     if(!orgao_emissor || orgao_emissor.length === 0) {
-      emptyFields.orgao_emissor = "Orgao Emissor Vazio"
+      emptyFields.orgao_emissor = "O campo de órgao emissor não pode ser vazio"
     }
     if(!crm || crm.length === 0) {
-      emptyFields.crm = "CRM Vazio"
+      emptyFields.crm = "O campo de CRM não pode ser vazio"
     }
     if(!uf_crm || uf_crm.length === 0) {
-      emptyFields.uf_crm = "UF Vazio"
+      emptyFields.uf_crm = "Preencha o UF"
     }
     if(!especializacao || especializacao.length === 0) {
-      emptyFields.especializacao = "Especialização Vazia"
+      emptyFields.especializacao = "O campo de especialização não pode ser vazio"
     }
     if(!formacao_academica || formacao_academica.length === 0) {
-      emptyFields.formacao_academica = "Formação Acadêmica Vazia"
+      emptyFields.formacao_academica = "O campo de formação acadêmica não pode ser vazio"
     }
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);
@@ -184,15 +184,15 @@ export default function Cadastro() {
           <Grid item xs={4}>
                 <TextField
                   required
-                  error={errors.nomeCompleto?true:false}
-                  helperText={errors.nomeCompleto||null}
+                  error={errors.nome_completo?true:false}
+                  helperText={errors.nome_completo||null}
                   fullWidth
-                  id="nomeCompleto"
+                  id="nome_completo"
                   label="Nome Completo"
-                  name="nomeCompleto"
-                  autoComplete="nomeCompleto"
+                  name="nome_completo"
+                  autoComplete="nome_completo"
                   onChange={handleText}
-                  value= {data?data.nomeCompleto:""}
+                  value= {data?data.nome_completo:""}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -220,6 +220,9 @@ export default function Cadastro() {
               <Grid item xs={2}>
                 <TextField
                   required
+                  inputProps={{
+                    maxLength: 11,
+                  }}
                   error={errors.cpf?true:false}
                   helperText={errors.cpf||null}
                   fullWidth
@@ -234,15 +237,18 @@ export default function Cadastro() {
               <Grid item xs={2}>
                 <TextField
                   required
-                  error={errors.telefone?true:false}
-                  helperText={errors.telefone||null}
+                  inputProps={{
+                    maxLength: 11,
+                  }}
+                  error={errors.celular?true:false}
+                  helperText={errors.celular||null}
                   fullWidth
-                  name="telefone"
-                  label="Telefone"
-                  type="telefone"
-                  id="telefone"
+                  name="celular"
+                  label="Celular"
+                  type="celular"
+                  id="celular"
                   onChange={handleNumber}
-                  value= {data?data.telefone:""}
+                  value= {data?data.celular:""}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -262,29 +268,35 @@ export default function Cadastro() {
               <Grid item xs={2}>
                 <TextField
                   required
-                  error={errors.rg?true:false}
-                  helperText={errors.rg||null}
+                  inputProps={{
+                    maxLength: 7,
+                  }}
+                  error={errors.rg_rne?true:false}
+                  helperText={errors.rg_rne||null}
                   fullWidth
-                  name="rg"
-                  label="RG"
-                  type="rg"
-                  id="rg"
+                  name="rg_rne"
+                  label="RG/RNE"
+                  type="rg_rne"
+                  id="rg_rne"
                   onChange={handleNumber}
-                  value= {data?data.rg:""}
+                  value= {data?data.rg_rne:""}
                 />
               </Grid>
               <Grid item xs={1}>
                 <TextField
                   required
-                  error={errors.uf_rg?true:false}
-                  helperText={errors.uf_rg||null}
+                  inputProps={{
+                    maxLength: 2,
+                  }}
+                  error={errors.uf_rg_rne?true:false}
+                  helperText={errors.uf_rg_rne||null}
                   fullWidth
-                  name="uf_rg"
+                  name="uf_rg_rne"
                   label="UF"
-                  type="uf_rg"
-                  id="uf_rg"
+                  type="uf_rg_rne"
+                  id="uf_rg_rne"
                   onChange={handleText}
-                  value= {data?data.uf_rg:""}
+                  value= {data?data.uf_rg_rne:""}
                 />
               </Grid>
               <Grid item xs={2}>
@@ -304,6 +316,9 @@ export default function Cadastro() {
               <Grid item xs={2}>
                 <TextField
                   required
+                  inputProps={{
+                    maxLength: 6,
+                  }}
                   error={errors.crm?true:false}
                   helperText={errors.crm||null}
                   fullWidth
@@ -318,6 +333,9 @@ export default function Cadastro() {
               <Grid item xs={1}>
                 <TextField
                   required
+                  inputProps={{
+                    maxLength: 2,
+                  }}
                   error={errors.uf_crm?true:false}
                   helperText={errors.uf_crm||null}
                   fullWidth
