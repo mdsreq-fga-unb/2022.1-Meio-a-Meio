@@ -104,6 +104,11 @@ export default function Cadastro() {
               Cadastrar Turma
             </Button>
             <Grid container justifyContent="flex-end">
+            <Grid item xs>
+                <Link href="http://localhost:3000/" variant="body2">
+                  Retornar ao Menu Principal
+                </Link>
+              </Grid>
               <Grid item>
                 <Link href="http://localhost:3000/docente/portal" variant="body2">
                   {"Retornar ao Portal do Docente"}
