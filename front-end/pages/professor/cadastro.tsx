@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent, moment} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,6 +23,8 @@ import NativeSelect from '@mui/material/NativeSelect';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import apiRequest from '../../util/apiRequest';
+import FormHelperText from '@mui/material/FormHelperText';
+
 
 
 function Copyright(props: any) {
@@ -50,9 +52,13 @@ export default function Cadastro() {
 
   const handleChange = (event: SelectChangeEvent) => {
     setGender(event.target.value);
+    let tempErrors = errors
+    setErrors(tempErrors);
   };
   const handleBoolean = (event: SelectChangeEvent) => {
     setBoolean(event.target.value);
+    let tempErrors = errors
+    setErrors(tempErrors);
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -112,7 +118,8 @@ export default function Cadastro() {
       uf_crm,
       especializacao,
       formacao_academica,
-      email
+      email,
+      especialista,
     } = data;
     let emptyFields: any = {}
 
