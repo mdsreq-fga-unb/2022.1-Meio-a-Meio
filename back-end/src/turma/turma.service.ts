@@ -16,8 +16,9 @@ export class TurmaService {
 
     let turma = new CreateTurmaDto();
     turma.nomeTurma = createTurmaDto.nomeTurma;
-    turma.horarios = createTurmaDto.horarios;
+    turma.alunos = createTurmaDto.alunos;
     turma.dias = createTurmaDto.dias;
+    turma.horarios = createTurmaDto.horarios;
 
     const errors = await validate(turma)
 

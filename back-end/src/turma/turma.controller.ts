@@ -9,7 +9,8 @@ export class TurmaController {
   constructor(private readonly turmaService: TurmaService) {}
 
   @Post()
-  create(@Body() createTurmaDto: CreateTurmaDto) {   
+  create(@Body() createTurmaDto: CreateTurmaDto) {  
+    console.log("POST")
     return this.turmaService.create(createTurmaDto);
   }
 

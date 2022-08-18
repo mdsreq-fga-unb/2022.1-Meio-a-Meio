@@ -1,5 +1,12 @@
 import { DataSource } from 'typeorm';
 import { config } from 'dotenv';
+import { Aluno } from 'src/aluno/aluno.entity';
+import { Turma } from 'src/turma/entities/turma.entity';
+import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { Professor } from 'src/professor/professor.entity';
+import { Curso } from 'src/curso/curso.entity';
+import { TurmaAluno } from 'src/turma/entities/turma-aluno';
+
 
 config();
 export const databaseProviders = [
@@ -13,7 +20,7 @@ export const databaseProviders = [
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+        entities: [Aluno, Disciplina, Professor, Curso, Turma],
         synchronize: true,
       });
 
