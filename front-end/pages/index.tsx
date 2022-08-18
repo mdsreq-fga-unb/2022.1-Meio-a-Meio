@@ -55,7 +55,7 @@ const Home: NextPage = () => {
             className={styles.card}
           >
             <h2>Disciplinas &rarr;</h2>
-            <p>Cadastre novas turmas por meio desta opção</p>
+            <p>Cadastre novas disciplinas por meio desta opção</p>
           </a>
         </div>
       </main>
