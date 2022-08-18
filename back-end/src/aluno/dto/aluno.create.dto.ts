@@ -41,9 +41,6 @@ export class CreateAlunoDto {
   orgao_emissor: string;
 
   @IsNotEmpty()
-  ddd: string;
-
-  @IsNotEmpty()
   celular: string;
 
   @IsString()

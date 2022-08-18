@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Endereco } from 'src/endereco/endereco.entity';
 
 @Entity() 
 export class Aluno {
@@ -36,9 +37,6 @@ export class Aluno {
   orgao_emissor: string;
 
   @Column()
-  ddd: string;
-
-  @Column()
   celular: string;
 
   @Column()
@@ -57,9 +55,6 @@ export class Aluno {
   status_financeiro: string;
 
   @Column({ nullable: true })
-  ddd_residencial: string;
-
-  @Column({ nullable: true })
   telefone_residencial: number;
 
   @Column({ length: 100, nullable: true })
@@ -73,4 +68,7 @@ export class Aluno {
 
   @Column({ type: 'date' })
   update_at: Date;
+
+  @OneToMany(type => Endereco, endereco => endereco.aluno_id)
+  enderecos: Endereco[];
 }
