@@ -13,7 +13,7 @@ export class AlunoService {
   ) {}
 
   async create(data: CreateAlunoDto) {
-    if(isCPF(data.cpf)) {
+    if(!isCPF(data.cpf)) {
       throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
@@ -23,16 +23,26 @@ export class AlunoService {
       throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
-    try {
-      const aluno = new Aluno();
+    const aluno = new Aluno();
+
+    if(data.matricula == null) {
       const generator = new RegisterGenerator();
       let amount = (await this.alunoRepository.count()).valueOf();
+      aluno.matricula = generator.matriculaGenerator(amount, 3);
+    } 
+    else if(await this.validateIfMatriculaAlreadyExists(data.matricula)) {
+      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    else {
+      aluno.matricula = data.matricula;
+    }
 
-      aluno.matricula = generator.matriculaGenerator(amount, 5);
+    try {
       aluno.nome_completo = data.nome_completo;
-      aluno.genero = data.genero;
+      aluno.sexo = data.sexo;
       aluno.data_de_nascimento = data.data_de_nascimento;
       aluno.nacionalidade = data.nacionalidade;
+      aluno.email = data.email;
       aluno.cpf = data.cpf;
       aluno.rg_rne = data.rg_rne;
       aluno.uf_rg_rne = data.uf_rg_rne;
@@ -45,6 +55,7 @@ export class AlunoService {
       aluno.especializacao = data.especializacao;
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
+      aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
       aluno.create_at = new Date();
       aluno.update_at = new Date();
     
@@ -68,6 +79,15 @@ export class AlunoService {
       where: {
         crm,
         uf_crm
+      }
+    });
+    return aluno; 
+  }
+
+  async validateIfMatriculaAlreadyExists(matricula: string) {
+    const aluno = await this.alunoRepository.findOne({
+      where: {
+        matricula
       }
     });
     return aluno; 

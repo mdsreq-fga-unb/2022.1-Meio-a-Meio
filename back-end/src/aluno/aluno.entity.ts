@@ -12,13 +12,16 @@ export class Aluno {
   nome_completo: string;
 
   @Column({ length: 20 })
-  genero: string;
+  sexo: string;
 
   @Column({ type: 'date' })
   data_de_nascimento: string;
 
   @Column({ length: 30 })
   nacionalidade: string;
+
+  @Column({ length: 100 })
+  email: string;
 
   @Column({ length: 11 })
   cpf: string;
@@ -53,8 +56,17 @@ export class Aluno {
   @Column({ length: 50 })
   status_financeiro: string;
 
+  @Column({ nullable: true })
+  ddd_residencial: string;
+
+  @Column({ nullable: true })
+  telefone_residencial: number;
+
   @Column({ length: 100, nullable: true })
   observacao: string;
+
+  @Column()
+  status: number;
 
   @Column({ type: 'date' })
   create_at: Date;

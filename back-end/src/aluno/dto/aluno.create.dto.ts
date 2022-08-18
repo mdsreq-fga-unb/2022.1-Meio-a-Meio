@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
+import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
 
 export class CreateAlunoDto {
  
@@ -6,9 +6,13 @@ export class CreateAlunoDto {
   @IsNotEmpty()
   nome_completo: string;
 
+  @IsOptional()
+  @IsString()
+  matricula: string;
+
   @IsString()
   @IsNotEmpty()
-  genero: string;
+  sexo: string;
 
   @IsNotEmpty()
   data_de_nascimento: string;
@@ -16,6 +20,10 @@ export class CreateAlunoDto {
   @IsString()
   @IsNotEmpty()
   nacionalidade: string;
+
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
 
   @IsNotEmpty()
   cpf: string;
