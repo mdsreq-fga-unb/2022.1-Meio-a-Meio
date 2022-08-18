@@ -1,15 +1,18 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class Professor {
+@Entity() 
+export class Aluno {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 7, nullable: true })
+  @Column({ length: 9 })
   matricula: string;
 
   @Column({ length: 100 })
   nome_completo: string;
+
+  @Column({ length: 20 })
+  sexo: string;
 
   @Column({ type: 'date' })
   data_de_nascimento: string;
@@ -26,7 +29,7 @@ export class Professor {
   @Column()
   rg_rne: number;
 
-  @Column({ length: 2})
+  @Column({ length: 2 })
   uf_rg_rne: string;
 
   @Column({ length: 10 })
@@ -38,10 +41,10 @@ export class Professor {
   @Column()
   celular: string;
 
-  @Column({ nullable: true })
+  @Column()
   crm: string;
 
-  @Column({ length: 2, nullable: true })
+  @Column({ length: 2 })
   uf_crm: string;
 
   @Column({ length: 30 })
@@ -50,13 +53,16 @@ export class Professor {
   @Column({ length: 30 })
   especializacao: string;
 
-  @Column()
-  especialista: boolean;
+  @Column({ length: 50 })
+  status_financeiro: string;
 
-  @Column({ length: 20 })
-  sexo: string;
+  @Column({ nullable: true })
+  ddd_residencial: string;
 
-  @Column({ length: 200, nullable: true })
+  @Column({ nullable: true })
+  telefone_residencial: number;
+
+  @Column({ length: 100, nullable: true })
   observacao: string;
 
   @Column()
