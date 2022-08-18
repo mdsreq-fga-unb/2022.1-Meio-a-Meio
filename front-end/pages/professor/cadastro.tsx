@@ -22,6 +22,8 @@ import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import apiRequest from '../../util/apiRequest';
+
 
 function Copyright(props: any) {
   return (
@@ -51,9 +53,33 @@ export default function Cadastro() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if(handleCheckData()){
-      return;
-    }
+    // if(handleCheckData()){
+    //   return;
+    // }
+    apiRequest.post('professor/create',{
+      "nome_completo": "Bruna",
+      "data_de_nascimento": "2000/01/01",
+      "nacionalidade": "brasileira",
+      "email": "lbruna886@gmail.com",
+      "cpf": "42531285059",
+      "rg_rne": 1232434,
+      "uf_rg_rne": "df",
+      "orgao_emissor": "ssp",
+      "ddd": "61",
+      "celular": "983740763",
+      "crm":"332024",
+      "uf_crm":"GO",
+      "formacao_academica": "med",
+      "especializacao":"bla",
+      "especialista": true,
+      "sexo":"fem"
+  }).then((result) => {
+    console.log('ok')
+    
+  }).catch((err) => {
+    console.log('errado')
+  });
+
     const date = new FormData(event.currentTarget);
   };
 
