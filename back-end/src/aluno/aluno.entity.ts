@@ -68,7 +68,4 @@ export class Aluno {
 
   @Column({ type: 'date' })
   update_at: Date;
-
-  @OneToMany(type => Endereco, endereco => endereco.aluno_id)
-  enderecos: Endereco[];
 }
