@@ -33,14 +33,6 @@ const Home: NextPage = () => {
             <p>Caso ainda não possua conta no Galdi, cadastre-se por aqui!</p>
           </a>
           <a
-            href="http://localhost:3000/disciplina/cadastro"
-            className={styles.card}
-          >
-            <h2>Disciplinas &rarr;</h2>
-            <p>Cadastre novas turmas por meio desta opção</p>
-          </a>
-
-          <a
             href="http://localhost:3000/turma/cadastro"
             className={styles.card}
           >
@@ -48,6 +40,22 @@ const Home: NextPage = () => {
             <p>
               Cadastre novas turmas por meio desta opção
             </p>
+          </a>
+          <a
+            href="http://localhost:3000/curso/cadastro"
+            className={styles.card}
+          >
+            <h2>Cursos &rarr;</h2>
+            <p>
+              Cadastre novos cursos por meio desta opção
+            </p>
+          </a>
+          <a
+            href="http://localhost:3000/disciplina/cadastro"
+            className={styles.card}
+          >
+            <h2>Disciplinas &rarr;</h2>
+            <p>Cadastre novas turmas por meio desta opção</p>
           </a>
         </div>
       </main>

@@ -31,7 +31,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Cadastro() {
-  const [data, setData] = useState<any>({});
+    const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,32 +50,20 @@ export default function Cadastro() {
 
   const handleCheckData = () => {
     const {
-      nomeDisciplina ,
-      carga_horaria,
-      nota,
-      professor,
+        nomeCurso ,
     } = data;
     let emptyFields: any = {}
 
-    if(!nomeDisciplina || nomeDisciplina.length === 0) {
-      emptyFields.nomeDisciplina = "Nome Vazio"
+    if(!nomeCurso || nomeCurso.length === 0) {
+      emptyFields.nomeCurso = "Nome Vazio"
     } 
-    if(!carga_horaria || carga_horaria.length === 0) {
-      emptyFields.carga_horaria = "Carga Horaria Vazia"
-    }
-    if(!nota || nota.length === 0) {
-      emptyFields.nota = "Nota Vazia"
-    }
-    if(!professor || professor.length === 0) {
-      emptyFields.professor = "Professor Vazio"
-    }
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);
       return 1;
     }
     return 0;
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="lg">
@@ -97,61 +85,30 @@ export default function Cadastro() {
           <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/>
         </div>
           <Typography component="h1" variant="h5">
-            Insira os dados cadastrais da disciplina
+            Insira os dados cadastrais do curso
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
           <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeDisciplina?true:false}
-                  helperText={errors.nomeDisciplina||null}
+                  error={errors.nomeCurso?true:false}
+                  helperText={errors.nomeCurso||null}
                   fullWidth
-                  id="nomeDisciplina"
-                  label="Nome da Disciplina"
-                  name="nomeDisciplina"
-                  autoComplete="nomeDisciplina"
+                  id="nomeCurso"
+                  label="Nome do Curso"
+                  name="nomeCurso"
+                  autoComplete="nomeCurso"
                   onChange={handleText}
-                  value= {data?data.nomeDisciplina:""}
+                  value= {data?data.nomeCurso:""}
                 />
               </Grid>
               <Grid item xs={12} >
                 <TextField
-                  required
-                  error={errors.carga_horaria?true:false}
-                  helperText={errors.carga_horaria||null}
                   fullWidth
-                  id="carga_horaria"
-                  label="Carga Horária"
-                  name="carga_horaria"
-                  onChange={handleText}
-                  value= {data?data.carga_horaria:""}
-                />
-              </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  required
-                  error={errors.nota?true:false}
-                  helperText={errors.nota||null}
-                  fullWidth
-                  id="nota"
-                  label="Nota"
-                  name="nota"
-                  onChange={handleText}
-                  value= {data?data.nota:""}
-                />
-              </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  required
-                  error={errors.professor?true:false}
-                  helperText={errors.professor||null}
-                  fullWidth
-                  id="professor"
-                  label="Professor"
-                  name="professor"
-                  onChange={handleText}
-                  value= {data?data.professor:""}
+                  id="unidade"
+                  label="Unidade"
+                  name="unidade"
                 />
               </Grid>
 
@@ -162,7 +119,7 @@ export default function Cadastro() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Disciplina
+              Cadastrar Curso
             </Button>
             <Grid container justifyContent="flex-end">
             <Grid item xs>

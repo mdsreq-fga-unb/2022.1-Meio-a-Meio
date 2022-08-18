@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,15 +31,48 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Cadastro() {
+
+  const [data, setData] = useState<any>({});
+  const [errors , setErrors] = useState<any>({});
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      senha: data.get('senha'),
-    });
+    if(handleCheckData()){
+      return;
+    }
+  };
+  const handleText = (e: ChangeEvent<HTMLInputElement>) => {
+    const clearText = e.target.value.replace(/\d/,"");
+    setData({...data,[e.target.name]: clearText});
+    let tempErrors = errors
+    delete tempErrors[e.target.name]
+    setErrors(tempErrors);
   };
 
+  const handleCheckData = () => {
+    const {
+      nomeTurma ,
+      horario,
+      dia,
+    } = data;
+    let emptyFields: any = {}
+
+    if(!nomeTurma || nomeTurma.length === 0) {
+      emptyFields.nomeTurma = "Nome Vazio"
+    } 
+    if(!horario || horario.length === 0) {
+      emptyFields.horario = "Horario Vazia"
+    }
+    if(!dia || dia.length === 0) {
+      emptyFields.dia = "Dia Vazio"
+    }
+    if(Object.keys(emptyFields).length > 0){
+      setErrors(emptyFields);
+      return 1;
+    }
+    return 0;
+  }
+  
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="lg">
@@ -68,28 +101,40 @@ export default function Cadastro() {
           <Grid item xs={12}>
                 <TextField
                   required
+                  error={errors.nomeTurma?true:false}
+                  helperText={errors.nomeTurma||null}
                   fullWidth
                   id="nomeTurma"
                   label="Nome da Turma"
                   name="nomeTurma"
                   autoComplete="nomeTurma"
+                  onChange={handleText}
+                  value= {data?data.nomeTurma:""}
                 />
               </Grid>
               <Grid item xs={12} >
                 <TextField
                   required
+                  error={errors.horario?true:false}
+                  helperText={errors.horario||null}
                   fullWidth
-                  id="status"
-                  label="Status"
-                  name="status"
+                  id="horario"
+                  label="Horário"
+                  name="horario"
+                  onChange={handleText}
+                  value= {data?data.horario:""}
                 />
               </Grid><Grid item xs={12} >
                 <TextField
                   required
+                  error={errors.dia?true:false}
+                  helperText={errors.dia||null}
                   fullWidth
-                  id="curso"
-                  label="Curso"
-                  name="curso"
+                  id="dia"
+                  label="Dia"
+                  name="dia"
+                  onChange={handleText}
+                  value= {data?data.dia:""}
                 />
               </Grid>
 
@@ -99,7 +144,6 @@ export default function Cadastro() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              href="http://localhost:3000/docente/portal"
             >
               Cadastrar Turma
             </Button>
@@ -109,11 +153,11 @@ export default function Cadastro() {
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
-              <Grid item>
+              {/* <Grid item>
                 <Link href="http://localhost:3000/docente/portal" variant="body2">
                   {"Retornar ao Portal do Docente"}
                 </Link>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
         </Box>
