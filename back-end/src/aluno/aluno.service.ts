@@ -14,13 +14,13 @@ export class AlunoService {
 
   async create(data: CreateAlunoDto) {
     if(!isCPF(data.cpf)) {
-      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
-      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
-      throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
     }
 
     const aluno = new Aluno();
@@ -31,7 +31,7 @@ export class AlunoService {
       aluno.matricula = generator.matriculaGenerator(amount, 3);
     } 
     else if(await this.validateIfMatriculaAlreadyExists(data.matricula)) {
-      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     else {
       aluno.matricula = data.matricula;
@@ -47,7 +47,6 @@ export class AlunoService {
       aluno.rg_rne = data.rg_rne;
       aluno.uf_rg_rne = data.uf_rg_rne;
       aluno.orgao_emissor = data.orgao_emissor;
-      aluno.ddd = data.ddd;
       aluno.celular = data.celular;
       aluno.crm = data.crm;
       aluno.uf_crm = data.uf_crm;

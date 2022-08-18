@@ -14,17 +14,17 @@ export class ProfessorService {
 
   async create(data: CreateProfessorDto) {
     if(!isCPF(data.cpf)) {
-      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
-      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     if(!data.especialista) {
       data.crm = null;
       data.uf_crm = null;
     } 
     else if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
-      throw new HttpException('CRM/UF já cadastrado ou vazio! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('CRM/UF já cadastrado ou vazio! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
     }
 
     const professor = new Professor();
@@ -35,7 +35,7 @@ export class ProfessorService {
       professor.matricula = generator.matriculaGenerator(amount, 3);
     } 
     else if(await this.validateIfMatriculaAlreadyExists(data.matricula)) {
-      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
     }
     else {
       professor.matricula = data.matricula;
@@ -44,13 +44,12 @@ export class ProfessorService {
     try {
       professor.nome_completo = data.nome_completo;
       professor.email = data.email;
-      professor.data_de_nascimento = data.data_de_nascimento;
+      professor.data_de_nascimento = data.data_de_nascimento;;
       professor.nacionalidade = data.nacionalidade;
       professor.cpf = data.cpf;
       professor.rg_rne = data.rg_rne;
       professor.uf_rg_rne = data.uf_rg_rne;
       professor.orgao_emissor = data.orgao_emissor;
-      professor.ddd = data.ddd;
       professor.celular = data.celular;
       professor.crm = data.crm;
       professor.uf_crm = data.uf_crm;

@@ -37,9 +37,6 @@ export class CreateProfessorDto {
   orgao_emissor: string;
 
   @IsNotEmpty()
-  ddd: string;
-
-  @IsNotEmpty()
   celular: string;
 
   @IsOptional()

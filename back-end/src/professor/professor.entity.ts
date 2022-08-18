@@ -33,9 +33,6 @@ export class Professor {
   orgao_emissor: string;
 
   @Column()
-  ddd: string;
-
-  @Column()
   celular: string;
 
   @Column({ nullable: true })
