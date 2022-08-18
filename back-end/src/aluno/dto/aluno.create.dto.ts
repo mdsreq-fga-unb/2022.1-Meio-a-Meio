@@ -1,4 +1,5 @@
 import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
+import { CreateEnderecoDto } from "../../endereco/dto/endereco.create.dto";
 
 export class CreateAlunoDto {
  
@@ -66,4 +67,6 @@ export class CreateAlunoDto {
   @IsOptional()
   @IsString()
   observacao: string;
+
+  endereco: CreateEnderecoDto;
 }

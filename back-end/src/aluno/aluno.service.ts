@@ -1,8 +1,9 @@
+import { Endereco } from '../endereco/endereco.entity';
 import { Aluno } from './aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, HttpException, HttpStatus } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { Repository, ManyToOne } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
 @Injectable()
@@ -10,17 +11,20 @@ export class AlunoService {
   constructor(
     @Inject('ALUNO_REPOSITORY')
     private alunoRepository: Repository<Aluno>,
+
+    @Inject('ENDERECO_REPOSITORY')
+    private enderecoRepository: Repository<Endereco>
   ) {}
 
   async create(data: CreateAlunoDto) {
     if(!isCPF(data.cpf)) {
-      throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException('CPF inválido! Verifique e tente novamente.');
     }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
-      throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException('CPF já cadastrado! Verifique os dados e tente novamente.');
     }
     if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
-      throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException('CRM/UF já cadastrado! Verifique os dados e tente novamente.');
     }
 
     const aluno = new Aluno();
@@ -31,7 +35,7 @@ export class AlunoService {
       aluno.matricula = generator.matriculaGenerator(amount, 3);
     } 
     else if(await this.validateIfMatriculaAlreadyExists(data.matricula)) {
-      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException('Matrícula já cadastrada! Verifique e tente novamente.');
     }
     else {
       aluno.matricula = data.matricula;
@@ -57,10 +61,37 @@ export class AlunoService {
       aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
       aluno.create_at = new Date();
       aluno.update_at = new Date();
+
+      const alunoSalvo = await this.alunoRepository.save(aluno);
+      
+      const endereco = new Endereco();
+      const alunoEndereco = data.endereco;
+      endereco.CEP = alunoEndereco.CEP;
+      endereco.numero = alunoEndereco.numero;
+      endereco.bairro = alunoEndereco.bairro;
+      endereco.cidade = alunoEndereco.cidade;
+      endereco.complemento = alunoEndereco.complemento;
+      endereco.endereco_residencia = alunoEndereco.endereco_residencial;
+      endereco.estado = alunoEndereco.estado;
+      endereco.status = 1;
+      endereco.create_at = new Date();
+      endereco.update_at = new Date();
+      endereco.aluno_id = alunoSalvo.id;
     
-      return this.alunoRepository.save(aluno);
+      await this.enderecoRepository.save(endereco);
+
+      return this.alunoRepository.findOne({
+        where: {
+          id: alunoSalvo.id,
+        },
+        relations: {
+          enderecos: true,
+        }
+      });
+
     } catch(error) {
-      throw new HttpException('Erro ao cadastrar aluno!', HttpStatus.BAD_REQUEST);
+      console.log(error);
+      throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
   }
 
