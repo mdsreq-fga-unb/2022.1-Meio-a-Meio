@@ -30,7 +30,7 @@ export class CreateAlunoDto {
 
   @IsNumber()
   @IsNotEmpty()
-  rg_rne: number;
+  rg_rne: string;
 
   @IsString()
   @IsNotEmpty()
