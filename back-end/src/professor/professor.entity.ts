@@ -5,7 +5,7 @@ export class Professor {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 7 })
+  @Column({ length: 7, nullable: true })
   matricula: string;
 
   @Column({ length: 100 })
@@ -16,6 +16,9 @@ export class Professor {
 
   @Column({ length: 30 })
   nacionalidade: string;
+
+  @Column({ length: 100 })
+  email: string;
 
   @Column({ length: 11 })
   cpf: string;
@@ -35,10 +38,10 @@ export class Professor {
   @Column()
   celular: string;
 
-  @Column()
+  @Column({ nullable: true })
   crm: string;
 
-  @Column({ length: 2 })
+  @Column({ length: 2, nullable: true })
   uf_crm: string;
 
   @Column({ length: 30 })
@@ -47,8 +50,11 @@ export class Professor {
   @Column({ length: 30 })
   especializacao: string;
 
+  @Column()
+  especialista: boolean;
+
   @Column({ length: 20 })
-  genero: string;
+  sexo: string;
 
   @Column({ length: 200, nullable: true })
   observacao: string;

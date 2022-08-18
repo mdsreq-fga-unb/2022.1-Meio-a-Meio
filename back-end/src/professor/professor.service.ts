@@ -13,23 +13,37 @@ export class ProfessorService {
   ) {}
 
   async create(data: CreateProfessorDto) {
-    if(isCPF(data.cpf)) {
+    if(!isCPF(data.cpf)) {
       throw new HttpException('CPF inválido! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
     if((await this.validateIfCPFAlreadyExists(data.cpf))) {
       throw new HttpException('CPF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
     }
-    if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
-      throw new HttpException('CRM/UF já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    if(!data.especialista) {
+      data.crm = null;
+      data.uf_crm = null;
+    } 
+    else if((await this.validateIfCrmAndUfAlreadyExists(data.crm, data.uf_crm))) {
+      throw new HttpException('CRM/UF já cadastrado ou vazio! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    const professor = new Professor();
+    
+    if(data.matricula == null) {
+      const generator = new RegisterGenerator();
+      let amount = (await this.professorRepository.count()).valueOf();
+      professor.matricula = generator.matriculaGenerator(amount, 3);
+    } 
+    else if(await this.validateIfMatriculaAlreadyExists(data.matricula)) {
+      throw new HttpException('Matrícula já cadastrada! Verifique e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    else {
+      professor.matricula = data.matricula;
     }
 
     try {
-      const professor = new Professor();
-      const generator = new RegisterGenerator();
-      let amount = (await this.professorRepository.count()).valueOf();
-
-      professor.matricula = generator.matriculaGenerator(amount, 3);
       professor.nome_completo = data.nome_completo;
+      professor.email = data.email;
       professor.data_de_nascimento = data.data_de_nascimento;
       professor.nacionalidade = data.nacionalidade;
       professor.cpf = data.cpf;
@@ -42,7 +56,8 @@ export class ProfessorService {
       professor.uf_crm = data.uf_crm;
       professor.formacao_academica = data.formacao_academica;
       professor.especializacao = data.especializacao;
-      professor.genero = data.genero;
+      professor.especialista = data.especialista;
+      professor.sexo = data.sexo;
       professor.observacao = data.observacao;
       professor.create_at = new Date();
       professor.update_at = new Date();
@@ -67,6 +82,15 @@ export class ProfessorService {
       where: {
         crm,
         uf_crm
+      }
+    });
+    return professor; 
+  }
+
+  async validateIfMatriculaAlreadyExists(matricula: string) {
+    const professor = await this.professorRepository.findOne({
+      where: {
+        matricula
       }
     });
     return professor; 
