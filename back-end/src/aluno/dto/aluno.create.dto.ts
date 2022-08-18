@@ -15,7 +15,7 @@ export class CreateAlunoDto {
   sexo: string;
 
   @IsNotEmpty()
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @IsString()
   @IsNotEmpty()

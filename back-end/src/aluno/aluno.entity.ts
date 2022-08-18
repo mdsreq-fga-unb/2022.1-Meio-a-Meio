@@ -16,7 +16,7 @@ export class Aluno {
   sexo: string;
 
   @Column({ type: 'date' })
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @Column({ length: 30 })
   nacionalidade: string;
