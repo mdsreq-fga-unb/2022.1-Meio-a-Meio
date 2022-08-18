@@ -175,6 +175,18 @@
 <td>Atualização do documento</td>
 <td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
 </tr>
+<tr>
+<td>16/08/2022</td>
+<td>0.4</td>
+<td>Atualização do documento</td>
+<td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
+</tr>
+<tr>
+<td>17/08/2022</td>
+<td>0.4</td>
+<td>Adição dos critérios de aceitação</td>
+<td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="sumario">Sumário</h2>
@@ -303,7 +315,7 @@
 </tr>
 <tr>
 <td align="center">RF27</td>
-<td align="center">Deverá ser possível armazenar provas de alunos</td>
+<td align="center">Deverá ser possível registrar provas de alunos</td>
 </tr>
 <tr>
 <td align="center">RF28</td>
@@ -311,7 +323,7 @@
 </tr>
 <tr>
 <td align="center">RF29</td>
-<td align="center">Deverá ser possível armazenar notas de alunos</td>
+<td align="center">Deverá ser possível registrar notas de alunos</td>
 </tr>
 <tr>
 <td align="center">RF30</td>
@@ -319,7 +331,7 @@
 </tr>
 <tr>
 <td align="center">RF31</td>
-<td align="center">Deverá ser possível armazenar lista de presença em aula</td>
+<td align="center">Deverá ser possível registrar lista de presença em aula</td>
 </tr>
 <tr>
 <td align="center">RF32</td>
@@ -327,7 +339,7 @@
 </tr>
 <tr>
 <td align="center">RF33</td>
-<td align="center">Deverá ser possível armazenar registro de abono</td>
+<td align="center">Deverá ser possível registrar registro de abono</td>
 </tr>
 <tr>
 <td align="center">RF34</td>
@@ -377,6 +389,7 @@
 <th align="center">Feature</th>
 <th align="center">ID</th>
 <th align="center">História de usuário</th>
+<th align="center">Criterios de aceitação</th>
 <th align="center">Prioridade</th>
 </tr>
 </thead>
@@ -386,6 +399,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM1</td>
 <td align="center">O administrador deve ser capaz cadastrar outros administradores.</td>
+<td align="center">asd</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -393,6 +407,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM2</td>
 <td align="center">O administrador deve ser capaz cadastrar informações dos alunos (matricula, idade….).</td>
+<td align="center"><em>Somente o administrador pode cadastrar aluno </em>Não permitir cadastrar pessoas já cadastradas no sistema</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -400,6 +415,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM3</td>
 <td align="center">O administrador deve ser capaz de alterar informações dos alunos.</td>
+<td align="center"><em>Todos os campos devem ser preenchidos </em>Somente o administrador pode editar as informações de um aluno</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -407,6 +423,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM4</td>
 <td align="center">O administrador deve ser capaz de cadastrar informações dos professores.</td>
+<td align="center"><em>Não deve ser possível cadastrar o mesmo professor mais de uma vez </em>Somente o administrador pode cadastrar um professor</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -414,6 +431,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM5</td>
 <td align="center">O administrador deve ser capaz de cadastrar cursos.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -421,6 +439,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM6</td>
 <td align="center">O administrador deve ser capaz de cadastrar disciplinas.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -428,6 +447,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM7</td>
 <td align="center">O administrador deve ser capaz de cadastrar disciplinas em cursos.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -435,6 +455,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM8</td>
 <td align="center">O administrador deve ser capaz de cadastrar disciplinas especiais.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -442,6 +463,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM9</td>
 <td align="center">O administrador deve ser capaz de criar turmas das disciplinas.</td>
+<td align="center"><em>Não deve ser possível cadastrar uma turma existente </em>Somente o orientador pode cadastrar um nova turma</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -449,6 +471,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM10</td>
 <td align="center">O administrador deve ser capaz de cadastrar o calendário escolar.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -456,6 +479,95 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM11</td>
 <td align="center">O administrador deve ser capaz de cadastrar contratos relacionados ao curso.</td>
+<td align="center"></td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM12</td>
+<td align="center">O administrador deve ser capaz de excluir aluno.</td>
+<td align="center"><em>O aluno deve existir </em>Somente o administrador pode excluir o aluno</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM14</td>
+<td align="center">O administrador deve ser capaz de cadastrar o calendário escolar.</td>
+<td align="center"></td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM15</td>
+<td align="center">O administrador deve ser capaz de cadastrar contratos relacionados ao curso.</td>
+<td align="center"></td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM16</td>
+<td align="center">O administrador deve ser capaz de cadastrar uma turma em disciplina.</td>
+<td align="center"><em>Não deve ser possível cadastrar uma turma duas vezes em uma mesma disciplina </em>Somente o orientador pode cadastrar turma em disciplina</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM17</td>
+<td align="center">O administrador deve ser capaz de enviar histórico escolar por email.</td>
+<td align="center">*Deve ser possível enviar o histórico apenas para o aluno a quem pertence</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM18</td>
+<td align="center">O administrador deve ser capaz de enviar o boletim por email.</td>
+<td align="center">*Deve ser possível enviar o boletim apenas para o aluno a quem pertence</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM19</td>
+<td align="center">O administrador deve ser capaz de excluir turmas.</td>
+<td align="center">*A turma deve existir</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">*Somente o orientador pode excluir uma turma de uma disciplina</td>
+<td align="center">Alta</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM20</td>
+<td align="center">O administrador deve ser capaz de excluir turmas das disciplinas.</td>
+<td align="center"><em>A turma deve existir </em>Somente o orientador pode excluir uma turma de uma disciplina</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM21</td>
+<td align="center">O administrador deve ser capaz de excluir professor.</td>
+<td align="center"><em>O professor deve existir </em>Somento o administrador pode excluir um professor</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM21</td>
+<td align="center">O administrador deve ser capaz de editar informações de professor.</td>
+<td align="center"><em>O professor deve existir </em>Somento o administrador pode editar um professor</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -463,6 +575,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG1</td>
 <td align="center">O usuário deve ser capaz de acessar o sistema por login e senha.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -470,6 +583,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG2</td>
 <td align="center">O usuário deve ser capaz de gerar ficha de matrícula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -477,6 +591,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG3</td>
 <td align="center">O usuário deve ser capaz de visualizar informações dos alunos.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -484,6 +599,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG4</td>
 <td align="center">O usuário deve ser capaz de visualizar informações dos cursos.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -491,6 +607,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG5</td>
 <td align="center">O usuário deve ser capaz de visualizar informações das disciplinas.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -498,6 +615,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG6</td>
 <td align="center">O usuário deve ser capaz de visualizar informações das sub-disciplinas.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -505,6 +623,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG7</td>
 <td align="center">O usuário deve ser capaz de visualizar informações das disciplinas especiais.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -512,6 +631,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG8</td>
 <td align="center">O usuário deve ser capaz de visualizar das turmas.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -519,6 +639,47 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG9</td>
 <td align="center">O usuário deve ser capaz de visualizar calendário escolar.</td>
+<td align="center"></td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções gerais</td>
+<td align="center">FG10</td>
+<td align="center">O usuário deve ser capaz de gerar histórico escolar.</td>
+<td align="center"><em>O histórico deve conter a matrícula do aluno </em>O histórico deve se restringir ao curso que o aluno fez <em>o histórico deve mostrar disciplinas já cursadas e disciplinas previstas </em>O histórico deve mostrar as cargas horária das disciplina cursadas</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções gerais</td>
+<td align="center">FG11</td>
+<td align="center">O usuário deve ser capaz de gerar boletim.</td>
+<td align="center"><em>O boletim deve ser referente ao último período </em>O boletim deve conter a matrícula,...</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções gerais</td>
+<td align="center">FG12</td>
+<td align="center">O usuário deve ser capaz de excluir um aluno de turma.</td>
+<td align="center"><em>O aluno deve estar matriculado na disciplina </em>Somente o administrador ou orientador pode excluir um aluno de turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções gerais</td>
+<td align="center">FG13</td>
+<td align="center">O usuário deve ser capaz de cadastrar um professor em uma turma.</td>
+<td align="center"><em>O professor deve existir </em>O professor não pode ser cadastra em uma turma mais de uma vez *Somente o orientador pode cadastrar o professor em turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções gerais</td>
+<td align="center">FG14</td>
+<td align="center">O usuário  deve ser capaz de excluir um professor de uma turma.</td>
+<td align="center"><em>O professor deve existir </em>Somente o orientador pode excluir o professor de turma</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -526,6 +687,7 @@
 <td align="center">Funções relacionadas ao aluno</td>
 <td align="center">FA1</td>
 <td align="center">O aluno deve ser capaz de solicitar matrícula em estágios.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -533,6 +695,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP1</td>
 <td align="center">O professor deve ser capaz de alterar suas informações.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -540,6 +703,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP2</td>
 <td align="center">O professor deve ser capaz de visualizar suas informações.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -547,6 +711,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP3</td>
 <td align="center">O professor deve ser capaz de cadastrar diário de aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -554,13 +719,15 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP4</td>
 <td align="center">O professor deve ser capaz de visualizar informações dos diários de aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
 <td align="center">Gerenciamento Acadêmico</td>
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP5</td>
-<td align="center">O professor deve ser capaz de armazenar provas de alunos utilizadas em aula.</td>
+<td align="center">O professor deve ser capaz de registrar provas de alunos utilizadas em aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -568,13 +735,15 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP6</td>
 <td align="center">O professor deve ser capaz de visualizar provas guardadas.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
 <td align="center">Gerenciamento Acadêmico</td>
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP7</td>
-<td align="center">O professor deve ser capaz de armazenar notas de provas dos alunos na disciplina.</td>
+<td align="center">O professor deve ser capaz de registrar notas de provas dos alunos na disciplina.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -582,6 +751,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP8</td>
 <td align="center">O professor deve ser capaz de visualizar notas de provas dos alunos.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -589,6 +759,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP9</td>
 <td align="center">O professor deve ser capaz de gerar lista de presença em aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -596,6 +767,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP10</td>
 <td align="center">O professor deve ser capaz de visualizar lista de presença em aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -603,6 +775,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP11</td>
 <td align="center">O professor deve ser capaz de gerar abonos para falta em aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -610,6 +783,7 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP12</td>
 <td align="center">O professor deve ser capaz de visualizar abonos para falta em aula.</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -617,6 +791,39 @@
 <td align="center">Funções relacionadas ao professor</td>
 <td align="center">FP13</td>
 <td align="center">O professor deve ser capaz de gerar relatórios de aula.</td>
+<td align="center"></td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao professor</td>
+<td align="center">FP14</td>
+<td align="center">O professor deve ser capaz de cadastrar uma atividade em uma turma.</td>
+<td align="center"><em>Somente o professor pode cadastrar atividades </em>Não permitir a criação de duas atividades iguais na mesma turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao professor</td>
+<td align="center">FP15</td>
+<td align="center">O professor deve ser capaz de cadastrar uma nota em uma atividade.</td>
+<td align="center"><em>Somente o professor pode dar nota na atividade </em>Só pode dar nota para atividades existentes *Só pode dar nota para atividades de alunos que estão na turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao professor</td>
+<td align="center">FP16</td>
+<td align="center">O professor deve ser capaz de editar uma turma.</td>
+<td align="center"><em>A turma deve existir </em>Somento o orientador pode editar uma turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao professor</td>
+<td align="center">FP17</td>
+<td align="center">O professor deve ser capaz de editar uma nota em uma atividade.</td>
+<td align="center"><em>Deve ser possível colocar apenas valores entre 0 e 10 </em>Somente o professor pode editar a nota de um aluno</td>
 <td align="center">Alta</td>
 </tr>
 </tbody>
