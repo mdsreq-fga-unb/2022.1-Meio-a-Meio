@@ -24,7 +24,7 @@ export class Professor {
   cpf: string;
 
   @Column()
-  rg_rne: number;
+  rg_rne: string;
 
   @Column({ length: 2})
   uf_rg_rne: string;
