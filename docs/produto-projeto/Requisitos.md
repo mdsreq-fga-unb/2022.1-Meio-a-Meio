@@ -15,6 +15,7 @@
 |29/07/2022 | 0.3 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |16/08/2022 | 0.4 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |17/08/2022 | 0.4 | Adição dos critérios de aceitação | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+|23/08/2022 | 0.5 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 
 ## Sumário
 
@@ -113,10 +114,11 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM26 |               O administrador deve ser capaz de cadastrar um professor em uma turma.       | *O professor deve existir *A turma deve existir *O professor não pode ser cadastrado na mesma disciplina mais de uma vez |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM27 |O professor deve ser capaz de editar uma turma.        | *Todos os campos devem ser preenchidos *Somente o administrador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM28 |               O administrador deve ser capaz de excluir professor de disciplina.       | *Disciplina não pode estar com status de cursada *Turma não pode estar formada |     Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM29 |               O administrador deve ser capaz de excluir disciplina de uma turma.       | *Disciplina não pode estar em andamento ou cursada * Turma não pode estar formada |     Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM29 |               O administrador deve ser capaz de excluir disciplina de uma turma.       | *Disciplina não pode estar em andamento ou cursada *Turma não pode estar formada |     Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM30 |               O administrador deve ser capaz de matricular aluno em curso.       | *O aluno não deve estar matriculado no curso |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG1 |               O usuário deve ser capaz de acessar o sistema por login e senha.       ||    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG2 |               O usuário deve ser capaz de gerar ficha de matrícula.         ||   Alta    |
-| Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.      ||   Alta    |
+| Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.      | *O aluno deve existir *Deve ser possível ver as informações de aluno em turma|   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG4 |               O usuário deve ser capaz de visualizar informações dos cursos.        ||   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG5 |               O usuário deve ser capaz de visualizar informações das disciplinas.      ||    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG6 |               O usuário deve ser capaz de visualizar informações das sub-disciplinas.      ||    Alta    |
@@ -146,6 +148,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP15 |               O professor deve ser capaz de cadastrar uma nota em uma atividade.       | *Somente o professor pode dar nota na atividade *Só pode dar nota para atividades existentes *Só pode dar nota para atividades de alunos que estão na turma |   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de editar uma turma.        | *A turma deve existir *Somento o orientador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP17 |               O professor deve ser capaz de editar uma nota em uma atividade.       | *Deve ser possível colocar apenas valores entre 0 e 10 *Somente o professor pode editar a nota de um aluno |   Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP18 |               O professor deve ser capaz de mudar aluno de turma.       | *Somente o professor pode mudar aluno de turma *A turma deve existir |   Alta    |
 
 
 #### Legenda:
