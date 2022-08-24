@@ -187,6 +187,12 @@
 <td>Adição dos critérios de aceitação</td>
 <td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
 </tr>
+<tr>
+<td>23/08/2022</td>
+<td>0.5</td>
+<td>Atualização do backlog</td>
+<td><a href="https://github.com/Nicolas-Roberto/">Nicolas Roberto</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="sumario">Sumário</h2>
@@ -399,7 +405,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM1</td>
 <td align="center">O administrador deve ser capaz cadastrar outros administradores.</td>
-<td align="center">asd</td>
+<td align="center"></td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -439,7 +445,7 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM6</td>
 <td align="center">O administrador deve ser capaz de cadastrar disciplinas.</td>
-<td align="center"></td>
+<td align="center">*A disciplina não deve existir</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -535,16 +541,8 @@
 <td align="center">Funções relacionadas ao administrador</td>
 <td align="center">FGM19</td>
 <td align="center">O administrador deve ser capaz de excluir turmas.</td>
-<td align="center">*A turma deve existir</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">*Somente o orientador pode excluir uma turma de uma disciplina</td>
+<td align="center"><em>A turma deve existir </em>Somente o administrador ou orientador pode excluir uma turma de uma disciplina *Turma não pode estar com disciplina em curso</td>
 <td align="center">Alta</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
 </tr>
 <tr>
 <td align="center">Gerenciamento Acadêmico</td>
@@ -565,9 +563,73 @@
 <tr>
 <td align="center">Gerenciamento Acadêmico</td>
 <td align="center">Funções relacionadas ao administrador</td>
-<td align="center">FGM21</td>
+<td align="center">FGM22</td>
 <td align="center">O administrador deve ser capaz de editar informações de professor.</td>
 <td align="center"><em>O professor deve existir </em>Somento o administrador pode editar um professor</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM23</td>
+<td align="center">O administrador deve ser capaz de excluir disciplinas.</td>
+<td align="center"><em>A disciplina deve existir </em>Somente o administrador pode excluir uma disciplina</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM24</td>
+<td align="center">O administrador deve ser capaz de editar disciplinas.</td>
+<td align="center"><em>A disciplina deve existir </em>Somente o administrador pode editar uma disciplina</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM25</td>
+<td align="center">O administrador deve ser capaz de cadastrar turmas.</td>
+<td align="center"><em>A turma não deve existir </em>Somente o administrador pode cadastrar uma turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM26</td>
+<td align="center">O administrador deve ser capaz de cadastrar um professor em uma turma.</td>
+<td align="center"><em>O professor deve existir </em>A turma deve existir *O professor não pode ser cadastrado na mesma disciplina mais de uma vez</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM27</td>
+<td align="center">O professor deve ser capaz de editar uma turma.</td>
+<td align="center"><em>Todos os campos devem ser preenchidos </em>Somente o administrador pode editar uma turma</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM28</td>
+<td align="center">O administrador deve ser capaz de excluir professor de disciplina.</td>
+<td align="center"><em>Disciplina não pode estar com status de cursada </em>Turma não pode estar formada</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM29</td>
+<td align="center">O administrador deve ser capaz de excluir disciplina de uma turma.</td>
+<td align="center"><em>Disciplina não pode estar em andamento ou cursada </em>Turma não pode estar formada</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao administrador</td>
+<td align="center">FGM30</td>
+<td align="center">O administrador deve ser capaz de matricular aluno em curso.</td>
+<td align="center">*O aluno não deve estar matriculado no curso</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -591,7 +653,7 @@
 <td align="center">Funções gerais</td>
 <td align="center">FG3</td>
 <td align="center">O usuário deve ser capaz de visualizar informações dos alunos.</td>
-<td align="center"></td>
+<td align="center"><em>O aluno deve existir </em>Deve ser possível ver as informações de aluno em turma</td>
 <td align="center">Alta</td>
 </tr>
 <tr>
@@ -824,6 +886,14 @@
 <td align="center">FP17</td>
 <td align="center">O professor deve ser capaz de editar uma nota em uma atividade.</td>
 <td align="center"><em>Deve ser possível colocar apenas valores entre 0 e 10 </em>Somente o professor pode editar a nota de um aluno</td>
+<td align="center">Alta</td>
+</tr>
+<tr>
+<td align="center">Gerenciamento Acadêmico</td>
+<td align="center">Funções relacionadas ao professor</td>
+<td align="center">FP18</td>
+<td align="center">O professor deve ser capaz de mudar aluno de turma.</td>
+<td align="center"><em>Somente o professor pode mudar aluno de turma </em>A turma deve existir</td>
 <td align="center">Alta</td>
 </tr>
 </tbody>
