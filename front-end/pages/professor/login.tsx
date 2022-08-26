@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -32,15 +32,42 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Login() {
+  const [data, setData] = useState<any>({});
+  const [errors , setErrors] = useState<any>({});
+
+  const handleText = (e: ChangeEvent<HTMLInputElement>) => {
+    const clearText = e.target.value.replace(/\d/,"");
+    setData({...data,[e.target.name]: clearText});
+    let tempErrors = errors
+    delete tempErrors[e.target.name]
+    setErrors(tempErrors);
+  };
+  const handleCheckData = () => {
+    const {
+      matricula,
+      senha,
+    } = data;
+    let emptyFields: any = {}
+
+    if(!matricula || matricula.length === 0) {
+      emptyFields.matricula = "O campo de matrícula não pode ser vazio"
+    }
+    if(!senha || senha.length === 0) {
+      emptyFields.senha = "O campo de senha não pode ser vazio"
+    }
+    if(Object.keys(emptyFields).length > 0){
+      setErrors(emptyFields);
+      return 1;
+    }
+    return 0;
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
-
+    if(handleCheckData()){
+      return;
+    }
+  }
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -68,22 +95,28 @@ export default function Login() {
             <TextField
               margin="normal"
               required
+              error={errors.matricula?true:false}
+              helperText={errors.matricula||null}
               fullWidth
               id="matricula"
               label="Matrícula"
               name="matricula"
               autoComplete="matricula"
-              autoFocus
+              onChange={handleText}
+              value= {data?data.matricula:""}
             />
             <TextField
               margin="normal"
               required
+              error={errors.senha?true:false}
+              helperText={errors.senha||null}
               fullWidth
-              name="senha"
-              label="Senha"
-              type="senha"
               id="senha"
-              autoComplete="current-password"
+              label="Senha"
+              name="senha"
+              autoComplete="senha"
+              onChange={handleText}
+              value= {data?data.senha:""}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -94,7 +127,6 @@ export default function Login() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              href="http://localhost:3000/docente/portal"
             >
               Entrar
             </Button>
