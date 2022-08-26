@@ -151,7 +151,7 @@ export default function Cadastro() {
     if(!rg_rne || rg_rne.length === 0) {
       emptyFields.rg_rne = "O campo de RG não pode ser vazio"
     }
-    if(!uf_rg_rne || uf_rg_rne.length === 0) {
+    if(!uf_rg_rne || uf_rg_rne === 0)  {
       emptyFields.uf_rg_rne = "Preencha o UF"
     }
     if(!orgao_emissor || orgao_emissor.length === 0) {
@@ -304,14 +304,16 @@ export default function Cadastro() {
                 />
               </Grid>
               <Grid item xs={1}> 
-                <FormControl fullWidth>
-                <InputLabel id="uf_rg_rne" required>UF</InputLabel>
+                <FormControl fullWidth
+                >
+                <InputLabel id="uf_rg_rne" required >UF</InputLabel>
                   <Select
                     labelId="uf_rg_rne"
                     id="uf_rg_rne"
                     label="uf_rg_rne"
-                    value={ufRegion}
+                    value= {data?data.ufRegion:""}
                     onChange={handleUfRegion}
+                    error={errors.uf_rg_rne?true:false}
                   >
                     <MenuItem value={1}>AC</MenuItem>
                     <MenuItem value={2}>AL</MenuItem>
@@ -341,6 +343,7 @@ export default function Cadastro() {
                     <MenuItem value={26}>SE</MenuItem>
                     <MenuItem value={26}>TO</MenuItem>
                   </Select>
+                  <FormHelperText error>{errors.uf_rg_rne}</FormHelperText>
                 </FormControl>
               </Grid>
               <Grid item xs={2}>
