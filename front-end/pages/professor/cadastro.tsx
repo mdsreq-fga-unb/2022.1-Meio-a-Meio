@@ -24,6 +24,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import apiRequest from '../../util/apiRequest';
 import FormHelperText from '@mui/material/FormHelperText';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormLabel from '@mui/material/FormLabel';
 
 
 
@@ -375,20 +378,16 @@ export default function Cadastro() {
               </Grid>
               <Grid item xs={1.8}> 
                 <FormControl fullWidth>
-                <InputLabel id="especialista" required>Especialista?</InputLabel>
-                  <Select
-                    labelId="especialista"
-                    id="especialista"
-                    label="Especialista"
-                    value={boolean}
-                    onChange={handleBoolean}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Sim</MenuItem>
-                    <MenuItem value={20}>Não</MenuItem>
-                  </Select>
+                <FormLabel id="especialista">Especialista?</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                <FormControlLabel value="sim" control={<Radio />} label="Sim" />
+                <FormControlLabel value="nao" control={<Radio />} label="Não" />
+                </RadioGroup>
+
                 </FormControl>
               </Grid>
               <Grid item xs={2.7}>
@@ -406,21 +405,16 @@ export default function Cadastro() {
                 />
               </Grid>
               <Grid item xs={2.5}> 
-                <FormControl fullWidth>
-                <InputLabel id="sexo" required>Sexo</InputLabel>
-                  <Select
-                    labelId="sexo"
-                    id="sexo"
-                    label="Selecione o Sexo"
-                    value={gender}
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={1}>Homem</MenuItem>
-                    <MenuItem value={2}>Mulher</MenuItem>
-                  </Select>
+              <FormControl fullWidth>
+                <FormLabel id="sexo">Sexo</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                <FormControlLabel value="homem" control={<Radio />} label="Homem" />
+                <FormControlLabel value="mulher" control={<Radio />} label="Mulher" />
+                </RadioGroup>
                 </FormControl>
               </Grid>
               <Grid item xs={6}>
