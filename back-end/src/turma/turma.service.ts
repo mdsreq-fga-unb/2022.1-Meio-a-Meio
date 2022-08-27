@@ -4,12 +4,16 @@ import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
 import { Turma } from './entities/turma.entity';
 import { validate } from 'class-validator';
+import { AlunoService } from 'src/aluno/aluno.service';
+import { Aluno } from 'src/aluno/aluno.entity';
 
 @Injectable()
 export class TurmaService {
   constructor(
     @Inject('TURMA_REPOSITORY')
     private turmaRepository: Repository<Turma>,
+    private readonly alunoService: AlunoService,
+  
   ){}
 
   async create(createTurmaDto: CreateTurmaDto) {
@@ -37,13 +41,16 @@ export class TurmaService {
   }
 
   async findAll() {
-    const turmas = await this.turmaRepository.find()
+    const turmas = await this.turmaRepository.find({relations: {
+      alunos: true,//exibir alunos
+  }})
     return turmas;
   }
 
   async findOne(id: number) {
-    const disciplina = await this.turmaRepository.findOne({where:{id:id}})
-    return disciplina;
+    const turma = await this.turmaRepository.findOne({where:{id:id}});
+    console.log(turma.alunos);
+    return turma;
   }
 
   update(id: number, updateTurmaDto: UpdateTurmaDto) {
@@ -54,7 +61,26 @@ export class TurmaService {
     return `This action removes a #${id} turma`;
   }
 
-  //async addAluno(){
+  async addAluno(idTurma: number, idAluno: Aluno[]){
+    
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});   
 
-  //}
+    idAluno.forEach(aluno =>{
+      turma.alunos.push(aluno)
+    })
+
+    this.turmaRepository.save(turma);
+    console.log(turma)
+  }
+
+  async removeAluno(idTurma: number, idAluno: Aluno){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});   
+    
+    const alunos = JSON.stringify(turma.alunos.filter((aluno)=>aluno.id !== idAluno.id));
+    turma.alunos = JSON.parse(alunos)
+    
+    this.turmaRepository.save(turma);
+    return turma;
+
+  }
 }

@@ -9,12 +9,10 @@ export class Turma {
     @Column({ length: 50 })
     nomeTurma: string;
 
-    @ManyToMany(() => Aluno)
+    @ManyToMany(type => Aluno, {eager:true})
     @JoinTable()
-    alunos: number[];
+    alunos: Aluno[];
 
-    
-    //@ManyToMany(() => Number)
     @Column('simple-array')
     dias: string[];
 

@@ -92,4 +92,9 @@ export class AlunoService {
     });
     return aluno; 
   }
+
+  async findOne(id: number) {
+    const aluno = await this.alunoRepository.findOne({where:{id:id}})
+    return aluno;
+  }
 }
