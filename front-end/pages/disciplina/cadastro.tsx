@@ -166,7 +166,7 @@ export default function Cadastro() {
             </Button>
             <Grid container justifyContent="flex-end">
             <Grid item xs>
-                <Link href="http://localhost:3000/" variant="body2">
+                <Link href="/" variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>

@@ -463,7 +463,7 @@ export default function Cadastro() {
             </Grid>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="http://localhost:3000/" variant="body2">
+                <Link href="/" variant="body2">
                   {"Retornar ao Menu Principal"}
                 </Link>
               </Grid>

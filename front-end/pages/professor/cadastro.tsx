@@ -27,7 +27,8 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormLabel from '@mui/material/FormLabel';
-
+import Moment from 'moment';
+import SelectUf from '../../component/SelectUf';
 
 
 function Copyright(props: any) {
@@ -48,56 +49,38 @@ const theme = createTheme();
 
 export default function Cadastro() {
   const [value, setValue] = useState<Date | null>(null);
-  const [gender, setGender] = useState('');
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
   const [region , setRegion] = useState('');
-  const [ufRegion , setUfRegion] = useState('');
 
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setGender(event.target.value);
-  };
-
-  const handleRegion = (event: SelectChangeEvent) => {
-    setRegion(event.target.value);
+  const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
+    setData({...data,[e.target.name]:  e.target.value});
     let tempErrors = errors
+    delete tempErrors[e.target.name]
     setErrors(tempErrors);
+    console.log(e.target.value);
+    console.log(e.target.name);
   };
 
-  const handleUfRegion = (event: SelectChangeEvent) => {
-    setUfRegion(event.target.value);
-    let tempErrors = errors
-    setErrors(tempErrors);
-  };
+  const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+    const formatedData = Moment(e).format('yyyy/MM/DD');
+    setData({...data, data_de_nascimento: formatedData});
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log('aaaa')
     if(handleCheckData()){
+      console.log('bbbb');
       return;
     }
-    apiRequest.post('professor/create',{
-      "nome_completo": "Bruna",
-      "data_de_nascimento": "2000/01/01",
-      "nacionalidade": "brasileira",
-      "email": "lbruna886@gmail.com",
-      "cpf": "42531285059",
-      "rg_rne": 1232434,
-      "uf_rg_rne": "df",
-      "orgao_emissor": "ssp",
-      "ddd": "61",
-      "celular": "983740763",
-      "crm":"332024",
-      "uf_crm":"GO",
-      "formacao_academica": "med",
-      "especializacao":"bla",
-      "especialista": true,
-      "sexo":"fem"
-  }).then((result) => {
+    apiRequest.post('professor/create',
+      {...data, email: 'lbruna886@gmail.com'}
+  ).then((result) => {
     console.log('ok')
-    
   }).catch((err) => {
-    console.log('errado')
+    console.log('errado', err)
   });
 
     const date = new FormData(event.currentTarget);
@@ -118,7 +101,6 @@ export default function Cadastro() {
   const handleCheckData = () => {
     const {
       nome_completo ,
-      matricula,
       cpf,
       celular,
       nacionalidade,
@@ -129,16 +111,13 @@ export default function Cadastro() {
       uf_crm,
       especializacao,
       formacao_academica,
- 
     } = data;
+    console.log(data);
     let emptyFields: any = {}
 
     if(!nome_completo || nome_completo.length === 0) {
       emptyFields.nome_completo = "O campo de nome não pode ser vazio"
     } 
-    // if(!matricula || matricula.length === 0) {
-    //   setErrors({...errors, matricula:"Matricula Vazia"})
-    // }
     if(!cpf || cpf.length === 0) {
       emptyFields.cpf = "O campo de CPF não pode ser vazio"
     }
@@ -229,11 +208,12 @@ export default function Cadastro() {
               <Grid item xs={3}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
+                  required
                   label="Data de Nascimento"
-                  value={value}
-                  onChange={(newValue) => {
-                  setValue(newValue);
-                  }}
+                  name="date"
+                  inputFormat='dd/MM/yyyy'
+                  value={data?data.data_de_nascimento: ""}
+                  onChange={handleDate}
                   renderInput={(params) => <TextField {...params} />}
                   />
                 </LocalizationProvider>
@@ -307,42 +287,7 @@ export default function Cadastro() {
                 <FormControl fullWidth
                 >
                 <InputLabel id="uf_rg_rne" required >UF</InputLabel>
-                  <Select
-                    labelId="uf_rg_rne"
-                    id="uf_rg_rne"
-                    label="uf_rg_rne"
-                    value= {data?data.ufRegion:""}
-                    onChange={handleUfRegion}
-                    error={errors.uf_rg_rne?true:false}
-                  >
-                    <MenuItem value={1}>AC</MenuItem>
-                    <MenuItem value={2}>AL</MenuItem>
-                    <MenuItem value={3}>AP</MenuItem>
-                    <MenuItem value={4}>AM</MenuItem>
-                    <MenuItem value={5}>BA</MenuItem>
-                    <MenuItem value={6}>CE</MenuItem>
-                    <MenuItem value={7}>DF</MenuItem>
-                    <MenuItem value={8}>ES</MenuItem>
-                    <MenuItem value={9}>GO</MenuItem>
-                    <MenuItem value={10}>MA</MenuItem>
-                    <MenuItem value={11}>MT</MenuItem>
-                    <MenuItem value={12}>MS</MenuItem>
-                    <MenuItem value={13}>MG</MenuItem>
-                    <MenuItem value={14}>PA</MenuItem>
-                    <MenuItem value={15}>PB</MenuItem>
-                    <MenuItem value={16}>PR</MenuItem>
-                    <MenuItem value={17}>PE</MenuItem>
-                    <MenuItem value={18}>PI</MenuItem>
-                    <MenuItem value={19}>RJ</MenuItem>
-                    <MenuItem value={20}>RN</MenuItem>
-                    <MenuItem value={21}>RS</MenuItem>
-                    <MenuItem value={22}>RO</MenuItem>
-                    <MenuItem value={23}>RR</MenuItem>
-                    <MenuItem value={24}>SC</MenuItem>
-                    <MenuItem value={25}>SP</MenuItem>
-                    <MenuItem value={26}>SE</MenuItem>
-                    <MenuItem value={26}>TO</MenuItem>
-                  </Select>
+                <SelectUf name={'uf_rg_rne'} setValue={(i) => setData({...data, uf_rg_rne:i})}/>
                   <FormHelperText error>{errors.uf_rg_rne}</FormHelperText>
                 </FormControl>
               </Grid>
@@ -380,41 +325,7 @@ export default function Cadastro() {
               <Grid item xs={1}> 
                 <FormControl fullWidth>
                 <InputLabel id="uf_crm" required>UF</InputLabel>
-                  <Select
-                    labelId="uf_crm"
-                    id="uf_crm"
-                    label="uf_crm"
-                    value={region}
-                    onChange={handleRegion}
-                  >
-                    <MenuItem value={1}>AC</MenuItem>
-                    <MenuItem value={2}>AL</MenuItem>
-                    <MenuItem value={3}>AP</MenuItem>
-                    <MenuItem value={4}>AM</MenuItem>
-                    <MenuItem value={5}>BA</MenuItem>
-                    <MenuItem value={6}>CE</MenuItem>
-                    <MenuItem value={7}>DF</MenuItem>
-                    <MenuItem value={8}>ES</MenuItem>
-                    <MenuItem value={9}>GO</MenuItem>
-                    <MenuItem value={10}>MA</MenuItem>
-                    <MenuItem value={11}>MT</MenuItem>
-                    <MenuItem value={12}>MS</MenuItem>
-                    <MenuItem value={13}>MG</MenuItem>
-                    <MenuItem value={14}>PA</MenuItem>
-                    <MenuItem value={15}>PB</MenuItem>
-                    <MenuItem value={16}>PR</MenuItem>
-                    <MenuItem value={17}>PE</MenuItem>
-                    <MenuItem value={18}>PI</MenuItem>
-                    <MenuItem value={19}>RJ</MenuItem>
-                    <MenuItem value={20}>RN</MenuItem>
-                    <MenuItem value={21}>RS</MenuItem>
-                    <MenuItem value={22}>RO</MenuItem>
-                    <MenuItem value={23}>RR</MenuItem>
-                    <MenuItem value={24}>SC</MenuItem>
-                    <MenuItem value={25}>SP</MenuItem>
-                    <MenuItem value={26}>SE</MenuItem>
-                    <MenuItem value={26}>TO</MenuItem>
-                  </Select>
+                  <SelectUf name={'uf_crm'} setValue={(i) => setData({...data, uf_crm:i})}/>
                 </FormControl>
               </Grid>
               <Grid item xs={4}>
@@ -438,6 +349,8 @@ export default function Cadastro() {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
+                  onChange={(e) => setData({...data, especialista:e.target.value === 'sim'||false})}
+                  value={data?data.especialista:null}
                 >
                 <FormControlLabel value="sim" control={<Radio />} label="Sim" />
                 <FormControlLabel value="nao" control={<Radio />} label="Não" />
@@ -466,6 +379,8 @@ export default function Cadastro() {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
+                  onChange={(e) => setData({...data, sexo:e.target.value})}
+                  value={data?data.sexo:null}
                 >
                 <FormControlLabel value="homem" control={<Radio />} label="Homem" />
                 <FormControlLabel value="mulher" control={<Radio />} label="Mulher" />
@@ -498,14 +413,14 @@ export default function Cadastro() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="http://localhost:3000/professor/login" variant="body2">
+                <Link href="/" variant="body2">
                   {"Já possui uma conta? Entrar"}
                 </Link>
               </Grid>
             </Grid>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="http://localhost:3000/" variant="body2">
+                <Link href="/" variant="body2">
                   {"Retornar ao Menu Principal"}
                 </Link>
               </Grid>

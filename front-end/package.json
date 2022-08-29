@@ -21,6 +21,7 @@
         "components": "^0.1.0",
         "date-fns": "^2.29.1",
         "install": "^0.13.0",
+        "moment": "^2.29.4",
         "mui": "^0.0.1",
         "next": "12.2.2",
         "npm": "^8.17.0",
@@ -28,6 +29,7 @@
         "react-dom": "18.2.0",
         "react-form-validator-core": "^1.1.2",
         "react-hook-form": "^7.34.2",
+        "react-input-mask": "^2.0.4",
         "react-material-ui-form-validator": "^3.0.1",
         "yup": "^0.32.11"
     },
@@ -35,6 +37,7 @@
         "@types/node": "18.0.6",
         "@types/react": "18.0.15",
         "@types/react-dom": "18.0.6",
+        "@types/react-input-mask": "^3.0.1",
         "@types/styled-components": "^5.1.26",
         "eslint": "8.20.0",
         "eslint-config-next": "12.2.2",
