@@ -12,7 +12,7 @@ export class Professor {
   nome_completo: string;
 
   @Column({ type: 'date' })
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @Column({ length: 30 })
   nacionalidade: string;
@@ -24,16 +24,13 @@ export class Professor {
   cpf: string;
 
   @Column()
-  rg_rne: number;
+  rg_rne: string;
 
   @Column({ length: 2})
   uf_rg_rne: string;
 
   @Column({ length: 10 })
   orgao_emissor: string;
-
-  @Column()
-  ddd: string;
 
   @Column()
   celular: string;

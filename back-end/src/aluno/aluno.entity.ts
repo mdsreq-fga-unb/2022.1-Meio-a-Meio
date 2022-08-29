@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Endereco } from 'src/endereco/endereco.entity';
 
 @Entity() 
 export class Aluno {
@@ -15,7 +16,7 @@ export class Aluno {
   sexo: string;
 
   @Column({ type: 'date' })
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @Column({ length: 30 })
   nacionalidade: string;
@@ -27,16 +28,13 @@ export class Aluno {
   cpf: string;
 
   @Column()
-  rg_rne: number;
+  rg_rne: string;
 
   @Column({ length: 2 })
   uf_rg_rne: string;
 
   @Column({ length: 10 })
   orgao_emissor: string;
-
-  @Column()
-  ddd: string;
 
   @Column()
   celular: string;
@@ -57,9 +55,6 @@ export class Aluno {
   status_financeiro: string;
 
   @Column({ nullable: true })
-  ddd_residencial: string;
-
-  @Column({ nullable: true })
   telefone_residencial: number;
 
   @Column({ length: 100, nullable: true })
@@ -73,4 +68,7 @@ export class Aluno {
 
   @Column({ type: 'date' })
   update_at: Date;
+
+  @OneToMany(() => Endereco, endereco => endereco.aluno)
+  enderecos: Endereco[];
 }
