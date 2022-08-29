@@ -63,18 +63,23 @@ export class TurmaService {
 
   async addAluno(idTurma: number, idAluno: Aluno[]){
     
-    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});   
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
 
     idAluno.forEach(aluno =>{
       turma.alunos.push(aluno)
     })
 
     this.turmaRepository.save(turma);
-    console.log(turma)
   }
 
   async removeAluno(idTurma: number, idAluno: Aluno){
-    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});   
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}});
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
     
     const alunos = JSON.stringify(turma.alunos.filter((aluno)=>aluno.id !== idAluno.id));
     turma.alunos = JSON.parse(alunos)

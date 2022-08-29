@@ -24,16 +24,13 @@ export class Professor {
   cpf: string;
 
   @Column()
-  rg_rne: number;
+  rg_rne: string;
 
   @Column({ length: 2})
   uf_rg_rne: string;
 
   @Column({ length: 10 })
   orgao_emissor: string;
-
-  @Column()
-  ddd: string;
 
   @Column()
   celular: string;

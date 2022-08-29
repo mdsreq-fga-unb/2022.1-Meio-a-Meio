@@ -1,4 +1,5 @@
 import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
+import { CreateEnderecoDto } from "../../endereco/dto/endereco.create.dto";
 
 export class CreateAlunoDto {
  
@@ -15,7 +16,7 @@ export class CreateAlunoDto {
   sexo: string;
 
   @IsNotEmpty()
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @IsString()
   @IsNotEmpty()
@@ -30,7 +31,7 @@ export class CreateAlunoDto {
 
   @IsNumber()
   @IsNotEmpty()
-  rg_rne: number;
+  rg_rne: string;
 
   @IsString()
   @IsNotEmpty()
@@ -39,9 +40,6 @@ export class CreateAlunoDto {
   @IsString()
   @IsNotEmpty()
   orgao_emissor: string;
-
-  @IsNotEmpty()
-  ddd: string;
 
   @IsNotEmpty()
   celular: string;
@@ -69,4 +67,6 @@ export class CreateAlunoDto {
   @IsOptional()
   @IsString()
   observacao: string;
+
+  endereco: CreateEnderecoDto;
 }

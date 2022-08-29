@@ -17,7 +17,7 @@ export class DisciplinaService {
     
 
     if((await this.findByName(createDisciplinaDto.nome_disciplina))){
-      throw new HttpException(`Esse nome já existe verifique os dados e tente novamente.`, HttpStatus.UNPROCESSABLE_ENTITY);
+      throw new HttpException(`Esse nome já existe verifique os dados e tente novamente.`, HttpStatus.BAD_REQUEST);
     }
 
     try{

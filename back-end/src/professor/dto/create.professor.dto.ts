@@ -11,7 +11,7 @@ export class CreateProfessorDto {
   matricula: string;
 
   @IsNotEmpty()
-  data_de_nascimento: string;
+  data_de_nascimento: Date;
 
   @IsNotEmpty()
   @IsString()
@@ -26,7 +26,7 @@ export class CreateProfessorDto {
 
   @IsNumber()
   @IsNotEmpty()
-  rg_rne: number;
+  rg_rne: string;
 
   @IsString()
   @IsNotEmpty()
@@ -35,9 +35,6 @@ export class CreateProfessorDto {
   @IsString()
   @IsNotEmpty()
   orgao_emissor: string;
-
-  @IsNotEmpty()
-  ddd: string;
 
   @IsNotEmpty()
   celular: string;

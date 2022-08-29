@@ -6,6 +6,7 @@ import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
 import { Professor } from 'src/professor/professor.entity';
 import { Curso } from 'src/curso/curso.entity';
 import { TurmaAluno } from 'src/turma/entities/turma-aluno';
+import { Endereco } from 'src/endereco/endereco.entity';
 
 
 config();
@@ -20,7 +21,7 @@ export const databaseProviders = [
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
-        entities: [Aluno, Disciplina, Professor, Curso, Turma],
+        entities: [Aluno, Disciplina, Professor, Curso, Turma, Endereco],
         synchronize: true,
       });
 
