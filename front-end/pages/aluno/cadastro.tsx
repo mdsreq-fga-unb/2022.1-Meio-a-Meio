@@ -29,6 +29,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Radio from '@mui/material/Radio';
 import Moment from 'moment';
 import { useRouter } from 'next/router'
+import SelectUf from '../../component/SelectUf';
 
 
 function Copyright(props: any) {
@@ -55,31 +56,33 @@ export default function CadastroAluno() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if(handleCheckData()){
+      router.push('/aluno/listar') //colocar apenas se nao der erro
       return;
     }
-    apiRequest.post('professor/create',{
-      // "nome_completo": "Bruna",
-      // "data_de_nascimento": "2000/01/01",
-      // "nacionalidade": "brasileira",
-      // "email": "lbruna886@gmail.com",
-      // "cpf": "42531285059",
-      // "rg_rne": 1232434,
-      // "uf_rg_rne": "df",
-      // "orgao_emissor": "ssp",
-      // "ddd": "61",
-      // "celular": "983740763",
-      // "crm":"332024",
-      // "uf_crm":"GO",
-      // "formacao_academica": "med",
-      // "especializacao":"bla",
-      // "inadimplencia": true,
-      // "sexo":"fem"
-  }).then((result) => {
-    console.log('ok')
-    router.push('/docente/portal')
-  }).catch((err) => {
-    console.log('errado')
-  });
+    
+  //   apiRequest.post('professor/create',{
+  //     // "nome_completo": "Bruna",
+  //     // "data_de_nascimento": "2000/01/01",
+  //     // "nacionalidade": "brasileira",
+  //     // "email": "lbruna886@gmail.com",
+  //     // "cpf": "42531285059",
+  //     // "rg_rne": 1232434,
+  //     // "uf_rg_rne": "df",
+  //     // "orgao_emissor": "ssp",
+  //     // "ddd": "61",
+  //     // "celular": "983740763",
+  //     // "crm":"332024",
+  //     // "uf_crm":"GO",
+  //     // "formacao_academica": "med",
+  //     // "especializacao":"bla",
+  //     // "inadimplencia": true,
+  //     // "sexo":"fem"
+  // }).then((result) => {
+  //   console.log('ok')
+  //   router.push('/aluno/listar')
+  // }).catch((err) => {
+  //   console.log('errado')
+  // });
 
     const date = new FormData(event.currentTarget);
   };
@@ -322,22 +325,13 @@ export default function CadastroAluno() {
                   value= {data?data.rg_rne:""}
                 />
               </Grid>
-              <Grid item xs={1}>
-                <TextField
-                  required
-                  inputProps={{
-                    maxLength: 2,
-                  }}
-                  error={errors.uf_rg_rne?true:false}
-                  helperText={errors.uf_rg_rne||null}
-                  fullWidth
-                  name="uf_rg_rne"
-                  label="UF"
-                  type="uf_rg_rne"
-                  id="uf_rg_rne"
-                  onChange={handleText}
-                  value= {data?data.uf_rg_rne:""}
-                />
+              <Grid item xs={1}> 
+                <FormControl fullWidth
+                >
+                <InputLabel id="uf_rg_rne" required >UF</InputLabel>
+                <SelectUf name={'uf_rg_rne'} setValue={(i) => setData({...data, uf_rg_rne:i})}/>
+                  <FormHelperText error>{errors.uf_rg_rne}</FormHelperText>
+                </FormControl>
               </Grid>
               <Grid item xs={2.5}>
                 <TextField
@@ -356,20 +350,12 @@ export default function CadastroAluno() {
                   value= {data?data.crm:""}
                 />
               </Grid>
-              <Grid item xs={1}>
-                <TextField
-                  required
-                  inputProps={{
-                    maxLength: 2,
-                  }}
-                  error={errors.uf_crm?true:false}
-                  helperText={errors.uf_crm||null}
-                  fullWidth
-                  name="uf_crm"
-                  label="UF"
-                  type="uf_crm"
-                  id="uf_crm"
-                />
+              <Grid item xs={1}> 
+                <FormControl fullWidth>
+                <InputLabel id="uf_crm" required>UF</InputLabel>
+                  <SelectUf name={'uf_crm'} setValue={(i) => setData({...data, uf_crm:i})}/>
+                  <FormHelperText error>{errors.uf_crm}</FormHelperText>
+                </FormControl>
               </Grid>
               <Grid item xs={3}>
                 <TextField

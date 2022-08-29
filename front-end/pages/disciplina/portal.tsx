@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
+import Grid from '@mui/material/Grid';
 
 
-const Inicio: NextPage = () => {
+const PortalDaDisciplina: NextPage = () => {
     //acessa qualquer post que quiser no blog
     const router = useRouter()
     return (
@@ -19,52 +20,42 @@ const Inicio: NextPage = () => {
   
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Bem vindo(a) ao <a href="http://localhost:3000/">Galdi!</a>
+            Bem vindo(a) ao Portal da Disciplina
           </h1>
   
           <p className={styles.description}>
-            O site de gestão de alunos e docentes de medicina{' '}
+            Verifique aqui todo tipo de informação sobre as disciplinas disponíveis do Galdi
             {/* <code className={styles.code}>pages/index.tsx</code> */}
           </p>
+  
           <div className={styles.grid}>
-          <Link href="/aluno/portal">
+          <Link href="/disciplina/cadastro">
             <a
               className={styles.card}
             >
-              <h2> Alunos &rarr;</h2>
+              <h2>Cadastrar &rarr;</h2>
               <p>
-                Informações sobre os alunos
+                Cadastre novas disciplinas por meio desta opção
               </p>
             </a>
             </Link>
-            <Link href="/curso/portal">
+            <Link href="/disciplina/listar">
             <a
               className={styles.card}
             >
-              <h2>Cursos &rarr;</h2>
+              <h2>Listar &rarr;</h2>
               <p>
-              Informações sobre os cursos
+                Verifique aqui todas as disciplinas já cadastradas
               </p>
             </a>
             </Link>
-            <Link href="/disciplina/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Disciplinas &rarr;</h2>
-              <p>Informações sobre as disciplinas</p>
-            </a>
-            </Link>
-            <Link href="/turma/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Turmas &rarr;</h2>
-              <p>
-              Informações sobre as turmas
-              </p>
-            </a>
-            </Link>
+            <Grid container justifyContent="center" sx={{ mt: 4 }}>
+              <Grid item>
+                <Link href="/docente/portal" >
+                  {"Retornar ao Portal do Docente"}
+                </Link>
+              </Grid>
+            </Grid>
           </div>
         </main>
   
@@ -81,4 +72,4 @@ const Inicio: NextPage = () => {
     )
 }
 
-export default Inicio    
+export default PortalDaDisciplina    

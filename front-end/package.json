@@ -31,6 +31,7 @@
         "react-hook-form": "^7.34.2",
         "react-input-mask": "^2.0.4",
         "react-material-ui-form-validator": "^3.0.1",
+        "react-window": "^1.8.7",
         "yup": "^0.32.11"
     },
     "devDependencies": {
@@ -38,6 +39,7 @@
         "@types/react": "18.0.15",
         "@types/react-dom": "18.0.6",
         "@types/react-input-mask": "^3.0.1",
+        "@types/react-window": "^1.8.5",
         "@types/styled-components": "^5.1.26",
         "eslint": "8.20.0",
         "eslint-config-next": "12.2.2",

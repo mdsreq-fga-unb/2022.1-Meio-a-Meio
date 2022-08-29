@@ -42,7 +42,7 @@ export default function Cadastro() {
     if(handleCheckData()){
       return;
     }
-    router.push('/docente/portal')
+    router.push('/turma/listar')
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/,"");

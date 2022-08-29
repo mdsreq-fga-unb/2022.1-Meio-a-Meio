@@ -30,6 +30,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Moment from 'moment';
 import SelectUf from '../../component/SelectUf';
 import { useRouter } from 'next/router'
+import Alert from '@mui/material/Alert';
 
 
 function Copyright(props: any) {
@@ -127,15 +128,15 @@ export default function Cadastro() {
     if(!cpf || cpf.length === 0) {
       emptyFields.cpf = "O campo de CPF não pode ser vazio"
     }
-    if(cpf.length < 11) {
-      emptyFields.cpf = "CPF inválido"
-    }
+    // if(cpf.length < 11) {
+    //   emptyFields.cpf = "CPF inválido"
+    // }
     if(!celular || celular.length === 0) {
       emptyFields.celular = "O campo de celular não pode ser vazio"
     }
-    if(celular.length < 11) {
-      emptyFields.celular = "Celular inválido"
-    }
+    // if(celular.length < 11) {
+    //   emptyFields.celular = "Celular inválido"
+    // }
     if(!nacionalidade || nacionalidade.length === 0) {
       emptyFields.nacionalidade = "O campo de nacionalidade não pode ser vazio"
     }
@@ -161,7 +162,7 @@ export default function Cadastro() {
       emptyFields.formacao_academica = "O campo de formação acadêmica não pode ser vazio"
     }
     if(!email || email.length === 0) {
-      emptyFields.email = "O campo de e-mail acadêmica não pode ser vazio"
+      emptyFields.email = "O campo de e-mail não pode ser vazio"
     }
     if(!data_de_nascimento || data_de_nascimento.length === 0) {
       emptyFields.data_de_nascimento = "O campo de data de nascimento não pode ser vazio"
