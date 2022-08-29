@@ -29,6 +29,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormLabel from '@mui/material/FormLabel';
 import Moment from 'moment';
 import SelectUf from '../../component/SelectUf';
+import { useRouter } from 'next/router'
 
 
 function Copyright(props: any) {
@@ -52,6 +53,7 @@ export default function Cadastro() {
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
   const [region , setRegion] = useState('');
+  const router = useRouter();
 
   const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setData({...data,[e.target.name]:  e.target.value});
@@ -78,6 +80,7 @@ export default function Cadastro() {
     apiRequest.post('professor/create',
       {...data, email: 'lbruna886@gmail.com'}
   ).then((result) => {
+    router.push('/docente/portal')
     console.log('ok')
   }).catch((err) => {
     console.log('errado', err)
