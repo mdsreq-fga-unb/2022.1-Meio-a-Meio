@@ -44,7 +44,7 @@ export class AlunoService {
     try {
       aluno.nome_completo = data.nome_completo;
       aluno.sexo = data.sexo;
-      aluno.data_de_nascimento = data.data_de_nascimento;
+      aluno.data_de_nascimento = new Date(data.data_de_nascimento);
       aluno.nacionalidade = data.nacionalidade;
       aluno.email = data.email;
       aluno.cpf = data.cpf;
@@ -121,5 +121,10 @@ export class AlunoService {
       }
     });
     return aluno; 
+  }
+
+  async findOne(id: number) {
+    const aluno = await this.alunoRepository.findOne({where:{id:id}})
+    return aluno;
   }
 }

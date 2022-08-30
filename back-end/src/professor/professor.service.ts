@@ -44,7 +44,7 @@ export class ProfessorService {
     try {
       professor.nome_completo = data.nome_completo;
       professor.email = data.email;
-      professor.data_de_nascimento = data.data_de_nascimento;;
+      professor.data_de_nascimento = new Date(data.data_de_nascimento);
       professor.nacionalidade = data.nacionalidade;
       professor.cpf = data.cpf;
       professor.rg_rne = data.rg_rne;
