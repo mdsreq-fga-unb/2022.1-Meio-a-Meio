@@ -20,6 +20,7 @@ export class CursoService {
         
         curso.nome = data.nome;
         curso.unidade = data.unidade;
+        curso.status = 1;
         curso.create_at = new Date();
         curso.update_at = new Date();
 
@@ -29,13 +30,11 @@ export class CursoService {
     }
   }
 
+  async findAll() {
+    return this.cursoRepository.find();
+  }
+
   async validateIfCursoAndUnidadeAlreadyExists(nome: string, unidade: string) {
-    const curso = await this.cursoRepository.findOne({
-      where: {
-        nome,
-        unidade
-      }
-    });
-    return curso; 
+    return await this.cursoRepository.findOneBy({ nome, unidade });
   }
 }
