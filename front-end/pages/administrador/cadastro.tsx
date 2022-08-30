@@ -499,7 +499,7 @@ export default function Cadastro() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Professor
+              Cadastrar Administrador
             </Button>
             <Collapse in={open}>
               <Alert

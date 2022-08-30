@@ -93,7 +93,7 @@ const EsqueceuASenha: NextPage = () => {
             </Head>
           </div>
           <Typography component="h1" variant="h5">
-            Preencha aqui o seu e-mail de cadastroo para a recuperação de senha:
+            Preencha aqui o seu e-mail de cadastro para a recuperação de senha:
           </Typography>
           <Box
             component="form"

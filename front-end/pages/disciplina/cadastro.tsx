@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
+import apiRequest from "../../util/apiRequest";
+
 
 function Copyright(props: any) {
   return (
@@ -37,11 +39,20 @@ export default function Cadastro() {
   const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log(data);
     event.preventDefault();
     if(handleCheckData()){
       return;
     }
-    router.push('/disciplina/listar')
+    apiRequest
+      .post("disciplina/", { ...data})
+      .then((result) => {
+        router.push('/disciplina/listar')
+        console.log("ok");
+      })
+      .catch((err) => {
+        console.log("errado", err);
+      });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/,"");
@@ -51,23 +62,24 @@ export default function Cadastro() {
     setErrors(tempErrors);
   };
 
+  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const clearNumber = e.target.value.replace(/\D/, "");
+    setData({ ...data, [e.target.name]: clearNumber });
+  };
+
   const handleCheckData = () => {
     const {
-      nomeDisciplina ,
+      nome_disciplina ,
       carga_horaria,
-      nota,
       professor,
     } = data;
     let emptyFields: any = {}
 
-    if(!nomeDisciplina || nomeDisciplina.length === 0) {
-      emptyFields.nomeDisciplina = "Nome Vazio"
+    if(!nome_disciplina || nome_disciplina.length === 0) {
+      emptyFields.nome_disciplina = "Nome Vazio"
     } 
     if(!carga_horaria || carga_horaria.length === 0) {
       emptyFields.carga_horaria = "Carga Horaria Vazia"
-    }
-    if(!nota || nota.length === 0) {
-      emptyFields.nota = "Nota Vazia"
     }
     if(!professor || professor.length === 0) {
       emptyFields.professor = "Professor Vazio"
@@ -107,15 +119,15 @@ export default function Cadastro() {
           <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeDisciplina?true:false}
-                  helperText={errors.nomeDisciplina||null}
+                  error={errors.nome_disciplina?true:false}
+                  helperText={errors.nome_disciplina||null}
                   fullWidth
-                  id="nomeDisciplina"
+                  id="nome_disciplina"
                   label="Nome da Disciplina"
-                  name="nomeDisciplina"
-                  autoComplete="nomeDisciplina"
+                  name="nome_disciplina"
+                  autoComplete="nome_disciplina"
                   onChange={handleText}
-                  value= {data?data.nomeDisciplina:""}
+                  value= {data?data.nome_disciplina:""}
                 />
               </Grid>
               <Grid item xs={12} >
@@ -127,21 +139,8 @@ export default function Cadastro() {
                   id="carga_horaria"
                   label="Carga Horária"
                   name="carga_horaria"
-                  onChange={handleText}
+                  onChange={handleNumber}
                   value= {data?data.carga_horaria:""}
-                />
-              </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  required
-                  error={errors.nota?true:false}
-                  helperText={errors.nota||null}
-                  fullWidth
-                  id="nota"
-                  label="Nota"
-                  name="nota"
-                  onChange={handleText}
-                  value= {data?data.nota:""}
                 />
               </Grid>
               <Grid item xs={12} >
@@ -153,7 +152,7 @@ export default function Cadastro() {
                   id="professor"
                   label="Professor"
                   name="professor"
-                  onChange={handleText}
+                  onChange={handleNumber}
                   value= {data?data.professor:""}
                 />
               </Grid>

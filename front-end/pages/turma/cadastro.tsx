@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
+import apiRequest from "../../util/apiRequest";
 
 function Copyright(props: any) {
   return (
@@ -39,10 +40,19 @@ export default function Cadastro() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(data);
     if(handleCheckData()){
       return;
     }
-    router.push('/turma/listar')
+    apiRequest
+      .post("turma/", { ...data})
+      .then((result) => {
+        router.push('/turma/listar')
+        console.log("ok");
+      })
+      .catch((err) => {
+        console.log("errado", err);
+      });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/,"");
@@ -52,22 +62,35 @@ export default function Cadastro() {
     setErrors(tempErrors);
   };
 
+  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const clearNumber = e.target.value.replace(/\D/, "");
+    setData({ ...data, [e.target.name]: clearNumber });
+  };
+
   const handleCheckData = () => {
     const {
       nomeTurma ,
-      horario,
-      dia,
+      horarios,
+      dias,
+      professor,
+      disciplina,
     } = data;
     let emptyFields: any = {}
 
     if(!nomeTurma || nomeTurma.length === 0) {
       emptyFields.nomeTurma = "Nome Vazio"
     } 
-    if(!horario || horario.length === 0) {
-      emptyFields.horario = "Horario Vazia"
+    if(!horarios || horarios.length === 0) {
+      emptyFields.horarios = "Horário Vazio"
     }
-    if(!dia || dia.length === 0) {
-      emptyFields.dia = "Dia Vazio"
+    if(!dias || dias.length === 0) {
+      emptyFields.dias = "Dia Vazio"
+    }
+    if(!professor || professor.length === 0) {
+      emptyFields.professor = "Professor Vazio"
+    }
+    if(!disciplina || disciplina.length === 0) {
+      emptyFields.disciplina = "Disciplina Vazio"
     }
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);
@@ -118,29 +141,55 @@ export default function Cadastro() {
               <Grid item xs={12} >
                 <TextField
                   required
-                  error={errors.horario?true:false}
-                  helperText={errors.horario||null}
+                  error={errors.horarios?true:false}
+                  helperText={errors.horarios||null}
                   fullWidth
-                  id="horario"
+                  id="horarios"
                   label="Horário"
-                  name="horario"
+                  name="horarios"
                   onChange={handleText}
-                  value= {data?data.horario:""}
-                />
-              </Grid><Grid item xs={12} >
-                <TextField
-                  required
-                  error={errors.dia?true:false}
-                  helperText={errors.dia||null}
-                  fullWidth
-                  id="dia"
-                  label="Dia"
-                  name="dia"
-                  onChange={handleText}
-                  value= {data?data.dia:""}
+                  value= {data?data.horarios:""}
                 />
               </Grid>
-
+              <Grid item xs={12} >
+                <TextField
+                  required
+                  error={errors.dias?true:false}
+                  helperText={errors.dias||null}
+                  fullWidth
+                  id="dias"
+                  label="Dia"
+                  name="dias"
+                  onChange={handleNumber}
+                  value= {data?data.dias:""}
+                />
+              </Grid>
+              <Grid item xs={12} >
+                <TextField
+                  required
+                  error={errors.professor?true:false}
+                  helperText={errors.professor||null}
+                  fullWidth
+                  id="professor"
+                  label="Professor"
+                  name="professor"
+                  onChange={handleNumber}
+                  value= {data?data.professor:""}
+                />
+              </Grid>
+              <Grid item xs={12} >
+                <TextField
+                  required
+                  error={errors.disciplina?true:false}
+                  helperText={errors.disciplina||null}
+                  fullWidth
+                  id="disciplina"
+                  label="Disciplina"
+                  name="disciplina"
+                  onChange={handleNumber}
+                  value= {data?data.disciplina:""}
+                />
+              </Grid>
               </Grid>
             <Button
               type="submit"

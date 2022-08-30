@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
+import apiRequest from "../../util/apiRequest";
 
 function Copyright(props: any) {
   return (
@@ -38,10 +39,22 @@ export default function Cadastro() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("aaaa");
     if(handleCheckData()){
+      console.log("bbbb");
       return;
     }
-    router.push('/curso/listar')
+    apiRequest
+      .post("curso/create", { ...data})
+      .then((result) => {
+        router.push('/curso/listar')
+        console.log("ok");
+      })
+      .catch((err) => {
+        console.log("errado", err);
+      });
+
+    const date = new FormData(event.currentTarget);
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/,"");
@@ -53,12 +66,12 @@ export default function Cadastro() {
 
   const handleCheckData = () => {
     const {
-        nomeCurso ,
+        nome ,
     } = data;
     let emptyFields: any = {}
 
-    if(!nomeCurso || nomeCurso.length === 0) {
-      emptyFields.nomeCurso = "Nome Vazio"
+    if(!nome || nome.length === 0) {
+      emptyFields.nome = "Nome Vazio"
     } 
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);
@@ -95,15 +108,15 @@ export default function Cadastro() {
           <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeCurso?true:false}
-                  helperText={errors.nomeCurso||null}
+                  error={errors.nome?true:false}
+                  helperText={errors.nome||null}
                   fullWidth
-                  id="nomeCurso"
+                  id="nome"
                   label="Nome do Curso"
-                  name="nomeCurso"
-                  autoComplete="nomeCurso"
+                  name="nome"
+                  autoComplete="nome"
                   onChange={handleText}
-                  value= {data?data.nomeCurso:""}
+                  value= {data?data.nome:""}
                 />
               </Grid>
               <Grid item xs={12} >

@@ -20,59 +20,34 @@ const PortalDaTurma: NextPage = () => {
   
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Bem vindo(a) ao Portal da Turma
+            Avaliações
           </h1>
   
-          <p className={styles.description}>
-            Verifique aqui todo tipo de informação sobre as turmas disponíveis do Galdi
-            {/* <code className={styles.code}>pages/index.tsx</code> */}
-          </p>
-  
           <div className={styles.grid}>
-          <Link href="/turma/cadastro">
+            <Link href="/avaliacao/cadastroNotas">
             <a
               className={styles.card}
             >
               <h2>Cadastrar &rarr;</h2>
               <p>
-                Cadastre novas turmas por meio desta opção
+              Cadastre novas avaliações aqui
               </p>
             </a>
             </Link>
-            <Link href="/turma/listar">
+            <Link href="/avaliacao/visualizarNotas">
             <a
               className={styles.card}
             >
               <h2>Listar &rarr;</h2>
               <p>
-                Verifique aqui todas as turmas já cadastradas
-              </p>
-            </a>
-            </Link>
-            <Link href="/avaliacao/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Avaliações &rarr;</h2>
-              <p>
-                Informações sobre as suas avaliações
-              </p>
-            </a>
-            </Link>
-            <Link href="/atividade/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Atividades &rarr;</h2>
-              <p>
-              Informações sobre as suas atividades
+                Veja suas avaliações registradas aqui
               </p>
             </a>
             </Link>
             <Grid container justifyContent="center" sx={{ mt: 4 }}>
               <Grid item>
-                <Link href="/docente/portal" >
-                  {"Retornar ao Portal do Docente"}
+                <Link href="/turma/portal" >
+                  {"Retornar ao Portal da Turma"}
                 </Link>
               </Grid>
             </Grid>

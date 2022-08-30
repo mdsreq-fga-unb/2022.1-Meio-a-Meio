@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
-import { string } from "yup/lib/locale";
 
 
 interface selectProps{

@@ -4,10 +4,9 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
-import Grid from "@mui/material/Grid";
 
 
-const PortalDaTurma: NextPage = () => {
+const PortalDeCadastro: NextPage = () => {
     //acessa qualquer post que quiser no blog
     const router = useRouter()
     return (
@@ -20,62 +19,34 @@ const PortalDaTurma: NextPage = () => {
   
         <main className={styles.main}>
           <h1 className={styles.title}>
-            Bem vindo(a) ao Portal da Turma
+            Cadastre-se aqui
           </h1>
   
           <p className={styles.description}>
-            Verifique aqui todo tipo de informação sobre as turmas disponíveis do Galdi
+            Selecione a opção de cadastro:
             {/* <code className={styles.code}>pages/index.tsx</code> */}
           </p>
-  
           <div className={styles.grid}>
-          <Link href="/turma/cadastro">
+          <Link href="/administrador/cadastro">
             <a
               className={styles.card}
             >
-              <h2>Cadastrar &rarr;</h2>
+              <h2> Administrador &rarr;</h2>
               <p>
-                Cadastre novas turmas por meio desta opção
+                Administrador, cadastre-se aqui
               </p>
             </a>
             </Link>
-            <Link href="/turma/listar">
+            <Link href="/professor/cadastro">
             <a
               className={styles.card}
             >
-              <h2>Listar &rarr;</h2>
+              <h2>Professor &rarr;</h2>
               <p>
-                Verifique aqui todas as turmas já cadastradas
+                Professor, cadastre-se aqui
               </p>
             </a>
             </Link>
-            <Link href="/avaliacao/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Avaliações &rarr;</h2>
-              <p>
-                Informações sobre as suas avaliações
-              </p>
-            </a>
-            </Link>
-            <Link href="/atividade/portal">
-            <a
-              className={styles.card}
-            >
-              <h2>Atividades &rarr;</h2>
-              <p>
-              Informações sobre as suas atividades
-              </p>
-            </a>
-            </Link>
-            <Grid container justifyContent="center" sx={{ mt: 4 }}>
-              <Grid item>
-                <Link href="/docente/portal" >
-                  {"Retornar ao Portal do Docente"}
-                </Link>
-              </Grid>
-            </Grid>
           </div>
         </main>
   
@@ -92,4 +63,4 @@ const PortalDaTurma: NextPage = () => {
     )
 }
 
-export default PortalDaTurma    
+export default PortalDeCadastro    
