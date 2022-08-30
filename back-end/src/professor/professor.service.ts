@@ -1,7 +1,8 @@
+import { UpdateProfessorDto } from './dto/update.professor.dto';
 import { Professor } from './professor.entity';
 import { CreateProfessorDto } from './dto/create.professor.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, Inject, BadRequestException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
@@ -44,7 +45,7 @@ export class ProfessorService {
     try {
       professor.nome_completo = data.nome_completo;
       professor.email = data.email;
-      professor.data_de_nascimento = data.data_de_nascimento;;
+      professor.data_de_nascimento = data.data_de_nascimento;
       professor.nacionalidade = data.nacionalidade;
       professor.cpf = data.cpf;
       professor.rg_rne = data.rg_rne;
@@ -68,31 +69,53 @@ export class ProfessorService {
       };
   }
 
+  async findAll() {
+    return this.professorRepository.find();
+  }
+
+  async findProfessorById(id: number) {
+    return await this.professorRepository.findOneBy({ id });
+  }
+
+  async updateProfessor(id: number, data: UpdateProfessorDto) {
+    const professor = await this.findProfessorById(id);
+    if(!professor) 
+      throw new NotFoundException("Professor não encontrado!")
+
+    try {
+      professor.nome_completo = data.nome_completo;
+      professor.email = data.email;
+      professor.data_de_nascimento = data.data_de_nascimento;
+      professor.nacionalidade = data.nacionalidade;
+      professor.cpf = data.cpf;
+      professor.rg_rne = data.rg_rne;
+      professor.uf_rg_rne = data.uf_rg_rne;
+      professor.orgao_emissor = data.orgao_emissor;
+      professor.celular = data.celular;
+      professor.crm = data.crm;
+      professor.uf_crm = data.uf_crm;
+      professor.formacao_academica = data.formacao_academica;
+      professor.especializacao = data.especializacao;
+      professor.especialista = data.especialista;
+      professor.sexo = data.sexo;
+      professor.observacao = data.observacao;
+      professor.update_at = new Date();
+      
+      return this.professorRepository.save(professor);
+    } catch(error) {
+        throw new BadRequestException('Erro ao editar professor');
+    }
+  }
+
   async validateIfCPFAlreadyExists(cpf: string) {
-    const professor = await this.professorRepository.findOne({
-      where: {
-        cpf
-      }
-    });
-    return professor; 
+    return await this.professorRepository.findOneBy({ cpf });
   }
 
   async validateIfCrmAndUfAlreadyExists(crm: string, uf_crm: string) {
-    const professor = await this.professorRepository.findOne({
-      where: {
-        crm,
-        uf_crm
-      }
-    });
-    return professor; 
+    return await this.professorRepository.findOneBy({ crm, uf_crm });
   }
 
   async validateIfMatriculaAlreadyExists(matricula: string) {
-    const professor = await this.professorRepository.findOne({
-      where: {
-        matricula
-      }
-    });
-    return professor; 
+    return await this.professorRepository.findOneBy({ matricula });
   }
 }
