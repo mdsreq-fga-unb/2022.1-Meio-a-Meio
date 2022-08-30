@@ -136,6 +136,10 @@ export class AlunoService {
       aluno.observacao = data.observacao;
       aluno.update_at = new Date();
 
+      data.curso.forEach(course => {
+        aluno.curso.push(course);
+      });
+
       return this.alunoRepository.save(aluno);
     } catch(error) {
       throw new UnprocessableEntityException('Erro ao editar aluno!');
