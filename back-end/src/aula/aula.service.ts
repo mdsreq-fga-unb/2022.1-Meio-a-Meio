@@ -1,11 +1,41 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,Inject, UnprocessableEntityException, HttpException, HttpStatus } from '@nestjs/common';
 import { CreateAulaDto } from './dto/create-aula.dto';
 import { UpdateAulaDto } from './dto/update-aula.dto';
+import { Aula } from './entities/aula.entity';
+import { Repository } from 'typeorm';
+import { Turma } from 'src/turma/entities/turma.entity';
+import { TurmaService } from 'src/turma/turma.service';
 
 @Injectable()
 export class AulaService {
-  create(createAulaDto: CreateAulaDto) {
-    return 'This action adds a new aula';
+  constructor(
+    @Inject('AULA_REPOSITORY')
+    private aulaRepository: Repository<Aula>,
+    
+    @Inject('TURMA_REPOSITORY')
+    private turmaRepository: Repository<Turma>
+    ){}
+
+  async create(createAulaDto: CreateAulaDto) {
+
+    const turma = await this.turmaRepository.findOne({where:{id:createAulaDto.turma.id}})
+    if(!turma){
+      throw new UnprocessableEntityException('Erro ao cadastrar aula!, Turma informada não existe');
+    }
+
+    const aula = new Aula();
+
+    try{
+
+      aula.data = new Date(createAulaDto.data);
+      aula.turma = createAulaDto.turma;
+      await this.aulaRepository.save(aula);
+      return aula;
+
+    } catch(error){
+      console.log(error)
+      throw new UnprocessableEntityException('Erro ao cadastrar aula!');
+    }
   }
 
   findAll() {

@@ -49,7 +49,7 @@ export class TurmaService {
 
   async findOne(id: number) {
     const turma = await this.turmaRepository.findOne({where:{id:id}});
-    console.log(turma.alunos);
+    //console.log(turma.alunos);
     return turma;
   }
 

@@ -1,7 +1,7 @@
 import { Aula } from 'src/aula/entities/aula.entity';
 import { Aluno } from 'src/aluno/aluno.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { DiaDaSemana } from './dias.enum';
+
 
 @Entity()
 export class Turma {
