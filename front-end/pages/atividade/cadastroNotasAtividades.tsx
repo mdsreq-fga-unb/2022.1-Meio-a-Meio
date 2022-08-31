@@ -10,6 +10,12 @@ import { useRouter } from "next/router";
 import React, { useState, ChangeEvent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 function Copyright(props: any) {
   return (
@@ -38,7 +44,7 @@ export default function CadastroNotas() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-
+  const [professor, setProfessor] = React.useState('');
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
@@ -53,7 +59,9 @@ export default function CadastroNotas() {
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
   };
-
+  const handleChange = (event: SelectChangeEvent) => {
+    setProfessor(event.target.value);
+  };
   const handleCheckData = () => {
     const { nome_curso, nome_disciplina, nome_turma, nome_aluno, nota } = data;
     let emptyFields: any = {};
@@ -97,7 +105,7 @@ export default function CadastroNotas() {
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-            Cadastro de Notas de Atividades
+            Cadastro de Notas
           </Typography>
           <Box
             component="form"
@@ -106,21 +114,20 @@ export default function CadastroNotas() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={6}>
-                <TextField
-                  required
-                  error={errors.nome_curso ? true : false}
-                  helperText={errors.nome_curso || null}
-                  fullWidth
-                  id="nome_curso"
-                  label="Nome do Curso"
-                  name="nome_curso"
-                  autoComplete="nome_curso"
-                  onChange={handleText}
-                  value={data ? data.nome_curso : ""}
-                />
-              </Grid>
-              <Grid item xs={6}>
+            <FormControl sx={{ m: 2, minWidth: 120 }}>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={professor}
+                  label="Professor"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Alessandra</MenuItem>
+                  <MenuItem value={2}>Fernanda</MenuItem>
+                  <MenuItem value={3}>Gabriela</MenuItem>
+                </Select>
+                </FormControl>
+              {/* <Grid item xs={6}>
                 <TextField
                   required
                   error={errors.nome_disciplina ? true : false}
@@ -133,7 +140,7 @@ export default function CadastroNotas() {
                   onChange={handleText}
                   value={data ? data.nome_disciplina : ""}
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={6}>
                 <TextField
                   required
@@ -147,6 +154,28 @@ export default function CadastroNotas() {
                   onChange={handleText}
                   value={data ? data.nomeAluno : ""}
                 />
+              </Grid>
+              <Grid item xs={2}>
+                <FormControl fullWidth>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    onChange={(e) => setData({ ...data, tipo: e.target.value })}
+                    value={data ? data.tipo : null}
+                  >
+                    <FormControlLabel
+                      value="prova"
+                      control={<Radio />}
+                      label="Prova"
+                    />
+                    <FormControlLabel
+                      value="atividade"
+                      control={<Radio />}
+                      label="Atividade"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Grid>
               <Grid item xs={6}>
                 <TextField
@@ -162,7 +191,7 @@ export default function CadastroNotas() {
                   value={data ? data.nota : ""}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={6}>
                 <TextField
                   fullWidth
                   name="observacoes"
@@ -181,7 +210,7 @@ export default function CadastroNotas() {
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/docente/portal" variant="body2">
+                  <Link href="/atividade/portal" variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>

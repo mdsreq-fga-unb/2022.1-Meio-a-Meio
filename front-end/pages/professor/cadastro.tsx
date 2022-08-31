@@ -63,7 +63,7 @@ export default function Cadastro() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -82,14 +82,15 @@ export default function Cadastro() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("aaaa");
     if (handleCheckData()) {
       console.log("bbbb");
       return;
     }
+    console.log("aaaa");
     apiRequest
-      .post("professor/create", { ...data, email: "lbruna886@gmail.com" })
+      .post("professor/create", { ...data})
       .then((result) => {
+        setOpen(true);
         router.push("/");
         console.log("ok");
       })
@@ -111,7 +112,7 @@ export default function Cadastro() {
     const clearNumber = e.target.value.replace(/\D/, "");
     setData({ ...data, [e.target.name]: clearNumber });
   };
-
+  
   const handleCheckData = () => {
     const {
       nome_completo,
@@ -136,18 +137,13 @@ export default function Cadastro() {
     if (!nome_completo || nome_completo.length === 0) {
       emptyFields.nome_completo = "O campo de nome não pode ser vazio";
     }
-    if (!cpf || cpf.length === 0) {
-      emptyFields.cpf = "O campo de CPF não pode ser vazio";
+    if (!cpf || cpf.length === 0 || cpf.length < 11) {
+      emptyFields.cpf = "CPF inválido";
     }
-    // if(cpf.length < 11) {
-    //   emptyFields.cpf = "CPF inválido"
-    // }
-    if (!celular || celular.length === 0) {
-      emptyFields.celular = "O campo de celular não pode ser vazio";
+    if (!celular || celular.length === 0 || celular.length < 11) {
+      emptyFields.celular = "Celular inválido";
     }
-    // if(celular.length < 11) {
-    //   emptyFields.celular = "Celular inválido"
-    // }
+
     if (!nacionalidade || nacionalidade.length === 0) {
       emptyFields.nacionalidade = "O campo de nacionalidade não pode ser vazio";
     }
@@ -174,8 +170,8 @@ export default function Cadastro() {
       emptyFields.formacao_academica =
         "O campo de formação acadêmica não pode ser vazio";
     }
-    if (!email || email.length === 0) {
-      emptyFields.email = "O campo de e-mail não pode ser vazio";
+    if (!email || email.length === 0 || !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+      emptyFields.email = "E-mail inválido";
     }
     if (!data_de_nascimento || data_de_nascimento.length === 0) {
       emptyFields.data_de_nascimento =

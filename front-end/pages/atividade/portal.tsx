@@ -5,6 +5,8 @@ import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 
 const PortalDaTurma: NextPage = () => {
@@ -24,7 +26,7 @@ const PortalDaTurma: NextPage = () => {
           </h1>
 
           <div className={styles.grid}>
-            <Link href="/atividade/cadastroNotas">
+            <Link href="/atividade/cadastroNotasAtividades">
             <a
               className={styles.card}
             >
@@ -34,20 +36,38 @@ const PortalDaTurma: NextPage = () => {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/visualizarNotas">
+            <Link href="/atividade/visualizarNotasAtividades">
             <a
               className={styles.card}
             >
-              <h2>Listar &rarr;</h2>
+              <h2>Atividades &rarr;</h2>
               <p>
                 Veja suas atividades registradas aqui
               </p>
             </a>
             </Link>
+            <Link href="/atividade/visualizarNotasAvaliacoes">
+            <a
+              className={styles.card}
+            >
+              <h2>Avaliações &rarr;</h2>
+              <p>
+                Veja suas avaliações registradas aqui
+              </p>
+            </a>
+            </Link>
+            {/* <Stack spacing={35} direction="row">
+            <Button variant="outlined" href="/disciplina/cadastro">
+              Cadastrar
+            </Button>
+            <Button variant="outlined" href="/disciplina/editar">
+              Editar
+            </Button>
+          </Stack> */}
             <Grid container justifyContent="center" sx={{ mt: 4 }}>
               <Grid item>
-                <Link href="/turma/portal" >
-                  {"Retornar ao Portal da Turma"}
+                <Link href="/disciplina/portal" >
+                  {"Retornar ao Portal da Disciplina"}
                 </Link>
               </Grid>
             </Grid>

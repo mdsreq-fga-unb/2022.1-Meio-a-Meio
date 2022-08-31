@@ -1,53 +1,81 @@
-import React, {useState, ChangeEvent} from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Image from 'next/image';
-import Head from 'next/head';
-import { useRouter } from 'next/router'
+import React, { useState, ChangeEvent, useEffect } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Image from "next/image";
+import Head from "next/head";
+import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
+import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
 
 function Copyright(props: any) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio">
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link
+        color="inherit"
+        href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
+      >
         Meio a Meio
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 const theme = createTheme();
 
-export default function Cadastro() {
-
+export default function Cadastro({
+  listaDisciplinas,
+  listaProfessores,
+  error,
+}) {
   const [data, setData] = useState<any>({});
-  const [errors , setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<any>({});
+  const [professor, setProfessor] = useState<any>([]);
+  const [disciplina, setDisciplina] = useState<any>([]);
   const router = useRouter();
+
+  useEffect(() => {
+    if (listaDisciplinas) {
+      setDisciplina(listaDisciplinas);
+    }
+    if (listaProfessores) {
+      setProfessor(listaProfessores);
+    }
+    console.log(listaDisciplinas);
+    console.log(listaProfessores);
+    console.log(error);
+    //erros
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(data);
-    if(handleCheckData()){
+    if (handleCheckData()) {
       return;
     }
     apiRequest
-      .post("turma/", { ...data})
+      .post("turma/", { ...data })
       .then((result) => {
-        router.push('/turma/listar')
+        router.push("/turma/listar");
         console.log("ok");
       })
       .catch((err) => {
@@ -55,10 +83,10 @@ export default function Cadastro() {
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearText = e.target.value.replace(/\d/,"");
-    setData({...data,[e.target.name]: clearText});
-    let tempErrors = errors
-    delete tempErrors[e.target.name]
+    const clearText = e.target.value.replace(/\d/, "");
+    setData({ ...data, [e.target.name]: clearText });
+    let tempErrors = errors;
+    delete tempErrors[e.target.name];
     setErrors(tempErrors);
   };
 
@@ -68,37 +96,31 @@ export default function Cadastro() {
   };
 
   const handleCheckData = () => {
-    const {
-      nomeTurma ,
-      horarios,
-      dias,
-      professor,
-      disciplina,
-    } = data;
-    let emptyFields: any = {}
+    const { nomeTurma, horarios, dias, professor, disciplina } = data;
+    let emptyFields: any = {};
 
-    if(!nomeTurma || nomeTurma.length === 0) {
-      emptyFields.nomeTurma = "Nome Vazio"
-    } 
-    if(!horarios || horarios.length === 0) {
-      emptyFields.horarios = "Horário Vazio"
+    if (!nomeTurma || nomeTurma.length === 0) {
+      emptyFields.nomeTurma = "Nome Vazio";
     }
-    if(!dias || dias.length === 0) {
-      emptyFields.dias = "Dia Vazio"
+    if (!horarios || horarios.length === 0) {
+      emptyFields.horarios = "Horário Vazio";
     }
-    if(!professor || professor.length === 0) {
-      emptyFields.professor = "Professor Vazio"
+    if (!dias || dias.length === 0) {
+      emptyFields.dias = "Dia Vazio";
     }
-    if(!disciplina || disciplina.length === 0) {
-      emptyFields.disciplina = "Disciplina Vazio"
+    if (!professor || professor.length === 0) {
+      emptyFields.professor = "Professor Vazio";
     }
-    if(Object.keys(emptyFields).length > 0){
+    if (!disciplina || disciplina.length === 0) {
+      emptyFields.disciplina = "Disciplina Vazio";
+    }
+    if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
       return 1;
     }
     return 0;
-  }
-  
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="lg">
@@ -106,91 +128,112 @@ export default function Cadastro() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <div>
-          <Head>
-            <title>Galdi</title>
-            <meta name="description" content="Generated by meio a meio" />
-            <link rel="icon" href="/images/icon.png" />
-          </Head>
-          {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
-        </div>
+            <Head>
+              <title>Galdi</title>
+              <meta name="description" content="Generated by meio a meio" />
+              <link rel="icon" href="/images/icon.png" />
+            </Head>
+            {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
+          </div>
           <Typography component="h1" variant="h5">
-          Insira os dados cadastrais da turma
+            Insira os dados cadastrais da turma
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
-          <Grid item xs={12}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeTurma?true:false}
-                  helperText={errors.nomeTurma||null}
+                  error={errors.nomeTurma ? true : false}
+                  helperText={errors.nomeTurma || null}
                   fullWidth
                   id="nomeTurma"
                   label="Nome da Turma"
                   name="nomeTurma"
                   autoComplete="nomeTurma"
                   onChange={handleText}
-                  value= {data?data.nomeTurma:""}
+                  value={data ? data.nomeTurma : ""}
                 />
               </Grid>
-              <Grid item xs={12} >
+              <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.horarios?true:false}
-                  helperText={errors.horarios||null}
+                  error={errors.horarios ? true : false}
+                  helperText={errors.horarios || null}
                   fullWidth
                   id="horarios"
                   label="Horário"
                   name="horarios"
                   onChange={handleText}
-                  value= {data?data.horarios:""}
+                  value={data ? data.horarios : ""}
                 />
               </Grid>
-              <Grid item xs={12} >
+              <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.dias?true:false}
-                  helperText={errors.dias||null}
+                  error={errors.dias ? true : false}
+                  helperText={errors.dias || null}
                   fullWidth
                   id="dias"
                   label="Dia"
                   name="dias"
                   onChange={handleNumber}
-                  value= {data?data.dias:""}
+                  value={data ? data.dias : ""}
                 />
               </Grid>
-              <Grid item xs={12} >
-                <TextField
-                  required
-                  error={errors.professor?true:false}
-                  helperText={errors.professor||null}
+              {/* terminar */}
+              <Grid item xs={12}>
+              <InputLabel id="4" required>
+                  Professor
+                </InputLabel>
+                <Select
                   fullWidth
-                  id="professor"
-                  label="Professor"
-                  name="professor"
-                  onChange={handleNumber}
-                  value= {data?data.professor:""}
-                />
+                  error={errors.professor ? true : false}
+                  onChange={(e) =>
+                    setData({ ...data, professor: e.target.value })
+                  }
+                  label={"Professor"}
+                  value={data ? data.professor : ""}
+                >
+                  {professor.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nome}
+                    </MenuItem>
+                  ))}
+                </Select>
               </Grid>
-              <Grid item xs={12} >
-                <TextField
+              <Grid item xs={12}>
+                <InputLabel id="disciplina" required>
+                  Disciplina
+                </InputLabel>
+                <Select
                   required
-                  error={errors.disciplina?true:false}
-                  helperText={errors.disciplina||null}
                   fullWidth
-                  id="disciplina"
-                  label="Disciplina"
-                  name="disciplina"
-                  onChange={handleNumber}
-                  value= {data?data.disciplina:""}
-                />
+                  error={errors.disciplina ? true : false}
+                  onChange={(e) =>
+                    setData({ ...data, disciplina: e.target.value })
+                  }
+                  label={"Disciplina"}
+                  value={data ? data.disciplina : ""}
+                >
+                  {disciplina.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nome_disciplina}
+                    </MenuItem>
+                  ))}
+                </Select>
               </Grid>
-              </Grid>
+            </Grid>
             <Button
               type="submit"
               fullWidth
@@ -202,7 +245,7 @@ export default function Cadastro() {
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/docente/portal" variant="body2">
-                Retornar ao Menu Principal
+                  Retornar ao Menu Principal
                 </Link>
               </Grid>
             </Grid>
@@ -212,4 +255,20 @@ export default function Cadastro() {
       </Container>
     </ThemeProvider>
   );
+}
+
+export async function getServerSideProps() {
+  // const resProfessor = await apiRequest.get('/professor') //lista de professores
+  const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
+  console.log("aaa", resDisciplina);
+  // if(!resProfessor || !resDisciplina || !resProfessor.data || !resDisciplina.data){
+  //   return {props: {error: 'Falha ao carregar conteúdo'}}
+  // }
+
+  return {
+    props: {
+      listaDisciplinas: resDisciplina.data,
+      error: null,
+    },
+  };
 }
