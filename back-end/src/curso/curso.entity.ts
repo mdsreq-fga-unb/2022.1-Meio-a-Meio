@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
-import { Aluno } from 'src/aluno/aluno.entity';
 
 @Entity() 
 export class Curso {
@@ -20,7 +19,4 @@ export class Curso {
 
   @Column({ type: 'date' })
   update_at: Date;
-
-  @ManyToMany(() => Aluno, aluno => aluno.curso)
-  aluno: Aluno[];
 }

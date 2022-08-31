@@ -12,13 +12,7 @@ import { isCPF } from "brazilian-values";
 export class AlunoService {
   constructor(
     @Inject('ALUNO_REPOSITORY')
-    private alunoRepository: Repository<Aluno>,
-
-    @Inject('ENDERECO_REPOSITORY')
-    private enderecoRepository: Repository<Endereco>,
-
-    @Inject('CURSO_REPOSITORY')
-    private cursoRepository: Repository<Curso>
+    private alunoRepository: Repository<Aluno>
   ) {}
 
   async create(data: CreateAlunoDto) {
@@ -66,39 +60,18 @@ export class AlunoService {
       aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
       aluno.create_at = new Date();
       aluno.update_at = new Date();
-      
-      data.curso.forEach(course => {
-        aluno.curso.push(course);
-      });
-
-      const alunoSalvo = await this.alunoRepository.save(aluno);
-      
-      const endereco = new Endereco();
-      const alunoEndereco = data.endereco;
-      endereco.CEP = alunoEndereco.CEP;
-      endereco.numero = alunoEndereco.numero;
-      endereco.bairro = alunoEndereco.bairro;
-      endereco.cidade = alunoEndereco.cidade;
-      endereco.complemento = alunoEndereco.complemento;
-      endereco.endereco_residencia = alunoEndereco.endereco_residencial;
-      endereco.estado = alunoEndereco.estado;
-      endereco.status = 1;
-      endereco.create_at = new Date();
-      endereco.update_at = new Date();
-      endereco.aluno_id = alunoSalvo.id;
-    
-      await this.enderecoRepository.save(endereco);
+  
+      this.alunoRepository.save(aluno);
 
       return this.alunoRepository.findOne({
         where: {
-          id: alunoSalvo.id,
+          id: aluno.id,
         },
         relations: {
           enderecos: true,
           curso: true
         }
       });
-
     } catch(error) {
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
@@ -114,8 +87,6 @@ export class AlunoService {
 
   async updateStudent(id: number, data: UpdateAlunoDto) {
     const aluno = await this.findStudentById(id);
-    if(!aluno) 
-      throw new NotFoundException("Aluno não encontrado!")
 
     try {
       aluno.nome_completo = data.nome_completo;
@@ -135,10 +106,6 @@ export class AlunoService {
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
       aluno.update_at = new Date();
-
-      data.curso.forEach(course => {
-        aluno.curso.push(course);
-      });
 
       return this.alunoRepository.save(aluno);
     } catch(error) {

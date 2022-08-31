@@ -10,6 +10,32 @@ export class EnderecoService {
     private enderecoRepository: Repository<Endereco>,
   ) {}
 
+  async create(data: UpdateEnderecoDto) {
+    try {
+      const endereco = new Endereco();
+
+      endereco.aluno_id = data.aluno_id;
+      endereco.CEP = data.CEP;
+      endereco.numero = data.numero;
+      endereco.bairro = data.bairro;
+      endereco.cidade = data.cidade;
+      endereco.complemento = data.complemento;
+      endereco.endereco_residencial = data.endereco_residencial;
+      endereco.estado = data.estado;
+      endereco.status = 1;
+      endereco.create_at = new Date();
+      endereco.update_at = new Date();
+
+      return this.enderecoRepository.save(endereco);
+    } catch(error) {
+        throw new UnprocessableEntityException('Erro ao cadastrar endereço!');
+    };
+  }
+
+  async findAll() {
+    return await this.enderecoRepository.find();
+  }
+
   async findEnderecoById(id: number) {
     return await this.enderecoRepository.findOneBy({ id });
   }
@@ -25,7 +51,7 @@ export class EnderecoService {
         endereco.bairro = data.bairro;
         endereco.cidade = data.cidade;
         endereco.complemento = data.complemento;
-        endereco.endereco_residencia = data.endereco_residencial;
+        endereco.endereco_residencial = data.endereco_residencial;
         endereco.estado = data.estado;
         endereco.update_at = new Date();
 

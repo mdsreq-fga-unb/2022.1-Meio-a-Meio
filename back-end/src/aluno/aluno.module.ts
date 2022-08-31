@@ -8,8 +8,9 @@ import { alunoProviders } from './aluno.providers';
 import { AlunoService } from './aluno.service';
 
 @Module({
-  imports: [DatabaseModule, EnderecoModule, CursoModule],
+  imports: [DatabaseModule, EnderecoModule],
   controllers: [AlunoController],
   providers: [...alunoProviders, ...cursoProviders, AlunoService],
+  exports: [AlunoService]
 })
-export class StudentModule {}
+export class AlunoModule {}

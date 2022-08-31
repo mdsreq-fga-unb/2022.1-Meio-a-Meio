@@ -1,7 +1,4 @@
-import { CreateCursoDto } from './../../curso/dto/curso.create.dto';
-import { Curso } from 'src/curso/curso.entity';
 import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from "class-validator";
-import { CreateEnderecoDto } from "../../endereco/dto/endereco.create.dto";
 
 export class CreateAlunoDto {
  
@@ -69,8 +66,4 @@ export class CreateAlunoDto {
   @IsOptional()
   @IsString()
   observacao: string;
-
-  curso: Curso[];
-
-  endereco: CreateEnderecoDto;
 }
