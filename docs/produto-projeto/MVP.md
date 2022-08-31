@@ -14,7 +14,7 @@
 | FGM30 |   matricular aluno em curso    |
 | FGM26 |   mudar professor de turma     |
 | FP18  |   mudar aluno de turma         |
-|       |   registrar inadimplência      |
+| FGM31 |   registrar inadimplência      |
 
 ## MVP2
 
