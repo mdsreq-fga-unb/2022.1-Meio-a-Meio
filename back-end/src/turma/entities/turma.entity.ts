@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Aula } from 'src/aula/entities/aula.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { DiaDaSemana } from './dias.enum';
 
 @Entity()
@@ -20,4 +21,7 @@ export class Turma {
 
     @Column()
     disciplina: number;
+
+    @OneToMany(()=> Aula, (aula)=> aula.turma)
+    aulas: Aula[];
 }
