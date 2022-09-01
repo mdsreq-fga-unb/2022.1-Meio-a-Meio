@@ -52,13 +52,6 @@ const PortalDaDisciplina: NextPage = () => {
               </List>
             </Demo>
           </Grid>
-          <Grid container justifyContent="center" sx={{ mt: 4 }}>
-            <Grid item>
-              <Link href="/docente/portal">
-                {"Retornar ao Portal do Docente"}
-              </Link>
-            </Grid>
-          </Grid>
           <Stack spacing={35} direction="row">
             <Button variant="outlined" href="/disciplina/cadastro">
               Cadastrar

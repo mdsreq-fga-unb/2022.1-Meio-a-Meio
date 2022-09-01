@@ -121,7 +121,7 @@ const Home: NextPage = () => {
               <link rel="icon" href="/images/icon.png" />
             </Head>
             <Typography component="h1" variant="h5">
-              Professor, entrar no sistema:
+              Administrador, entrar no sistema:
             </Typography>
             <Box
               component="form"
@@ -171,12 +171,12 @@ const Home: NextPage = () => {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="/professor/esqueceuASenha" variant="body2">
+                  <Link href="/administrador/esqueceuASenha" variant="body2">
                     Esqueceu a senha?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/docente/cadastro" variant="body2">
+                  <Link href="/administrador/cadastro" variant="body2">
                     {"Não possui uma conta? Inscreva-se"}
                   </Link>
                 </Grid>

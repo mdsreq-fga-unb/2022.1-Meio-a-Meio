@@ -267,6 +267,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
+      // listaProfessores: resProfessor,data,
       listaDisciplinas: resDisciplina.data,
       error: null,
     },

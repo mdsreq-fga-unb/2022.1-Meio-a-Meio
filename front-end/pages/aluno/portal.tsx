@@ -49,13 +49,6 @@ const PortalDoAluno: NextPage = () => {
               </p>
             </a>
             </Link>
-            <Grid container justifyContent="center" sx={{ mt: 4 }}>
-              <Grid item>
-                <Link href="/docente/portal" >
-                  {"Retornar ao Portal do Docente"}
-                </Link>
-              </Grid>
-            </Grid>
           </div>
         </main>
         </Layout>
