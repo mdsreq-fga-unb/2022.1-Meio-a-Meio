@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 
 @Entity() 
 export class Curso {
@@ -10,6 +10,9 @@ export class Curso {
   
   @Column({ length: 100, nullable: true })
   unidade: string;
+
+  @Column()
+  status: number;
 
   @Column({ type: 'date' })
   create_at: Date;

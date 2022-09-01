@@ -1,3 +1,5 @@
+import { cursoProviders } from './../curso/curso.providers';
+import { CursoModule } from './../curso/curso.module';
 import { EnderecoModule } from './../endereco/endereco.module';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
@@ -8,6 +10,7 @@ import { AlunoService } from './aluno.service';
 @Module({
   imports: [DatabaseModule, EnderecoModule],
   controllers: [AlunoController],
-  providers: [...alunoProviders, AlunoService],
+  providers: [...alunoProviders, ...cursoProviders, AlunoService],
+  exports: [AlunoService]
 })
-export class StudentModule {}
+export class AlunoModule {}
