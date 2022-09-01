@@ -8,22 +8,13 @@ import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import GroupsIcon from '@mui/icons-material/Groups';
-import ImportContactsIcon from '@mui/icons-material/ImportContacts';
-import PermMedia from "@mui/icons-material/PermMedia";
+import GroupsIcon from "@mui/icons-material/Groups";
+import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import Public from "@mui/icons-material/Public";
 import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import Settings from "@mui/icons-material/Settings";
-import ArrowRight from "@mui/icons-material/ArrowRight";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import ListItem from "@mui/material/ListItem";
-import Home from "@mui/icons-material/Home";
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -31,60 +22,56 @@ import Drawer, { DrawerProps } from "@mui/material/Drawer";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import NextLink from "next/link";
-import { Selector as SelectorIcon } from "./selector";
-import { NavItem } from "./nav-item";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
-import GroupIcon from '@mui/icons-material/Group';
-import CabinIcon from '@mui/icons-material/Cabin';
+import { Selector as SelectorIcon } from "../../component/selector";
+import { NavItem } from "../../component/nav-item";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
+import GroupIcon from "@mui/icons-material/Group";
+import CabinIcon from "@mui/icons-material/Cabin";
+import AppBar from "@mui/material/AppBar";
+
 const data = [
-    {
-      href: '/',
-      icon: (<CabinIcon fontSize="small" />),
-      title: 'Início'
-    },
   {
-    href: '/',
-    icon: (<AccountCircleIcon fontSize="small" />),
-    title: 'Seu Perfil'
+    href: "/docente/portal",
+    icon: <CabinIcon fontSize="small" />,
+    title: "Início",
   },
-    {
-      href: '/aluno/portal',
-      icon: (<GroupIcon fontSize="small" />),
-      title: 'Alunos'
-    },
-    {
-      href: '/professor/portal',
-      icon: (<GroupsIcon fontSize="small" />),
-      title: 'Professores'
-    },
-    {
-      href: '/curso/portal',
-      icon: (<ImportContactsIcon fontSize="small" />),
-      title: 'Cursos'
-    },
-    {
-      href: '/turma/portal',
-      icon: (<Public fontSize="small" />),
-      title: 'Turmas'
-    },
-    {
-      href: '/disciplina/portal',
-      icon: (<FeedOutlinedIcon fontSize="small" />),
-      title: 'Disciplinas'
-    },
-    {
-      href: '/atividade/portal',
-      icon: (<AutoAwesomeMotionIcon fontSize="small" />),
-      title: 'Atividades'
-    },
-    
-  //   {
-  //     href: '/settings',
-  //     icon: (<CogIcon fontSize="small" />),
-  //     title: 'Settings'
-  //   },
-  ];
+  {
+    href: "/",
+    icon: <AccountCircleIcon fontSize="small" />,
+    title: "Seu Perfil",
+  },
+  {
+    href: "/aluno/portal",
+    icon: <GroupIcon fontSize="small" />,
+    title: "Alunos",
+  },
+  {
+    href: "/professor/portal",
+    icon: <GroupsIcon fontSize="small" />,
+    title: "Professores",
+  },
+  {
+    href: "/curso/portal",
+    icon: <ImportContactsIcon fontSize="small" />,
+    title: "Cursos",
+  },
+  {
+    href: "/turma/portal",
+    icon: <Public fontSize="small" />,
+    title: "Turmas",
+  },
+  {
+    href: "/disciplina/portal",
+    icon: <FeedOutlinedIcon fontSize="small" />,
+    title: "Disciplinas",
+  },
+  {
+    href: "/atividade/portal",
+    icon: <AutoAwesomeMotionIcon fontSize="small" />,
+    title: "Atividades",
+  },
+];
 
 const FireNav = styled(List)<{ component?: React.ElementType }>({
   "& .MuiListItemButton-root": {
@@ -142,18 +129,24 @@ export default function Inicio(props) {
         <link rel="icon" href="/images/icon.png" />
       </Head>
       <Paper elevation={0} sx={{ width: 1000 }}>
-        <FireNav component="nav" disablePadding>
-          <Drawer variant="permanent" {...other}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-                width: 250
-              }}
-            >
-              <div>
-                <Box sx={{ p: 4.5, display: 'flex'}}>
+        <AppBar
+          position="static"
+          color="default"
+          elevation={0}
+          sx={{ borderBottom: "1px solid rgba(0, 0, 0, 0.12)" }}
+        >
+            <FireNav component="nav" disablePadding>
+              <Drawer variant="permanent" {...other}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                    width: 250,
+                  }}
+                >
+                  <div>
+                    <Box sx={{ p: 4.5, display: "flex" }}>
                       <ListItemIcon sx={{ fontSize: 25 }}>⚕️</ListItemIcon>
                       <ListItemText
                         primary="Galdi"
@@ -163,91 +156,72 @@ export default function Inicio(props) {
                           letterSpacing: 0.3,
                         }}
                       />
-                </Box>
-                <Box sx={{ px: 2 }}>
-                  <Box
-                    sx={{
-                      alignItems: "center",
-                      backgroundColor: "rgba(0, 0, 0, 0.1)",
-                      cursor: "pointer",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      px: 3,
-                      py: "11px",
-                      borderRadius: 1,
-                    }}
-                  >
-                    <div>
-                      <Typography
-                        color="inherit"
-                        variant="subtitle1"
-                        align="center"
+                    </Box>
+                    <Box sx={{ px: 2 }}>
+                      <Box
+                        sx={{
+                          alignItems: "center",
+                          backgroundColor: "rgba(0, 0, 0, 0.1)",
+                          cursor: "pointer",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          px: 3,
+                          py: "11px",
+                          borderRadius: 1,
+                        }}
                       >
-                        2022/2
-                      </Typography>
-                    </div>
-                    <SelectorIcon
-                      sx={{
-                        color: "neutral.500",
-                        width: 14,
-                        height: 14,
-                      }}
-                    />
+                        <div>
+                          <Typography
+                            color="inherit"
+                            variant="subtitle1"
+                            align="center"
+                          >
+                            2022/2
+                          </Typography>
+                        </div>
+                        <SelectorIcon
+                          sx={{
+                            color: "neutral.500",
+                            width: 14,
+                            height: 14,
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  </div>
+                  <Divider
+                    sx={{
+                      borderColor: "#2D3748",
+                      my: 3,
+                    }}
+                  />
+                  <Box sx={{ flexGrow: 1 }}>
+                    {open &&
+                      data.map((item) => (
+                        <NavItem
+                          key={item.title}
+                          icon={item.icon}
+                          href={item.href}
+                          title={item.title}
+                        />
+                      ))}
                   </Box>
+                  <NextLink href="/" passHref>
+                    <Button
+                      color="primary"
+                      component="a"
+                      endIcon={<LogoutOutlinedIcon />}
+                      fullWidth
+                      sx={{ mt: 2 }}
+                      variant="contained"
+                    >
+                      Sair
+                    </Button>
+                  </NextLink>
                 </Box>
-              </div>
-              <Divider
-                sx={{
-                  borderColor: "#2D3748",
-                  my: 3,
-                }}
-              />
-              <Box sx={{ flexGrow: 1 }}>
-                {open &&
-                  data.map((item) => (
-                    <NavItem
-                      key={item.title}
-                      icon={item.icon}
-                      href={item.href}
-                      title={item.title}
-                    />
-                    // <ListItemButton
-                    //   key={item.label}
-                    //   sx={{
-                    //     display: "flex",
-                    //     py: 0,
-                    //     minHeight: 75,
-                    //   }}
-                    // >
-                    //   <ListItemIcon sx={{ color: "inherit" }}>
-                    //     {item.icon}
-                    //   </ListItemIcon>
-
-                    //   <ListItemText
-                    //     primary={item.label}
-                    //     primaryTypographyProps={{
-                    //       fontSize: 14,
-                    //       fontWeight: "medium",
-                    //     }}
-                    //   />
-                    // </ListItemButton>
-                  ))}
-              </Box>
-              <NextLink href="/" passHref>
-                <Button
-                  color="primary"
-                  component="a"
-                  endIcon={<LogoutOutlinedIcon />}
-                  fullWidth
-                  sx={{ mt: 2 }}
-                  variant="contained"
-                >
-                  Sair
-                </Button>
-              </NextLink>
-            </Box>
-          </Drawer>
-        </FireNav>
+              </Drawer>
+            </FireNav>
+        </AppBar>
       </Paper>
       <footer className={styles.footer}>
         <a
@@ -260,6 +234,4 @@ export default function Inicio(props) {
       </footer>
     </ThemeProvider>
   );
-};
-
-
+}

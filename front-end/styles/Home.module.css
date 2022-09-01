@@ -10,6 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 50;
 }
 
 .footer {
@@ -112,4 +113,10 @@
         width: 100%;
         flex-direction: column;
     }
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 14% 86%;
+    align-items: center;
 }

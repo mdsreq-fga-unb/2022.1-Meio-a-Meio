@@ -24,7 +24,6 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   cpf: string;
 
-  @IsNumber()
   @IsNotEmpty()
   rg_rne: string;
 
