@@ -95,14 +95,14 @@ const PortalDaTurma: NextPage = () => {
           <Grid item xs={12} md={1}>
             <Demo>
               <List>
-                <Link href="/disciplina/portal">
+                <Link href="/turma/listaPresenca/portal">
                   <ListItem disablePadding>
                     <ListItemButton>
                       <ListItemText primary="Turma A" />
                     </ListItemButton>
                   </ListItem>
                 </Link>
-                <Link href="/disciplina/portal">
+                <Link href="/turma/listaPresenca/portal">
                   <ListItem disablePadding>
                     <ListItemButton>
                       <ListItemText primary="Turma B" />

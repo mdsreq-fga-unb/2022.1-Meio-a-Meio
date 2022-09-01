@@ -8,6 +8,5 @@ export class CreateCursoDto {
 
     @IsOptional()
     @IsString()
-    @IsNotEmpty()
     unidade: string;
 }

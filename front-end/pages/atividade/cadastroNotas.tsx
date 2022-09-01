@@ -14,8 +14,9 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
 
 function Copyright(props: any) {
   return (
@@ -44,7 +45,7 @@ export default function CadastroNotas() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [professor, setProfessor] = React.useState('');
+  const [professor, setProfessor] = React.useState("");
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
@@ -63,17 +64,22 @@ export default function CadastroNotas() {
     setProfessor(event.target.value);
   };
   const handleCheckData = () => {
-    const { nome_curso, nome_disciplina, nome_turma, nome_aluno, nota } = data;
+    const { nome_professor, nome_curso, nome_disciplina, nome_turma, nome_aluno, nota } = data;
     let emptyFields: any = {};
-
+    if (!nome_professor || nome_professor.length === 0) {
+      emptyFields.nome_professor = "Professor Inválido";
+    }
     if (!nome_curso || nome_curso.length === 0) {
-      emptyFields.nome_curso = "Nome Inválido";
+      emptyFields.nome_curso = "Curso Inválido";
     }
     if (!nome_disciplina || nome_disciplina.length === 0) {
       emptyFields.nome_disciplina = "Disciplina Inválida";
     }
     if (!nome_aluno || nome_aluno.length === 0) {
       emptyFields.nome_aluno = "Aluno Inválido";
+    }
+    if (!nome_turma || nome_turma.length === 0) {
+      emptyFields.nome_turma = "Turma Inválida";
     }
     if (!nota || nota.length === 0) {
       emptyFields.nota = "Nota Inválida";
@@ -113,71 +119,98 @@ export default function CadastroNotas() {
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={2}>
-            <FormControl sx={{ m: 2, minWidth: 120 }}>
-                <Select
-                  labelId="demo-simple-select-helper-label"
-                  id="demo-simple-select-helper"
-                  value={professor}
-                  label="Professor"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={1}>Alessandra</MenuItem>
-                  <MenuItem value={2}>Fernanda</MenuItem>
-                  <MenuItem value={3}>Gabriela</MenuItem>
-                </Select>
-                </FormControl>
-              {/* <Grid item xs={6}>
-                <TextField
-                  required
-                  error={errors.nome_disciplina ? true : false}
-                  helperText={errors.nome_disciplina || null}
-                  fullWidth
-                  id="nome_disciplina"
-                  label="Nome da Disciplina"
-                  name="nome_disciplina"
-                  autoComplete="nome_disciplina"
-                  onChange={handleText}
-                  value={data ? data.nome_disciplina : ""}
-                />
-              </Grid> */}
-              <Grid item xs={6}>
-                <TextField
-                  required
-                  error={errors.nome_aluno ? true : false}
-                  helperText={errors.nome_aluno || null}
-                  fullWidth
-                  id="nomeAluno"
-                  label="Nome do Aluno"
-                  name="nomeAluno"
-                  autoComplete="nomeAluno"
-                  onChange={handleText}
-                  value={data ? data.nomeAluno : ""}
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <FormControl fullWidth>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                    onChange={(e) => setData({ ...data, tipo: e.target.value })}
-                    value={data ? data.tipo : null}
+            <Grid container spacing={1}>
+              <Grid item xs={4}>
+                <FormControl sx={{ m: 0, minWidth: 200 }}>
+                  <InputLabel id="professor" required>
+                    Professor
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={data ? data.professor : ""}
+                    onChange={handleChange}
+                    error={errors.professor ? true : false}
                   >
-                    <FormControlLabel
-                      value="prova"
-                      control={<Radio />}
-                      label="Prova"
-                    />
-                    <FormControlLabel
-                      value="atividade"
-                      control={<Radio />}
-                      label="Atividade"
-                    />
-                  </RadioGroup>
+                    <MenuItem value={1}>Alessandra</MenuItem>
+                    <MenuItem value={2}>Fernanda</MenuItem>
+                    <MenuItem value={3}>Gabriela</MenuItem>
+                  </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={4}>
+                <FormControl sx={{ m: 0, minWidth: 200 }}>
+                  <InputLabel id="nome_curso" required>
+                    Curso
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={data ? data.nome_curso : ""}
+                    onChange={handleChange}
+                    error={errors.nome_curso ? true : false}
+                  >
+                    <MenuItem value={1}>Ortopedia</MenuItem>
+                    <MenuItem value={2}>Cardiologia</MenuItem>
+                    <MenuItem value={3}>GO</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl sx={{ m: 0, minWidth: 200 }}>
+                  <InputLabel id="nome_disciplina" required>
+                  Disciplina
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={data ? data.nome_disciplina : ""}
+                    onChange={handleChange}
+                    error={errors.nome_disciplina ? true : false}
+                  >
+                    <MenuItem value={1}>Endocrinologia</MenuItem>
+                    <MenuItem value={2}>Cirurgia Plástica</MenuItem>
+                    <MenuItem value={3}>Angiologia</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl sx={{ m: 0, minWidth: 200 }}>
+                  <InputLabel id="nome_turma" required>
+                    Turma
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={data ? data.nome_turma : ""}
+                    onChange={handleChange}
+                    error={errors.nome_turma ? true : false}
+                  >
+                    <MenuItem value={1}>A</MenuItem>
+                    <MenuItem value={2}>B</MenuItem>
+                    <MenuItem value={3}>C</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={4}>
+                <FormControl sx={{ m: 0, minWidth: 200 }}>
+                  <InputLabel id="nome_aluno" required>
+                    Aluno
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-helper-label"
+                    id="demo-simple-select-helper"
+                    value={data ? data.nome_aluno : ""}
+                    onChange={handleChange}
+                    error={errors.nome_aluno ? true : false}
+                  >
+                    <MenuItem value={1}>Guilherme</MenuItem>
+                    <MenuItem value={2}>Bruna</MenuItem>
+                    <MenuItem value={3}>Samuel</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={2.15}>
                 <TextField
                   required
                   error={errors.nota ? true : false}
@@ -191,7 +224,24 @@ export default function CadastroNotas() {
                   value={data ? data.nota : ""}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={2.5}>
+                <FormControl fullWidth>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    onChange={(e) => setData({ ...data, tipo: e.target.value })}
+                    value={data ? data.tipo : null}
+                  >
+                    <FormControlLabel
+                      value="prova"
+                      control={<Radio />}
+                      label="Prova?"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item xs={10.2}>
                 <TextField
                   fullWidth
                   name="observacoes"

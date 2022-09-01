@@ -27,7 +27,7 @@ const PortalDaTurma: NextPage = () => {
           </h1>
 
           <div className={styles.grid}>
-            <Link href="/atividade/cadastroNotasAtividades">
+            <Link href="/atividade/cadastroNotas">
             <a
               className={styles.card}
             >

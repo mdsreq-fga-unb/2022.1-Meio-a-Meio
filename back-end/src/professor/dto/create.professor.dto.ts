@@ -23,7 +23,12 @@ export class CreateProfessorDto {
 
   @IsNotEmpty()
   cpf: string;
+<<<<<<< HEAD
 
+=======
+  
+  @IsString()
+>>>>>>> 9ed270feb7d9e12a3f39e205d1c9138f4eefbd0e
   @IsNotEmpty()
   rg_rne: string;
 

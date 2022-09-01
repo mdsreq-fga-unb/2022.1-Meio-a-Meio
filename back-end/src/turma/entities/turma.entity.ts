@@ -1,23 +1,23 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { DiaDaSemana } from './dias.enum';
+import { Aluno } from 'src/aluno/aluno.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 
 @Entity()
 export class Turma {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ length: 50 })
     nomeTurma: string;
 
-    @Column()
-    dias: string; //[DiaDaSemana];
+    @ManyToMany(type => Aluno, {eager:true})
+    @JoinTable()
+    alunos: Aluno[];
+
+    @Column('simple-array')
+    dias: string[];
 
     @Column()
     horarios: string;
-
-    @Column()
-    professor: number;
-
-    @Column()
-    disciplina: number;
+    
+    
 }
