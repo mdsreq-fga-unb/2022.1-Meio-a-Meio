@@ -13,7 +13,7 @@ export class Endereco {
   CEP: number;
 
   @Column({ length: 40 })
-  endereco_residencia: string;
+  endereco_residencial: string;
 
   @Column({ nullable: true })
   numero: number;

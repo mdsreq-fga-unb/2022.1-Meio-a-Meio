@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Curso_Aluno } from '../curso_aluno/curso-aluno.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { Endereco } from 'src/endereco/endereco.entity';
+import { Curso } from 'src/curso/curso.entity';
 
 @Entity() 
 export class Aluno {
@@ -71,4 +73,7 @@ export class Aluno {
 
   @OneToMany(() => Endereco, endereco => endereco.aluno)
   enderecos: Endereco[];
+
+  @OneToMany(() => Curso_Aluno, curso_aluno => curso_aluno) 
+  curso: Curso_Aluno[]; 
 }
