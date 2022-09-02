@@ -21,7 +21,8 @@ export class AtividadeService {
   ) {}
 
   async create(turma_id: number, data: CreateAtividadeDto) {
-    if(!this.turmaService.findOne(turma_id)) {
+    const turma = await this.turmaService.findOne(turma_id);
+    if(!turma) {
       throw new BadRequestException('Turma inválida!');
     }
 
