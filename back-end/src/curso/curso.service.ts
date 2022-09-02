@@ -1,9 +1,9 @@
-import { Curso_Aluno } from '../curso_aluno/curso-aluno.entity';
+import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
 import { CursoAlunoDto } from '../curso_aluno/dto/curso_aluno.dto';
 import { Curso } from './curso.entity';
 import { AlunoService } from 'src/aluno/aluno.service';
 import { CreateCursoDto } from './dto/curso.create.dto';
-import { Injectable, Inject, HttpException, HttpStatus, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -13,14 +13,14 @@ export class CursoService {
     private cursoRepository: Repository<Curso>,
 
     @Inject('CURSO_ALUNO_REPOSITORY')
-    private cursoAlunoRepository: Repository<Curso_Aluno>,
+    private cursoAlunoRepository: Repository<CursoAluno>,
 
     private readonly alunoService: AlunoService
   ) {}
 
   async create(data: CreateCursoDto) {
     if((await this.validateIfCursoAndUnidadeAlreadyExists(data.nome, data.unidade))) {
-        throw new HttpException('Curso já cadastrado! Verifique os dados e tente novamente.', HttpStatus.UNPROCESSABLE_ENTITY);
+        throw new BadRequestException('Curso já cadastrado! Verifique os dados e tente novamente.');
       }
 
     try {
@@ -33,7 +33,7 @@ export class CursoService {
 
         return this.cursoRepository.save(curso);
     } catch(error) {
-        throw new HttpException('Erro ao cadastrar curso!', HttpStatus.BAD_REQUEST);
+        throw new UnprocessableEntityException('Erro ao cadastrar curso!');
     }
   }
 
@@ -56,7 +56,7 @@ export class CursoService {
       throw new BadRequestException("Aluno inválido!")
     }
 
-    const curso_aluno = new Curso_Aluno();
+    const curso_aluno = new CursoAluno();
     try {
       curso_aluno.aluno_id = data.aluno_id;
       curso_aluno.curso_id = id;

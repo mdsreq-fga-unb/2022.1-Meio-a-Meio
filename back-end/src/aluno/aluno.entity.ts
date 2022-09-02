@@ -1,5 +1,6 @@
-import { Curso_Aluno } from '../curso_aluno/curso-aluno.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
+import { AtividadeAluno } from './../atividades_aluno/atividade_aluno.entity';
+import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Endereco } from 'src/endereco/endereco.entity';
 
 @Entity() 
@@ -73,6 +74,9 @@ export class Aluno {
   @OneToMany(() => Endereco, endereco => endereco.aluno)
   enderecos: Endereco[];
 
-  @OneToMany(() => Curso_Aluno, curso_aluno => curso_aluno) 
-  curso: Curso_Aluno[]; 
+  @OneToMany(() => CursoAluno, curso_aluno => curso_aluno) 
+  curso: CursoAluno[]; 
+
+  @OneToMany(() => AtividadeAluno, atividadeAluno => atividadeAluno) 
+  atividade: AtividadeAluno[]; 
 }

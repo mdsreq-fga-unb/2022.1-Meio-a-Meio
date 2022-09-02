@@ -9,8 +9,8 @@ export class CursoController {
   constructor(private readonly service: CursoService) {}
 
   @Post()
-  async create(@Body() createCursoDto: CreateCursoDto) {
-    return this.service.create(createCursoDto);
+  async create(@Body() data: CreateCursoDto) {
+    return this.service.create(data);
   }
 
   @Post(':id')
