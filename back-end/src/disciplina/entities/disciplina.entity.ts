@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Professor } from 'src/professor/professor.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Disciplina {
@@ -11,7 +12,7 @@ export class Disciplina {
   @Column()
   carga_horaria: number;
 
-  @Column()
-  professor: number;
+  @ManyToOne(()=> Professor)
+  professor: Professor;
 
 }

@@ -1,7 +1,6 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength, IsOptional, ArrayContains, IsIn } from "class-validator";
 import { Aluno } from "src/aluno/aluno.entity";
-import { Aula } from "src/aula/entities/aula.entity";
-import { DiaDaSemana } from "../entities/turma-dia";
+import { ListaPresenca } from "src/listaPresenca/entities/listaPresenca.entity";
 
 
 export class CreateTurmaDto {
@@ -23,6 +22,6 @@ export class CreateTurmaDto {
     alunos: Aluno[];
 
     @IsOptional()
-    aulas: Aula[];
+    listaPresenca: ListaPresenca[];
     
 }

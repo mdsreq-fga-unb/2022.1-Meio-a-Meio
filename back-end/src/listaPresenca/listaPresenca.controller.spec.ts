@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AulaController } from './aula.controller';
-import { AulaService } from './aula.service';
+import { AulaController } from './listaPresenca.controller';
+import { AulaService } from './listaPresenca.service';
 
-describe('AulaController', () => {
-  let controller: AulaController;
+describe('ListaPresencaController', () => {
+  let controller: ListaPresencaController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({

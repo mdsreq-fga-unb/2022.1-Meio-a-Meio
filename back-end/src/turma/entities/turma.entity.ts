@@ -1,4 +1,4 @@
-import { Aula } from 'src/aula/entities/aula.entity';
+import { ListaPresenca } from 'src/listaPresenca/entities/listaPresenca.entity';
 import { Aluno } from 'src/aluno/aluno.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
 
@@ -21,6 +21,6 @@ export class Turma {
     @Column()
     horarios: string;
 
-    @OneToMany(()=> Aula, (aula)=> aula.turma)
-    aulas: Aula[];
+    @OneToMany(()=> ListaPresenca, (listaPresenca)=> listaPresenca.turma)
+    aulas: ListaPresenca[];
 }

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AulaService } from './aula.service';
-import { AulaController } from './aula.controller';
-import { aulaProviders } from './aula.providers';
+import { ListaPresencaService } from './listaPresenca.service';
+import { ListaPresencaController } from './listaPresenca.controller';
+import { listaPresencaProviders } from './listaPresenca.providers';
 import { DatabaseModule } from 'src/database/database.module';
 import { TurmaModule } from 'src/turma/turma.module';
 import { turmaProviders } from 'src/turma/turma.providers';
@@ -10,7 +10,7 @@ import { Turma } from 'src/turma/entities/turma.entity';
 
 @Module({
   imports: [DatabaseModule, TurmaModule],
-  controllers: [AulaController],
-  providers: [...aulaProviders, AulaService, ...turmaProviders, Turma]
+  controllers: [ListaPresencaController],
+  providers: [...listaPresencaProviders, ListaPresencaService, ...turmaProviders, Turma]
 })
 export class AulaModule {}

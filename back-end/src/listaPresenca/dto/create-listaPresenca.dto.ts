@@ -2,7 +2,7 @@ import { IsDate, IsNotEmpty, IsOptional } from 'class-validator';
 import { Aluno } from 'src/aluno/aluno.entity';
 import { Turma } from 'src/turma/entities/turma.entity';
 
-export class CreateAulaDto {
+export class CreateListaPresencaDto {
 
     @IsNotEmpty()
     data: Date;

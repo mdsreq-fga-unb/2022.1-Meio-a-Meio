@@ -8,7 +8,7 @@ import { DisciplinaModule } from './disciplina/disciplina.module';
 import { CursoModule } from './curso/curso.module';
 import { EnderecoModule } from './endereco/endereco.module';
 import { ConfigModule } from '@nestjs/config';
-import { AulaModule } from './aula/aula.module';
+import { AulaModule } from './listaPresenca/listaPresenca.module';
 
 @Module({
   imports: [StudentModule, ProfessorModule, TurmaModule, DisciplinaModule, CursoModule, EnderecoModule, ConfigModule.forRoot({isGlobal: true}), AulaModule],

@@ -15,9 +15,8 @@ export class DisciplinaService {
 
   async create(createDisciplinaDto: CreateDisciplinaDto) {
     
-
-    if((await this.findByName(createDisciplinaDto.nome_disciplina))){
-      throw new HttpException(`Esse nome já existe verifique os dados e tente novamente.`, HttpStatus.BAD_REQUEST);
+    if((await this.valiaNomeCargaHorariaIgaul(createDisciplinaDto.nome_disciplina, createDisciplinaDto.carga_horaria))){
+      throw new HttpException(`Disciplina já existente.`, HttpStatus.BAD_REQUEST);
     }
 
     try{
@@ -33,13 +32,13 @@ export class DisciplinaService {
     
   }
 
-  async findByName(nome: string){
-    const disciplina = await this.disciplinaRepository.findOne({where: {nome_disciplina:nome}});
+  async valiaNomeCargaHorariaIgaul(nome: string, carga: number){
+    const disciplina = await this.disciplinaRepository.findOne({where: {nome_disciplina:nome, carga_horaria: carga}});
     return disciplina;
   }
 
   async findAll() {
-    const disciplinas = await this.disciplinaRepository.find()
+    const disciplinas = await this.disciplinaRepository.find();
     return disciplinas;
   }
 
@@ -67,15 +66,15 @@ export class DisciplinaService {
   async changeProfessor(idDisciplina: number, professor: number){
     
     //validar se professor existe
-    
+    /*
     const up = await this.disciplinaRepository.update(
       idDisciplina, 
       {
         professor:professor
       });
     return up;
-
+      */
+     return null;
   }
-
 
 }
