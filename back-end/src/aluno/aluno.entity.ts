@@ -3,7 +3,7 @@ import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Endereco } from 'src/endereco/endereco.entity';
 
-@Entity() 
+@Entity()
 export class Aluno {
   @PrimaryGeneratedColumn()
   id: number;
@@ -74,9 +74,9 @@ export class Aluno {
   @OneToMany(() => Endereco, endereco => endereco.aluno)
   enderecos: Endereco[];
 
-  @OneToMany(() => CursoAluno, curso_aluno => curso_aluno) 
-  curso: CursoAluno[]; 
+  @OneToMany(() => CursoAluno, curso_aluno => curso_aluno)
+  curso: CursoAluno[];
 
-  @OneToMany(() => AtividadeAluno, atividadeAluno => atividadeAluno) 
-  atividade: AtividadeAluno[]; 
+  @OneToMany(() => AtividadeAluno, atividadeAluno => atividadeAluno)
+  atividade: AtividadeAluno[];
 }

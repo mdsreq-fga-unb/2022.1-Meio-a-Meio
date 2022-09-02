@@ -1,5 +1,6 @@
+import { Atividade } from './../../atividade/atividade.entity';
 import { Aluno } from 'src/aluno/aluno.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
 
 @Entity()
 export class Turma {
@@ -9,7 +10,7 @@ export class Turma {
     @Column({ length: 50 })
     nomeTurma: string;
 
-    @ManyToMany(type => Aluno, {eager:true})
+    @ManyToMany(type => Aluno, { eager: true })
     @JoinTable()
     alunos: Aluno[];
 
@@ -18,6 +19,7 @@ export class Turma {
 
     @Column()
     horarios: string;
-    
-    
+
+    @OneToMany(() => Atividade, atividade => atividade.turma)
+    atividade: Atividade[];
 }

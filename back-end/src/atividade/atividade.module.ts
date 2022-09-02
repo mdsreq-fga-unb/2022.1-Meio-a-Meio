@@ -1,3 +1,5 @@
+import { TurmaModule } from './../turma/turma.module';
+import { TurmaService } from './../turma/turma.service';
 import { AlunoModule } from 'src/aluno/aluno.module';
 import { AtividadeController } from './atividade.controller';
 import { AtividadeService } from './atividade.service';
@@ -7,7 +9,7 @@ import { DatabaseModule } from '../database/database.module';
 import { atividadeProviders } from './atividade.providers';
 
 @Module({
-  imports: [DatabaseModule, AlunoModule],
+  imports: [DatabaseModule, AlunoModule, TurmaModule],
   controllers: [AtividadeController],
   providers: [...atividadeProviders, ...atividadeAlunoProviders, AtividadeService],
   exports: [AtividadeService],

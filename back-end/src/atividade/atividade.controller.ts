@@ -2,20 +2,20 @@ import { CreateAtividadeAlunoDto } from './../atividades_aluno/dto/atividade_alu
 import { Atividade } from './atividade.entity';
 import { CreateAtividadeDto } from './dto/atividade.create.dto';
 import { AtividadeService } from './atividade.service';
-import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
 
 @Controller('atividade')
 export class AtividadeController {
   constructor(private readonly service: AtividadeService) {}
 
-  @Post()
-  async create(@Body() data: CreateAtividadeDto) {
-    return this.service.create(data);
+  @Post(':id')
+  async create(@Param('id') turma_id: number, @Body() data: CreateAtividadeDto) {
+    return this.service.create(turma_id, data);
   }
 
-  @Post(':id')
-  async enrollStudent(@Param('id') id: number, @Body() data: CreateAtividadeAlunoDto) {
-    return this.service.enrollStudent(id, data);
+  @Put(':id')
+  async enrollStudent(@Param('id') atividade_id: number, @Body() data: CreateAtividadeAlunoDto) {
+    return this.service.enrollStudent(atividade_id, data);
   }
 
   @Get()

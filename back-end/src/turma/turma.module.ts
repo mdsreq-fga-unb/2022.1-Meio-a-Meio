@@ -11,6 +11,7 @@ import { enderecoProviders } from 'src/endereco/endereco.providers';
 @Module({
   imports: [DatabaseModule],
   controllers: [TurmaController],
-  providers: [...turmaProviders, ...alunoProviders, TurmaService, AlunoService, ...enderecoProviders]
+  providers: [...turmaProviders, ...alunoProviders, ...enderecoProviders, TurmaService, AlunoService,],
+  exports: [TurmaService],
 })
 export class TurmaModule {}
