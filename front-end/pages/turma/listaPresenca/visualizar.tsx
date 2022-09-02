@@ -12,7 +12,7 @@ import TableRow from "@mui/material/TableRow";
 import Checkbox from "@mui/material/Checkbox";
 
 interface Column {
-  id: "numeroChamada" | "code" | "population";
+  id: "numeroChamada" | "code" | "sobrenome";
   label: string;
   minWidth?: number;
   align?: "right";
@@ -134,7 +134,7 @@ export default function VisualizarListaPresenca(props: EnhancedTableProps) {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
                     return (
-                      <TableRow role="checkbox" tabIndex={-1} key={row.code}>
+                      <TableRow role="checkbox" tabIndex={-1} key={row.sobrenome}>
                         {columns.map((column) => {
                           const value = row[column.id];
                           return (
@@ -160,9 +160,6 @@ export default function VisualizarListaPresenca(props: EnhancedTableProps) {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
-          <Button variant="outlined" href="/turma/listaPresenca/portal">
-            Cadastrar
-          </Button>
         </Paper>
       </div>
     </div>

@@ -1,17 +1,11 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import Layout from '../../component/layout'
 
 
-const PortalDaTurma: NextPage = () => {
-    //acessa qualquer post que quiser no blog
+export default function PortalDaTurma() {
     const router = useRouter()
     return (
       <div className={styles.container}>
@@ -31,9 +25,29 @@ const PortalDaTurma: NextPage = () => {
             <a
               className={styles.card}
             >
-              <h2>Cadastrar &rarr;</h2>
+              <h2>Cadastrar Notas &rarr;</h2>
               <p>
-              Cadastre novas atividades aqui
+              Cadastre as notas das atividades aqui
+              </p>
+            </a>
+            </Link>
+            <Link href="/atividade/cadastroAtividades">
+            <a
+              className={styles.card}
+            >
+              <h2>Cadastrar Atividades &rarr;</h2>
+              <p>
+              Cadastre as atividades aqui
+              </p>
+            </a>
+            </Link>
+            <Link href="/atividade/cadastroDiarioAula">
+            <a
+              className={styles.card}
+            >
+              <h2>Cadastrar Diario de Aula &rarr;</h2>
+              <p>
+                Cadastre os diarios aqui
               </p>
             </a>
             </Link>
@@ -57,28 +71,20 @@ const PortalDaTurma: NextPage = () => {
               </p>
             </a>
             </Link>
-            {/* <Stack spacing={35} direction="row">
-            <Button variant="outlined" href="/disciplina/cadastro">
-              Cadastrar
-            </Button>
-            <Button variant="outlined" href="/disciplina/editar">
-              Editar
-            </Button>
-          </Stack> */}
+            <Link href="/atividade/visualizarNotasAvaliacoes">
+            <a
+              className={styles.card}
+            >
+              <h2>Diários &rarr;</h2>
+              <p>
+                Veja seus diários registrados aqui
+              </p>
+            </a>
+            </Link>
           </div>
         </main>
         </Layout>
-        <footer className={styles.footer}>
-          <a
-            href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Copyright © Meio a Meio
-          </a>
-        </footer>
       </div>
     )
 }
 
-export default PortalDaTurma    

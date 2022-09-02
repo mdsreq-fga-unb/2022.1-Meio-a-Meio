@@ -35,26 +35,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
-      >
-        Meio a Meio
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const theme = createTheme();
 
@@ -518,15 +498,14 @@ export default function Cadastro() {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/" variant="body2">
-                  Já possui uma conta? Entrar
+                <Link href="/professor/portal" variant="body2">
+                  Retornar ao Menu Principal
                 </Link>
               </Grid>
             </Grid>
             <Grid container justifyContent="center"></Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

@@ -1,48 +1,22 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
 import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
-      >
-        Meio a Meio
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
-export default function Cadastro(listaProfessores, error) {
+export default function Cadastro({listaProfessores, error}) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -64,13 +38,13 @@ export default function Cadastro(listaProfessores, error) {
       return;
     }
     apiRequest
-      .post("disciplina/", { ...data })
+      .post("disciplina", { ...data })
       .then((result) => {
         router.push("/disciplina/listar");
         console.log("ok");
       })
       .catch((err) => {
-        console.log("errado", err);
+        console.log("errado", err.message);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -83,7 +57,8 @@ export default function Cadastro(listaProfessores, error) {
 
   const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const clearNumber = e.target.value.replace(/\D/, "");
-    setData({ ...data, [e.target.name]: clearNumber });
+    const stringToNumber = parseInt(clearNumber);
+    setData({ ...data, [e.target.name]: stringToNumber});
   };
 
   const handleCheckData = () => {
@@ -161,10 +136,10 @@ export default function Cadastro(listaProfessores, error) {
                   name="carga_horaria"
                   onChange={handleNumber}
                   value={data ? data.carga_horaria : ""}
+                  type="number"
                 />
               </Grid>
-              {/* terminar */}
-              {/* <Grid item xs={12}>
+              <Grid item xs={12}>
                 <InputLabel id="4" required>
                   Professor
                 </InputLabel>
@@ -175,15 +150,16 @@ export default function Cadastro(listaProfessores, error) {
                     setData({ ...data, professor: e.target.value })
                   }
                   label={"Professor"}
-                  value={data ? data.professor : ""}
+                  value={data ? data.professor : null}
                 >
                   {professor.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
-                      {i.nome}
+                      {i.nome_completo}
+                      {console.log('DIEFHOHIFE', i.nome_completo)}
                     </MenuItem>
                   ))}
                 </Select>
-              </Grid> */}
+              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -195,30 +171,28 @@ export default function Cadastro(listaProfessores, error) {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/docente/portal" variant="body2">
+                <Link href="/disciplina/portal" variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
 }
 
-// export async function getServerSideProps() {
-//   const resProfessor = await apiRequest.get('/professor') //lista de professoress
-//   console.log("aaa", resProfessor);
-//   if(!resProfessor | !resProfessor.data){
-//     return {props: {error: 'Falha ao carregar conteúdo'}}
-//   }
+export async function getServerSideProps() {
+  const resProfessor = await apiRequest.get('professor') //lista de professoress
+  if(!resProfessor || !resProfessor.data){
+    return {props: {error: 'Falha ao carregar conteúdo'}}
+  }
 
-//   return {
-//     props: {
-//       listaProfessor: resProfessor.data,
-//       error: null,
-//     },
-//   };
-//}
+  return {
+    props: {
+      listaProfessores: resProfessor.data,
+      error: null,
+    },
+  };
+}

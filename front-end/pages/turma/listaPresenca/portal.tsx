@@ -1,13 +1,10 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import styles from '../../../styles/Home.module.css'
 import Link from 'next/link'
-import Grid from '@mui/material/Grid';
 import Layout from '../../../component/layout'
 
-const PortalDaPresenca: NextPage = () => {
+export default function PortalDaPresenca () {
     const router = useRouter()
 
     return (
@@ -43,17 +40,6 @@ const PortalDaPresenca: NextPage = () => {
           </div>
         </main>
         </Layout>
-        <footer className={styles.footer}>
-          <a
-            href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Copyright © Meio a Meio
-          </a>
-        </footer>
       </div>
     )
 }
-
-export default PortalDaPresenca    

@@ -19,7 +19,7 @@ import apiRequest from "../../util/apiRequest";
 
 const theme = createTheme();
 
-export default function Cadastro() {
+export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
   const router = useRouter();
@@ -122,7 +122,7 @@ export default function Cadastro() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Curso
+              Editar Curso
             </Button>
             <Grid container justifyContent="center">
               <Grid item>

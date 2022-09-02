@@ -17,10 +17,11 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const theme = createTheme();
 
-export default function CadastroNotas() {
+export default function CadastroAtividades() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -43,13 +44,29 @@ export default function CadastroNotas() {
     setProfessor(event.target.value);
   };
   const handleCheckData = () => {
-    const { id_aluno, id_atividade, nota } = data;
+    const {
+      nome_atividade,
+      id_turma,
+      nome_disciplina,
+      nome_turma,
+      nome_aluno,
+      nota,
+    } = data;
     let emptyFields: any = {};
-    if (!id_aluno || id_aluno.length === 0) {
-      emptyFields.id_aluno = "Aluno Inválido";
+    if (!nome_atividade || nome_atividade.length === 0) {
+      emptyFields.nome_atividade = "Atividade Inválida";
     }
-    if (!id_atividade || id_atividade.length === 0) {
-      emptyFields.id_atividade = "Atividade Inválida";
+    if (!id_turma || id_turma.length === 0) {
+      emptyFields.id_turma = "Turma Inválida";
+    }
+    if (!nome_disciplina || nome_disciplina.length === 0) {
+      emptyFields.nome_disciplina = "Disciplina Inválida";
+    }
+    if (!nome_aluno || nome_aluno.length === 0) {
+      emptyFields.nome_aluno = "Aluno Inválido";
+    }
+    if (!nome_turma || nome_turma.length === 0) {
+      emptyFields.nome_turma = "Turma Inválida";
     }
     if (!nota || nota.length === 0) {
       emptyFields.nota = "Nota Inválida";
@@ -81,7 +98,7 @@ export default function CadastroNotas() {
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-            Cadastro de Notas
+            Cadastro de Atividades
           </Typography>
           <Box
             component="form"
@@ -91,54 +108,46 @@ export default function CadastroNotas() {
           >
             <Grid container spacing={1}>
               <Grid item xs={4}>
-                <FormControl sx={{ m: 0, minWidth: 200 }}>
-                  <InputLabel id="id_atividade" required>
-                    Atividade
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={data ? data.id_atividade : ""}
-                    onChange={handleChange}
-                    error={errors.id_atividade ? true : false}
-                  >
-                    <MenuItem value={1}>Atividade 1</MenuItem>
-                    <MenuItem value={2}>Atividade 2</MenuItem>
-                    <MenuItem value={3}>Atividade 3</MenuItem>
-                  </Select>
-                </FormControl>
+                <TextField
+                  required
+                  error={errors.nome_atividade ? true : false}
+                  helperText={errors.nome_atividade || null}
+                  fullWidth
+                  id="nome_atividade"
+                  label="Atividade"
+                  name="nome_atividade"
+                  autoComplete="nome_atividade"
+                  onChange={handleText}
+                  value={data ? data.nome_atividade : ""}
+                />
               </Grid>
               <Grid item xs={4}>
                 <FormControl sx={{ m: 0, minWidth: 200 }}>
-                  <InputLabel id="id_aluno" required>
-                    Aluno
+                  <InputLabel id="id_turma" required>
+                    Turma
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={data ? data.id_aluno : ""}
+                    value={data ? data.id_turma : ""}
                     onChange={handleChange}
-                    error={errors.id_aluno ? true : false}
+                    error={errors.id_turma ? true : false}
                   >
-                    <MenuItem value={1}>Guilherme</MenuItem>
-                    <MenuItem value={2}>Bruna</MenuItem>
-                    <MenuItem value={3}>Samuel</MenuItem>
+                    <MenuItem value={1}>A</MenuItem>
+                    <MenuItem value={2}>B</MenuItem>
+                    <MenuItem value={3}>C</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={2.15}>
-                <TextField
-                  required
-                  error={errors.nota ? true : false}
-                  helperText={errors.nota || null}
-                  fullWidth
-                  id="nota"
-                  label="Nota"
-                  name="nota"
-                  autoComplete="nota"
-                  onChange={handleText}
-                  value={data ? data.nota : ""}
-                />
+              <Grid item xs={2.5}>
+                <FormControl fullWidth>
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label="Prova?"
+                    onChange={(e) => setData({ ...data, tipo: e.target.value })}
+                    value={data ? data.tipo : null}
+                  />
+                </FormControl>
               </Grid>
               <Button
                 type="submit"

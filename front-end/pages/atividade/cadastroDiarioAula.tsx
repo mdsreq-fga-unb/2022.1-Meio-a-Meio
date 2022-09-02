@@ -17,10 +17,11 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const theme = createTheme();
 
-export default function CadastroNotas() {
+export default function CadastroDiarioDeAula() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -43,16 +44,12 @@ export default function CadastroNotas() {
     setProfessor(event.target.value);
   };
   const handleCheckData = () => {
-    const { id_aluno, id_atividade, nota } = data;
+    const {
+      date,
+    } = data;
     let emptyFields: any = {};
-    if (!id_aluno || id_aluno.length === 0) {
-      emptyFields.id_aluno = "Aluno Inválido";
-    }
-    if (!id_atividade || id_atividade.length === 0) {
-      emptyFields.id_atividade = "Atividade Inválida";
-    }
-    if (!nota || nota.length === 0) {
-      emptyFields.nota = "Nota Inválida";
+    if (!date || date.length === 0) {
+      emptyFields.date = "Atividade Inválida";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -81,7 +78,7 @@ export default function CadastroNotas() {
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-            Cadastro de Notas
+            Cadastro de Diário de Aula
           </Typography>
           <Box
             component="form"
@@ -89,36 +86,50 @@ export default function CadastroNotas() {
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={1}>
-              <Grid item xs={4}>
-                <FormControl sx={{ m: 0, minWidth: 200 }}>
-                  <InputLabel id="id_atividade" required>
-                    Atividade
+            <Grid container spacing={1.5}>
+              <Grid item xs={2}>
+                <TextField
+                  required
+                  error={errors.date ? true : false}
+                  helperText={errors.date || null}
+                  fullWidth
+                  id="date"
+                  label="Data"
+                  name="date"
+                  autoComplete="date"
+                  onChange={handleText}
+                  value={data ? data.date : ""}
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <FormControl sx={{ m: 0, minWidth: 150 }}>
+                  <InputLabel id="id_turma" required>
+                    Turma
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={data ? data.id_atividade : ""}
+                    value={data ? data.id_turma : ""}
                     onChange={handleChange}
-                    error={errors.id_atividade ? true : false}
+                    error={errors.id_turma ? true : false}
                   >
-                    <MenuItem value={1}>Atividade 1</MenuItem>
-                    <MenuItem value={2}>Atividade 2</MenuItem>
-                    <MenuItem value={3}>Atividade 3</MenuItem>
+                    <MenuItem value={1}>A</MenuItem>
+                    <MenuItem value={2}>B</MenuItem>
+                    <MenuItem value={3}>C</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={4}>
-                <FormControl sx={{ m: 0, minWidth: 200 }}>
-                  <InputLabel id="id_aluno" required>
-                    Aluno
+              <Grid item xs={3}>
+                <FormControl sx={{ m: 0, minWidth: 150 }}>
+                  <InputLabel id="id_professor" required>
+                    Professor
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-helper-label"
                     id="demo-simple-select-helper"
-                    value={data ? data.id_aluno : ""}
+                    value={data ? data.id_professor : ""}
                     onChange={handleChange}
-                    error={errors.id_aluno ? true : false}
+                    error={errors.id_professor ? true : false}
                   >
                     <MenuItem value={1}>Guilherme</MenuItem>
                     <MenuItem value={2}>Bruna</MenuItem>
@@ -126,18 +137,43 @@ export default function CadastroNotas() {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={2.15}>
+              <Grid item xs={4}>
                 <TextField
                   required
-                  error={errors.nota ? true : false}
-                  helperText={errors.nota || null}
+                  error={errors.materia ? true : false}
+                  helperText={errors.materia || null}
                   fullWidth
-                  id="nota"
-                  label="Nota"
-                  name="nota"
-                  autoComplete="nota"
+                  id="materia"
+                  label="Matéria (Diga aqui o tema central da aula)"
+                  name="materia"
+                  autoComplete="materia"
                   onChange={handleText}
-                  value={data ? data.nota : ""}
+                  value={data ? data.materia : ""}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  error={errors.materia ? true : false}
+                  helperText={errors.materia || null}
+                  fullWidth
+                  id="conteúdo"
+                  label="Conteúdo (Descreva aqui o que foi passado durante a aula)"
+                  name="conteudo"
+                  autoComplete="conteudo"
+                  onChange={handleText}
+                  value={data ? data.materia : ""}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  id="observacoes"
+                  label="Observações (Notas extras caso queira-se registrar)"
+                  name="observacoes"
+                  autoComplete="observacoes"
+                  onChange={handleText}
+                  value={data ? data.observacoes : ""}
                 />
               </Grid>
               <Button

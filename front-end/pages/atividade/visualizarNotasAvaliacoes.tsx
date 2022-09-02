@@ -32,26 +32,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
-      >
-        Meio a Meio
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 const theme = createTheme();
 
 function renderRow(props: ListChildComponentProps) {
@@ -125,7 +105,6 @@ export default function VisualizarNotas() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 18 }} />
       </Container>
     </ThemeProvider>
   );

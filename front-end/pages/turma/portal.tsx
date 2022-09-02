@@ -1,43 +1,33 @@
-import type { NextPage } from "next";
-import * as React from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import Link from "next/link";
-import Grid from "@mui/material/Grid";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Typography from "@mui/material/Typography";
-import FolderIcon from "@mui/icons-material/Folder";
-import DeleteIcon from "@mui/icons-material/Delete";
+import Layout from "../../component/layout";
+import apiRequest from "../../util/apiRequest";
+import { useRouter } from "next/router";
+import React, { useState, ChangeEvent, useEffect } from "react";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import ListItemButton from "@mui/material/ListItemButton";
-import Divider from "@mui/material/Divider";
-import Layout from '../../component/layout'
+import IconButton from "@mui/material/IconButton";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-const Demo = styled("div")(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-}));
-
-const PortalDaTurma: NextPage = () => {
+export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
+  const [turma, setTurma] = useState<any>([]);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
-
+  useEffect(() => {
+    if (listaTurmas) {
+      setTurma(listaTurmas);
+    }
+    console.log(listaTurmas);
+    console.log(error);
+    //erros
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -46,94 +36,92 @@ const PortalDaTurma: NextPage = () => {
         <link rel="icon" href="/images/icon.png" />
       </Head>
       <Layout>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Bem vindo(a) ao Portal da Turma</h1>
-
-        <p className={styles.description}>
-          Lista de Turmas
-          {/* <code className={styles.code}>pages/index.tsx</code> */}
-        </p>
-
-        <div className={styles.grid}>
-          {/* <Link href="/turma/cadastro">
-            <a className={styles.card}>
-              <h2>Cadastrar &rarr;</h2>
-              <p>Cadastre novas turmas por meio desta opção</p>
-            </a>
-          </Link>
-          <Link href="/turma/listar">
-            <a className={styles.card}>
-              <h2>Listar &rarr;</h2>
-              <p>Verifique aqui todas as turmas já cadastradas</p>
-            </a>
-          </Link> */}
-          {/* <Link href="/turma/editar">
-            <a className={styles.card}>
-              <h2>Editar &rarr;</h2>
-              <p>Edique aqui todas a turma desejada</p>
-            </a>
-          </Link> */}
-          {/* <Link href="/avaliacao/portal">
-            <a className={styles.card}>
-              <h2>Avaliações &rarr;</h2>
-              <p>Informações sobre as suas avaliações</p>
-            </a>
-          </Link>
-          <Link href="/atividade/portal">
-            <a className={styles.card}>
-              <h2>Atividades &rarr;</h2>
-              <p>Informações sobre as suas atividades</p>
-            </a>
-          </Link>
-          <Grid container justifyContent="center" sx={{ mt: 4 }}>
-            <Grid item>
-              <Link href="/docente/portal">
-                {"Retornar ao Portal do Docente"}
-              </Link>
-            </Grid>
-          </Grid> */}
-          <Grid item xs={12} md={1}>
-            <Demo>
-              <List>
-                <Link href="/turma/listaPresenca/portal">
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemText primary="Turma A" />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-                <Link href="/turma/listaPresenca/portal">
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemText primary="Turma B" />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-              </List>
-            </Demo>
-          </Grid>
-          <Stack spacing={35} direction="row">
-            <Button variant="outlined" href="/turma/cadastro">
+        <main className={styles.main}>
+          <p className={styles.description}>Turmas</p>
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Table
+              sx={{ minWidth: 650 }}
+              size="small"
+              aria-label="a dense table"
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell>Id</TableCell>
+                  <TableCell align="center">Nome</TableCell>
+                  <TableCell align="center">Opções</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {turma.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell component="th" scope="row">
+                      {row.id}
+                    </TableCell>
+                    <TableCell align="center">
+                      <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() => setOpen(!open)}
+                      >
+                        {open ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </IconButton>
+                      {row.nomeTurma}
+                    </TableCell>
+                    <TableCell align="center">
+                      <IconButton
+                        color="primary"
+                        aria-label="edit"
+                        component="label"
+                        onClick={() => router.push("/turma/editar")}
+                      >
+                        <ModeEditIcon />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        aria-label="delete"
+                        component="label"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <Button
+              variant="outlined"
+              onClick={() => router.push("/turma/cadastro")}
+              sx={{ alignSelf: "center" }}
+            >
               Cadastrar
             </Button>
-            <Button variant="outlined" href="/turma/editar">
-              Editar
-            </Button>
-          </Stack>
-        </div>
-      </main>
+          </div>
+        </main>
       </Layout>
-      <footer className={styles.footer}>
-        <a
-          href="https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Copyright © Meio a Meio
-        </a>
-      </footer>
     </div>
   );
-};
+}
 
-export default PortalDaTurma;
+export async function getServerSideProps() {
+  const resTurmas = await apiRequest.get("turma");
+  if (!resTurmas || !resTurmas.data) {
+    return { props: { error: "Falha ao carregar conteúdo" } };
+  }
+
+  return {
+    props: {
+      listaTurmas: resTurmas.data,
+      error: null,
+    },
+  };
+}

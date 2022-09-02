@@ -19,27 +19,6 @@ import apiRequest from "../../util/apiRequest";
 import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link
-        color="inherit"
-        href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
-      >
-        Meio a Meio
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 export default function Cadastro({
@@ -244,30 +223,29 @@ export default function Cadastro({
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/docente/portal" variant="body2">
+                <Link href="/turma/portal" variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
 }
 
 export async function getServerSideProps() {
-  // const resProfessor = await apiRequest.get('/professor') //lista de professores
+  const resProfessor = await apiRequest.get('professor') //lista de professores
   const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
   console.log("aaa", resDisciplina);
-  // if(!resProfessor || !resDisciplina || !resProfessor.data || !resDisciplina.data){
-  //   return {props: {error: 'Falha ao carregar conteúdo'}}
-  // }
+  if(!resProfessor || !resDisciplina || !resProfessor.data || !resDisciplina.data){
+    return {props: {error: 'Falha ao carregar conteúdo'}}
+  }
 
   return {
     props: {
-      // listaProfessores: resProfessor,data,
+      listaProfessores: resProfessor.data,
       listaDisciplinas: resDisciplina.data,
       error: null,
     },

@@ -1,34 +1,6 @@
 import * as React from "react";
-import { useEffect } from "react";
-import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import Link from "next/link";
-import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import GroupsIcon from "@mui/icons-material/Groups";
-import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import Public from "@mui/icons-material/Public";
-import List from "@mui/material/List";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Drawer, { DrawerProps } from "@mui/material/Drawer";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
-import NextLink from "next/link";
-import { Selector as SelectorIcon } from "../../component/selector";
-import { NavItem } from "../../component/nav-item";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
-import GroupIcon from "@mui/icons-material/Group";
-import CabinIcon from "@mui/icons-material/Cabin";
-import AppBar from "@mui/material/AppBar";
 import Layout from '../../component/layout'
 
 export default function Inicio() {
@@ -46,15 +18,6 @@ export default function Inicio() {
           </h1>
       </main>
       </Layout>
-      <footer className={styles.footer}>
-        <a
-          href="https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Copyright © Meio a Meio
-        </a>
-      </footer>
       </div>
   );
 }
