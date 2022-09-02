@@ -56,12 +56,12 @@ export class CreateAlunoDto {
   @IsNotEmpty()
   formacao_academica: string;
 
-  @IsString()
-  @IsNotEmpty()
-  especializacao: string;
-
   @IsNotEmpty()
   status_financeiro: boolean;
+
+  @IsOptional()
+  @IsString()
+  especializacao: string;
 
   @IsOptional()
   @IsString()

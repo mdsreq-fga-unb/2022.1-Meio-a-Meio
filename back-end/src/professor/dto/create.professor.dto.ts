@@ -51,10 +51,6 @@ export class CreateProfessorDto {
   @IsNotEmpty()
   formacao_academica: string;
 
-  @IsString()
-  @IsNotEmpty()
-  especializacao: string;
-
   @IsBoolean()
   @IsNotEmpty()
   especialista: boolean;
@@ -62,6 +58,10 @@ export class CreateProfessorDto {
   @IsString()
   @IsNotEmpty()
   sexo: string;
+
+  @IsOptional()
+  @IsString()
+  especializacao: string;
 
   @IsOptional()
   @IsString()
