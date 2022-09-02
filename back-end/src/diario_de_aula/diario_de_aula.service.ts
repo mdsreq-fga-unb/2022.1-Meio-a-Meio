@@ -23,6 +23,7 @@ export class DiarioDeAulaService {
         const diario = new DiarioDeAula();
         diario.conteudo = data.conteudo;
         diario.data = new Date(data.data);
+        diario.observacao = data.observacao;
 
         return this.diarioRepository.save(diario);
       } catch(error) {

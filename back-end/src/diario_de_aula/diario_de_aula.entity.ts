@@ -6,11 +6,14 @@ export class DiarioDeAula {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 255 })
+    @Column({ length: 150 })
     conteudo: string;
 
     @Column({ type: 'date' })
     data: Date;
+
+    @Column({ length: 255 })
+    observacao: string;
 
     @ManyToOne(() => Turma, turma => turma.diarioDeAula)
     turma: DiarioDeAula[];
