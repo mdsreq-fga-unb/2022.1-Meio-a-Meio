@@ -25,10 +25,11 @@ export class CreateAlunoDto {
   @IsNotEmpty()
   email: string;
 
+  @IsString()
   @IsNotEmpty()
   cpf: string;
 
-  @IsNumber()
+  @IsString()
   @IsNotEmpty()
   rg_rne: string;
 

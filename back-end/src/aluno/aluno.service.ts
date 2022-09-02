@@ -61,17 +61,7 @@ export class AlunoService {
       aluno.create_at = new Date();
       aluno.update_at = new Date();
   
-      this.alunoRepository.save(aluno);
-
-      return this.alunoRepository.findOne({
-        where: {
-          id: aluno.id,
-        },
-        relations: {
-          enderecos: true,
-          curso: true
-        }
-      });
+      return await this.alunoRepository.save(aluno);
     } catch(error) {
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
