@@ -6,6 +6,7 @@ import { AlunoService } from 'src/aluno/aluno.service';
 import { CreateCursoDto } from './dto/curso.create.dto';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';
+import { throws } from 'assert';
 
 @Injectable()
 export class CursoService {
@@ -76,11 +77,15 @@ export class CursoService {
 
     const aluno = await this.alunoService.findStudentById(data.aluno_id);
     if (!aluno || aluno.status === 0) {
-      throw new BadRequestException("Aluno inválido!")
+      throw new BadRequestException("Aluno inválido!");
     }
 
-    const curso_aluno = new CursoAluno();
+    if(this.validateEnrolledInCourse(id, data.aluno_id)) {
+      throw new BadRequestException("Aluno já cadastrado no curso " + curso.nome + "!");
+    }
+
     try {
+      const curso_aluno = new CursoAluno();
       curso_aluno.aluno_id = data.aluno_id;
       curso_aluno.curso_id = id;
 
@@ -88,6 +93,10 @@ export class CursoService {
     } catch (error) {
       throw new UnprocessableEntityException("Erro ao matricular aluno em curso!")
     }
+  }
+
+  async validateEnrolledInCourse(curso_id: number, aluno_id: number) {
+    return await this.cursoAlunoRepository.findOneBy({ curso_id, aluno_id });
   }
 
   async validateIfCursoAndUnidadeAlreadyExists(nome: string, unidade: string) {
