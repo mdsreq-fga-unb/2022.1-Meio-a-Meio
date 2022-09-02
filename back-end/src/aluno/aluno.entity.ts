@@ -53,8 +53,8 @@ export class Aluno {
   @Column({ length: 30 })
   especializacao: string;
 
-  @Column({ length: 50 })
-  status_financeiro: string;
+  @Column()
+  status_financeiro: boolean;
 
   @Column({ nullable: true })
   telefone_residencial: number;
