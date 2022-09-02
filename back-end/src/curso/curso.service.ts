@@ -1,3 +1,4 @@
+import { UpdateCursoDto } from './dto/curso.update.dto';
 import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
 import { CursoAlunoDto } from '../curso_aluno/dto/curso_aluno.dto';
 import { Curso } from './curso.entity';
@@ -16,24 +17,24 @@ export class CursoService {
     private cursoAlunoRepository: Repository<CursoAluno>,
 
     private readonly alunoService: AlunoService
-  ) {}
+  ) { }
 
   async create(data: CreateCursoDto) {
-    if((await this.validateIfCursoAndUnidadeAlreadyExists(data.nome, data.unidade))) {
-        throw new BadRequestException('Curso já cadastrado! Verifique os dados e tente novamente.');
-      }
+    if ((await this.validateIfCursoAndUnidadeAlreadyExists(data.nome, data.unidade))) {
+      throw new BadRequestException('Curso já cadastrado! Verifique os dados e tente novamente.');
+    }
 
     try {
-        const curso = new Curso();
-        curso.nome = data.nome;
-        curso.unidade = data.unidade;
-        curso.status = 1;
-        curso.create_at = new Date();
-        curso.update_at = new Date();
+      const curso = new Curso();
+      curso.nome = data.nome;
+      curso.unidade = data.unidade;
+      curso.status = 1;
+      curso.create_at = new Date();
+      curso.update_at = new Date();
 
-        return this.cursoRepository.save(curso);
-    } catch(error) {
-        throw new UnprocessableEntityException('Erro ao cadastrar curso!');
+      return this.cursoRepository.save(curso);
+    } catch (error) {
+      throw new UnprocessableEntityException('Erro ao cadastrar curso!');
     }
   }
 
@@ -45,14 +46,36 @@ export class CursoService {
     return await this.cursoRepository.findOneBy({ id });
   }
 
+  async updateCourse(id: number, data: UpdateCursoDto) {
+    const curso = await this.findCourseById(id);
+    if (!curso || curso.status === 0) {
+      throw new BadRequestException("Aluno inválido!");
+    }
+
+    if ((await this.validateIfCursoAndUnidadeAlreadyExists(data.nome, data.unidade))) {
+      throw new BadRequestException('Curso já cadastrado! Verifique os dados e tente novamente.');
+    }
+
+    try {
+      curso.nome = data.nome;
+      curso.unidade = data.unidade;
+      curso.status = 2; // Editado
+      curso.update_at = new Date();
+
+      return this.cursoRepository.save(curso);
+    } catch (error) {
+      throw new UnprocessableEntityException('Erro ao editar curso!');
+    }
+  }
+
   async enrollStudent(id: number, data: CursoAlunoDto) {
     const curso = await this.findCourseById(id);
-    if(!curso || curso.status === 0) {
+    if (!curso || curso.status === 0) {
       throw new BadRequestException('Curso inválido!');
     }
 
     const aluno = await this.alunoService.findStudentById(data.aluno_id);
-    if(!aluno || aluno.status === 0) {
+    if (!aluno || aluno.status === 0) {
       throw new BadRequestException("Aluno inválido!")
     }
 
@@ -62,7 +85,7 @@ export class CursoService {
       curso_aluno.curso_id = id;
 
       return this.cursoAlunoRepository.save(curso_aluno);
-    } catch(error) {
+    } catch (error) {
       throw new UnprocessableEntityException("Erro ao matricular aluno em curso!")
     }
   }

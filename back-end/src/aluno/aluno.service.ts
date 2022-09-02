@@ -77,6 +77,9 @@ export class AlunoService {
 
   async updateStudent(id: number, data: UpdateAlunoDto) {
     const aluno = await this.findStudentById(id);
+    if(!aluno || aluno.status === 0) {
+      throw new BadRequestException("Aluno inválido!");
+    } 
 
     try {
       aluno.nome_completo = data.nome_completo;
