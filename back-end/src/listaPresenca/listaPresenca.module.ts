@@ -13,4 +13,4 @@ import { Turma } from 'src/turma/entities/turma.entity';
   controllers: [ListaPresencaController],
   providers: [...listaPresencaProviders, ListaPresencaService, ...turmaProviders, Turma]
 })
-export class AulaModule {}
+export class ListaPresencaModule {}
