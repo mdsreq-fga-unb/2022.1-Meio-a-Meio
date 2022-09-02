@@ -1,3 +1,4 @@
+import { DiarioDeAula } from './../../diario_de_aula/diario_de_aula.entity';
 import { Atividade } from './../../atividade/atividade.entity';
 import { Aluno } from 'src/aluno/aluno.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
@@ -22,4 +23,7 @@ export class Turma {
 
     @OneToMany(() => Atividade, atividade => atividade.turma)
     atividade: Atividade[];
+
+    @OneToMany(() => DiarioDeAula, diarioDeAula => diarioDeAula)
+    diarioDeAula: DiarioDeAula[];
 }
