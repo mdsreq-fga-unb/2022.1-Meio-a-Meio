@@ -5,7 +5,7 @@ import { DatabaseModule } from '../database/database.module';
 import { turmaProviders } from './turma.providers';
 import { AlunoService } from 'src/aluno/aluno.service';
 import { alunoProviders } from 'src/aluno/aluno.providers';
-import {StudentModule} from 'src/aluno/aluno.module'
+import { AlunoModule } from 'src/aluno/aluno.module';
 import { enderecoProviders } from 'src/endereco/endereco.providers';
 
 @Module({

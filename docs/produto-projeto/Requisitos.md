@@ -116,6 +116,9 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM28 |               O administrador deve ser capaz de excluir professor de disciplina.       | *Disciplina não pode estar com status de cursada *Turma não pode estar formada |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM29 |               O administrador deve ser capaz de excluir disciplina de uma turma.       | *Disciplina não pode estar em andamento ou cursada *Turma não pode estar formada |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM30 |               O administrador deve ser capaz de matricular aluno em curso.       | *O aluno não deve estar matriculado no curso |     Alta    |
+
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM31 |               O administrador deve ser registrar inadimplência de aluno.       | *Somente o administrador pode registrar |     Alta    |
+
 | Gerenciamento Acadêmico | Funções gerais | FG1 |               O usuário deve ser capaz de acessar o sistema por login e senha.       ||    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG2 |               O usuário deve ser capaz de gerar ficha de matrícula.         ||   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.      | *O aluno deve existir *Deve ser possível ver as informações de aluno em turma|   Alta    |
