@@ -44,7 +44,7 @@ export class Professor {
   @Column({ length: 30 })
   formacao_academica: string;
 
-  @Column({ length: 30 })
+  @Column({ length: 30, nullable: true })
   especializacao: string;
 
   @Column()
