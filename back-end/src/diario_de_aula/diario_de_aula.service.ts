@@ -34,4 +34,14 @@ export class DiarioDeAulaService {
   async findAll() {
     return this.diarioRepository.find();
   }
+
+  async findByDate(data: Date) {
+    console.log(data);
+    
+    return await this.diarioRepository.find({
+      where: {
+        data: data
+      }
+    });
+  }
 }

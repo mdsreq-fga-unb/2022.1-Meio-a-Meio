@@ -1,44 +1,7 @@
+import { CreateAdmDto } from './../../administrador/dto/administrador.create.dto';
 import { IsString, IsNotEmpty, IsOptional, IsNumber, IsBoolean, IsEmail } from "class-validator";
 
-export class CreateProfessorDto {
-
-  @IsString()
-  @IsNotEmpty()
-  nome_completo: string;
-
-  @IsOptional()
-  @IsString()
-  matricula: string;
-
-  @IsNotEmpty()
-  data_de_nascimento: Date;
-
-  @IsNotEmpty()
-  @IsString()
-  nacionalidade: string;
-
-  @IsEmail()
-  @IsNotEmpty()
-  email: string;
-
-  @IsNotEmpty()
-  cpf: string;
-  
-  @IsString()
-  @IsNotEmpty()
-  rg_rne: string;
-
-  @IsString()
-  @IsNotEmpty()
-  uf_rg_rne: string;
-
-  @IsString()
-  @IsNotEmpty()
-  orgao_emissor: string;
-
-  @IsNotEmpty()
-  celular: string;
-
+export class CreateProfessorDto extends CreateAdmDto {
   @IsOptional()
   @IsString()
   crm: string;
@@ -54,10 +17,6 @@ export class CreateProfessorDto {
   @IsBoolean()
   @IsNotEmpty()
   especialista: boolean;
-
-  @IsString()
-  @IsNotEmpty()
-  sexo: string;
 
   @IsOptional()
   @IsString()

@@ -1,46 +1,11 @@
+import { Administrador } from './../administrador/administrador.entity';
 import { AtividadeAluno } from './../atividades_aluno/atividade_aluno.entity';
 import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { Endereco } from 'src/endereco/endereco.entity';
 
 @Entity()
-export class Aluno {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ length: 9 })
-  matricula: string;
-
-  @Column({ length: 100 })
-  nome_completo: string;
-
-  @Column({ length: 20 })
-  sexo: string;
-
-  @Column({ type: 'date' })
-  data_de_nascimento: Date;
-
-  @Column({ length: 30 })
-  nacionalidade: string;
-
-  @Column({ length: 100 })
-  email: string;
-
-  @Column({ length: 11 })
-  cpf: string;
-
-  @Column()
-  rg_rne: string;
-
-  @Column({ length: 2 })
-  uf_rg_rne: string;
-
-  @Column({ length: 10 })
-  orgao_emissor: string;
-
-  @Column()
-  celular: string;
-
+export class Aluno extends Administrador {
   @Column()
   crm: string;
 
@@ -56,20 +21,8 @@ export class Aluno {
   @Column()
   status_financeiro: boolean;
 
-  @Column({ nullable: true })
-  telefone_residencial: number;
-
   @Column({ length: 100, nullable: true })
   observacao: string;
-
-  @Column()
-  status: number;
-
-  @Column({ type: 'date' })
-  create_at: Date;
-
-  @Column({ type: 'date' })
-  update_at: Date;
 
   @OneToMany(() => Endereco, endereco => endereco.aluno)
   enderecos: Endereco[];

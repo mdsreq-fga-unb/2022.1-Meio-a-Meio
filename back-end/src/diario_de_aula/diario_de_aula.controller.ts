@@ -12,6 +12,11 @@ export class DiarioDeAulaController {
     return this.service.create(turma_id, data);
   }
 
+  @Get(':data')
+  async findByDate(@Param('data') data: Date): Promise<DiarioDeAula[]> {
+    return this.service.findByDate(data);
+  }
+
   @Get()
   async findAll(): Promise<DiarioDeAula[]> {
     return this.service.findAll();
