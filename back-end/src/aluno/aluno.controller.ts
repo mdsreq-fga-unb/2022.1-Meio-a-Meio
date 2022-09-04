@@ -18,6 +18,11 @@ export class AlunoController {
     return this.service.findAll();
   }
 
+  @Get(':id')
+  async findByTurma(@Param('id') id: number): Promise<Aluno> {
+    return this.service.findStudentById(id);
+  }
+
   @Put(':id')
   update(@Param('id') id: number, @Body() data: UpdateAlunoDto) {
     return this.service.updateStudent(id, data);
