@@ -1,7 +1,8 @@
 import { CreateDiarioDeAulaDto } from './dto/diario_de_aula.create.dto';
 import { DiarioDeAula } from './diario_de_aula.entity';
 import { DiarioDeAulaService } from './diario_de_aula.service';
-import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param } from '@nestjs/common';
+import { Query } from '@nestjs/common/decorators';
 
 @Controller('diario')
 export class DiarioDeAulaController {
@@ -12,13 +13,13 @@ export class DiarioDeAulaController {
     return this.service.create(turma_id, data);
   }
 
-  @Get(':data')
-  async findByDate(@Param('data') data: Date): Promise<DiarioDeAula[]> {
-    return this.service.findByDate(data);
-  }
-
   @Get()
   async findAll(): Promise<DiarioDeAula[]> {
-    return this.service.findAll();
+    return await this.service.findAll();
+  }  
+
+  @Get()
+  async findByTurmaAndDate(@Query() query): Promise<DiarioDeAula[]> {
+    return await this.service.findByTurmaAndDate(query.turma_id, query.data);
   }
 }

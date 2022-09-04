@@ -6,6 +6,9 @@ export class DiarioDeAula {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column()
+    turma_id: number;
+
     @Column({ length: 150 })
     conteudo: string;
 
@@ -16,5 +19,5 @@ export class DiarioDeAula {
     observacao: string;
 
     @ManyToOne(() => Turma, turma => turma.diarioDeAula)
-    turma: DiarioDeAula[];
+    turma: Turma;
 }

@@ -70,16 +70,16 @@ export class AlunoService {
   }
 
   async findStudentById(id: number) {
-    return await this.alunoRepository.findOneBy({ id });
-  }
-
-  async updateStudent(id: number, data: UpdateAlunoDto) {
-    const aluno = await this.findStudentById(id);
+    const aluno = await this.alunoRepository.findOneBy({ id });
     if(!aluno || aluno.status === 0) {
       throw new BadRequestException("Aluno inválido!");
     } 
+    return aluno;
+  }
 
+  async updateStudent(id: number, data: UpdateAlunoDto) {
     try {
+      const aluno = await this.findStudentById(id);
       aluno.nome_completo = data.nome_completo;
       aluno.sexo = data.sexo;
       aluno.data_de_nascimento = data.data_de_nascimento;

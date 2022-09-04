@@ -44,20 +44,20 @@ export class CursoService {
   }
 
   async findCourseById(id: number) {
-    return await this.cursoRepository.findOneBy({ id });
-  }
-
-  async updateCourse(id: number, data: UpdateCursoDto) {
-    const curso = await this.findCourseById(id);
+    const curso = await this.cursoRepository.findOneBy({ id });
     if (!curso || curso.status === 0) {
       throw new BadRequestException("Aluno inválido!");
     }
+    return curso;
+  }
 
+  async updateCourse(id: number, data: UpdateCursoDto) {
     if ((await this.validateIfCursoAndUnidadeAlreadyExists(data.nome, data.unidade))) {
       throw new BadRequestException('Curso já cadastrado! Verifique os dados e tente novamente.');
     }
 
     try {
+      const curso = await this.findCourseById(id);
       curso.nome = data.nome;
       curso.unidade = data.unidade;
       curso.status = 2; // Editado
