@@ -1,4 +1,4 @@
-import { cursoAlunoProviders } from './../curso_aluno/curso-aluno.providers';
+import { cursoAlunoProviders } from '../curso_aluno/curso_aluno.providers';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { CursoController } from './curso.controller';
