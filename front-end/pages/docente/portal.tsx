@@ -14,7 +14,7 @@ export default function Inicio() {
       <Layout>
       <main className={styles.main}>
       <h1 className={styles.title}>
-            Bem vindo (a) ao Galdi.
+            Bem vindo(a) ao Galdi.
           </h1>
       </main>
       </Layout>

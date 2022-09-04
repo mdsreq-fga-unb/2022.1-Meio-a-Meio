@@ -1,8 +1,9 @@
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
-import Layout from '../../component/layout'
-import apiRequest from "../../util/apiRequest";
 import { useRouter } from "next/router";
+import styles from "../../styles/Home.module.css";
+import Grid from "@mui/material/Grid";
+import Layout from "../../component/layout";
+import apiRequest from "../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -11,20 +12,21 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, error}) {
-  const [disciplina, setDisciplina] = useState<any>([]);
+export default function AbaDiarios({ listaDiarios: listaDiarios, error }) {
+  const [curso, setCurso] = useState<any>([]);
   const router = useRouter();
   useEffect(() => {
-    if (listaDisciplinas) {
-      setDisciplina(listaDisciplinas);
+    if (listaDiarios) {
+      setCurso(listaDiarios);
     }
-    console.log(listaDisciplinas);
+    console.log(listaDiarios);
     console.log(error);
     //erros
   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -33,8 +35,8 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
         <link rel="icon" href="/images/icon.png" />
       </Head>
       <Layout>
-      <main className={styles.main}>
-      <p className={styles.description}>Disciplinas</p>
+        <main className={styles.main}>
+          <p className={styles.description}>Cursos</p>
           <div
             style={{
               alignItems: "center",
@@ -42,7 +44,7 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
               flexDirection: "column",
             }}
           >
-          <Table
+            <Table
               sx={{ minWidth: 650 }}
               size="small"
               aria-label="a dense table"
@@ -51,22 +53,24 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
+                  <TableCell align="center">Unidade</TableCell>
                   <TableCell align="center">Opções</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {disciplina.map((row, index) => (
+                {curso.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">{row.nome_disciplina}</TableCell>
+                    <TableCell align="center">{row.nome}</TableCell>
+                    <TableCell align="center">{row.unidade || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/disciplina/editar", query: {...row}})}
+                        onClick={() => router.push("/curso/editar")}
                       >
                         <ModeEditIcon />
                       </IconButton>
@@ -84,27 +88,27 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push("/disciplina/cadastro")}
+              onClick={() => router.push("/curso/cadastro")}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
             </Button>
-        </div>
-      </main>
+          </div>
+        </main>
       </Layout>
     </div>
   );
-};
+}
 
 export async function getServerSideProps() {
-  const resDisciplinas = await apiRequest.get("disciplina");
-  if (!resDisciplinas || !resDisciplinas.data) {
+  const resDiarios = await apiRequest.get("curso");
+  if (!resDiarios || !resDiarios.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }
 
   return {
     props: {
-      listaDisciplinas: resDisciplinas.data,
+        listaDiarios: resDiarios.data,
       error: null,
     },
   };

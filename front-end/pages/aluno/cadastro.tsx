@@ -103,7 +103,6 @@ export default function Cadastro() {
       orgao_emissor,
       crm,
       uf_crm,
-      especializacao,
       formacao_academica,
       email,
       data_de_nascimento,
@@ -140,10 +139,6 @@ export default function Cadastro() {
     }
     if (!uf_crm || uf_crm.length === 0) {
       emptyFields.uf_crm = "Preencha o UF";
-    }
-    if (!especializacao || especializacao.length === 0) {
-      emptyFields.especializacao =
-        "O campo de especialização não pode ser vazio";
     }
     if (!formacao_academica || formacao_academica.length === 0) {
       emptyFields.formacao_academica =
@@ -406,9 +401,6 @@ export default function Cadastro() {
               </Grid>
               <Grid item xs={4}>
                 <TextField
-                  required
-                  error={errors.especializacao ? true : false}
-                  helperText={errors.especializacao || null}
                   fullWidth
                   name="especializacao"
                   label="Especialização"

@@ -71,7 +71,7 @@ export default function PortalDaTurma() {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/visualizarNotasAvaliacoes">
+            <Link href="/atividade/visualizarDiario">
             <a
               className={styles.card}
             >

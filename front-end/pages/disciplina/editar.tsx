@@ -13,15 +13,21 @@ import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
 import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
+import Alert from '@mui/material/Alert';
+import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
-export default function Cadastro({listaProfessores, error}) {
+export default function Editar({listaProfessores, error}) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
   const [professor, setProfessor] = useState<any>([]);
-
+  console.log(router.query);
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
   useEffect(() => {
     if (listaProfessores) {
       setProfessor(listaProfessores);
@@ -29,6 +35,13 @@ export default function Cadastro({listaProfessores, error}) {
     console.log(listaProfessores);
     console.log(error);
     //erros
+  }, []);
+  
+  useEffect(() => {
+    if (Object.keys(router.query).length === 0) {
+      router.push("/curso/portal");
+    }
+    setData(router.query);
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -105,7 +118,7 @@ export default function Cadastro({listaProfessores, error}) {
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-            Insira os dados cadastrais da disciplina
+           Edite os dados desejados aqui:
           </Typography>
           <Box
             component="form"
@@ -182,8 +195,48 @@ export default function Cadastro({listaProfessores, error}) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Disciplina
+              Editar Disciplina
             </Button>
+            <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Alterações realizadas com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Falha ao editar o usuário!
+              </Alert>
+            </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/disciplina/portal" variant="body2">

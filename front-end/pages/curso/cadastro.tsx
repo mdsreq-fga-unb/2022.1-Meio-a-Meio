@@ -32,7 +32,7 @@ export default function Cadastro() {
       return;
     }
     apiRequest
-      .post("curso/create", { ...data})
+      .post("curso", { ...data})
       .then((result) => {
         router.push('/curso/listar')
         console.log("ok");

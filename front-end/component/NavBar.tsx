@@ -34,7 +34,7 @@ const data = [
     title: "Início",
   },
   {
-    href: "/",
+    href: "/administrador/seuPerfil",
     icon: <AccountCircleIcon fontSize="small" />,
     title: "Seu Perfil",
   },

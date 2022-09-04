@@ -16,18 +16,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
-  const [turma, setTurma] = useState<any>([]);
+export default function PerfilAdministrador({ listaAdms: listaAdms, error }) {
+  const [administrador, setAdm] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
-    }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
-  }, []);
+  //   useEffect(() => {
+  //     if (listaAdms) {
+  //       setAdm(listaAdms);
+  //     }
+  //     console.log(listaAdms);
+  //     console.log(error);
+  //     //erros
+  //   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -37,7 +38,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Turmas</p>
+          <p className={styles.description}>Seu Perfil</p>
           <div
             style={{
               alignItems: "center",
@@ -51,77 +52,61 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
               aria-label="a dense table"
             >
               <TableHead>
-                <TableRow>
-                  <TableCell>Id</TableCell>
-                  <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                <TableRow sx={{ display: "flex", flexDirection: "column" }}>
+                  <TableCell align="left">Nome</TableCell>
+                  <TableCell align="left">Matrícula</TableCell>
+                  <TableCell align="left">Celular</TableCell>
+                  <TableCell align="left">CPF</TableCell>
+                  <TableCell align="left">Data de Nascimento</TableCell>
+                  <TableCell align="left">RG/RNE</TableCell>
+                  <TableCell align="left">Email</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {turma.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell component="th" scope="row">
+                {administrador.map((row, index) => (
+                  <TableRow key={index} sx={{ display: "flex", flexDirection: "column" }}>
+                    <TableCell component="th" scope="row" align="right">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}
-                      >
-                        {open ? (
-                          <KeyboardArrowUpIcon />
-                        ) : (
-                          <KeyboardArrowDownIcon />
-                        )}
-                      </IconButton>
-                      {row.nomeTurma}
+                    <TableCell align="right">{row.nome_completo}</TableCell>
+                    <TableCell align="right">{row.matricula || ""}</TableCell>
+                    <TableCell align="right">{row.celular}</TableCell>
+                    <TableCell align="right">{row.cpf}</TableCell>
+                    <TableCell align="right">
+                      {row.data_de_nascimento}
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell align="right">{row.rg_rne}</TableCell>
+                    <TableCell align="right">{row.email}</TableCell>
+                    <TableCell align="right">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/turma/editar", query: {...row}})}
+                        onClick={() => router.push("/administrador/editar")}
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-            <Button
-              variant="outlined"
-              onClick={() => router.push("/turma/cadastro")}
-              sx={{ alignSelf: "center" }}
-            >
-              Cadastrar
-            </Button>
           </div>
         </main>
       </Layout>
     </div>
   );
 }
+// export async function getServerSideProps() {
+//   const resAdms = await apiRequest.get("administrador");
+//   if (!resAdms || !resAdms.data) {
+//     return { props: { error: "Falha ao carregar conteúdo" } };
+//   }
 
-export async function getServerSideProps() {
-  const resTurmas = await apiRequest.get("turma");
-  if (!resTurmas || !resTurmas.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaTurmas: resTurmas.data,
-      error: null,
-    },
-  };
-}
+//   return {
+//     props: {
+//       listaAdms: resAdms.data,
+//       error: null,
+//     },
+//   };
+// }

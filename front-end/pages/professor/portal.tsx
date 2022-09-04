@@ -95,7 +95,7 @@ export default function TelaProfessores({
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push("/professor/editar")}
+                        onClick={() => router.push({pathname: "/professor/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
                       </IconButton>

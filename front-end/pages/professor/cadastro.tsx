@@ -44,7 +44,7 @@ export default function Cadastro() {
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
+  const [close, setClose] = useState(false);
   const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
     let tempErrors = errors;
@@ -63,18 +63,20 @@ export default function Cadastro() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
+      setClose(true);
       console.log("bbbb");
       return;
     }
     console.log("aaaa");
     apiRequest
-      .post("professor/create", { ...data})
+      .post("professor", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/");
+        router.push("/professor/portal");
         console.log("ok");
       })
       .catch((err) => {
+        setClose(true);
         console.log("errado", err);
       });
 
@@ -104,7 +106,6 @@ export default function Cadastro() {
       orgao_emissor,
       crm,
       uf_crm,
-      especializacao,
       formacao_academica,
       email,
       data_de_nascimento,
@@ -141,10 +142,6 @@ export default function Cadastro() {
     }
     if (!uf_crm || uf_crm.length === 0) {
       emptyFields.uf_crm = "Preencha o UF";
-    }
-    if (!especializacao || especializacao.length === 0) {
-      emptyFields.especializacao =
-        "O campo de especialização não pode ser vazio";
     }
     if (!formacao_academica || formacao_academica.length === 0) {
       emptyFields.formacao_academica =
@@ -389,8 +386,7 @@ export default function Cadastro() {
                         especialista: e.target.value === "sim" || false,
                       })
                     }
-                    value={data ? data.especialista : null}
-                  >
+                    value={data ? data.especialista : null}                  >
                     <FormControlLabel
                       value="sim"
                       control={<Radio />}
@@ -407,9 +403,6 @@ export default function Cadastro() {
               </Grid>
               <Grid item xs={4}>
                 <TextField
-                  required
-                  error={errors.especializacao ? true : false}
-                  helperText={errors.especializacao || null}
                   fullWidth
                   name="especializacao"
                   label="Especialização"
@@ -479,6 +472,7 @@ export default function Cadastro() {
             </Button>
             <Collapse in={open}>
               <Alert
+              severity="success"
                 action={
                   <IconButton
                     aria-label="close"
@@ -494,6 +488,26 @@ export default function Cadastro() {
                 sx={{ mb: 2 }}
               >
                 Cadastro realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Falha ao cadastrar o usuário!
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">

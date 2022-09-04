@@ -40,8 +40,7 @@ export default function Home() {
   };
 
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearText = e.target.value.replace(/\d/, "");
-    setData({ ...data, [e.target.name]: clearText });
+    setData({ ...data, [e.target.name]: e.target.value });
     let tempErrors = errors;
     delete tempErrors[e.target.name];
     setErrors(tempErrors);

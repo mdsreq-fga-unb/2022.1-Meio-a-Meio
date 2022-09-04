@@ -91,7 +91,7 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push("/aluno/editar")}
+                        onClick={() => router.push({pathname: "/aluno/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
                       </IconButton>

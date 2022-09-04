@@ -70,7 +70,7 @@ export default function PortalDoCurso({ listaCursos, error }) {
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push("/curso/editar")}
+                        onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
                       </IconButton>

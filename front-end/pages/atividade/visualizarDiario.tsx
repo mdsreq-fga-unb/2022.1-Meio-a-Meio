@@ -50,39 +50,19 @@ export default function PortalDoCurso() {
               size="small"
               aria-label="a dense table"
             >
-              {/* <TableHead>
-                  <TableRow>
-                    <TableCell>Id</TableCell>
-                    <TableCell align="center">Data</TableCell>
-                    <TableCell align="center">Turma</TableCell>
-                    <TableCell align="center">Professor</TableCell>
-                    <TableCell align="center">Materia</TableCell>
-                    <TableCell align="center">Conteúdo</TableCell>
-                    <TableCell align="center">Observações</TableCell>
-                  </TableRow>
-                </TableHead> */}
-              <TableBody>
+              <TableHead>
                 <TableRow>
                   <TableCell align="left">Data</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell align="left">Turma</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell align="left">Professor</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell align="left">Materia</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell align="left">Conteúdo</TableCell>
-                </TableRow>
-                <TableRow>
                   <TableCell align="left">Observações</TableCell>
                 </TableRow>
-
+              </TableHead>
+              <TableBody>
                 {/* {diario.map((row, index) => (
-                    <TableRow key={index}>
+                    <TableRow key={index} >
                       <TableCell component="th" scope="row">
                         {row.id}
                       </TableCell>
@@ -110,12 +90,12 @@ export default function PortalDoCurso() {
               </TableBody>
             </Table>
             <Grid container justifyContent="center">
-                <Grid item>
-                  <Link href="/atividade/portal" variant="body2">
-                    Retornar ao Menu Principal
-                  </Link>
-                </Grid>
+              <Grid item>
+                <Link href="/atividade/portal" variant="body2">
+                  Retornar ao Menu Principal
+                </Link>
               </Grid>
+            </Grid>
           </div>
         </main>
       </Layout>
