@@ -25,7 +25,7 @@ export class AdministradorService {
         if (data.matricula == null) {
             const generator = new RegisterGenerator();
             let amount = (await this.administradorRepository.count()).valueOf();
-            adm.matricula = generator.matriculaGenerator(amount, 3);
+            adm.matricula = generator.matriculaGenerator(amount, 2);
         }
         else if (await this.validateIfMatriculaAlreadyExists(data.matricula)) {
             throw new BadRequestException('Matrícula já cadastrada! Verifique e tente novamente.');
