@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { Aluno } from 'src/aluno/entities/aluno.entity';
 
 @Entity() 
 export class Endereco {

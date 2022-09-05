@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { Turma } from 'src/turma/entities/turma.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Professor {
@@ -56,12 +58,15 @@ export class Professor {
   @Column({ length: 200, nullable: true })
   observacao: string;
 
-  @Column()
+  @Column({default: 1})
   status: number;
 
-  @Column({ type: 'date' })
+  @OneToMany(()=> Disciplina, (disciplina)=>disciplina.professor)
+  disciplinas: Disciplina[];
+
+  @CreateDateColumn()
   create_at: Date;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn()
   update_at: Date;
 }

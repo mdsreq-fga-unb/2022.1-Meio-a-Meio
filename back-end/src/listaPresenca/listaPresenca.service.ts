@@ -39,18 +39,18 @@ export class ListaPresencaService {
   }
 
   findAll() {
-    return `This action returns all aula`;
+    return `This action returns all listaPresenca`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} aula`;
+    return `This action returns a #${id} listaPresenca`;
   }
 
-  update(id: number, updateAulaDto: UpdateListaPresencaDto) {
-    return `This action updates a #${id} aula`;
+  update(id: number, updateListaPresencaDto: UpdateListaPresencaDto) {
+    return `This action updates a #${id} listaPresenca`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} aula`;
+    return `This action removes a #${id} listaPresenca`;
   }
 }

@@ -6,10 +6,16 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 export class AlunoController {
   constructor(private readonly service: AlunoService) {}
 
-  @Post('create')
+  @Post()
   async create(@Body() createAlunoDto: CreateAlunoDto) {
     return this.service.create(createAlunoDto);
   }
+
+  @Get()
+  async findAll(){
+    return this.service.findAll();
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string){
     return this.service.findOne(+id);

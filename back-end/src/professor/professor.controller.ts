@@ -6,7 +6,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 export class ProfessorController {
   constructor(private readonly professorService: ProfessorService) {}
 
-  @Post('create')
+  @Post()
   async create(@Body() createProfessorDto: CreateProfessorDto) {
     return this.professorService.create(createProfessorDto);
   }

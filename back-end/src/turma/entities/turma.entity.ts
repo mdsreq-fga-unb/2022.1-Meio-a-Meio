@@ -1,6 +1,8 @@
 import { ListaPresenca } from 'src/listaPresenca/entities/listaPresenca.entity';
-import { Aluno } from 'src/aluno/aluno.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
+import { Aluno } from 'src/aluno/entities/aluno.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { Professor } from 'src/professor/professor.entity';
 
 
 @Entity()
@@ -9,18 +11,29 @@ export class Turma {
     id: number;
 
     @Column({ length: 50 })
-    nomeTurma: string;
+    nome: string;
 
-    @ManyToMany(type => Aluno, {eager:true})
+    @Column({default: 0})
+    status: number;
+
+    @Column("simple-array", {nullable:true})
+    data: Date[];
+
+    @OneToMany(()=> ListaPresenca, (listaPresenca)=> listaPresenca.turma)
+    listaPresenca: ListaPresenca[];
+
+    @ManyToMany(() => Aluno)
     @JoinTable()
     alunos: Aluno[];
 
-    @Column('simple-array')
-    dias: string[];
+    @ManyToMany(()=> Disciplina)
+    @JoinTable()
+    disciplinas: Disciplina[];
 
-    @Column()
-    horarios: string;
+    @CreateDateColumn()
+    create_at: Date;
 
-    @OneToMany(()=> ListaPresenca, (listaPresenca)=> listaPresenca.turma)
-    aulas: ListaPresenca[];
+    @UpdateDateColumn()
+    update_at: Date;
+
 }

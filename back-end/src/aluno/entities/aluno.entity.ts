@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, UpdateDateColumn, CreateDateColumn} from 'typeorm';
 import { Endereco } from 'src/endereco/endereco.entity';
 
 @Entity() 
@@ -60,13 +60,13 @@ export class Aluno {
   @Column({ length: 100, nullable: true })
   observacao: string;
 
-  @Column()
+  @Column({default: 1})
   status: number;
 
-  @Column({ type: 'date' })
+  @CreateDateColumn()
   create_at: Date;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn()
   update_at: Date;
 
   @OneToMany(() => Endereco, endereco => endereco.aluno)

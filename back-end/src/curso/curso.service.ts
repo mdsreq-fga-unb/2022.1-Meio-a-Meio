@@ -38,4 +38,15 @@ export class CursoService {
     });
     return curso; 
   }
+
+  async findAll() {
+    const cursos = await this.cursoRepository.find();
+    return cursos;
+  }
+
+  async findOne(id: number) {
+    const curso = await this.cursoRepository.find({where:{id:id}})
+    return curso;
+  }
+  
 }

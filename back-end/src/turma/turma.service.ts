@@ -5,7 +5,7 @@ import { UpdateTurmaDto } from './dto/update-turma.dto';
 import { Turma } from './entities/turma.entity';
 import { validate } from 'class-validator';
 import { AlunoService } from 'src/aluno/aluno.service';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { Aluno } from 'src/aluno/entities/aluno.entity';
 
 @Injectable()
 export class TurmaService {
@@ -19,10 +19,12 @@ export class TurmaService {
   async create(createTurmaDto: CreateTurmaDto) {
 
     let turma = new CreateTurmaDto();
-    turma.nomeTurma = createTurmaDto.nomeTurma;
+    turma.nome = createTurmaDto.nome;
+    turma.status = createTurmaDto.status;
+    turma.data = createTurmaDto.data;
+    turma.disciplinas = createTurmaDto.disciplinas;
     turma.alunos = createTurmaDto.alunos;
-    turma.dias = createTurmaDto.dias;
-    turma.horarios = createTurmaDto.horarios;
+    turma.listaPresenca = createTurmaDto.listaPresenca;    
 
     const errors = await validate(turma)
 

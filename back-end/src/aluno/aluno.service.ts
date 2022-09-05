@@ -1,5 +1,5 @@
 import { Endereco } from '../endereco/endereco.entity';
-import { Aluno } from './aluno.entity';
+import { Aluno } from './entities/aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
@@ -58,12 +58,11 @@ export class AlunoService {
       aluno.especializacao = data.especializacao;
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
-      aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
-      aluno.create_at = new Date();
-      aluno.update_at = new Date();
+      aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado
 
       const alunoSalvo = await this.alunoRepository.save(aluno);
       
+      /*
       const endereco = new Endereco();
       const alunoEndereco = data.endereco;
       endereco.CEP = alunoEndereco.CEP;
@@ -79,7 +78,7 @@ export class AlunoService {
       endereco.aluno_id = alunoSalvo.id;
     
       await this.enderecoRepository.save(endereco);
-
+      */
       return this.alunoRepository.findOne({
         where: {
           id: alunoSalvo.id,
@@ -126,5 +125,10 @@ export class AlunoService {
   async findOne(id: number) {
     const aluno = await this.alunoRepository.findOne({where:{id:id}})
     return aluno;
+  }
+
+  async findAll() {
+    const alunos = await this.alunoRepository.find();
+    return alunos;
   }
 }

@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength, IsOptional, ArrayContains, IsIn } from "class-validator";
-import { Aluno } from "src/aluno/aluno.entity";
+import { Aluno } from "src/aluno/entities/aluno.entity";
+import { Disciplina } from "src/disciplina/entities/disciplina.entity";
 import { ListaPresenca } from "src/listaPresenca/entities/listaPresenca.entity";
 
 
@@ -9,19 +10,20 @@ export class CreateTurmaDto {
     @IsNotEmpty()
     @MinLength(4)
     @MaxLength(50)
-    nomeTurma: string;
+    nome: string;
 
-    @IsNotEmpty()
-    dias: string[];
+    @IsOptional()
+    status: number;
 
-    @IsString()
-    @IsNotEmpty()
-    horarios: string;
+    @IsOptional() 
+    data:Date[];
+
+    @IsOptional()
+    disciplinas: Disciplina[];
 
     @IsOptional()
     alunos: Aluno[];
 
     @IsOptional()
     listaPresenca: ListaPresenca[];
-    
 }

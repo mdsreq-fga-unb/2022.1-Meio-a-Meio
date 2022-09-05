@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import { Curso } from 'src/curso/curso.entity';
 import { Professor } from 'src/professor/professor.entity';
 
 export class CreateDisciplinaDto {
@@ -11,7 +12,12 @@ export class CreateDisciplinaDto {
     @IsNotEmpty()
     carga_horaria: number;
 
-    @IsNumber()
+    @IsOptional()
+    status: number;
+
     @IsOptional()
     professor: Professor;
+
+    @IsNotEmpty()
+    curso: Curso;
 }

@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { Aluno } from 'src/aluno/entities/aluno.entity';
 
 @Controller('turma')
 export class TurmaController {
@@ -33,7 +33,7 @@ export class TurmaController {
     return this.turmaService.remove(+id);
   }
 
-  @Post('addAluno/:id')
+  @Patch('addAluno/:id')
   addAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno[]){
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
