@@ -1,10 +1,8 @@
 import { UpdateAlunoDto } from './dto/aluno.update.dto';
-import { Curso } from 'src/curso/curso.entity';
-import { Endereco } from '../endereco/endereco.entity';
 import { Aluno } from './aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, BadRequestException, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
@@ -61,17 +59,7 @@ export class AlunoService {
       aluno.create_at = new Date();
       aluno.update_at = new Date();
   
-      this.alunoRepository.save(aluno);
-
-      return this.alunoRepository.findOne({
-        where: {
-          id: aluno.id,
-        },
-        relations: {
-          enderecos: true,
-          curso: true
-        }
-      });
+      return await this.alunoRepository.save(aluno);
     } catch(error) {
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
@@ -82,13 +70,16 @@ export class AlunoService {
   }
 
   async findStudentById(id: number) {
-    return await this.alunoRepository.findOneBy({ id });
+    const aluno = await this.alunoRepository.findOneBy({ id });
+    if(!aluno || aluno.status === 0) {
+      throw new BadRequestException("Aluno inválido!");
+    } 
+    return aluno;
   }
 
   async updateStudent(id: number, data: UpdateAlunoDto) {
-    const aluno = await this.findStudentById(id);
-
     try {
+      const aluno = await this.findStudentById(id);
       aluno.nome_completo = data.nome_completo;
       aluno.sexo = data.sexo;
       aluno.data_de_nascimento = data.data_de_nascimento;

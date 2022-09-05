@@ -1,10 +1,10 @@
 import { DataSource } from 'typeorm';
-import { Curso_Aluno } from './curso-aluno.entity';
+import { CursoAluno } from './curso_aluno.entity';
 
 export const cursoAlunoProviders = [
   {
     provide: 'CURSO_ALUNO_REPOSITORY',
-    useFactory: (dataSource: DataSource) => dataSource.getRepository(Curso_Aluno),
+    useFactory: (dataSource: DataSource) => dataSource.getRepository(CursoAluno),
     inject: ['DATA_SOURCE'], 
   },
 ];
