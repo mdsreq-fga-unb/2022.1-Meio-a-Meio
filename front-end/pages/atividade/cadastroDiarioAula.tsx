@@ -7,7 +7,7 @@ import Head from "next/head";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import { useRouter } from "next/router";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -18,14 +18,29 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
+import apiRequest from "../../util/apiRequest";
 
 const theme = createTheme();
 
-export default function CadastroDiarioDeAula() {
+export default function CadastroDiarioDeAula(
+  {listaTurmas: listaTurmas,
+  error,}
+) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
-  const router = useRouter();
+  const router = useRouter();''
   const [professor, setProfessor] = React.useState("");
+  const [turma, setTurma] = useState<any>([]);
+
+  useEffect(() => {
+    if (listaTurmas) {
+      setTurma(listaTurmas);
+    }
+    console.log(listaTurmas);
+    console.log(error);
+    //erros
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
@@ -103,19 +118,24 @@ export default function CadastroDiarioDeAula() {
               </Grid>
               <Grid item xs={3}>
                 <FormControl sx={{ m: 0, minWidth: 150 }}>
-                  <InputLabel id="id_turma" required>
+                  <InputLabel id="turma" required>
                     Turma
                   </InputLabel>
                   <Select
-                    labelId="demo-simple-select-helper-label"
-                    id="demo-simple-select-helper"
-                    value={data ? data.id_turma : ""}
-                    onChange={handleChange}
-                    error={errors.id_turma ? true : false}
+                     required
+                     fullWidth
+                     error={errors.turma ? true : false}
+                     onChange={(e) =>
+                       setData({ ...data, turma: e.target.value })
+                     }
+                     label={"Turma"}
+                     value={data ? data.turma : ""}
                   >
-                    <MenuItem value={1}>A</MenuItem>
-                    <MenuItem value={2}>B</MenuItem>
-                    <MenuItem value={3}>C</MenuItem>
+                    {turma.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nomeTurma}
+                    </MenuItem>
+                  ))}
                   </Select>
                 </FormControl>
               </Grid>
@@ -197,4 +217,19 @@ export default function CadastroDiarioDeAula() {
       </Container>
     </ThemeProvider>
   );
+}
+
+export async function getServerSideProps() {
+  const resTurma = await apiRequest.get("turma"); //lista de disciplinas
+  console.log("aaa", resTurma);
+  if(!resTurma || !resTurma.data){
+    return {props: {error: 'Falha ao carregar conteúdo'}}
+  }
+
+  return {
+    props: {
+      listaTurmas: resTurma.data,
+      error: null,
+    },
+  };
 }

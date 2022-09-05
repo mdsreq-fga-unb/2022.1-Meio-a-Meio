@@ -45,6 +45,13 @@ export default function Editar({
     //erros
   }, []);
 
+  useEffect(() => {
+    if (Object.keys(router.query).length === 0) {
+      router.push("/turma/portal");
+    }
+    setData(router.query);
+  }, []);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(data);

@@ -22,8 +22,8 @@ import InputLabel from "@mui/material/InputLabel";
 const theme = createTheme();
 
 export default function Cadastro({
-  listaDisciplinas,
-  listaProfessores,
+  listaDisciplinas: listaDisciplinas,
+  listaProfessores: listaProfessores,
   error,
 }) {
   const [data, setData] = useState<any>({});
@@ -186,7 +186,7 @@ export default function Cadastro({
                 >
                   {professor.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
-                      {i.nome}
+                      {i.nome_completo}
                     </MenuItem>
                   ))}
                 </Select>
