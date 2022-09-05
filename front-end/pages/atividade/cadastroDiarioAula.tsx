@@ -46,7 +46,15 @@ export default function CadastroDiarioDeAula(
     if (handleCheckData()) {
       return;
     }
-    router.push("/turma/listar");
+    apiRequest
+      .post("diario", { ...data})
+      .then((result) => {
+        router.push("/atividade/portal");
+        console.log("ok");
+      })
+      .catch((err) => {
+        console.log("errado", err);
+      });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/, "");

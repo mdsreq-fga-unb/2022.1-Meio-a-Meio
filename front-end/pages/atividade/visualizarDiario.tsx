@@ -61,19 +61,23 @@ export default function PortalDoCurso() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {diario.map((row, index) => (
+                {diario.map((row, index) => (
                     <TableRow key={index} >
                       <TableCell component="th" scope="row">
                         {row.id}
                       </TableCell>
                       <TableCell align="center">{row.nome}</TableCell>
-                      <TableCell align="center">{row.unidade || ""}</TableCell>
+                      <TableCell align="center">{row.turma}</TableCell>
+                      <TableCell align="center">{row.professor}</TableCell>
+                      <TableCell align="center">{row.materia}</TableCell>
+                      <TableCell align="center">{row.conteudo}</TableCell>
+                      <TableCell align="center">{row.observacoes || ""}</TableCell>
                       <TableCell align="center">
                         <IconButton
                           color="primary"
                           aria-label="edit"
                           component="label"
-                          onClick={() => router.push("/curso/editar")}
+                          onClick={() => router.push("/atividade/portal")}
                         >
                           <ModeEditIcon />
                         </IconButton>
@@ -86,7 +90,7 @@ export default function PortalDoCurso() {
                         </IconButton>
                       </TableCell>
                     </TableRow>
-                  ))} */}
+                  ))}
               </TableBody>
             </Table>
             <Grid container justifyContent="center">
