@@ -1,9 +1,11 @@
+import { UpdateAlunoDto } from './dto/aluno.update.dto';
+import { Curso } from 'src/curso/curso.entity';
 import { Endereco } from '../endereco/endereco.entity';
 import { Aluno } from './entities/aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
-import { Repository, ManyToOne } from 'typeorm';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
 @Injectable()
@@ -81,15 +83,14 @@ export class AlunoService {
       */
       return this.alunoRepository.findOne({
         where: {
-          id: alunoSalvo.id,
+          id: aluno.id,
         },
         relations: {
           enderecos: true,
+          cursos: true
         }
       });
-
     } catch(error) {
-      console.log(error);
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
   }

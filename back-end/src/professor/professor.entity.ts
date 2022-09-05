@@ -25,7 +25,7 @@ export class Professor {
   @Column({ length: 11 })
   cpf: string;
 
-  @Column()
+  @Column({ length: 10 })
   rg_rne: string;
 
   @Column({ length: 2})
