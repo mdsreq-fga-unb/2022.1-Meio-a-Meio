@@ -5,7 +5,7 @@ import { UpdateTurmaDto } from './dto/update-turma.dto';
 import { Turma } from './entities/turma.entity';
 import { validate } from 'class-validator';
 import { AlunoService } from 'src/aluno/aluno.service';
-import { Aluno } from 'src/aluno/entities/aluno.entity';
+import { Aluno } from 'src/aluno/aluno.entity';
 
 @Injectable()
 export class TurmaService {

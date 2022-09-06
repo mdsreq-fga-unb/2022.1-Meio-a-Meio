@@ -25,6 +25,8 @@
   - [Video de Apresentação Requisitos](https://youtu.be/KKSIrfcIbdQ)
 
   Unidade 3
+  -
+  -
   
   <h2>Links gerais</h2>
   
@@ -33,6 +35,7 @@
   - [Videos cliente](./reunioes-cliente/Reunioes)
   - [Politica de commits](./produto-projeto/commit_policy)
   - [Trello](https://trello.com/b/lcWQoS87)
+  - [LucidChart](https://lucid.app/lucidchart/5f91f189-0a8c-4b74-ad5d-a831a71a1252/edit?invitationId=inv_83b530a6-6269-4b7c-a717-5b8ca496e830&page=0_0#)
 
   <h2>Colaboradores</h2>
   

@@ -12,7 +12,7 @@ export class Curso {
   @Column({ length: 100, nullable: true })
   unidade: string;
 
-  @Column()
+  @Column({ default: 1 })
   status: number;
 
   @CreateDateColumn()

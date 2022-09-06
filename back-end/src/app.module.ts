@@ -1,3 +1,6 @@
+import { AdministradorModule } from './administrador/administrador.module';
+import { DiarioDeAulaModule } from './diario_de_aula/diario_de_aula.module';
+import { AtividadeModule } from './atividade/atividade.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,7 +14,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ListaPresencaModule } from './listaPresenca/listaPresenca.module';
 
 @Module({
-  imports: [AlunoModule, ProfessorModule, TurmaModule, DisciplinaModule, CursoModule, EnderecoModule, ConfigModule.forRoot({isGlobal: true}), ListaPresencaModule],
+  imports: [AdministradorModule, AlunoModule, ProfessorModule, TurmaModule, DisciplinaModule, CursoModule, EnderecoModule, AtividadeModule, DiarioDeAulaModule, ListaPresencaModule, ConfigModule.forRoot({isGlobal: true})],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -71,15 +71,16 @@ export class ProfessorService {
   }
 
   async findProfessorById(id: number) {
-    return await this.professorRepository.findOneBy({ id });
+    const professor = await this.professorRepository.findOneBy({ id });
+    if(!professor) {
+      throw new NotFoundException("Professor inválido!")
+    }
+    return professor;
   }
 
   async updateProfessor(id: number, data: UpdateProfessorDto) {
-    const professor = await this.findProfessorById(id);
-    if(!professor) 
-      throw new NotFoundException("Professor não encontrado!")
-
     try {
+      const professor = await this.findProfessorById(id);
       professor.nome_completo = data.nome_completo;
       professor.email = data.email;
       professor.data_de_nascimento = data.data_de_nascimento;
@@ -96,7 +97,6 @@ export class ProfessorService {
       professor.especialista = data.especialista;
       professor.sexo = data.sexo;
       professor.observacao = data.observacao;
-      professor.update_at = new Date();
       
       return this.professorRepository.save(professor);
     } catch(error) {

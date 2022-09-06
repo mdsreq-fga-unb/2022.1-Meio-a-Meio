@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Aluno } from 'src/aluno/entities/aluno.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Aluno } from 'src/aluno/aluno.entity';
 
 @Entity() 
 export class Endereco {
@@ -30,13 +30,13 @@ export class Endereco {
   @Column({ length: 30 })
   estado: string;
 
-  @Column()
+  @Column({ default: 1 })
   status: number;
 
-  @Column({ type: 'date' })
+  @CreateDateColumn()
   create_at: Date;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn()
   update_at: Date;
 
   @ManyToOne(() => Aluno, (aluno) => aluno.enderecos)

@@ -1,5 +1,5 @@
 import { UpdateAlunoDto } from './dto/aluno.update.dto';
-import { Aluno } from 'src/aluno/entities/aluno.entity';
+import { Aluno } from 'src/aluno/aluno.entity';
 import { AlunoService } from './aluno.service';
 import { CreateAlunoDto} from './dto/aluno.create.dto';
 import { Body, Controller, Post, Get, Put, Param } from '@nestjs/common';
@@ -13,19 +13,18 @@ export class AlunoController {
     return this.service.create(createAlunoDto);
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string){
-    return this.service.findOne(+id);
-  }
-
   @Get()
   async findAllStudents(): Promise<Aluno[]> {
     return this.service.findAll();
   }
-  /*
+
+  @Get(':id')
+  async findByTurma(@Param('id') id: number): Promise<Aluno> {
+    return this.service.findStudentById(id);
+  }
+
   @Put(':id')
   update(@Param('id') id: number, @Body() data: UpdateAlunoDto) {
     return this.service.updateStudent(id, data);
   }
-  */
 }

@@ -1,23 +1,31 @@
+import { UpdateCursoDto } from './dto/curso.update.dto';
+import { Curso } from 'src/curso/curso.entity';
 import { CursoService } from './curso.service';
 import { CreateCursoDto} from './dto/curso.create.dto';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
+import { CursoAlunoDto } from 'src/curso_aluno/dto/curso_aluno.dto';
 
 @Controller('curso')
 export class CursoController {
   constructor(private readonly service: CursoService) {}
 
   @Post()
-  async create(@Body() createCursoDto: CreateCursoDto) {
-    return this.service.create(createCursoDto);
+  async create(@Body() data: CreateCursoDto) {
+    return this.service.create(data);
+  }
+
+  @Post(':id')
+  async enrollStudent(@Param('id') id: number, @Body() data: CursoAlunoDto) {
+    return this.service.enrollStudent(id, data);
   }
 
   @Get()
-  findAll() {
+  async findAllCourses(): Promise<Curso[]> {
     return this.service.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.service.findOne(+id);
+  @Put(':id')
+  update(@Param('id') id: number, @Body() data: UpdateCursoDto) {
+    return this.service.updateCourse(id, data);
   }
 }

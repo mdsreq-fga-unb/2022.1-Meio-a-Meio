@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
-import { Aluno } from 'src/aluno/entities/aluno.entity';
+import { Aluno } from 'src/aluno/aluno.entity';
 
 @Controller('turma')
 export class TurmaController {
