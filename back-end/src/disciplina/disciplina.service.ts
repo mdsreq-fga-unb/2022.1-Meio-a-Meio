@@ -1,4 +1,6 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { CreateProfessorDto } from 'src/professor/dto/create.professor.dto';
+import { Professor } from 'src/professor/professor.entity';
 import { Repository } from 'typeorm';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
@@ -38,7 +40,7 @@ export class DisciplinaService {
   }
 
   async findAll() {
-    const disciplinas = await this.disciplinaRepository.find();
+    const disciplinas = await this.disciplinaRepository.find({relations:{professor:true}});
     return disciplinas;
   }
 
@@ -63,18 +65,22 @@ export class DisciplinaService {
     return this.disciplinaRepository.delete({id:id})
   }
 
-  async changeProfessor(idDisciplina: number, professor: number){
-    
-    //validar se professor existe
-    /*
-    const up = await this.disciplinaRepository.update(
-      idDisciplina, 
-      {
-        professor:professor
-      });
-    return up;
-      */
-     return null;
+  async addProfessor(idDisciplina: number, professor: Professor){
+    const disciplina = await this.disciplinaRepository.findOne({where:{id:idDisciplina}, relations:{professor:true}});
+    if(!disciplina){
+      throw new HttpException('Disciplina informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+    try{
+      const professorSave = new Professor()
+      professorSave.id = professor.id;
+
+      disciplina.professor = professor;
+
+      await this.disciplinaRepository.save(disciplina);
+    }
+    catch(erro){
+      throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
+    }
   }
 
 }

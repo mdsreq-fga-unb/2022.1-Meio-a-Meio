@@ -3,6 +3,9 @@ import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
 import { Aluno } from 'src/aluno/aluno.entity';
+import { DiarioDeAula } from 'src/diario_de_aula/diario_de_aula.entity';
+import { CreateAlunoDto } from 'src/aluno/dto/aluno.create.dto';
+import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
 
 @Controller('turma')
 export class TurmaController {
@@ -33,13 +36,33 @@ export class TurmaController {
     return this.turmaService.remove(+id);
   }
 
-  @Patch('addAluno/:id')
-  addAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno[]){
+  @Post('addAluno/:id')
+  addAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
 
-  @Patch('removeAluno/:id')
+  @Post('removeAluno/:id')
   removeAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
     return this.turmaService.removeAluno(+idTurma, idAluno);
+  }
+
+  @Post('addDiario/:id')
+  addDiario(@Param('id') idTurma: string, @Body() diario: DiarioDeAula){
+    return this.turmaService.adicionaRelatorioDeAula(+idTurma, diario);
+  }
+
+  @Post('removeDiario/:id')
+  removeDiario(@Param('id') idTurma: string, @Body() diario: DiarioDeAula){
+    return this.turmaService.removeRelatorioaDeAula(+idTurma, diario);
+  }
+
+  @Post('addDisciplina/:id')
+  addDisciplina(@Param('id') idTurma: string, @Body() disciplina: Disciplina){
+    return this.turmaService.adicionaDisciplina(+idTurma, disciplina);
+  }
+
+  @Post('removeDisciplina/:id')
+  removeDisciplina(@Param('id') idTurma: string, @Body() disciplina: Disciplina){
+    return this.turmaService.removeDisciplina(+idTurma, disciplina);
   }
 }

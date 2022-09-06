@@ -41,6 +41,6 @@ export class Turma {
     @OneToMany(() => Atividade, atividade => atividade.turma)
     atividade: Atividade[];
 
-    @OneToMany(() => DiarioDeAula, diarioDeAula => diarioDeAula)
+    @OneToMany(() => DiarioDeAula, diarioDeAula => diarioDeAula.turma)
     diarioDeAula: DiarioDeAula[];
 }
