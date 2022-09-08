@@ -51,7 +51,7 @@ export default function Editar({listaProfessores, error}) {
       return;
     }
     apiRequest
-      .post("disciplina", { ...data })
+      .put("disciplina" + + router.query.id, { ...data })
       .then((result) => {
         router.push("/disciplina/listar");
         console.log("ok");

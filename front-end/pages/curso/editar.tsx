@@ -46,7 +46,7 @@ export default function Editar() {
       return;
     }
     apiRequest
-      .put("curso/+data.id", { ...data}) //mudar a rota depois
+      .put("curso/" + router.query.id, { ...data}) //mudar a rota depois
       .then((result) => {
         router.push('/curso/listar')
         console.log("ok");
@@ -71,8 +71,8 @@ export default function Editar() {
     } = data;
     let emptyFields: any = {}
 
-    if(!nome || nome.length === 0) {
-      emptyFields.nome = "Nome Vazio"
+    if(!nome || nome.length === 0 || nome.length < 4 ) {
+      emptyFields.nome = "Nome Inválido"
     } 
     if(Object.keys(emptyFields).length > 0){
       setErrors(emptyFields);

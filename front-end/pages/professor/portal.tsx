@@ -70,13 +70,6 @@ export default function TelaProfessores({
                     </TableCell>
                     <TableCell align="center">
                       {row.nome_completo}
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}
-                      >
-                        <BuildCircleIcon color="primary" />
-                      </IconButton>
                     </TableCell>
                     <TableCell align="center">{row.matricula || ""}</TableCell>
                     <TableCell align="center">

@@ -66,7 +66,7 @@ export default function Cadastro() {
     } = data;
     let emptyFields: any = {}
 
-    if(!nome || nome.length === 0) {
+    if(!nome || nome.length === 0 || nome.length < 4 ) {
       emptyFields.nome = "Nome Vazio"
     } 
     if(Object.keys(emptyFields).length > 0){

@@ -59,7 +59,7 @@ export default function Editar({
       return;
     }
     apiRequest
-      .post("turma/", { ...data })
+      .put("turma/" + router.query.id, { ...data })
       .then((result) => {
         router.push("/turma/listar");
         console.log("ok");

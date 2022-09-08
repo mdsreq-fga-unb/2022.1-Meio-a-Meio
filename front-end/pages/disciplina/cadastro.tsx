@@ -74,9 +74,6 @@ export default function Cadastro({listaProfessores, error}) {
     if (!professor || professor.length === 0) {
       emptyFields.professor = "Professor Vazio";
     }
-    if (!localizacao || localizacao.length === 0) {
-      emptyFields.localizacao = "Localização Vazia";
-    }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
       return 1;
@@ -142,9 +139,6 @@ export default function Cadastro({listaProfessores, error}) {
                 />
               </Grid><Grid item xs={12}>
                 <TextField
-                  required
-                  error={errors.localizacao ? true : false}
-                  helperText={errors.localizacao || null}
                   fullWidth
                   id="localizacao"
                   label="Localização"

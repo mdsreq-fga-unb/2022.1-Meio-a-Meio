@@ -77,6 +77,7 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                         color="primary"
                         aria-label="delete"
                         component="label"
+                        onClick={() => router.push({pathname: "editar", query: {...row}})}
                       >
                         <DeleteIcon />
                       </IconButton>

@@ -78,7 +78,7 @@ export default function Editar() {
     }
     console.log("aaaa");
     apiRequest
-      .put("professor:id", { ...data}) //put + a rota de atualizaçao
+      .put("professor/" + router.query.id, { ...data}) //put + a rota de atualizaçao
       .then((result) => {
         setOpen(true);
         router.push("/professor/portal");

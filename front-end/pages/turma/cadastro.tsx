@@ -24,12 +24,14 @@ const theme = createTheme();
 export default function Cadastro({
   listaDisciplinas: listaDisciplinas,
   listaProfessores: listaProfessores,
+  listaCursos: listaCursos,
   error,
 }) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const [professor, setProfessor] = useState<any>([]);
   const [disciplina, setDisciplina] = useState<any>([]);
+  const [curso, setCurso] = useState<any>([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -39,8 +41,12 @@ export default function Cadastro({
     if (listaProfessores) {
       setProfessor(listaProfessores);
     }
+    if (listaCursos) {
+      setCurso(listaCursos);
+    }
     console.log(listaDisciplinas);
     console.log(listaProfessores);
+    console.log(listaCursos);
     console.log(error);
     //erros
   }, []);
@@ -81,15 +87,6 @@ export default function Cadastro({
     if (!nomeTurma || nomeTurma.length === 0) {
       emptyFields.nomeTurma = "Nome Vazio";
     }
-    if (!horarios || horarios.length === 0) {
-      emptyFields.horarios = "Horário Vazio";
-    }
-    if (!dias || dias.length === 0) {
-      emptyFields.dias = "Dia Vazio";
-    }
-    // if (!professor || professor.length === 0) {
-    //   emptyFields.professor = "Professor Vazio";
-    // }
     if (!disciplina || disciplina.length === 0) {
       emptyFields.disciplina = "Disciplina Vazio";
     }
@@ -143,7 +140,7 @@ export default function Cadastro({
                   value={data ? data.nomeTurma : ""}
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField
                   required
                   error={errors.horarios ? true : false}
@@ -168,14 +165,13 @@ export default function Cadastro({
                   onChange={handleNumber}
                   value={data ? data.dias : ""}
                 />
-              </Grid>
-              {/* <Grid item xs={12}>
-              <InputLabel id="4" required>
+              </Grid> */}
+              <Grid item xs={12}>
+              <InputLabel id="4">
                   Professor
                 </InputLabel>
                 <Select
                   fullWidth
-                  error={errors.professor ? true : false}
                   onChange={(e) =>
                     setData({ ...data, professor: e.target.value })
                   }
@@ -188,7 +184,7 @@ export default function Cadastro({
                     </MenuItem>
                   ))}
                 </Select>
-              </Grid> */}
+              </Grid>
               <Grid item xs={12}>
                 <InputLabel id="disciplina" required>
                   Disciplina
@@ -206,6 +202,27 @@ export default function Cadastro({
                   {disciplina.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
                       {i.nome_disciplina}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+              <Grid item xs={12}>
+                <InputLabel id="curso" required>
+                  Curso
+                </InputLabel>
+                <Select
+                  required
+                  fullWidth
+                  error={errors.curso ? true : false}
+                  onChange={(e) =>
+                    setData({ ...data, curso: e.target.value })
+                  }
+                  label={"Curso"}
+                  value={data ? data.curso : ""}
+                >
+                  {curso.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nome}
                     </MenuItem>
                   ))}
                 </Select>
@@ -236,8 +253,9 @@ export default function Cadastro({
 export async function getServerSideProps() {
   const resProfessor = await apiRequest.get('professor') //lista de professores
   const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
+  const resCursos = await apiRequest.get('curso');
   console.log("aaa", resDisciplina);
-  if(!resProfessor || !resDisciplina || !resProfessor.data || !resDisciplina.data){
+  if(!resProfessor || !resDisciplina || !resCursos || !resProfessor.data || !resDisciplina.data || !resCursos.data){
     return {props: {error: 'Falha ao carregar conteúdo'}}
   }
 
@@ -245,6 +263,7 @@ export async function getServerSideProps() {
     props: {
       listaProfessores: resProfessor.data,
       listaDisciplinas: resDisciplina.data,
+      listaCursos: resCursos.data,
       error: null,
     },
   };

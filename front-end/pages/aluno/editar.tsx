@@ -76,7 +76,7 @@ export default function Editar() {
     }
     console.log("aaaa");
     apiRequest
-      .post("aluno", { ...data})
+      .put("aluno/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
         router.push("/portal/aluno");
