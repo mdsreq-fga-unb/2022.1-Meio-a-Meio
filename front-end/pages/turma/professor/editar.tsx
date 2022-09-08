@@ -1,70 +1,105 @@
-import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Link from "@mui/material/Link";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Head from "next/head";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
-import TextField from "@mui/material/TextField";
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import RadioGroup from "@mui/material/RadioGroup";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Image from "next/image";
+import Head from "next/head";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import NativeSelect from "@mui/material/NativeSelect";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import Checkbox from "@mui/material/Checkbox";
-import apiRequest from "../../util/apiRequest";
-import Alert from "@mui/material/Alert";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
+import apiRequest from "../../../util/apiRequest";
 import FormHelperText from "@mui/material/FormHelperText";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormLabel from "@mui/material/FormLabel";
+import Moment from "moment";
+import { useRouter } from "next/router";
+import Alert from "@mui/material/Alert";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+
 const theme = createTheme();
 
-export default function CadastroAtividades({
-  listaTurmas: listaTurmas,
+export default function MudarProfessorDeTurma({
+    listaTurmas: listaTurmas,
   error,
 }) {
-  const [data, setData] = useState<any>({isTest: false});
+  const [value, setValue] = useState<Date | null>(null);
+  const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [turma, setTurma] = useState<any>([]);
+  console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [turma, setTurma] = useState<any>([]);
 
   useEffect(() => {
+    if (Object.keys(router.query).length === 0) {
+      router.push("/professor/portal");
+    }
+    setData(router.query);
+  }, []);
+  useEffect(() => {
     if (listaTurmas) {
-      setTurma(listaTurmas);
+        setTurma(listaTurmas);
     }
     console.log(listaTurmas);
     console.log(error);
     //erros
   }, []);
 
+  const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+    let tempErrors = errors;
+    delete tempErrors[e.target.name];
+    setErrors(tempErrors);
+    console.log(e.target.value);
+    console.log(e.target.name);
+  };
+
+  const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+    const formatedData = Moment(e).format("yyyy/MM/DD");
+    setData({ ...data, data_de_nascimento: formatedData });
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
-      setClose(true);
+      console.log("bbbb");
       return;
     }
-    console.log(data);
+    console.log("aaaa");
     apiRequest
-      .post("atividade/" + data.turma_id, { ...data })
+      .post("professor", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/atividade/portal");
+        router.push("/turma/professor/listar");
         console.log("ok");
       })
       .catch((err) => {
-        setClose(true);
         console.log("errado", err);
       });
+
+    const date = new FormData(event.currentTarget);
   };
+
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/, "");
     setData({ ...data, [e.target.name]: clearText });
@@ -72,17 +107,20 @@ export default function CadastroAtividades({
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
   };
+  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    const clearNumber = e.target.value.replace(/\D/, "");
+    setData({ ...data, [e.target.name]: clearNumber });
+  };
+  
   const handleCheckData = () => {
     const {
-      nome,
       turma_id,
     } = data;
+    console.log(data);
     let emptyFields: any = {};
-    if (!nome || nome.length === 0) {
-      emptyFields.nome_atividade = "Atividade Inválida";
-    }
+
     if (!turma_id || turma_id.length === 0) {
-      emptyFields.turma_id = "Turma Inválida";
+      emptyFields.turma_id = "Turma inválida";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -90,6 +128,7 @@ export default function CadastroAtividades({
     }
     return 0;
   };
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="lg">
@@ -110,7 +149,7 @@ export default function CadastroAtividades({
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-            Cadastro de Atividades
+            Professor:
           </Typography>
           <Box
             component="form"
@@ -118,22 +157,23 @@ export default function CadastroAtividades({
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
               <Grid item xs={4}>
                 <TextField
+                disabled
                   required
-                  error={errors.nome_atividade ? true : false}
-                  helperText={errors.nome_atividade || null}
+                  error={errors.nome_completo ? true : false}
+                  helperText={errors.nome_completo || null}
                   fullWidth
-                  id="nome"
-                  label="Atividade"
-                  name="nome"
-                  autoComplete="nome"
+                  id="nome_completo"
+                  label="Nome"
+                  name="nome_completo"
+                  autoComplete="nome_completo"
                   onChange={handleText}
-                  value={data ? data.nome_atividade : ""}
+                  value={data ? data.nome_completo : ""}
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <FormControl sx={{ m: 0, minWidth: 150 }}>
                   <InputLabel id="turma_id" required>
                     Turma
@@ -154,30 +194,18 @@ export default function CadastroAtividades({
                       </MenuItem>
                     ))}
                   </Select>
-                  <FormHelperText error>
-                  {errors.turma_id}
-                </FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={2.5}>
-                <FormControl fullWidth>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Prova?"
-                    onChange={(e) => setData({ ...data, isTest: e.target.checked })}
-                    value={data ? data.isTest : null}
-                  />
-                </FormControl>
-              </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Cadastrar Atividade
-              </Button>
-              <Collapse in={open}>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Editar Professor
+            </Button>
+            <Collapse in={open}>
               <Alert
               severity="success"
                 action={
@@ -194,7 +222,7 @@ export default function CadastroAtividades({
                 }
                 sx={{ mb: 2 }}
               >
-                Cadastro realizado com sucesso!
+                Alterações realizadas com sucesso!
               </Alert>
             </Collapse>
             <Collapse in={close}>
@@ -214,17 +242,17 @@ export default function CadastroAtividades({
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar a atividade!
+                Falha ao editar o usuário!
               </Alert>
             </Collapse>
-              <Grid container justifyContent="center">
-                <Grid item>
-                  <Link href="/atividade/portal" variant="body2">
-                    Retornar ao Menu Principal
-                  </Link>
-                </Grid>
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Link href="/turma/professor/listar" variant="body2">
+                  Voltar ao Menu Principal
+                </Link>
               </Grid>
             </Grid>
+            <Grid container justifyContent="center"></Grid>
           </Box>
         </Box>
       </Container>
@@ -232,15 +260,15 @@ export default function CadastroAtividades({
   );
 }
 export async function getServerSideProps() {
-  const resTurma = await apiRequest.get("turma");
-  if (!resTurma || !resTurma.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
+    const resTurma = await apiRequest.get('turma') //lista de professoress
+    if(!resTurma || !resTurma.data){
+      return {props: {error: 'Falha ao carregar conteúdo'}}
+    }
+  
+    return {
+      props: {
+        listaTurmas: resTurma.data,
+        error: null,
+      },
+    };
   }
-
-  return {
-    props: {
-      listaTurmas: resTurma.data,
-      error: null,
-    },
-  };
-}

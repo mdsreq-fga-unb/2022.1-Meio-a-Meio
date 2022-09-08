@@ -63,11 +63,6 @@ const data = [
     icon: <FeedOutlinedIcon fontSize="small" />,
     title: "Disciplinas",
   },
-  {
-    href: "/atividade/portal",
-    icon: <AutoAwesomeMotionIcon fontSize="small" />,
-    title: "Atividades",
-  },
 ];
 
 const FireNav = styled(List)<{ component?: React.ElementType }>({

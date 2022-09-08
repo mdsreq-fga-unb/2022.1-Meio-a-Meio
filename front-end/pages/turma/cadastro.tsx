@@ -87,9 +87,9 @@ export default function Cadastro({
     if (!dias || dias.length === 0) {
       emptyFields.dias = "Dia Vazio";
     }
-    if (!professor || professor.length === 0) {
-      emptyFields.professor = "Professor Vazio";
-    }
+    // if (!professor || professor.length === 0) {
+    //   emptyFields.professor = "Professor Vazio";
+    // }
     if (!disciplina || disciplina.length === 0) {
       emptyFields.disciplina = "Disciplina Vazio";
     }
@@ -169,8 +169,7 @@ export default function Cadastro({
                   value={data ? data.dias : ""}
                 />
               </Grid>
-              {/* terminar */}
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
               <InputLabel id="4" required>
                   Professor
                 </InputLabel>
@@ -189,7 +188,7 @@ export default function Cadastro({
                     </MenuItem>
                   ))}
                 </Select>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <InputLabel id="disciplina" required>
                   Disciplina

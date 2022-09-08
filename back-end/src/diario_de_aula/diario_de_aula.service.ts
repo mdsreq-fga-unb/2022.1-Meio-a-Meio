@@ -23,7 +23,7 @@ export class DiarioDeAulaService {
     try {
         const diario = new DiarioDeAula();
         diario.conteudo = data.conteudo;
-        diario.data = new Date(data.data);
+        diario.data = new Date(data.dataDiario);
         diario.observacao = data.observacao;
         diario.turma_id = turma_id;
 

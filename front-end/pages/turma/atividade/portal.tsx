@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import styles from '../../styles/Home.module.css'
+import styles from '../../../styles/Home.module.css'
 import Link from 'next/link'
-import Layout from '../../component/layout'
+import Layout from '../../../component/layout'
 
 
 export default function PortalDaTurma() {
@@ -40,16 +40,6 @@ export default function PortalDaTurma() {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/cadastroDiarioAula">
-            <a
-              className={styles.card}
-            >
-              <h2>Cadastrar Diario de Aula &rarr;</h2>
-              <p>
-                Cadastre os diarios aqui
-              </p>
-            </a>
-            </Link>
             <Link href="/atividade/visualizarNotasAtividades">
             <a
               className={styles.card}
@@ -67,16 +57,6 @@ export default function PortalDaTurma() {
               <h2>Avaliações &rarr;</h2>
               <p>
                 Veja suas avaliações registradas aqui
-              </p>
-            </a>
-            </Link>
-            <Link href="/atividade/visualizarDiario">
-            <a
-              className={styles.card}
-            >
-              <h2>Diários &rarr;</h2>
-              <p>
-                Veja seus diários registrados aqui
               </p>
             </a>
             </Link>

@@ -17,7 +17,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
-import apiRequest from "../../util/apiRequest";
+import apiRequest from "../../../util/apiRequest";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -38,9 +38,9 @@ function renderRow(props: ListChildComponentProps) {
   const { index, style } = props;
 
   return (
-    <ListItem style={style} key={index} component="div" disablePadding >
+    <ListItem style={style} key={index} component="div" disablePadding>
       <ListItemButton>
-        <ListItemText primary={`Atividade ${index + 1} Semestre 1`} />
+        <ListItemText primary={`Avaliação ${index + 1} Semestre 1`} />
       </ListItemButton>
     </ListItem>
   );
@@ -83,7 +83,7 @@ export default function VisualizarNotas() {
           >
             <Grid item xs={12} md={6}>
               <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Lista de Atividades Cadastradas
+                Lista de Provas Cadastradas
               </Typography>
               <FixedSizeList
                 height={400}
@@ -97,8 +97,8 @@ export default function VisualizarNotas() {
             </Grid>
             <Grid container justifyContent="center" sx={{ mt: 4 }}>
               <Grid item>
-                <Link href="/atividade/portal" variant="body2" >
-                  {"Retornar ao Menu de Atividades"}
+                <Link href="/docente/portal" variant="body2" >
+                  {"Retornar ao Menu de Avaliações"}
                 </Link>
               </Grid>
             </Grid>

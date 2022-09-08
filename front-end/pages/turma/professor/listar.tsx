@@ -1,7 +1,7 @@
 import Head from "next/head";
-import styles from "../../styles/Home.module.css";
-import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import styles from "../../../styles/Home.module.css";
+import Layout from "../../../component/layout";
+import apiRequest from "../../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -15,18 +15,20 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
-export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
-  const [turma, setTurma] = useState<any>([]);
+
+export default function CadastroProfessoresEmTurmas({ listaProfessores: listaProfessores, error }) {
+  const [professor, setProfessor] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
+    if (listaProfessores) {
+      setProfessor(listaProfessores);
     }
-    console.log(listaTurmas);
+    console.log(listaProfessores);
     console.log(error);
     //erros
   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,7 +37,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Turmas</p>
+          <p className={styles.description}>Professores</p>
           <div
             style={{
               alignItems: "center",
@@ -50,33 +52,24 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
+                  <TableCell align="center">Turma</TableCell>
                   <TableCell align="center">Opções</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {turma.map((row, index) => (
+                {professor.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {row.id}
-                    </TableCell>
                     <TableCell align="center">
-                    {row.nomeTurma}
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => router.push({pathname: "/turma/detalhesTeste", query: {...row}})}
-                      >
-                       < BuildCircleIcon color="primary"/>
-                      </IconButton>
+                      {row.nome_completo}
                     </TableCell>
+                    <TableCell align="center">{row.nomeTurma || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/turma/editar", query: {...row}})}
+                        onClick={() => router.push({pathname: "editar", query: {...row}})}
                       >
                         <ModeEditIcon />
                       </IconButton>
@@ -94,7 +87,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push("/turma/cadastro")}
+              onClick={() => router.push("cadastro")}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
@@ -105,16 +98,15 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
     </div>
   );
 }
-
 export async function getServerSideProps() {
-  const resTurmas = await apiRequest.get("turma");
-  if (!resTurmas || !resTurmas.data) {
+  const resProfessores = await apiRequest.get("professor");
+  if (!resProfessores || !resProfessores.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }
 
   return {
     props: {
-      listaTurmas: resTurmas.data,
+      listaProfessores: resProfessores.data,
       error: null,
     },
   };

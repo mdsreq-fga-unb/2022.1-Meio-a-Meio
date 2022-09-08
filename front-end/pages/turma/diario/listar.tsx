@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import styles from "../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import Grid from "@mui/material/Grid";
-import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import Layout from "../../../component/layout";
+import apiRequest from "../../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -53,8 +53,6 @@ export default function PortalDoCurso() {
                 <TableRow>
                   <TableCell align="left">Data</TableCell>
                   <TableCell align="left">Turma</TableCell>
-                  <TableCell align="left">Professor</TableCell>
-                  <TableCell align="left">Materia</TableCell>
                   <TableCell align="left">Conteúdo</TableCell>
                   <TableCell align="left">Observações</TableCell>
                 </TableRow>
@@ -67,8 +65,6 @@ export default function PortalDoCurso() {
                       </TableCell>
                       <TableCell align="center">{row.nome}</TableCell>
                       <TableCell align="center">{row.turma}</TableCell>
-                      <TableCell align="center">{row.professor}</TableCell>
-                      <TableCell align="center">{row.materia}</TableCell>
                       <TableCell align="center">{row.conteudo}</TableCell>
                       <TableCell align="center">{row.observacoes || ""}</TableCell>
                       <TableCell align="center">
@@ -94,7 +90,7 @@ export default function PortalDoCurso() {
             </Table>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/atividade/portal" variant="body2">
+                <Link href="/turma/detalhesTeste" variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>

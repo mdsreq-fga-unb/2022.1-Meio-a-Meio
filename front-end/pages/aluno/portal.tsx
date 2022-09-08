@@ -13,10 +13,10 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
-export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
+
+export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) {
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -67,18 +67,14 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                       {row.id}
                     </TableCell>
                     <TableCell align="center">
+                      {row.nome_completo}
                       <IconButton
                         aria-label="expand row"
                         size="small"
                         onClick={() => setOpen(!open)}
                       >
-                        {open ? (
-                          <KeyboardArrowUpIcon />
-                        ) : (
-                          <KeyboardArrowDownIcon />
-                        )}
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
-                      {row.nome_completo}
                     </TableCell>
                     <TableCell align="center">{row.matricula || ""}</TableCell>
                     <TableCell align="center">
