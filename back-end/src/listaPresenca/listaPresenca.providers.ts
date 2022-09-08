@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { ListaPresenca } from './entities/listaPresenca.entity';
+import { ListaPresenca } from './listaPresenca.entity';
 
 export const listaPresencaProviders = [
   {

@@ -1,10 +1,10 @@
 import { Injectable,Inject, UnprocessableEntityException, HttpException, HttpStatus } from '@nestjs/common';
 import { CreateListaPresencaDto } from './dto/create-listaPresenca.dto';
 import { UpdateListaPresencaDto } from './dto/update-listaPresenca.dto';
-import { ListaPresenca } from './entities/listaPresenca.entity';
+import { ListaPresenca } from './listaPresenca.entity';
 import { Repository } from 'typeorm';
-import { Turma } from 'src/turma/entities/turma.entity';
-import { TurmaService } from 'src/turma/turma.service';
+import { Turma } from '../turma/turma.entity';
+import { TurmaService } from '../turma/turma.service';
 
 @Injectable()
 export class ListaPresencaService {

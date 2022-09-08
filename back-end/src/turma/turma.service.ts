@@ -2,13 +2,13 @@ import { HttpException, HttpStatus, Inject, Injectable, UnprocessableEntityExcep
 import { Repository } from 'typeorm';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
-import { Turma } from './entities/turma.entity';
+import { Turma } from './turma.entity';
 import { isArray, validate } from 'class-validator';
-import { AlunoService } from 'src/aluno/aluno.service';
-import { Aluno } from 'src/aluno/aluno.entity';
-import { DiarioDeAula } from 'src/diario_de_aula/diario_de_aula.entity';
-import { CreateAlunoDto } from 'src/aluno/dto/aluno.create.dto';
-import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { AlunoService } from '../aluno/aluno.service';
+import { Aluno } from '../aluno/aluno.entity';
+import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
+import { CreateAlunoDto } from '../aluno/dto/aluno.create.dto';
+import { Disciplina } from '../disciplina/disciplina.entity';
 
 @Injectable()
 export class TurmaService {

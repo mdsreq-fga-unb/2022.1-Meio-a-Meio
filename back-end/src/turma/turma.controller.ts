@@ -2,10 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
-import { Aluno } from 'src/aluno/aluno.entity';
-import { DiarioDeAula } from 'src/diario_de_aula/diario_de_aula.entity';
-import { CreateAlunoDto } from 'src/aluno/dto/aluno.create.dto';
-import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { Aluno } from '../aluno/aluno.entity';
+import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
+import { CreateAlunoDto } from '../aluno/dto/aluno.create.dto';
+import { Disciplina } from '../disciplina/disciplina.entity';
 
 @Controller('turma')
 export class TurmaController {

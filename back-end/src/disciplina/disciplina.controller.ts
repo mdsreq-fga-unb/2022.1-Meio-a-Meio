@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CreateProfessorDto } from 'src/professor/dto/create.professor.dto';
-import { Professor } from 'src/professor/professor.entity';
+import { CreateProfessorDto } from '../professor/dto/create.professor.dto';
+import { Professor } from '../professor/professor.entity';
 import { DisciplinaService } from './disciplina.service';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';

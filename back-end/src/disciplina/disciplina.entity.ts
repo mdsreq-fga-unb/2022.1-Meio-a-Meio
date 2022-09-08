@@ -1,6 +1,6 @@
-import { Curso } from 'src/curso/curso.entity';
-import { Professor } from 'src/professor/professor.entity';
-import { Turma } from 'src/turma/entities/turma.entity';
+import { Curso } from '../curso/curso.entity';
+import { Professor } from '../professor/professor.entity';
+import { Turma } from '../turma/turma.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, ManyToOne, JoinTable, CreateDateColumn } from 'typeorm';
 
 @Entity()

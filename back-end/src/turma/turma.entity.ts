@@ -1,10 +1,10 @@
-import { ListaPresenca } from 'src/listaPresenca/entities/listaPresenca.entity';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { ListaPresenca } from '../listaPresenca/listaPresenca.entity';
+import { Aluno } from '../aluno/aluno.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
-import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
-import { Professor } from 'src/professor/professor.entity';
-import { Atividade } from 'src/atividade/atividade.entity';
-import { DiarioDeAula } from 'src/diario_de_aula/diario_de_aula.entity';
+import { Disciplina } from '../disciplina/disciplina.entity';
+import { Professor } from '../professor/professor.entity';
+import { Atividade } from '../atividade/atividade.entity';
+import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
 
 
 @Entity()

@@ -1,7 +1,7 @@
 import { TurmaService } from './../turma/turma.service';
 import { AtividadeAluno } from './../atividades_aluno/atividade_aluno.entity';
 import { CreateAtividadeAlunoDto } from './../atividades_aluno/dto/atividade_aluno.create.dto';
-import { AlunoService } from 'src/aluno/aluno.service';
+import { AlunoService } from '../aluno/aluno.service';
 import { CreateAtividadeDto } from './dto/atividade.create.dto';
 import { Atividade } from './atividade.entity';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';

@@ -1,6 +1,6 @@
 import { TurmaModule } from './../turma/turma.module';
 import { TurmaService } from './../turma/turma.service';
-import { AlunoModule } from 'src/aluno/aluno.module';
+import { AlunoModule } from '../aluno/aluno.module';
 import { AtividadeController } from './atividade.controller';
 import { AtividadeService } from './atividade.service';
 import { atividadeAlunoProviders } from './../atividades_aluno/atividade_aluno.providers';

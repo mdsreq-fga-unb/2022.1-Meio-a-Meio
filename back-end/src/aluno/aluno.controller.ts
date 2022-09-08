@@ -1,5 +1,5 @@
 import { UpdateAlunoDto } from './dto/aluno.update.dto';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { Aluno } from '../aluno/aluno.entity';
 import { AlunoService } from './aluno.service';
 import { CreateAlunoDto} from './dto/aluno.create.dto';
 import { Body, Controller, Post, Get, Put, Param } from '@nestjs/common';

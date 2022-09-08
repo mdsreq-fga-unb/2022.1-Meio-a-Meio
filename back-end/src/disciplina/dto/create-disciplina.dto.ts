@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 import { Curso } from 'src/curso/curso.entity';
 import { Professor } from 'src/professor/professor.entity';
 

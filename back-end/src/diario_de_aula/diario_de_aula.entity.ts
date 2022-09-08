@@ -1,4 +1,4 @@
-import { Turma } from 'src/turma/entities/turma.entity';
+import { Turma } from '../turma/turma.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity() 

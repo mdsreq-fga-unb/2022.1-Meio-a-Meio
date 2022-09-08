@@ -1,10 +1,10 @@
 import { HttpException, HttpStatus, Inject, Injectable, UnprocessableEntityException } from '@nestjs/common';
-import { CreateProfessorDto } from 'src/professor/dto/create.professor.dto';
-import { Professor } from 'src/professor/professor.entity';
+import { CreateProfessorDto } from '../professor/dto/create.professor.dto';
+import { Professor } from '../professor/professor.entity';
 import { Repository } from 'typeorm';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
-import { Disciplina } from './entities/disciplina.entity';
+import { Disciplina } from './disciplina.entity';
 
 @Injectable()
 export class DisciplinaService {

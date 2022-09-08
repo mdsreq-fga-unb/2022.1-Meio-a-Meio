@@ -1,8 +1,8 @@
 import { UpdateCursoDto } from './dto/curso.update.dto';
 import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
-import { CursoAlunoDto } from 'src/curso_aluno/dto/curso_aluno.dto';
+import { CursoAlunoDto } from '../curso_aluno/dto/curso_aluno.dto';
 import { Curso } from './curso.entity';
-import { AlunoService } from 'src/aluno/aluno.service';
+import { AlunoService } from '../aluno/aluno.service';
 import { CreateCursoDto } from './dto/curso.create.dto';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';

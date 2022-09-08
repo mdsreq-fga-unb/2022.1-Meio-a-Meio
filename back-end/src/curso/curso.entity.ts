@@ -1,4 +1,4 @@
-import { Disciplina } from 'src/disciplina/entities/disciplina.entity';
+import { Disciplina } from '../disciplina/disciplina.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 @Entity() 
