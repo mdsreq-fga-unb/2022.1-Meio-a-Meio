@@ -12,6 +12,9 @@ export class Disciplina {
   nome_disciplina: string;
 
   @Column()
+  localizacao: string;
+
+  @Column()
   carga_horaria: number;
 
   @Column({default: 1})

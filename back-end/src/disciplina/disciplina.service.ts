@@ -26,6 +26,7 @@ export class DisciplinaService {
       disciplina.professor = createDisciplinaDto.professor;
       disciplina.nome_disciplina = createDisciplinaDto.nome_disciplina;
       disciplina.carga_horaria = createDisciplinaDto.carga_horaria;
+      disciplina.localizacao = createDisciplinaDto.localizacao;
 
       return this.disciplinaRepository.save(disciplina);
     } catch(error){
@@ -57,6 +58,7 @@ export class DisciplinaService {
         nome_disciplina: updateDisciplinaDto.nome_disciplina,
         carga_horaria: updateDisciplinaDto.carga_horaria,
         professor: updateDisciplinaDto.professor
+        
       });
     return up;
   }

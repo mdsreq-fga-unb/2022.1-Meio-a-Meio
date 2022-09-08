@@ -20,4 +20,7 @@ export class CreateDisciplinaDto {
 
     @IsNotEmpty()
     curso: Curso;
+
+    @IsOptional()
+    localizacao: string
 }
