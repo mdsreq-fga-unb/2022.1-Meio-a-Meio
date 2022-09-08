@@ -9,13 +9,13 @@ nav:
   - 'Visão': ./produto-projeto/ProductVision.md
   - 'Mvp': ./produto-projeto/MVP.md
   - 'Backlog': ./produto-projeto/Requisitos.md
-  - 'Videos cliente' : ./reunioes-cliente/Reunioes.md
+  - 'Videos cliente' : ./produto-projeto/ClientVideos.md
   - 'Politica de commits': ./produto-projeto/commit_policy.md
   - 'Kanbam': 'https://trello.com/b/lcWQoS87'
   - 'Diagrama de dados Lucidchart': 'https://lucid.app/lucidchart/5f91f189-0a8c-4b74-ad5d-a831a71a1252/edit?viewport_loc=-1562%2C-431%2C3734%2C2154%2C0_0&invitationId=inv_83b530a6-6269-4b7c-a717-5b8ca496e830#'
   - 'Diagramas diversos miro' : 'https://miro.com/app/board/uXjVOlmuidc=/?share_link_id=155231888640'
   - 'Contribuir': 'https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/CODE_OF_CONDUCT.md'
-  - 'Pbb': ./produto-projeto/PBB.md
+  - 'Pbb e Bdd': ./produto-projeto/PBB.md
   - 'USM': ./produto-projeto/US-Mapping.md
 
 - Sprints planing:
