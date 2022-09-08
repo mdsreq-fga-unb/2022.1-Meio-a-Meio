@@ -195,4 +195,26 @@ export class TurmaService {
     this.turmaRepository.save(turma);
     return turma;
   }
+
+  async listaDisciplina(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{disciplinas:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const disciplinas = turma.disciplinas;
+    return disciplinas;
+  }
+
+  async listaListaPresenca(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{listaPresenca:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const presenca = turma.listaPresenca;
+    return presenca;
+  }
 }
