@@ -150,11 +150,21 @@ export class TurmaService {
       throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
     }
 
-    const diarios = JSON.stringify(turma.diarioDeAula.filter((diario)=>diario.id !== diarioDeAula.id));
-    turma.diarioDeAula = JSON.parse(diarios)
-    
+    turma.diarioDeAula = turma.diarioDeAula.filter((diario)=>diario.id !== diarioDeAula.id);
+        
     this.turmaRepository.save(turma);
     return turma;
+  }
+
+  async listaRelatorioaDeAula(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{diarioDeAula:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const diarios = turma.diarioDeAula;
+    return  diarios;
   }
 
   async adicionaDisciplina(idTurma: number, disciplina: Disciplina){

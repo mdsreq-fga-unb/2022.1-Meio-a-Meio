@@ -70,4 +70,9 @@ export class TurmaController {
   listAlunosTurma(@Param('id') idTurma: string){
     return this.turmaService.listaAluno(+idTurma);
   }
+
+  @Get(':id/diarios')
+  listDiariosDeAula(@Param('id') idTurma: string){
+    return this.turmaService.listaRelatorioaDeAula(+idTurma);
+  }
 }
