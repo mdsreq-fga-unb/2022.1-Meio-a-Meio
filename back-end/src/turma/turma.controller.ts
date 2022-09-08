@@ -65,4 +65,9 @@ export class TurmaController {
   removeDisciplina(@Param('id') idTurma: string, @Body() disciplina: Disciplina){
     return this.turmaService.removeDisciplina(+idTurma, disciplina);
   }
+
+  @Get(':id/alunos')
+  listAlunosTurma(@Param('id') idTurma: string){
+    return this.turmaService.listaAluno(+idTurma);
+  }
 }

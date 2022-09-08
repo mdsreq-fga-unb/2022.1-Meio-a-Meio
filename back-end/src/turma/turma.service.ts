@@ -118,6 +118,16 @@ export class TurmaService {
 
   }
 
+  async listaAluno(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{alunos:true}});
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const alunos = turma.alunos;
+    return alunos;
+  }
+
   async adicionaRelatorioDeAula(idTurma: number, diarioDeAula: DiarioDeAula){
     const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{diarioDeAula:true}});
 
