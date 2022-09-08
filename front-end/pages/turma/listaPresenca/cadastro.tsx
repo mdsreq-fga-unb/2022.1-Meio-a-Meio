@@ -1,207 +1,109 @@
-import * as React from "react";
-import Head from "next/head";
-import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Checkbox from "@mui/material/Checkbox";
+import React,{useEffect, useState} from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import apiRequest from '../../../util/apiRequest';
+import Checkbox from '@mui/material/Checkbox';
+import { DatePicker } from '@mantine/dates';
+import styles from '../../../styles/listapresenca.module.css'
+import Button from '@mui/material/Button';
 
-interface Column {
-  id: "name" | "code" | "population" | "size" | "density";
-  label: string;
-  minWidth?: number;
-  align?: "right";
-  format?: (value: number) => string;
-}
-
-const columns: Column[] = [
-  { id: "name", label: "Name", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
-  {
-    id: "population",
-    label: "Population",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "size",
-    label: "Size\u00a0(km\u00b2)",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "density",
-    label: "Density",
-    minWidth: 170,
-    align: "right",
-    format: (value: number) => value.toFixed(2),
-  },
-];
-
-interface Data {
-  name: string;
-  code: string;
-  population: number;
-  size: number;
-  density: number;
-}
 
 function createData(
   name: string,
-  code: string,
-  population: number,
-  size: number
-): Data {
-  const density = population / size;
-  return { name, code, population, size, density };
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number,
+) {
+  return { name, calories, fat, carbs, protein };
 }
 
 const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-  createData("United Kingdom", "GB", 67545757, 242495),
-  createData("Russia", "RU", 146793744, 17098246),
-  createData("Nigeria", "NG", 200962417, 923768),
-  createData("Brazil", "BR", 210147125, 8515767),
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
-interface EnhancedTableProps {
-  numSelected: number;
-  onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  orderBy: string;
-  rowCount: number;
+
+interface CadastroProps{
+  listaAluno?:[any];
+  error?:any
 }
-export default function ListaPresenca(props: EnhancedTableProps) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const { onSelectAllClick, orderBy, numSelected, rowCount, onRequestSort } =
-  props;
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
+export default function Cadastro({listaAluno,error}:CadastroProps) {
+  const[alunos,setAlunos]=useState([])
+  const[alunosPresentes,setAlunosPresentes]=useState([])
+  useEffect(()=>{
+    if (listaAluno){
+      setAlunos(listaAluno)
+    }
+  },[])
+  
+const handleCheck=(id)=>{
+  const jaExiste=alunosPresentes.find(i=>i===id)
+  console.log(jaExiste)
+  if(jaExiste){
+    const listaFiltrada= alunosPresentes.filter(i=>i!==id)
+    setAlunosPresentes(listaFiltrada)
+    return;
+  }
+  setAlunosPresentes([...alunosPresentes,id])
+}
+  console.log(listaAluno);
   return (
-    <div>
-      <div
-        style={{
-          height: 1,
-          width: "100%",
-          alignItems: "center",
-          display: "flex",
-          marginRight: "auto",
-          marginLeft: "auto",
-        }}
-      >
-        <Head>
-          <title>Galdi</title>
-          <meta name="description" content="Generated by meio a meio" />
-          <link rel="icon" href="/images/icon.png" />
-        </Head>
+  <div>
+    <div className={styles.datepickerContainer}>
+
+      <DatePicker placeholder="Escolha uma data" label="Dia da aula" withAsterisk />
       </div>
-      <div>
-        <Paper sx={{ width: "100%" }}>
-          <TableContainer sx={{ width: "100%" }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {/* <TableCell padding="checkbox">
-                    <Checkbox
-                      color="primary"
-                      indeterminate={numSelected > 0 && numSelected < rowCount}
-                      checked={rowCount > 0 && numSelected === rowCount}
-                      onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                  </TableCell> */}
-                  <TableCell align="center" colSpan={1}>
-                    Professor: Giulia
-                  </TableCell>
-                  <TableCell align="center" colSpan={1}>
-                    Curso: Ortopedia
-                  </TableCell>
-                  <TableCell align="center" colSpan={1}>
-                    Disciplina: Sei lá
-                  </TableCell>
-                  <TableCell align="center" colSpan={1}>
-                    Turma: A
-                  </TableCell>
-                  <TableCell align="center" colSpan={2}>
-                    Data: 01/09/2022
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ top: 57, minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow role="checkbox" tabIndex={-1} key={row.code}>
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-          <Button variant="outlined" href="/turma/listaPresenca/portal">
-            Cadastrar
-          </Button>
-        </Paper>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Nome</TableCell>
+            <TableCell align="right">ID</TableCell>
+            <TableCell align="right">Presente</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {alunos.map((row,index) => (
+            <TableRow
+              key={index}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.nome_completo}
+              </TableCell>
+              <TableCell align="right">{row.id}</TableCell>
+              <TableCell align="right">
+                <Checkbox onClick={()=>handleCheck(row.id)} checked={alunosPresentes.find(i=>i===row.id)?true:false} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <div className={styles.buttonContainer}>
+      <Button variant="outlined">
+        Lançar lista de presença
+      </Button>
       </div>
     </div>
   );
 }
+export async function getServerSideProps() {
+  const resAluno = await apiRequest.get('aluno') //lista de Alunos
+  if(!resAluno || !resAluno.data){
+    return {props: {error: 'Falha ao carregar conteúdo'}}
+  }
+
+  return {
+    props: {
+      listaAluno: resAluno.data,
+      error: null,
+    },
+  };
+  }
