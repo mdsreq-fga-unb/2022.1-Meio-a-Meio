@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
-import { Curso } from 'src/curso/curso.entity';
-import { Professor } from 'src/professor/professor.entity';
+import { Curso } from '../../curso/curso.entity';
+import { Professor } from '../../professor/professor.entity';
 
 export class CreateDisciplinaDto {
 

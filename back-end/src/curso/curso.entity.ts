@@ -1,6 +1,6 @@
 import { Disciplina } from '../disciplina/disciplina.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
-import { Turma } from 'src/turma/turma.entity';
+import { Turma } from '../turma/turma.entity';
 
 @Entity() 
 export class Curso {

@@ -1,8 +1,8 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength, IsOptional, ArrayContains, IsIn } from "class-validator";
-import { Aluno } from "src/aluno/aluno.entity";
-import { Curso } from "src/curso/curso.entity";
-import { Disciplina } from "src/disciplina/disciplina.entity";
-import { ListaPresenca } from "src/listaPresenca/listaPresenca.entity";
+import { Aluno } from "../../aluno/aluno.entity";
+import { Curso } from "../../curso/curso.entity";
+import { Disciplina } from "../../disciplina/disciplina.entity";
+import { ListaPresenca } from "../../listaPresenca/listaPresenca.entity";
 
 
 export class CreateTurmaDto {
