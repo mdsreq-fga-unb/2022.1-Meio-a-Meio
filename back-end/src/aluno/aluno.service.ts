@@ -1,19 +1,16 @@
-import { Endereco } from '../endereco/endereco.entity';
+import { UpdateAlunoDto } from './dto/aluno.update.dto';
 import { Aluno } from './aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
-import { Repository, ManyToOne } from 'typeorm';
+import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
 @Injectable()
 export class AlunoService {
   constructor(
     @Inject('ALUNO_REPOSITORY')
-    private alunoRepository: Repository<Aluno>,
-
-    @Inject('ENDERECO_REPOSITORY')
-    private enderecoRepository: Repository<Endereco>
+    private alunoRepository: Repository<Aluno>
   ) {}
 
   async create(data: CreateAlunoDto) {
@@ -44,7 +41,7 @@ export class AlunoService {
     try {
       aluno.nome_completo = data.nome_completo;
       aluno.sexo = data.sexo;
-      aluno.data_de_nascimento = data.data_de_nascimento;
+      aluno.data_de_nascimento = new Date(data.data_de_nascimento);
       aluno.nacionalidade = data.nacionalidade;
       aluno.email = data.email;
       aluno.cpf = data.cpf;
@@ -61,65 +58,61 @@ export class AlunoService {
       aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
       aluno.create_at = new Date();
       aluno.update_at = new Date();
-
-      const alunoSalvo = await this.alunoRepository.save(aluno);
-      
-      const endereco = new Endereco();
-      const alunoEndereco = data.endereco;
-      endereco.CEP = alunoEndereco.CEP;
-      endereco.numero = alunoEndereco.numero;
-      endereco.bairro = alunoEndereco.bairro;
-      endereco.cidade = alunoEndereco.cidade;
-      endereco.complemento = alunoEndereco.complemento;
-      endereco.endereco_residencia = alunoEndereco.endereco_residencial;
-      endereco.estado = alunoEndereco.estado;
-      endereco.status = 1;
-      endereco.create_at = new Date();
-      endereco.update_at = new Date();
-      endereco.aluno_id = alunoSalvo.id;
-    
-      await this.enderecoRepository.save(endereco);
-
-      return this.alunoRepository.findOne({
-        where: {
-          id: alunoSalvo.id,
-        },
-        relations: {
-          enderecos: true,
-        }
-      });
-
+  
+      return await this.alunoRepository.save(aluno);
     } catch(error) {
-      console.log(error);
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');
     };
   }
 
+  async findAll() {
+    return this.alunoRepository.find();
+  }
+
+  async findStudentById(id: number) {
+    const aluno = await this.alunoRepository.findOneBy({ id });
+    if(!aluno || aluno.status === 0) {
+      throw new BadRequestException("Aluno inválido!");
+    } 
+    return aluno;
+  }
+
+  async updateStudent(id: number, data: UpdateAlunoDto) {
+    try {
+      const aluno = await this.findStudentById(id);
+      aluno.nome_completo = data.nome_completo;
+      aluno.sexo = data.sexo;
+      aluno.data_de_nascimento = data.data_de_nascimento;
+      aluno.nacionalidade = data.nacionalidade;
+      aluno.email = data.email;
+      aluno.cpf = data.cpf;
+      aluno.rg_rne = data.rg_rne;
+      aluno.uf_rg_rne = data.uf_rg_rne;
+      aluno.orgao_emissor = data.orgao_emissor;
+      aluno.celular = data.celular;
+      aluno.crm = data.crm;
+      aluno.uf_crm = data.uf_crm;
+      aluno.formacao_academica = data.formacao_academica;
+      aluno.especializacao = data.especializacao;
+      aluno.status_financeiro = data.status_financeiro;
+      aluno.observacao = data.observacao;
+      aluno.update_at = new Date();
+
+      return this.alunoRepository.save(aluno);
+    } catch(error) {
+      throw new UnprocessableEntityException('Erro ao editar aluno!');
+    }
+  }
+
   async validateIfCPFAlreadyExists(cpf: string) {
-    const aluno = await this.alunoRepository.findOne({
-      where: {
-        cpf
-      }
-    });
-    return aluno; 
+    return await this.alunoRepository.findOneBy({ cpf });
   }
 
   async validateIfCrmAndUfAlreadyExists(crm: string, uf_crm: string) {
-    const aluno = await this.alunoRepository.findOne({
-      where: {
-        crm,
-        uf_crm
-      }
-    });
-    return aluno; 
+    return await this.alunoRepository.findOneBy({ crm, uf_crm });
   }
 
   async validateIfMatriculaAlreadyExists(matricula: string) {
-    const aluno = await this.alunoRepository.findOne({
-      where: {
-        matricula
-      }
-    });
-    return aluno; 
+    return await this.alunoRepository.findOneBy({ matricula });
   }
 }

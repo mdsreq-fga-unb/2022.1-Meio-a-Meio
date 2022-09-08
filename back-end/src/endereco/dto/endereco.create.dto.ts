@@ -2,6 +2,9 @@ import { IsString, IsNotEmpty, IsOptional, IsNumber } from "class-validator";
 
 export class CreateEnderecoDto {
 
+  @IsNotEmpty()
+  aluno_id: number;
+
   @IsNumber()
   @IsNotEmpty()
   CEP: number;
