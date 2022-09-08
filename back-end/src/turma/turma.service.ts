@@ -9,6 +9,7 @@ import { Aluno } from '../aluno/aluno.entity';
 import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
 import { CreateAlunoDto } from '../aluno/dto/aluno.create.dto';
 import { Disciplina } from '../disciplina/disciplina.entity';
+import { Atividade } from 'src/atividade/atividade.entity';
 
 @Injectable()
 export class TurmaService {
@@ -216,5 +217,39 @@ export class TurmaService {
 
     const presenca = turma.listaPresenca;
     return presenca;
+  }
+
+  async adicionaAtividade(idTurma: number, atividade: Atividade){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    turma.atividade.push(atividade);
+    return this.turmaRepository.save(turma);
+  }
+
+  async removeAtividade(idTurma: number, atividadeRemove: Atividade){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    turma.atividade = turma.atividade.filter((atividade)=> {return atividade.id !== atividadeRemove.id});
+
+    return this.turmaRepository.save(turma);
+  }
+
+  async listaAtividade(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const atividades = turma.atividade;
+    return atividades;
   }
 }
