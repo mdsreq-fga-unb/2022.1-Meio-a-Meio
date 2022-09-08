@@ -28,7 +28,8 @@ export class TurmaService {
     turma.data = createTurmaDto.data;
     turma.disciplinas = createTurmaDto.disciplinas;
     turma.alunos = createTurmaDto.alunos;
-    turma.listaPresenca = createTurmaDto.listaPresenca;    
+    turma.listaPresenca = createTurmaDto.listaPresenca;
+    turma.curso = createTurmaDto.curso;  
 
     const errors = await validate(turma)
 
@@ -67,6 +68,7 @@ export class TurmaService {
       turma.nome = updateTurmaDto.nome;
       turma.status = updateTurmaDto.status;
       turma.data = updateTurmaDto.data;
+      turma.curso = updateTurmaDto.curso;
 
       return this.turmaRepository.save(turma);
     }

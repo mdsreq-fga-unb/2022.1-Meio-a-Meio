@@ -1,5 +1,6 @@
 import { Disciplina } from '../disciplina/disciplina.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToMany, UpdateDateColumn, CreateDateColumn } from 'typeorm';
+import { Turma } from '../turma/turma.entity';
 
 @Entity() 
 export class Curso {
@@ -23,5 +24,8 @@ export class Curso {
 
   @OneToMany(()=>Disciplina, (disicplina)=> disicplina.curso)
   disciplinas: Disciplina[];
+
+  @OneToMany(() => Turma, (turma)=> turma.curso)
+  turmas: Turma[];
 
 }
