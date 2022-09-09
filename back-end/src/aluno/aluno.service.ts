@@ -10,7 +10,7 @@ import { isCPF } from "brazilian-values";
 export class AlunoService {
   constructor(
     @Inject('ALUNO_REPOSITORY')
-    private alunoRepository: Repository<Aluno>
+    private alunoRepository: Repository<Aluno>,
   ) {}
 
   async create(data: CreateAlunoDto) {
@@ -55,9 +55,6 @@ export class AlunoService {
       aluno.especializacao = data.especializacao;
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
-      aluno.status = 1;  // status do aluno no sistema, por default value=1 => cadastrado.
-      aluno.create_at = new Date();
-      aluno.update_at = new Date();
   
       return await this.alunoRepository.save(aluno);
     } catch(error) {
@@ -96,7 +93,6 @@ export class AlunoService {
       aluno.especializacao = data.especializacao;
       aluno.status_financeiro = data.status_financeiro;
       aluno.observacao = data.observacao;
-      aluno.update_at = new Date();
 
       return this.alunoRepository.save(aluno);
     } catch(error) {

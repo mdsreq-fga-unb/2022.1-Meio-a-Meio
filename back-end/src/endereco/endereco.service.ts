@@ -22,9 +22,6 @@ export class EnderecoService {
       endereco.complemento = data.complemento;
       endereco.endereco_residencial = data.endereco_residencial;
       endereco.estado = data.estado;
-      endereco.status = 1;
-      endereco.create_at = new Date();
-      endereco.update_at = new Date();
 
       return this.enderecoRepository.save(endereco);
     } catch(error) {
@@ -53,7 +50,6 @@ export class EnderecoService {
         endereco.complemento = data.complemento;
         endereco.endereco_residencial = data.endereco_residencial;
         endereco.estado = data.estado;
-        endereco.update_at = new Date();
 
         return this.enderecoRepository.save(endereco);
     } catch(error) {
