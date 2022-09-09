@@ -1,9 +1,9 @@
 ## Período
-Duração: 16/08/2022  à 30/08/2022
+Duração: 30/08/2022  à 13/09/2022
 
 
 ## Reunião
-* Data: 16/08/2022
+* Data: 30/08/2022
 * Hora: 21h
 * Local: Reunião online
 
@@ -19,7 +19,6 @@ e estimativas)
  - Teste de Software: Fundamentos, Tipos, Níveis e Técnicas de Teste
  - Gerência de Configuração de Software: Fundamentos e Ferramentas de GCS
  - Cobertura de testes BackEnd 30%
-	
 
  
 
@@ -39,11 +38,13 @@ e estimativas)
 | Issue | Descrição  | Responsáveis | Status | 
 | ------------------- | ------------------- | ------------------- | ------------------- |
 | **#1**  | Terminar de desenvolver MVP1 | Todos  | A fazer  |   
-| **#2**  | Fundamentos Processo Unificado  | REQ  | A fazer  |   
-| **#3**  | Organização Estrutural dos Requisitos | REQ  | A fazer  |   
-| **#4**  | Documentação | REQ  | A fazer  |   
+| **#2**  | Desenvolver MVP2  | Todos  | A fazer  |   
+| **#3**  | Fundamentos Processo Unificado | REQ  | A fazer  |   
+| **#4**  | Organização Estrutural dos Requisitos | REQ  | A fazer  |   
 | **#5**  | Definição do Escopo da Iteração (definição, planejamento e estimativas) | REQ  | A fazer  |   
 | **#6**  | casos de uso (documentação e modelagem) | REQ  | A fazer  |   
+
+--------------------------------------------------------
 | **#7**  | Teste de Software: Fundamentos, Tipos, Níveis e Técnicas de Teste | MDS  | A fazer  |   
 | **#8**  | Gerência de Configuração de Software: Fundamentos e Ferramentas de GCS | MDS  | A fazer  |   
 | **#9**  | Cobertura de testes BackEnd 30% | MDS  | A fazer  |   
