@@ -22,9 +22,6 @@
 |  ID   |       Funcionalidade           |  
 |-------|--------------------------------|
 | FGM1  |   cadastrar administrador      |
-| FG11  |   gerar boletim                |
-| FG10  |   gerar histórico              |
-| FG2   |   gerar atestado de matrícula  |
 | FG3   |   visualizar alunos            |
 | FG4   |   visualizar cursos            |
 | FP2   |   visualizar professor         |
@@ -34,7 +31,6 @@
 | FP9   |   visualizar turma             |
 | FP10   |   visualizar disciplina        |
 | FP10  |   visualizar lista de presença |
-| FA1   |   matricular em estágio        |
 | FG1   |   realizar login               |
 | FGM3  |   atualizar alunos             |
 | FG5   |   atualizar cursos             |
