@@ -62,7 +62,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                       {row.id}
                     </TableCell>
                     <TableCell align="center">
-                    {row.nomeTurma}
+                    {row.nome}
                       <IconButton
                         aria-label="expand row"
                         size="small"

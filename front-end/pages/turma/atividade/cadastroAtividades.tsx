@@ -57,7 +57,7 @@ export default function CadastroAtividades({
       .post("atividade/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/atividade/portal");
+        router.push("portal");
         console.log("ok");
       })
       .catch((err) => {
@@ -150,7 +150,7 @@ export default function CadastroAtividades({
                   >
                     {turma.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
-                        {i.nomeTurma}
+                        {i.nome}
                       </MenuItem>
                     ))}
                   </Select>
@@ -219,7 +219,7 @@ export default function CadastroAtividades({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/atividade/portal" variant="body2">
+                  <Link href="portal" variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>

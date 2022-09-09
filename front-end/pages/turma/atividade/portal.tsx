@@ -20,7 +20,7 @@ export default function PortalDaTurma() {
           </h1>
 
           <div className={styles.grid}>
-            <Link href="/atividade/cadastroNotas">
+            <Link href="cadastroNotas">
             <a
               className={styles.card}
             >
@@ -30,7 +30,7 @@ export default function PortalDaTurma() {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/cadastroAtividades">
+            <Link href="cadastroAtividades">
             <a
               className={styles.card}
             >
@@ -40,7 +40,7 @@ export default function PortalDaTurma() {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/visualizarNotasAtividades">
+            <Link href="visualizarNotasAtividades">
             <a
               className={styles.card}
             >
@@ -50,7 +50,7 @@ export default function PortalDaTurma() {
               </p>
             </a>
             </Link>
-            <Link href="/atividade/visualizarNotasAvaliacoes">
+            <Link href="visualizarNotasAvaliacoes">
             <a
               className={styles.card}
             >

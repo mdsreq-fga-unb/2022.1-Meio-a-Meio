@@ -71,7 +71,7 @@ export default function Cadastro() {
       .post("aluno", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/portal/aluno");
+        router.push("/aluno/portal");
         console.log("ok");
       })
       .catch((err) => {

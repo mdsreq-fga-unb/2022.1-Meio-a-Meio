@@ -16,9 +16,16 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import {
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+  FormHelperText,
+} from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
-
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const theme = createTheme();
 
 export default function Cadastro({
@@ -50,7 +57,11 @@ export default function Cadastro({
     console.log(error);
     //erros
   }, []);
-
+  const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+    const formatedData = Moment(e).format("yyyy/MM/DD");
+    setData({ ...data, data_de_nascimento: formatedData });
+  };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(data);
@@ -58,9 +69,9 @@ export default function Cadastro({
       return;
     }
     apiRequest
-      .post("turma/", { ...data })
+      .post("turma", { ...data })
       .then((result) => {
-        router.push("/turma/listar");
+        router.push("/turma/portal");
         console.log("ok");
       })
       .catch((err) => {
@@ -81,14 +92,11 @@ export default function Cadastro({
   };
 
   const handleCheckData = () => {
-    const { nomeTurma, horarios, dias, professor, disciplina } = data;
+    const { nome, horarios, dias, professor, disciplina } = data;
     let emptyFields: any = {};
 
-    if (!nomeTurma || nomeTurma.length === 0) {
-      emptyFields.nomeTurma = "Nome Vazio";
-    }
-    if (!disciplina || disciplina.length === 0) {
-      emptyFields.disciplina = "Disciplina Vazio";
+    if (!nome || nome.length === 0) {
+      emptyFields.nome = "Nome Vazio";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -129,47 +137,34 @@ export default function Cadastro({
               <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeTurma ? true : false}
-                  helperText={errors.nomeTurma || null}
+                  error={errors.nome ? true : false}
+                  helperText={errors.nome || null}
                   fullWidth
-                  id="nomeTurma"
+                  id="nome"
                   label="Nome da Turma"
-                  name="nomeTurma"
-                  autoComplete="nomeTurma"
+                  name="nome"
+                  autoComplete="nome"
                   onChange={handleText}
-                  value={data ? data.nomeTurma : ""}
+                  value={data ? data.nome : ""}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <TextField
-                  required
-                  error={errors.horarios ? true : false}
-                  helperText={errors.horarios || null}
-                  fullWidth
-                  id="horarios"
-                  label="Horário"
-                  name="horarios"
-                  onChange={handleText}
-                  value={data ? data.horarios : ""}
-                />
+              <Grid item xs={3}>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    label="Data"
+                    name="data"
+                    inputFormat="dd/MM/yyyy"
+                    value={data ? data.data : ""}
+                    onChange={handleDate}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+                <FormHelperText error>
+                  {errors.data_de_nascimento}
+                </FormHelperText>
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  error={errors.dias ? true : false}
-                  helperText={errors.dias || null}
-                  fullWidth
-                  id="dias"
-                  label="Dia"
-                  name="dias"
-                  onChange={handleNumber}
-                  value={data ? data.dias : ""}
-                />
-              </Grid> */}
-              <Grid item xs={12}>
-              <InputLabel id="4">
-                  Professor
-                </InputLabel>
+                <InputLabel id="4">Professor</InputLabel>
                 <Select
                   fullWidth
                   onChange={(e) =>
@@ -186,13 +181,9 @@ export default function Cadastro({
                 </Select>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="disciplina" required>
-                  Disciplina
-                </InputLabel>
+                <InputLabel id="disciplina">Disciplina</InputLabel>
                 <Select
-                  required
                   fullWidth
-                  error={errors.disciplina ? true : false}
                   onChange={(e) =>
                     setData({ ...data, disciplina: e.target.value })
                   }
@@ -214,9 +205,7 @@ export default function Cadastro({
                   required
                   fullWidth
                   error={errors.curso ? true : false}
-                  onChange={(e) =>
-                    setData({ ...data, curso: e.target.value })
-                  }
+                  onChange={(e) => setData({ ...data, curso: e.target.value })}
                   label={"Curso"}
                   value={data ? data.curso : ""}
                 >
@@ -251,12 +240,19 @@ export default function Cadastro({
 }
 
 export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get('professor') //lista de professores
+  const resProfessor = await apiRequest.get("professor"); //lista de professores
   const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
-  const resCursos = await apiRequest.get('curso');
+  const resCursos = await apiRequest.get("curso");
   console.log("aaa", resDisciplina);
-  if(!resProfessor || !resDisciplina || !resCursos || !resProfessor.data || !resDisciplina.data || !resCursos.data){
-    return {props: {error: 'Falha ao carregar conteúdo'}}
+  if (
+    !resProfessor ||
+    !resDisciplina ||
+    !resCursos ||
+    !resProfessor.data ||
+    !resDisciplina.data ||
+    !resCursos.data
+  ) {
+    return { props: { error: "Falha ao carregar conteúdo" } };
   }
 
   return {

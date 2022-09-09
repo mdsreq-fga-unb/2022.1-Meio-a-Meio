@@ -88,6 +88,13 @@ export default function PortalDoCurso() {
                   ))}
               </TableBody>
             </Table>
+            <Button
+              variant="outlined"
+              onClick={() => router.push("cadastro")}
+              sx={{ alignSelf: "center" }}
+            >
+              Cadastrar
+            </Button>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/turma/detalhesTeste" variant="body2">

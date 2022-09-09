@@ -63,12 +63,13 @@ export default function CadastroProfessoresEmTurmas({ listaProfessores: listaPro
                     <TableCell align="center">
                       {row.nome_completo}
                     </TableCell>
-                    <TableCell align="center">{row.nomeTurma || ""}</TableCell>
+                    <TableCell align="center">{row.nome || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="delete"
                         component="label"
+                        onClick={() => router.push({pathname: "editar", query: {...row}})}
                       >
                         <DeleteIcon />
                       </IconButton>

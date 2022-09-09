@@ -16,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 
-export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
+export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, error }) {
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -63,7 +63,7 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                     <TableCell align="center">
                       {row.nome_completo}
                     </TableCell>
-                    <TableCell align="center">{row.nomeTurma || ""}</TableCell>
+                    <TableCell align="center">{row.nome || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"

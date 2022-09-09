@@ -16,17 +16,22 @@ import InputLabel from "@mui/material/InputLabel";
 
 const theme = createTheme();
 
-export default function Cadastro({listaProfessores, error}) {
+export default function Cadastro({listaProfessores, listaCursos, error}) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
   const [professor, setProfessor] = useState<any>([]);
+  const [curso, setCurso] = useState<any>([]);
 
   useEffect(() => {
     if (listaProfessores) {
       setProfessor(listaProfessores);
     }
+    if (listaCursos) {
+      setCurso(listaCursos);
+    }
     console.log(listaProfessores);
+    console.log(listaCursos);
     console.log(error);
     //erros
   }, []);
@@ -40,7 +45,7 @@ export default function Cadastro({listaProfessores, error}) {
     apiRequest
       .post("disciplina", { ...data })
       .then((result) => {
-        router.push("/disciplina/listar");
+        router.push("/disciplina/portal");
         console.log("ok");
       })
       .catch((err) => {
@@ -62,7 +67,7 @@ export default function Cadastro({listaProfessores, error}) {
   };
 
   const handleCheckData = () => {
-    const { nome_disciplina, carga_horaria, professor, localizacao } = data;
+    const { nome_disciplina, carga_horaria, curso } = data;
     let emptyFields: any = {};
 
     if (!nome_disciplina || nome_disciplina.length === 0) {
@@ -71,8 +76,8 @@ export default function Cadastro({listaProfessores, error}) {
     if (!carga_horaria || carga_horaria.length === 0) {
       emptyFields.carga_horaria = "Carga Horaria Vazia";
     }
-    if (!professor || professor.length === 0) {
-      emptyFields.professor = "Professor Vazio";
+    if (!curso || curso.length === 0) {
+      emptyFields.curso = "Curso Vazio";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -148,12 +153,11 @@ export default function Cadastro({listaProfessores, error}) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="4" required>
+                <InputLabel id="professor">
                   Professor
                 </InputLabel>
                 <Select
                   fullWidth
-                  error={errors.professor ? true : false}
                   onChange={(e) =>
                     setData({ ...data, professor: e.target.value })
                   }
@@ -164,6 +168,26 @@ export default function Cadastro({listaProfessores, error}) {
                     <MenuItem key={index} value={i.id}>
                       {i.nome_completo}
                       {console.log('DIEFHOHIFE', i.nome_completo)}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </Grid>
+              <Grid item xs={12}>
+                <InputLabel id="curso">
+                  Curso
+                </InputLabel>
+                <Select
+                  fullWidth
+                  onChange={(e) =>
+                    setData({ ...data, curso: e.target.value })
+                  }
+                  label={"Curso"}
+                  value={data ? data.curso : null}
+                >
+                  {curso.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nome}
+                      {console.log('DIEFHOHIFE', i.nome)}
                     </MenuItem>
                   ))}
                 </Select>
@@ -193,13 +217,15 @@ export default function Cadastro({listaProfessores, error}) {
 
 export async function getServerSideProps() {
   const resProfessor = await apiRequest.get('professor') //lista de professoress
-  if(!resProfessor || !resProfessor.data){
+  const resCurso = await apiRequest.get('curso')
+  if(!resProfessor || !resCurso || !resProfessor.data || !resCurso.data){
     return {props: {error: 'Falha ao carregar conteúdo'}}
   }
 
   return {
     props: {
       listaProfessores: resProfessor.data,
+      listaCursos: resCurso.data,
       error: null,
     },
   };

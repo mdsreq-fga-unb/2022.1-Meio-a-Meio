@@ -82,11 +82,11 @@ export default function Editar({
   };
 
   const handleCheckData = () => {
-    const { nomeTurma, horarios, dias, professor, disciplina } = data;
+    const { nome, horarios, dias, professor, disciplina } = data;
     let emptyFields: any = {};
 
-    if (!nomeTurma || nomeTurma.length === 0) {
-      emptyFields.nomeTurma = "Nome Vazio";
+    if (!nome || nome.length === 0) {
+      emptyFields.nome = "Nome Vazio";
     }
     if (!horarios || horarios.length === 0) {
       emptyFields.horarios = "Horário Vazio";
@@ -139,15 +139,15 @@ export default function Editar({
               <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nomeTurma ? true : false}
-                  helperText={errors.nomeTurma || null}
+                  error={errors.nome ? true : false}
+                  helperText={errors.nome || null}
                   fullWidth
-                  id="nomeTurma"
+                  id="nome"
                   label="Nome da Turma"
-                  name="nomeTurma"
-                  autoComplete="nomeTurma"
+                  name="nome"
+                  autoComplete="nome"
                   onChange={handleText}
-                  value={data ? data.nomeTurma : ""}
+                  value={data ? data.nome : ""}
                 />
               </Grid>
               <Grid item xs={12}>

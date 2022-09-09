@@ -1,9 +1,8 @@
 import Head from "next/head";
+import styles from "../../../styles/Home.module.css";
+import Layout from "../../../component/layout";
+import apiRequest from "../../../util/apiRequest";
 import { useRouter } from "next/router";
-import styles from "../../styles/Home.module.css";
-import Grid from "@mui/material/Grid";
-import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -12,17 +11,20 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
-export default function PortalDoCurso({ listaCursos, error }) {
-  const [curso, setCurso] = useState<any>([]);
+
+
+export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }) {
+  const [aluno, setAluno] = useState<any>([]);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if (listaCursos) {
-      setCurso(listaCursos);
+    if (listaAlunos) {
+      setAluno(listaAlunos);
     }
-    console.log(listaCursos);
+    console.log(listaAlunos);
     console.log(error);
     //erros
   }, []);
@@ -35,7 +37,7 @@ export default function PortalDoCurso({ listaCursos, error }) {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Cursos</p>
+          <p className={styles.description}>Alunos</p>
           <div
             style={{
               alignItems: "center",
@@ -50,42 +52,24 @@ export default function PortalDoCurso({ listaCursos, error }) {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Unidade</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Curso</TableCell>
+                  <TableCell align="center">Deletar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {curso.map((row, index) => (
+                {aluno.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell component="th" scope="row">
-                      {row.id}
+                    <TableCell align="center">
+                      {row.nome_completo}
                     </TableCell>
+                    <TableCell align="center">{row.nome || ""}</TableCell>
                     <TableCell align="center">
-                      {row.nome}
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => router.push({pathname: "/curso/detalhesTeste", query: {...row}})}
-                      >
-                       < BuildCircleIcon color="primary"/>
-                      </IconButton>
-                      </TableCell>
-                    <TableCell align="center">{row.unidade || ""}</TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        color="primary"
-                        aria-label="edit"
-                        component="label"
-                        onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
-                      >
-                        <ModeEditIcon />
-                      </IconButton>
                       <IconButton
                         color="primary"
                         aria-label="delete"
                         component="label"
+                        onClick={() => apiRequest.put("curso/" + row.curso_id, { ...row })}
                       >
                         <DeleteIcon />
                       </IconButton>
@@ -96,7 +80,7 @@ export default function PortalDoCurso({ listaCursos, error }) {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push("/curso/cadastro")}
+              onClick={() => router.push({pathname: "cadastro", query: {...curso}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
@@ -107,16 +91,15 @@ export default function PortalDoCurso({ listaCursos, error }) {
     </div>
   );
 }
-
 export async function getServerSideProps() {
-  const resCursos = await apiRequest.get("curso");
-  if (!resCursos || !resCursos.data) {
+  const resAlunos = await apiRequest.get("aluno");
+  if (!resAlunos || !resAlunos.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }
 
   return {
     props: {
-      listaCursos: resCursos.data,
+      listaAlunos: resAlunos.data,
       error: null,
     },
   };

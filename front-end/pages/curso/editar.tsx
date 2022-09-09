@@ -46,7 +46,7 @@ export default function Editar() {
       return;
     }
     apiRequest
-      .put("curso/" + router.query.id, { ...data}) //mudar a rota depois
+      .put("curso/" + router.query.id, { ...data})
       .then((result) => {
         router.push('/curso/portal')
         console.log("ok");
@@ -124,6 +124,8 @@ export default function Editar() {
                   id="unidade"
                   label="Unidade"
                   name="unidade"
+                  onChange={handleText}
+                  value= {data?data.unidade:""}
                 />
               </Grid>
 

@@ -79,7 +79,7 @@ export default function Editar() {
       .put("aluno/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/portal/aluno");
+        router.push("/aluno/portal");
         console.log("ok");
       })
       .catch((err) => {

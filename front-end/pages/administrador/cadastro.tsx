@@ -404,9 +404,7 @@ export default function Cadastro() {
                   </IconButton>
                 }
                 sx={{ mb: 2 }}
-              >
-                Falha ao cadastrar o usuário!
-              </Alert>
+              />
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>

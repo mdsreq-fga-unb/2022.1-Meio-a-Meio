@@ -162,7 +162,7 @@ export default function CadastroDiarioDeAula({
                   >
                     {turma.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
-                        {i.nomeTurma}
+                        {i.nome}
                       </MenuItem>
                     ))}
                   </Select>
@@ -246,7 +246,7 @@ export default function CadastroDiarioDeAula({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/atividade/portal" variant="body2">
+                  <Link href="listar" variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
