@@ -41,7 +41,7 @@ export class TurmaController {
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
 
-  @Post('removeAluno/:id')
+  @Delete('removeAluno/:id')
   removeAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
     return this.turmaService.removeAluno(+idTurma, idAluno);
   }
@@ -51,7 +51,7 @@ export class TurmaController {
     return this.turmaService.adicionaRelatorioDeAula(+idTurma, diario);
   }
 
-  @Post('removeDiario/:id')
+  @Delete('removeDiario/:id')
   removeDiario(@Param('id') idTurma: string, @Body() diario: DiarioDeAula){
     return this.turmaService.removeRelatorioaDeAula(+idTurma, diario);
   }
@@ -61,7 +61,7 @@ export class TurmaController {
     return this.turmaService.adicionaDisciplina(+idTurma, disciplina);
   }
 
-  @Post('removeDisciplina/:id')
+  @Delete('removeDisciplina/:id')
   removeDisciplina(@Param('id') idTurma: string, @Body() disciplina: Disciplina){
     return this.turmaService.removeDisciplina(+idTurma, disciplina);
   }
