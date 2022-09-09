@@ -1,7 +1,7 @@
 import { CreateAdmDto } from './dto/administrador.create.dto';
 import { Administrador } from './administrador.entity';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
@@ -50,6 +50,18 @@ export class AdministradorService {
         } catch (error) {
             throw new UnprocessableEntityException('Erro ao cadastrar administrador!');
         }
+    }
+
+    async findAll() {
+        return await this.administradorRepository.find();
+    }
+
+    async findAdmById(id: number) {
+        const adm = await this.administradorRepository.findOneBy({ id });
+        if(!adm) {
+            throw new NotFoundException("Administrador inválido");
+        }
+        return adm;
     }
 
     async validateIfCPFAlreadyExists(cpf: string) {

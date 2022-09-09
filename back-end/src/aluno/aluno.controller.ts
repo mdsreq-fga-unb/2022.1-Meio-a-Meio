@@ -19,7 +19,7 @@ export class AlunoController {
   }
 
   @Get(':id')
-  async findByTurma(@Param('id') id: number): Promise<Aluno> {
+  async findOne(@Param('id') id: number) {
     return this.service.findStudentById(id);
   }
 
