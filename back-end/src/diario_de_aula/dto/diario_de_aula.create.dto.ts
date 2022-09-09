@@ -7,7 +7,7 @@ export class CreateDiarioDeAulaDto {
     conteudo: string;
 
     @IsNotEmpty()
-    data: Date;
+    dataDiario: Date;
     
     @IsString()
     @IsNotEmpty()

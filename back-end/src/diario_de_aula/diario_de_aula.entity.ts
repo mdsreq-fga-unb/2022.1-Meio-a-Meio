@@ -1,4 +1,4 @@
-import { Turma } from 'src/turma/entities/turma.entity';
+import { Turma } from '../turma/turma.entity';
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity() 
@@ -13,7 +13,7 @@ export class DiarioDeAula {
     conteudo: string;
 
     @Column({ type: 'date' })
-    data: Date;
+    dataDiario: Date;
 
     @Column({ length: 255 })
     observacao: string;

@@ -1,5 +1,5 @@
 import { UpdateAlunoDto } from './dto/aluno.update.dto';
-import { Aluno } from 'src/aluno/aluno.entity';
+import { Aluno } from '../aluno/aluno.entity';
 import { AlunoService } from './aluno.service';
 import { CreateAlunoDto} from './dto/aluno.create.dto';
 import { Body, Controller, Post, Get, Put, Param } from '@nestjs/common';
@@ -9,8 +9,8 @@ export class AlunoController {
   constructor(private readonly service: AlunoService) {}
 
   @Post()
-  async create(@Body() data: CreateAlunoDto) {
-    return this.service.create(data);
+  async create(@Body() createAlunoDto: CreateAlunoDto) {
+    return this.service.create(createAlunoDto);
   }
 
   @Get()

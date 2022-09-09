@@ -23,7 +23,7 @@ export class DiarioDeAulaService {
     try {
         const diario = new DiarioDeAula();
         diario.conteudo = data.conteudo;
-        diario.data = new Date(data.data);
+        diario.dataDiario = new Date(data.dataDiario);
         diario.observacao = data.observacao;
         diario.turma_id = turma_id;
 
@@ -37,14 +37,16 @@ export class DiarioDeAulaService {
     return this.diarioRepository.find();
   }
 
-  async findByTurmaAndDate(turma_id: number, data: Date) {
+  async findByTurmaAndDate(turma_id: number, dataDiario: Date) {
+    console.log(dataDiario);
+    
     const turma = this.turmaService.findOne(turma_id);
     if(!turma) {
       throw new BadRequestException('Turma inválida!');
     }
-    if(!isDate(data)) {
+    if(!isDate(dataDiario)) {
       throw new BadRequestException('Data inválida!');
     }
-    return await this.diarioRepository.find({ where: { turma_id, data }});
+    return await this.diarioRepository.find({ where: { turma_id, dataDiario }});
   }
 }

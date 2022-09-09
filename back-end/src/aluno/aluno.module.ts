@@ -5,7 +5,7 @@ import { DatabaseModule } from '../database/database.module';
 import { AlunoController } from './aluno.controller';
 import { alunoProviders } from './aluno.providers';
 import { AlunoService } from './aluno.service';
-import { atividadeProviders } from 'src/atividade/atividade.providers';
+import { atividadeProviders } from '../atividade/atividade.providers';
 
 @Module({
   imports: [DatabaseModule, EnderecoModule],
