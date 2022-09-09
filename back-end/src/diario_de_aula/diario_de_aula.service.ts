@@ -37,10 +37,6 @@ export class DiarioDeAulaService {
   }
 
   async findByTurmaAndDate(turma_id: number, dataDiario: Date) {
-    const turma = this.turmaService.findOne(turma_id);
-    if(!turma) {
-      throw new BadRequestException('Turma inválida!');
-    }
     return await this.diarioRepository.find({ where: { turma_id, dataDiario }});
   }
 

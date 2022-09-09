@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Administrador {
@@ -38,12 +38,12 @@ export class Administrador {
   @Column()
   celular: string;
 
-  @Column()
+  @Column({ default: 1 })
   status: number;
 
-  @Column({ type: 'date' })
+  @CreateDateColumn()
   create_at: Date;
 
-  @Column({ type: 'date' })
+  @UpdateDateColumn()
   update_at: Date;
 }

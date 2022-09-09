@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Disciplina } from './entities/disciplina.entity';
+import { Disciplina } from './disciplina.entity';
 
 export const disciplinaProviders = [
   {

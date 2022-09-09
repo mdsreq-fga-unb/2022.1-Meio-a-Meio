@@ -1,7 +1,7 @@
 import { TurmaService } from './../turma/turma.service';
 import { AtividadeAluno } from './../atividades_aluno/atividade_aluno.entity';
 import { CreateAtividadeAlunoDto } from './../atividades_aluno/dto/atividade_aluno.create.dto';
-import { AlunoService } from 'src/aluno/aluno.service';
+import { AlunoService } from '../aluno/aluno.service';
 import { CreateAtividadeDto } from './dto/atividade.create.dto';
 import { Atividade } from './atividade.entity';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
@@ -50,10 +50,10 @@ export class AtividadeService {
     return await this.atividadeRepository.findOneBy({ id });
   }
 
-  async enrollStudent(id: number, data: CreateAtividadeAlunoDto) {
+  async enterNote(id: number, data: CreateAtividadeAlunoDto) {
     const atividade = await this.findAtividadeById(id);
     if(!atividade) {
-      throw new BadRequestException('Atividade inválido!');
+      throw new BadRequestException('Atividade inválida!');
     }
 
     const aluno = await this.alunoService.findStudentById(data.aluno_id);
@@ -61,8 +61,8 @@ export class AtividadeService {
       throw new BadRequestException("Aluno inválido!")
     }
 
-    const atividade_aluno = new AtividadeAluno();
     try {
+      const atividade_aluno = new AtividadeAluno();
       atividade_aluno.aluno_id = data.aluno_id;
       atividade_aluno.nota = data.nota;
       atividade_aluno.atividade_id = id;

@@ -59,9 +59,6 @@ export class ProfessorService {
       professor.especialista = data.especialista;
       professor.sexo = data.sexo;
       professor.observacao = data.observacao;
-      professor.status = 1;  // status do professor no sistema, por default value=1 => cadastrado.
-      professor.create_at = new Date();
-      professor.update_at = new Date();
       
       return this.professorRepository.save(professor);
     } catch(error) {
@@ -100,7 +97,6 @@ export class ProfessorService {
       professor.especialista = data.especialista;
       professor.sexo = data.sexo;
       professor.observacao = data.observacao;
-      professor.update_at = new Date();
       
       return this.professorRepository.save(professor);
     } catch(error) {

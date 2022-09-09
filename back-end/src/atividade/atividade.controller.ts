@@ -14,8 +14,8 @@ export class AtividadeController {
   }
 
   @Put(':id')
-  async enrollStudent(@Param('id') atividade_id: number, @Body() data: CreateAtividadeAlunoDto) {
-    return this.service.enrollStudent(atividade_id, data);
+  async enterNote(@Param('id') atividade_id: number, @Body() data: CreateAtividadeAlunoDto) {
+    return this.service.enterNote(atividade_id, data);
   }
 
   @Get()
