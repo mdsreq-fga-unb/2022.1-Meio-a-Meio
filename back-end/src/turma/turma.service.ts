@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, BadRequestException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
@@ -48,8 +48,10 @@ export class TurmaService {
   }
 
   async findOne(id: number) {
-    const turma = await this.turmaRepository.findOne({where:{id:id}});
-    console.log(turma.alunos);
+    const turma = await this.turmaRepository.findOne({where:{ id:id }});
+    if(!turma) {
+      throw new BadRequestException('Turma inválida!');
+    }
     return turma;
   }
 

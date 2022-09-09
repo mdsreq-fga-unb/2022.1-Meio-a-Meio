@@ -13,7 +13,7 @@ export class DiarioDeAula {
     conteudo: string;
 
     @Column({ type: 'date' })
-    data: Date;
+    dataDiario: Date;
 
     @Column({ length: 255 })
     observacao: string;

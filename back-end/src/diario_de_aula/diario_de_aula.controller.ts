@@ -13,13 +13,18 @@ export class DiarioDeAulaController {
     return this.service.create(turma_id, data);
   }
 
+  @Get('aula/')
+  async findByTurmaAndDate(@Query() query): Promise<DiarioDeAula[]> {
+    if(query.turma_id && query.dataDiario) {
+      return await this.service.findByTurmaAndDate(query.turma_id, query.dataAula);
+    }
+    else if(query.turma_id && !query.dataDiario) {
+      return await this.service.findByTurma(query.turma_id);
+    }
+  }
+
   @Get()
   async findAll(): Promise<DiarioDeAula[]> {
     return await this.service.findAll();
   }  
-
-  @Get()
-  async findByTurmaAndDate(@Query() query): Promise<DiarioDeAula[]> {
-    return await this.service.findByTurmaAndDate(query.turma_id, query.data);
-  }
 }
