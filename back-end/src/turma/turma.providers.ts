@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Turma } from './entities/turma.entity';
+import { Turma } from './turma.entity';
 
 export const turmaProviders = [
   {

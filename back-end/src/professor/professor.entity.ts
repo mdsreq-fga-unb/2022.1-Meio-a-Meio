@@ -1,5 +1,6 @@
+import { Disciplina } from '../disciplina/disciplina.entity';
 import { Administrador } from './../administrador/administrador.entity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Professor extends Administrador {
@@ -20,4 +21,16 @@ export class Professor extends Administrador {
 
   @Column({ length: 200, nullable: true })
   observacao: string;
+
+  @Column({ default: 1 })
+  status: number;
+
+  @CreateDateColumn()
+  create_at: Date;
+
+  @UpdateDateColumn()
+  update_at: Date;
+
+  @OneToMany(()=> Disciplina, (disciplina)=>disciplina.professor)
+  disciplinas: Disciplina[];
 }

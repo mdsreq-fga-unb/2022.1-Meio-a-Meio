@@ -1,4 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { CreateProfessorDto } from '../professor/dto/create.professor.dto';
+import { Professor } from '../professor/professor.entity';
 import { DisciplinaService } from './disciplina.service';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
@@ -31,5 +33,10 @@ export class DisciplinaController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.disciplinaService.remove(+id);
+  }
+
+  @Post('addProfessor/:id')
+  addProfessor(@Param('id') id: string, @Body() professor: Professor){
+    return this.disciplinaService.addProfessor(+id, professor);
   }
 }

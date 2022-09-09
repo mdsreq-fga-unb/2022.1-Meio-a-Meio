@@ -45,9 +45,6 @@ export class AdministradorService {
             adm.uf_rg_rne = data.uf_rg_rne;
             adm.orgao_emissor = data.orgao_emissor;
             adm.celular = data.celular;
-            adm.status = 1;  // status do adm no sistema, por default value=1 => cadastrado.
-            adm.create_at = new Date();
-            adm.update_at = new Date();
 
             return this.administradorRepository.save(adm);
         } catch (error) {

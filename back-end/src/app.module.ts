@@ -11,9 +11,10 @@ import { DisciplinaModule } from './disciplina/disciplina.module';
 import { CursoModule } from './curso/curso.module';
 import { EnderecoModule } from './endereco/endereco.module';
 import { ConfigModule } from '@nestjs/config';
+import { ListaPresencaModule } from './listaPresenca/listaPresenca.module';
 
 @Module({
-  imports: [AdministradorModule, AlunoModule, ProfessorModule, TurmaModule, DisciplinaModule, CursoModule, EnderecoModule, AtividadeModule, DiarioDeAulaModule, ConfigModule.forRoot({isGlobal: true})],
+  imports: [AdministradorModule, AlunoModule, ProfessorModule, TurmaModule, DisciplinaModule, CursoModule, EnderecoModule, AtividadeModule, DiarioDeAulaModule, ListaPresencaModule, ConfigModule.forRoot({isGlobal: true})],
   controllers: [AppController],
   providers: [AppService],
 })

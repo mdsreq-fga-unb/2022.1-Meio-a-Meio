@@ -1,8 +1,8 @@
-import { Administrador } from './../administrador/administrador.entity';
-import { AtividadeAluno } from './../atividades_aluno/atividade_aluno.entity';
-import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
 import { Entity, Column, OneToMany } from 'typeorm';
-import { Endereco } from 'src/endereco/endereco.entity';
+import { Endereco } from '../endereco/endereco.entity'
+import { Administrador } from '../administrador/administrador.entity';
+import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
+import { AtividadeAluno } from '../atividades_aluno/atividade_aluno.entity';
 
 @Entity()
 export class Aluno extends Administrador {

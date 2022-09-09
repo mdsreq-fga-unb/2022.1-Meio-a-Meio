@@ -20,6 +20,6 @@ export class DiarioDeAulaController {
 
   @Get()
   async findByTurmaAndDate(@Query() query): Promise<DiarioDeAula[]> {
-    return await this.service.findByTurmaAndDate(query.turma_id, query.data);
+    return await this.service.findByTurmaAndDate(query.turma_id, query.dataDiario);
   }
 }
