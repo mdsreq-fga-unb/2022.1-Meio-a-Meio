@@ -22,29 +22,21 @@ export class TurmaService {
 
   async create(createTurmaDto: CreateTurmaDto) {
 
-    let turma = new CreateTurmaDto();
-    turma.nome = createTurmaDto.nome;
-    turma.status = createTurmaDto.status;
-    turma.data = createTurmaDto.data;
-    turma.disciplinas = createTurmaDto.disciplinas;
-    turma.alunos = createTurmaDto.alunos;
-    turma.listaPresenca = createTurmaDto.listaPresenca;
-    turma.curso = createTurmaDto.curso;  
+    try {
+      let turma = new Turma();
+      turma.nome_turma = createTurmaDto.nome_turma;
+      turma.status = createTurmaDto.status;
+      turma.data = createTurmaDto.data;
+      turma.disciplinas = createTurmaDto.disciplinas;
+      turma.alunos = createTurmaDto.alunos;
+      turma.listaPresenca = createTurmaDto.listaPresenca;
+      turma.curso = createTurmaDto.curso; 
 
-    const errors = await validate(turma)
-
-    if (errors.length > 0) {
-      throw new HttpException(`Validation failed!`, HttpStatus.BAD_REQUEST);
-    }     
-    else {      
-      const turmadto = await this.turmaRepository.save(turma);
-      if(turmadto){
-        return turmadto;
-      } else{
-        return new HttpException(`Erro ao cadastrar turma`, HttpStatus.BAD_REQUEST);
-      }
+      return await this.turmaRepository.save(turma);
     }
-    
+    catch (error){
+      throw new UnprocessableEntityException('Erro ao cadastrar Turma!');
+    }    
   }
 
   async findAll() {
@@ -65,7 +57,7 @@ export class TurmaService {
   async update(id: number, updateTurmaDto: UpdateTurmaDto) {
     try{
       const turma = await this.turmaRepository.findOne({where:{id:id}});
-      turma.nome = updateTurmaDto.nome;
+      turma.nome_turma = updateTurmaDto.nome_turma;
       turma.status = updateTurmaDto.status;
       turma.data = updateTurmaDto.data;
       turma.curso = updateTurmaDto.curso;
