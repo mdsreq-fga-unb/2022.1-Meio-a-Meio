@@ -54,7 +54,7 @@ export default function CadastroProfessoresEmTurmas({ listaProfessores: listaPro
                 <TableRow>
                   <TableCell align="center">Nome</TableCell>
                   <TableCell align="center">Turma</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Deletar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -65,14 +65,6 @@ export default function CadastroProfessoresEmTurmas({ listaProfessores: listaPro
                     </TableCell>
                     <TableCell align="center">{row.nomeTurma || ""}</TableCell>
                     <TableCell align="center">
-                      <IconButton
-                        color="primary"
-                        aria-label="edit"
-                        component="label"
-                        onClick={() => router.push({pathname: "editar", query: {...row}})}
-                      >
-                        <ModeEditIcon />
-                      </IconButton>
                       <IconButton
                         color="primary"
                         aria-label="delete"

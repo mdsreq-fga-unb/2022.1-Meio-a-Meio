@@ -48,7 +48,7 @@ export default function Editar() {
     apiRequest
       .put("curso/" + router.query.id, { ...data}) //mudar a rota depois
       .then((result) => {
-        router.push('/curso/listar')
+        router.push('/curso/portal')
         console.log("ok");
       })
       .catch((err) => {

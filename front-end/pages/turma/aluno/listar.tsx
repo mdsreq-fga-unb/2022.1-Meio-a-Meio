@@ -54,7 +54,7 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                 <TableRow>
                   <TableCell align="center">Nome</TableCell>
                   <TableCell align="center">Turma</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Deletar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -67,17 +67,9 @@ export default function PortalDoAluno({ listaAlunos: listaAlunos, error }) {
                     <TableCell align="center">
                       <IconButton
                         color="primary"
-                        aria-label="edit"
-                        component="label"
-                        onClick={() => router.push({pathname: "editar", query: {...row}})}
-                      >
-                        <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => router.push({pathname: "editar", query: {...row}})}
+                        onClick={() => apiRequest.put("turma/" + row.turma_id, { ...row })}
                       >
                         <DeleteIcon />
                       </IconButton>
