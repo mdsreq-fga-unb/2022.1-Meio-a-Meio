@@ -42,6 +42,7 @@ export default function Cadastro() {
   const [value, setValue] = useState<Date | null>(null);
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
@@ -53,6 +54,7 @@ export default function Cadastro() {
     console.log(e.target.value);
     console.log(e.target.name);
   };
+
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
     console.log(e);
@@ -76,6 +78,7 @@ export default function Cadastro() {
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setClose(true);
         console.log("errado", err);
       });
@@ -107,6 +110,7 @@ export default function Cadastro() {
       email, 
       data_de_nascimento, 
       sexo,
+      senha,
     } = data;
     console.log(data);
     let emptyFields: any = {};
@@ -139,6 +143,10 @@ export default function Cadastro() {
     if (!data_de_nascimento || data_de_nascimento.length === 0) {
       emptyFields.data_de_nascimento =
         "O campo de data de nascimento não pode ser vazio";
+    }
+    if (!senha || senha.length === 0) {
+      emptyFields.senha =
+        "O campo de senha não pode ser vazio";
     }
     if (!sexo || sexo.length === 0) {
       emptyFields.sexo = "Escolha um sexo";
@@ -336,7 +344,7 @@ export default function Cadastro() {
                   <FormHelperText error>{errors.sexo}</FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={3}>
                 <TextField
                   required
                   error={errors.email ? true : false}
@@ -348,6 +356,20 @@ export default function Cadastro() {
                   id="email"
                   onChange={handleText}
                   value={data ? data.email : ""}
+                />
+              </Grid>
+              <Grid item xs={3}>
+                <TextField
+                  required
+                  error={errors.senha ? true : false}
+                  helperText={errors.senha || null}
+                  fullWidth
+                  name="senha"
+                  label="Senha"
+                  type="senha"
+                  id="senha"
+                  onChange={handleText}
+                  value={data ? data.senha : ""}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -404,7 +426,9 @@ export default function Cadastro() {
                   </IconButton>
                 }
                 sx={{ mb: 2 }}
-              />
+                >
+                  {errorMessage}
+              </Alert>
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>

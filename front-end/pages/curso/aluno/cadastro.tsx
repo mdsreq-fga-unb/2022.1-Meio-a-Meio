@@ -42,24 +42,27 @@ export default function CadastroAlunosEmTurmas({
       setAluno(listaAlunos);
     }
     setData(router.query);
-    console.log(error);
+    console.log(router.query.id);
+    console.log('olha a data', data)
     //erros
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(data);
     if (handleCheckData()) {
       setClose(true);
       return;
     }
     apiRequest
-      .put("curso/" + data.curso_id, { ...data })
+      .post("curso/" + router.query.id, {...data, curso_id: data.id})
       .then((result) => {
         setOpen(true);
         router.push("/curso/portal");
         console.log("ok");
       })
       .catch((err) => {
+        console.log('erradao po', data);
         setClose(true);
         console.log("errado", err);
       });
@@ -196,7 +199,7 @@ export default function CadastroAlunosEmTurmas({
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar a nota!
+                Falha ao cadastrar o aluno!
               </Alert>
             </Collapse>
               <Grid container justifyContent="center">

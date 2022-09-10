@@ -3,10 +3,22 @@ import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
 import Link from 'next/link'
 import Layout from '../../component/layout'
+import { useEffect, useState } from 'react'
 
 
 export default function PortalDaTurma() {
     const router = useRouter()
+    const [curso, setCurso] = useState<any>([]);
+    
+    useEffect(() => {
+      if (Object.keys(router.query).length === 0) {
+        router.push("/curso/portal");
+      }
+      setCurso(router.query);
+      //erros
+    }, []);
+    console.log('odeio o ciro', curso);
+    console.log('explode ciro', router.query)
     return (
       <div className={styles.container}>
         <Head>
@@ -20,11 +32,12 @@ export default function PortalDaTurma() {
           </h1>
 
           <div className={styles.grid}>
-            <Link href="/curso/aluno/listar">
+            <Link href="/curso/aluno/cadastro">
             <a
+              onClick={() => router.push({pathname: "/curso/aluno/cadastro", query: curso})}
               className={styles.card}
             >
-              <h2>Alunos &rarr;</h2>
+              <h2>Cadastrar Alunos &rarr;</h2>
             </a>
             </Link>
             <Link href="/turma/professor/listar">

@@ -392,7 +392,7 @@ export default function Editar() {
                     onChange={(e) =>
                       setData({
                         ...data,
-                        especialista: e.target.value === "sim" || false,
+                        especialista: new Boolean(e.target.value === "sim" ?true: false),
                       })
                     }
                     value={data ? data.especialista : null}                  >

@@ -164,7 +164,7 @@ export default function Cadastro({
                 </FormHelperText>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="4">Professor</InputLabel>
+                <InputLabel id="professor">Professor</InputLabel>
                 <Select
                   fullWidth
                   onChange={(e) =>

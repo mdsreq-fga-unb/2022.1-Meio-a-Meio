@@ -29,7 +29,7 @@ export default function Cadastro() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("aaaa");
@@ -46,6 +46,7 @@ export default function Cadastro() {
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setClose(true);
         console.log("errado", err);
       });
@@ -170,7 +171,7 @@ export default function Cadastro() {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar o curso!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">

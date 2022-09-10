@@ -11,8 +11,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Select, MenuItem, SelectChangeEvent, Collapse, Alert, IconButton } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
+import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
@@ -22,7 +23,9 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
   const router = useRouter();
   const [professor, setProfessor] = useState<any>([]);
   const [curso, setCurso] = useState<any>([]);
-
+  const [errorMessage, setErrorMessage] = useState<any>("");
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
   useEffect(() => {
     if (listaProfessores) {
       setProfessor(listaProfessores);
@@ -49,7 +52,8 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
         console.log("ok");
       })
       .catch((err) => {
-        console.log("errado", err.message);
+        setErrorMessage(err.response.data.message);
+        setClose(true);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -201,6 +205,46 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
             >
               Cadastrar Disciplina
             </Button>
+            <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Cadastro realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {errorMessage}
+              </Alert>
+            </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/disciplina/portal" variant="body2">
