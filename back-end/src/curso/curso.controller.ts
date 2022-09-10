@@ -20,8 +20,13 @@ export class CursoController {
   }
 
   @Get()
-  async findAllCourses(): Promise<Curso[]> {
+  async findAll(): Promise<Curso[]> {
     return this.service.findAll();
+  }
+
+  @Get()
+  async findOne(@Param('id') id: number) {
+    return this.service.findCourseById(id);
   }
 
   @Put(':id')

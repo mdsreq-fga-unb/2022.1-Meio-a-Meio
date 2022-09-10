@@ -19,7 +19,7 @@ export class AtividadeController {
   }
 
   @Get()
-  async findAllActivities(): Promise<Atividade[]> {
+  async findAll(): Promise<Atividade[]> {
     return this.service.findAll();
   }
 }

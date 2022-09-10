@@ -94,7 +94,7 @@ export class DisciplinaService {
 
       disciplina.professor = professor;
 
-      await this.disciplinaRepository.save(disciplina);
+      return await this.disciplinaRepository.save(disciplina);
     }
     catch(erro){
       throw new UnprocessableEntityException('Erro ao cadastrar aluno!');

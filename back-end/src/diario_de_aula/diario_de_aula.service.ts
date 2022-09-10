@@ -3,7 +3,6 @@ import { TurmaService } from './../turma/turma.service';
 import { DiarioDeAula } from './diario_de_aula.entity';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { isDate } from 'class-validator';
 
 @Injectable()
 export class DiarioDeAulaService {
@@ -26,6 +25,7 @@ export class DiarioDeAulaService {
         diario.dataDiario = new Date(data.dataDiario);
         diario.observacao = data.observacao;
         diario.turma_id = turma_id;
+        diario.turma = turma;
 
         return this.diarioRepository.save(diario);
       } catch(error) {
@@ -38,15 +38,10 @@ export class DiarioDeAulaService {
   }
 
   async findByTurmaAndDate(turma_id: number, dataDiario: Date) {
-    console.log(dataDiario);
-    
-    const turma = this.turmaService.findOne(turma_id);
-    if(!turma) {
-      throw new BadRequestException('Turma inválida!');
-    }
-    if(!isDate(dataDiario)) {
-      throw new BadRequestException('Data inválida!');
-    }
     return await this.diarioRepository.find({ where: { turma_id, dataDiario }});
+  }
+
+  async findByTurma(turma_id: number) {
+    return await this.diarioRepository.find({ where: { turma_id }});
   }
 }

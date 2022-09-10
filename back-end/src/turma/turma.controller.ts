@@ -85,4 +85,9 @@ export class TurmaController {
   listPresenca(@Param('id') idTurma: string){
     return this.turmaService.listaListaPresenca(+idTurma);
   }
+
+  @Get('professoresDisciplinas/:id')
+  listProfessoresDisciplina(@Param('id') idTurma: string){
+    return this.turmaService.listaProfessoresDisciplinaTurma(+idTurma);
+  }
 }
