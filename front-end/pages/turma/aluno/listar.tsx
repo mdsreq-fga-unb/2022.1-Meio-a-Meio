@@ -92,7 +92,7 @@ export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, error }
   );
 }
 export async function getServerSideProps() {
-  const resAlunos = await apiRequest.get("aluno");
+  const resAlunos = await apiRequest.get("turma/"); //localhost:8080/turma/id/alunos
   if (!resAlunos || !resAlunos.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }

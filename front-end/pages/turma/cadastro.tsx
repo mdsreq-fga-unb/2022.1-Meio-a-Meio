@@ -101,11 +101,14 @@ export default function Cadastro({
   };
 
   const handleCheckData = () => {
-    const { nome, horarios, dias, professor, disciplina } = data;
+    const { nome_turma, curso } = data;
     let emptyFields: any = {};
 
-    if (!nome || nome.length === 0) {
-      emptyFields.nome = "Nome Vazio";
+    if (!nome_turma || nome_turma.length === 0) {
+      emptyFields.nome_turma = "Nome Vazio";
+    }
+    if (!curso || curso.length === 0) {
+      emptyFields.curso = "Curso Vazio";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -146,15 +149,15 @@ export default function Cadastro({
               <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nome ? true : false}
-                  helperText={errors.nome || null}
+                  error={errors.nome_turma ? true : false}
+                  helperText={errors.nome_turma || null}
                   fullWidth
-                  id="nome"
+                  id="nome_turma"
                   label="Nome da Turma"
-                  name="nome"
-                  autoComplete="nome"
+                  name="nome_turma"
+                  autoComplete="nome_turma"
                   onChange={handleText}
-                  value={data ? data.nome : ""}
+                  value={data ? data.nome_turma : ""}
                 />
               </Grid>
               <Grid item xs={3}>
