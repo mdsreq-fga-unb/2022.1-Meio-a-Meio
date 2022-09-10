@@ -150,7 +150,7 @@ export default function CadastroAtividades({
                   >
                     {turma.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
-                        {i.nome}
+                        {i.nome_turma}
                       </MenuItem>
                     ))}
                   </Select>

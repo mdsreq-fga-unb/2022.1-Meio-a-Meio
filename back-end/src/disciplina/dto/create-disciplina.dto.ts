@@ -16,10 +16,10 @@ export class CreateDisciplinaDto {
     status: number;
 
     @IsOptional()
-    professor: Professor;
+    professor: number;
 
     @IsNotEmpty()
-    curso: Curso;
+    curso: number;
 
     @IsOptional()
     localizacao: string

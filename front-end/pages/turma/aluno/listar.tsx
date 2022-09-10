@@ -63,13 +63,13 @@ export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, error }
                     <TableCell align="center">
                       {row.nome_completo}
                     </TableCell>
-                    <TableCell align="center">{row.nome || ""}</TableCell>
+                    <TableCell align="center">{row.nome_turma || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => apiRequest.put("turma/" + row.turma_id, { ...row })}
+                        onClick={() => apiRequest.post("turma/" + row.turma_id, { ...row })}
                       >
                         <DeleteIcon />
                       </IconButton>
@@ -92,7 +92,7 @@ export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, error }
   );
 }
 export async function getServerSideProps() {
-  const resAlunos = await apiRequest.get("aluno");
+  const resAlunos = await apiRequest.get("turma/"); //localhost:8080/turma/id/alunos
   if (!resAlunos || !resAlunos.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }

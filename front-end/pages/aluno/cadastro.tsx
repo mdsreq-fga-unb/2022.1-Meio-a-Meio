@@ -44,6 +44,7 @@ export default function Cadastro() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
     let tempErrors = errors;
@@ -75,6 +76,7 @@ export default function Cadastro() {
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setClose(true);
         console.log("errado", err);
       });
@@ -381,7 +383,7 @@ export default function Cadastro() {
                     onChange={(e) =>
                       setData({
                         ...data,
-                        status_financeiro: e.target.value === "pago" || false,
+                        status_financeiro: new Boolean(e.target.value === "pago" ?true: false),
                       })
                     }
                     value={data ? data.status_financeiro : null}
@@ -506,7 +508,7 @@ export default function Cadastro() {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar o usuário!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">

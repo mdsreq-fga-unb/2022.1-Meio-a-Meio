@@ -16,6 +16,10 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
+import IconButton from '@mui/material/IconButton';
+import Alert from '@mui/material/Alert';
+import Collapse from '@mui/material/Collapse';
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Select,
   MenuItem,
@@ -39,6 +43,9 @@ export default function Cadastro({
   const [professor, setProfessor] = useState<any>([]);
   const [disciplina, setDisciplina] = useState<any>([]);
   const [curso, setCurso] = useState<any>([]);
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const router = useRouter();
 
   useEffect(() => {
@@ -75,6 +82,8 @@ export default function Cadastro({
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
+        setClose(true);
         console.log("errado", err);
       });
   };
@@ -92,11 +101,14 @@ export default function Cadastro({
   };
 
   const handleCheckData = () => {
-    const { nome, horarios, dias, professor, disciplina } = data;
+    const { nome_turma, curso } = data;
     let emptyFields: any = {};
 
-    if (!nome || nome.length === 0) {
-      emptyFields.nome = "Nome Vazio";
+    if (!nome_turma || nome_turma.length === 0) {
+      emptyFields.nome_turma = "Nome Vazio";
+    }
+    if (!curso || curso.length === 0) {
+      emptyFields.curso = "Curso Vazio";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -137,15 +149,15 @@ export default function Cadastro({
               <Grid item xs={12}>
                 <TextField
                   required
-                  error={errors.nome ? true : false}
-                  helperText={errors.nome || null}
+                  error={errors.nome_turma ? true : false}
+                  helperText={errors.nome_turma || null}
                   fullWidth
-                  id="nome"
+                  id="nome_turma"
                   label="Nome da Turma"
-                  name="nome"
-                  autoComplete="nome"
+                  name="nome_turma"
+                  autoComplete="nome_turma"
                   onChange={handleText}
-                  value={data ? data.nome : ""}
+                  value={data ? data.nome_turma : ""}
                 />
               </Grid>
               <Grid item xs={3}>
@@ -164,7 +176,7 @@ export default function Cadastro({
                 </FormHelperText>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="4">Professor</InputLabel>
+                <InputLabel id="professor">Professor</InputLabel>
                 <Select
                   fullWidth
                   onChange={(e) =>
@@ -225,6 +237,46 @@ export default function Cadastro({
             >
               Cadastrar Turma
             </Button>
+            <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Cadastro realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {errorMessage}
+              </Alert>
+            </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/turma/portal" variant="body2">

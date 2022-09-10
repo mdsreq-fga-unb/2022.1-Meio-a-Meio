@@ -53,15 +53,6 @@ export default function Editar() {
     setData(router.query);
   }, []);
 
-  const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-    let tempErrors = errors;
-    delete tempErrors[e.target.name];
-    setErrors(tempErrors);
-    console.log(e.target.value);
-    console.log(e.target.name);
-  };
-
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
     console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
@@ -71,10 +62,8 @@ export default function Editar() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
-      console.log("bbbb");
       return;
     }
-    console.log("aaaa");
     apiRequest
       .put("aluno/" + router.query.id, { ...data})
       .then((result) => {
@@ -390,7 +379,7 @@ export default function Editar() {
                     onChange={(e) =>
                       setData({
                         ...data,
-                        status_financeiro: e.target.value === "pago" || false,
+                        status_financeiro: new Boolean(e.target.value === "pago" ?true: false),
                       })
                     }
                     value={data ? data.status_financeiro : null}

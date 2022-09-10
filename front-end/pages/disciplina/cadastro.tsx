@@ -11,8 +11,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Select, MenuItem, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
+import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
@@ -22,7 +23,9 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
   const router = useRouter();
   const [professor, setProfessor] = useState<any>([]);
   const [curso, setCurso] = useState<any>([]);
-
+  const [errorMessage, setErrorMessage] = useState<any>("");
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
   useEffect(() => {
     if (listaProfessores) {
       setProfessor(listaProfessores);
@@ -30,14 +33,10 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
     if (listaCursos) {
       setCurso(listaCursos);
     }
-    console.log(listaProfessores);
-    console.log(listaCursos);
-    console.log(error);
     //erros
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(data);
     event.preventDefault();
     if (handleCheckData()) {
       return;
@@ -46,10 +45,10 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
       .post("disciplina", { ...data })
       .then((result) => {
         router.push("/disciplina/portal");
-        console.log("ok");
       })
       .catch((err) => {
-        console.log("errado", err.message);
+        setErrorMessage(err.response.data.message);
+        setClose(true);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -167,17 +166,18 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
                   {professor.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
                       {i.nome_completo}
-                      {console.log('DIEFHOHIFE', i.nome_completo)}
                     </MenuItem>
                   ))}
                 </Select>
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="curso">
+                <InputLabel id="curso" required>
                   Curso
                 </InputLabel>
                 <Select
+                  required
                   fullWidth
+                  error={errors.curso ? true : false}
                   onChange={(e) =>
                     setData({ ...data, curso: e.target.value })
                   }
@@ -187,10 +187,12 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
                   {curso.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
                       {i.nome}
-                      {console.log('DIEFHOHIFE', i.nome)}
                     </MenuItem>
                   ))}
                 </Select>
+                <FormHelperText error>
+                  {errors.curso}
+                </FormHelperText>
               </Grid>
             </Grid>
             <Button
@@ -201,6 +203,46 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
             >
               Cadastrar Disciplina
             </Button>
+            <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Cadastro realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {errorMessage}
+              </Alert>
+            </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/disciplina/portal" variant="body2">

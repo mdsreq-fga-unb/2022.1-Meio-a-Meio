@@ -13,8 +13,9 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+
+
 export default function PortalDoCurso({ listaCursos, error }) {
   const [curso, setCurso] = useState<any>([]);
   const router = useRouter();
@@ -22,7 +23,6 @@ export default function PortalDoCurso({ listaCursos, error }) {
     if (listaCursos) {
       setCurso(listaCursos);
     }
-    console.log(listaCursos);
     console.log(error);
     //erros
   }, []);
@@ -67,7 +67,7 @@ export default function PortalDoCurso({ listaCursos, error }) {
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/curso/detalhesTeste", query: {...row}})}
+                        onClick={() => router.push({pathname: "/curso/aluno/cadastro", query: {...row}})}
                       >
                        < BuildCircleIcon color="primary"/>
                       </IconButton>
@@ -81,13 +81,6 @@ export default function PortalDoCurso({ listaCursos, error }) {
                         onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>

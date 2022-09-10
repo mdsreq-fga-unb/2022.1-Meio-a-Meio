@@ -11,7 +11,7 @@ export class Disciplina {
   @Column({ length: 255 })
   nome_disciplina: string;
 
-  @Column()
+  @Column({nullable:true})
   localizacao: string;
 
   @Column()
@@ -23,7 +23,7 @@ export class Disciplina {
   @CreateDateColumn()
   create_at: Date;
 
-  @ManyToOne(()=> Professor, (professor)=> professor.disciplinas)
+  @ManyToOne(()=> Professor, (professor)=> professor.disciplinas, {nullable: true})
   professor: Professor;
 
   @ManyToOne(()=>Curso)
