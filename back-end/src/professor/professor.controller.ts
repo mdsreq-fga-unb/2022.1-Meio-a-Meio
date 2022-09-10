@@ -14,8 +14,13 @@ export class ProfessorController {
   }
 
   @Get()
-  async findAllProfessors(): Promise<Professor[]> {
+  async findAll(): Promise<Professor[]> {
     return this.service.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number) {
+    return this.service.findProfessorById(id);
   }
 
   @Put(':id')
