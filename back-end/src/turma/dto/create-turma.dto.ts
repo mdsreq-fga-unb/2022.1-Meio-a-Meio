@@ -11,7 +11,7 @@ export class CreateTurmaDto {
     @IsNotEmpty()
     @MinLength(4)
     @MaxLength(50)
-    nome: string;
+    nome_turma: string;
 
     @IsOptional()
     status: number;

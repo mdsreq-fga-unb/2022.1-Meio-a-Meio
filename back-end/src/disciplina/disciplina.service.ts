@@ -17,7 +17,7 @@ export class DisciplinaService {
 
   async create(createDisciplinaDto: CreateDisciplinaDto) {
     
-    if((await this.valiaNomeCargaHorariaIgaul(createDisciplinaDto.nome_disciplina, createDisciplinaDto.carga_horaria))){
+    if((await this.valiaNomeCargaHorariaIgaul(createDisciplinaDto.nome_disciplina, createDisciplinaDto.carga_horaria, createDisciplinaDto.localizacao))){
       throw new HttpException(`Disciplina já existente.`, HttpStatus.BAD_REQUEST);
     }
 
@@ -35,8 +35,8 @@ export class DisciplinaService {
     
   }
 
-  async valiaNomeCargaHorariaIgaul(nome: string, carga: number){
-    const disciplina = await this.disciplinaRepository.findOne({where: {nome_disciplina:nome, carga_horaria: carga}});
+  async valiaNomeCargaHorariaIgaul(nome: string, carga: number, local: string){
+    const disciplina = await this.disciplinaRepository.findOne({where: {nome_disciplina:nome, carga_horaria: carga, localizacao:local}});
     return disciplina;
   }
 
@@ -57,8 +57,8 @@ export class DisciplinaService {
       {
         nome_disciplina: updateDisciplinaDto.nome_disciplina,
         carga_horaria: updateDisciplinaDto.carga_horaria,
-        professor: updateDisciplinaDto.professor
-        
+        professor: updateDisciplinaDto.professor,
+        localizacao: updateDisciplinaDto.localizacao
       });
     return up;
   }
