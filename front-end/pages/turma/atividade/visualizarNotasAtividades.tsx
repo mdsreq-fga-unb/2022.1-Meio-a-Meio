@@ -68,7 +68,7 @@ export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, listaAt
                     <TableCell align="center">
                       {row.nome_completo}
                     </TableCell>
-                    <TableCell align="center">{row.nome || ""}</TableCell>
+                    <TableCell align="center">{row.nome_turma || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"

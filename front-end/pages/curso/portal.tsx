@@ -13,7 +13,6 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 
@@ -82,13 +81,6 @@ export default function PortalDoCurso({ listaCursos, error }) {
                         onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>

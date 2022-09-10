@@ -12,7 +12,6 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
@@ -52,7 +51,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -79,13 +78,6 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                         onClick={() => router.push({pathname: "/turma/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>

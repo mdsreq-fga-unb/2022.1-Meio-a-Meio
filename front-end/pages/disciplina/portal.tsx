@@ -12,7 +12,6 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, error}) {
   const [disciplina, setDisciplina] = useState<any>([]);
@@ -50,7 +49,7 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -68,13 +67,6 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                         onClick={() => router.push({pathname: "/disciplina/editar", query: {...row}})}
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>

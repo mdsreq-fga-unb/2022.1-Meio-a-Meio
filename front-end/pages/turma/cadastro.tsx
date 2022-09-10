@@ -16,6 +16,10 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
+import IconButton from '@mui/material/IconButton';
+import Alert from '@mui/material/Alert';
+import Collapse from '@mui/material/Collapse';
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Select,
   MenuItem,
@@ -39,6 +43,9 @@ export default function Cadastro({
   const [professor, setProfessor] = useState<any>([]);
   const [disciplina, setDisciplina] = useState<any>([]);
   const [curso, setCurso] = useState<any>([]);
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const router = useRouter();
 
   useEffect(() => {
@@ -75,6 +82,8 @@ export default function Cadastro({
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
+        setClose(true);
         console.log("errado", err);
       });
   };
@@ -225,6 +234,46 @@ export default function Cadastro({
             >
               Cadastrar Turma
             </Button>
+            <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Cadastro realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {errorMessage}
+              </Alert>
+            </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/turma/portal" variant="body2">
