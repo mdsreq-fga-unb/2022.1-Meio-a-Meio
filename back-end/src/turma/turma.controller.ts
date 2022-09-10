@@ -41,7 +41,7 @@ export class TurmaController {
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
 
-  @Post('removeAluno/:id')
+  @Delete('removeAluno/:id')
   removeAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
     return this.turmaService.removeAluno(+idTurma, idAluno);
   }
@@ -51,7 +51,7 @@ export class TurmaController {
     return this.turmaService.adicionaRelatorioDeAula(+idTurma, diario);
   }
 
-  @Post('removeDiario/:id')
+  @Delete('removeDiario/:id')
   removeDiario(@Param('id') idTurma: string, @Body() diario: DiarioDeAula){
     return this.turmaService.removeRelatorioaDeAula(+idTurma, diario);
   }
@@ -61,8 +61,28 @@ export class TurmaController {
     return this.turmaService.adicionaDisciplina(+idTurma, disciplina);
   }
 
-  @Post('removeDisciplina/:id')
+  @Delete('removeDisciplina/:id')
   removeDisciplina(@Param('id') idTurma: string, @Body() disciplina: Disciplina){
     return this.turmaService.removeDisciplina(+idTurma, disciplina);
+  }
+
+  @Get(':id/alunos')
+  listAlunosTurma(@Param('id') idTurma: string){
+    return this.turmaService.listaAluno(+idTurma);
+  }
+
+  @Get(':id/diarios')
+  listDiariosDeAula(@Param('id') idTurma: string){
+    return this.turmaService.listaRelatorioaDeAula(+idTurma);
+  }
+
+  @Get(':id/disciplinas')
+  listDisciplinas(@Param('id') idTurma: string){
+    return this.turmaService.listaDisciplina(+idTurma);
+  }
+
+  @Get(':id/listaPresenca')
+  listPresenca(@Param('id') idTurma: string){
+    return this.turmaService.listaListaPresenca(+idTurma);
   }
 }
