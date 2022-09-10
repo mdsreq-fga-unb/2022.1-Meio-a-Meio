@@ -20,7 +20,7 @@ export class CreateTurmaDto {
     data:Date[];
 
     @IsOptional()
-    disciplinas: Disciplina[];
+    disciplinas: number;
 
     @IsOptional()
     alunos: Aluno[];
@@ -29,5 +29,5 @@ export class CreateTurmaDto {
     listaPresenca: ListaPresenca[];
 
     @IsNotEmpty()
-    curso: Curso;
+    curso: number;
 }
