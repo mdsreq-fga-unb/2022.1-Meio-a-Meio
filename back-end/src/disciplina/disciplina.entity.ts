@@ -11,7 +11,7 @@ export class Disciplina {
   @Column({ length: 255 })
   nome_disciplina: string;
 
-  @Column()
+  @Column({nullable:true})
   localizacao: string;
 
   @Column()
