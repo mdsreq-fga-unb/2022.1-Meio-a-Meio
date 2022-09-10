@@ -2,7 +2,7 @@ import { UpdateAlunoDto } from './dto/aluno.update.dto';
 import { Aluno } from './aluno.entity';
 import { CreateAlunoDto } from './dto/aluno.create.dto';
 import { RegisterGenerator } from '../util/register.generator';
-import { Injectable, Inject, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
+import { Injectable, Inject, BadRequestException, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
 
@@ -69,7 +69,7 @@ export class AlunoService {
   async findStudentById(id: number) {
     const aluno = await this.alunoRepository.findOneBy({ id });
     if(!aluno || aluno.status === 0) {
-      throw new BadRequestException("Aluno inválido!");
+      throw new NotFoundException("Aluno inválido!");
     } 
     return aluno;
   }

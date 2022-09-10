@@ -30,6 +30,7 @@
 |02/08/2022 | 1.8 | Detalhamento dos processos da abordagem de software  | [Giulia Alcantara](https://github.com/alcantaragiubs) |
 |03/08/2022 | 1.9 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 |04/08/2022 | 2.0 | Ajustes no Planejamento das Fases do Projeto | [Bruna Lima](https://github.com/libruna) |
+|06/09/2022 | 2.1 | Atualização Planejamento das Fases e/ou Iterações do Projeto   | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 
 ## Sumário
 
@@ -105,8 +106,8 @@
 |2|Registros de requisitos e estudo de tecnologias|05/07/2022|19/07/2022|
 |3|Primeira versão da definição do Backlog do Produto, documento de arquitetura, protótipo de interface e preparação do ambiente de desenvolvimento|19/07/2022|02/08/2022|
 |4|Implementação do MVP1, interface de usuário e validação de requisitos|02/08/2022|16/08/2022|
-|5| Finalização do MVP1, testes e entrega|16/08/2022|30/08/2022|
-|6|Implementação do MVP2, testes, interface de usuário, validação de requisitos e entrega|30/08/2022|13/09/2022|
+|5|Implementação do MVP1 |16/08/2022|30/08/2022|
+|6|Finalização do MVP1, testes e entrega, Implementação do MVP2, testes, interface de usuário, validação de requisitos e entrega|30/08/2022|13/09/2022|
 
 
 ### 2.3 Matriz de Comunicação 

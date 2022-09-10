@@ -34,7 +34,11 @@ export class EnderecoService {
   }
 
   async findEnderecoById(id: number) {
-    return await this.enderecoRepository.findOneBy({ id });
+    const endereco = await this.enderecoRepository.findOneBy({ id });
+    if(!endereco) {
+      throw new NotFoundException("Endereço inválido!");
+    }
+    return endereco;
   }
   
   async update(id: number, data: UpdateEnderecoDto) {

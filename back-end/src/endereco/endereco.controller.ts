@@ -13,8 +13,13 @@ export class EnderecoController {
   }
 
   @Get()
-  async findAllAddress(): Promise<Endereco[]> {
+  async findAll(): Promise<Endereco[]> {
     return this.service.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number) {
+    return this.service.findEnderecoById(id);
   }
 
   @Put(':id')

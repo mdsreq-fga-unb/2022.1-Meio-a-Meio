@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Inject, Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, BadRequestException, UnprocessableEntityException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
@@ -69,7 +69,9 @@ export class TurmaService {
 
   async findOne(id: number) {
     const turma = await this.turmaRepository.findOne({where:{id:id}});
-    //console.log(turma.alunos);
+    if(!turma) {
+      throw new BadRequestException("Turma inválida!");
+    }
     return turma;
   }
 
