@@ -269,4 +269,19 @@ export class TurmaService {
     const atividades = turma.atividade;
     return atividades;
   }
+
+  async listaProfessoresDisciplinaTurma(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{disciplinas:true}});
+
+    const disciplinas = turma.disciplinas;
+
+    var professores = [];
+    disciplinas.forEach(async (disciplina) =>{
+      const dis = await this.disciplinaService.findOne({where:{id:disciplina.id}, relations:{professor:true}});
+      professores.push(dis.professor);
+    })
+
+    console.log(professores)
+    return professores;
+  }
 }
