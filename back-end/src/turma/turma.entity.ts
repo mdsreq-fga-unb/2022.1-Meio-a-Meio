@@ -14,7 +14,7 @@ export class Turma {
     id: number;
 
     @Column({ length: 50 })
-    nome: string;
+    nome_turma: string;
 
     @Column({default: 0})
     status: number;

@@ -9,6 +9,7 @@ import { Aluno } from '../aluno/aluno.entity';
 import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
 import { CreateAlunoDto } from '../aluno/dto/aluno.create.dto';
 import { Disciplina } from '../disciplina/disciplina.entity';
+import { Atividade } from 'src/atividade/atividade.entity';
 
 @Injectable()
 export class TurmaService {
@@ -21,29 +22,21 @@ export class TurmaService {
 
   async create(createTurmaDto: CreateTurmaDto) {
 
-    let turma = new CreateTurmaDto();
-    turma.nome = createTurmaDto.nome;
-    turma.status = createTurmaDto.status;
-    turma.data = createTurmaDto.data;
-    turma.disciplinas = createTurmaDto.disciplinas;
-    turma.alunos = createTurmaDto.alunos;
-    turma.listaPresenca = createTurmaDto.listaPresenca;
-    turma.curso = createTurmaDto.curso;  
+    try {
+      let turma = new Turma();
+      turma.nome_turma = createTurmaDto.nome_turma;
+      turma.status = createTurmaDto.status;
+      turma.data = createTurmaDto.data;
+      turma.disciplinas = createTurmaDto.disciplinas;
+      turma.alunos = createTurmaDto.alunos;
+      turma.listaPresenca = createTurmaDto.listaPresenca;
+      turma.curso = createTurmaDto.curso; 
 
-    const errors = await validate(turma)
-
-    if (errors.length > 0) {
-      throw new HttpException(`Validation failed!`, HttpStatus.BAD_REQUEST);
-    }     
-    else {      
-      const turmadto = await this.turmaRepository.save(turma);
-      if(turmadto){
-        return turmadto;
-      } else{
-        return new HttpException(`Erro ao cadastrar turma`, HttpStatus.BAD_REQUEST);
-      }
+      return await this.turmaRepository.save(turma);
     }
-    
+    catch (error){
+      throw new UnprocessableEntityException('Erro ao cadastrar Turma!');
+    }    
   }
 
   async findAll() {
@@ -66,7 +59,7 @@ export class TurmaService {
   async update(id: number, updateTurmaDto: UpdateTurmaDto) {
     try{
       const turma = await this.turmaRepository.findOne({where:{id:id}});
-      turma.nome = updateTurmaDto.nome;
+      turma.nome_turma = updateTurmaDto.nome_turma;
       turma.status = updateTurmaDto.status;
       turma.data = updateTurmaDto.data;
       turma.curso = updateTurmaDto.curso;
@@ -122,6 +115,16 @@ export class TurmaService {
 
   }
 
+  async listaAluno(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{alunos:true}});
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const alunos = turma.alunos;
+    return alunos;
+  }
+
   async adicionaRelatorioDeAula(idTurma: number, diarioDeAula: DiarioDeAula){
     const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{diarioDeAula:true}});
 
@@ -144,11 +147,21 @@ export class TurmaService {
       throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
     }
 
-    const diarios = JSON.stringify(turma.diarioDeAula.filter((diario)=>diario.id !== diarioDeAula.id));
-    turma.diarioDeAula = JSON.parse(diarios)
-    
+    turma.diarioDeAula = turma.diarioDeAula.filter((diario)=>diario.id !== diarioDeAula.id);
+        
     this.turmaRepository.save(turma);
     return turma;
+  }
+
+  async listaRelatorioaDeAula(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{diarioDeAula:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const diarios = turma.diarioDeAula;
+    return  diarios;
   }
 
   async adicionaDisciplina(idTurma: number, disciplina: Disciplina){
@@ -178,5 +191,61 @@ export class TurmaService {
     
     this.turmaRepository.save(turma);
     return turma;
+  }
+
+  async listaDisciplina(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{disciplinas:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const disciplinas = turma.disciplinas;
+    return disciplinas;
+  }
+
+  async listaListaPresenca(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{listaPresenca:true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const presenca = turma.listaPresenca;
+    return presenca;
+  }
+
+  async adicionaAtividade(idTurma: number, atividade: Atividade){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    turma.atividade.push(atividade);
+    return this.turmaRepository.save(turma);
+  }
+
+  async removeAtividade(idTurma: number, atividadeRemove: Atividade){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    turma.atividade = turma.atividade.filter((atividade)=> {return atividade.id !== atividadeRemove.id});
+
+    return this.turmaRepository.save(turma);
+  }
+
+  async listaAtividade(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{atividade: true}});
+
+    if(!turma){
+      throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
+    }
+
+    const atividades = turma.atividade;
+    return atividades;
   }
 }
