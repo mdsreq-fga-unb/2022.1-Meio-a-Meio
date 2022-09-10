@@ -25,6 +25,7 @@ export class DiarioDeAulaService {
         diario.dataDiario = new Date(data.dataDiario);
         diario.observacao = data.observacao;
         diario.turma_id = turma_id;
+        diario.turma = turma;
 
         return this.diarioRepository.save(diario);
       } catch(error) {
