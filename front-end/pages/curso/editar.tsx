@@ -31,6 +31,7 @@ export default function Editar() {
   console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
       router.push("/curso/portal");
@@ -52,6 +53,8 @@ export default function Editar() {
         console.log("ok");
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
+        setClose(true);
         console.log("errado", err);
       });
 
@@ -175,7 +178,7 @@ export default function Editar() {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao editar o usuário!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">

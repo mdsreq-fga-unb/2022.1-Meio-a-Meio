@@ -16,17 +16,18 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Link from "@mui/material/Link";
 
-export default function PortalDoCurso() {
-  const [diario] = useState<any>([]);
+export default function PortalDoDiarioTurma() {
+  const [diarioTurma, setDiarioTurma] = useState<any>([]);
   const router = useRouter();
-  // useEffect(() => {
-  //   if (listaCursos) {
-  //     setCurso(listaCursos);
-  //   }
-  //   console.log(listaCursos);
-  //   console.log(error);
-  //   //erros
-  // }, []);
+  async function getDiariosTurma(){
+    const resDiariosTurma = await apiRequest.get("turma/" + router.query.id + "/diarios");
+    if (resDiariosTurma.data) {
+      setDiarioTurma(resDiariosTurma.data);
+    }
+  }
+  useEffect(() => {
+    getDiariosTurma();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -36,7 +37,7 @@ export default function PortalDoCurso() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Diario</p>
+          <p className={styles.description}>Diarios</p>
           <div
             style={{
               alignItems: "center",
@@ -51,22 +52,19 @@ export default function PortalDoCurso() {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell align="left">Data</TableCell>
-                  <TableCell align="left">Turma</TableCell>
-                  <TableCell align="left">Conteúdo</TableCell>
-                  <TableCell align="left">Observações</TableCell>
+                  <TableCell align="center">Data</TableCell>
+                  <TableCell align="center">Conteúdo</TableCell>
+                  <TableCell align="center">Observações</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {diario.map((row, index) => (
+                {diarioTurma.map((row, index) => (
                     <TableRow key={index} >
                       <TableCell component="th" scope="row">
-                        {row.id}
+                        {row.dataDiario}
                       </TableCell>
-                      <TableCell align="center">{row.nome}</TableCell>
-                      <TableCell align="center">{row.turma}</TableCell>
                       <TableCell align="center">{row.conteudo}</TableCell>
-                      <TableCell align="center">{row.observacoes || ""}</TableCell>
+                      <TableCell align="center">{row.observacao}</TableCell>
                       <TableCell align="center">
                         <IconButton
                           color="primary"

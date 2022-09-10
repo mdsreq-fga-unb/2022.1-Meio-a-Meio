@@ -1,9 +1,16 @@
 import { Box, Tab}from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab"
-import { useState, SyntheticEvent } from "react";
-
+import { useState, SyntheticEvent, useEffect } from "react";
+import PortalDoAlunoNaTurma from "./aluno/listar";
+import apiRequest from "../../util/apiRequest";
+import { useRouter } from "next/router";
+import PortalDoDiarioTurma from "./diario/listar";
 export default function MuiTabs  ()  {
   const[value, setValue] = useState('1')
+  const [aluno, setAluno] = useState<any>([]);
+  const [turma, setTurma] = useState<any>([]);
+  const router = useRouter();
+  
   const handleChange = (event: SyntheticEvent, newValue: string) =>{
     setValue(newValue)
 
@@ -17,14 +24,16 @@ export default function MuiTabs  ()  {
             <Tab label ='Presença' value='2'/>
             <Tab label ='Diário' value='3'/>
             <Tab label ='Atividades' value='4'/>
+            <Tab label ='Notas das Atividades' value='5'/>
           </TabList>
         </Box>
-        <TabPanel value='1'>Alunos Cadastrados na Turma</TabPanel>
+        <TabPanel value='1'> <PortalDoAlunoNaTurma/> </TabPanel>
         <TabPanel value='2'>Panel Two</TabPanel>
-        <TabPanel value='3'>Panel Three</TabPanel>
+        <TabPanel value='3'> <PortalDoDiarioTurma/> </TabPanel>
         <TabPanel value='4'>Panel Four</TabPanel>
       </TabContext>
     </Box>
 
   );
 }
+

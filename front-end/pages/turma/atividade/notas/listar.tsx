@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
-import Layout from "../../../component/layout";
-import apiRequest from "../../../util/apiRequest";
+import Layout from "../../../../component/layout";
+import apiRequest from "../../../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";

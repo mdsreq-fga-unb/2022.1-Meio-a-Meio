@@ -61,11 +61,11 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                       {row.id}
                     </TableCell>
                     <TableCell align="center">
-                    {row.nome}
+                    {row.nome_turma}
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/turma/aluno/listar", query: {...row}})}
+                        onClick={() => router.push({pathname: "/turma/detalhes", query: {...row}})}
                       >
                        < BuildCircleIcon color="primary"/>
                       </IconButton>

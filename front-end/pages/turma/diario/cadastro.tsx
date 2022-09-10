@@ -53,7 +53,6 @@ export default function CadastroDiarioDeAula({
     event.preventDefault();
     if (handleCheckData()) {
       setClose(true);
-      console.log('aaaa');
       return;
     }
     console.log(data);
@@ -61,7 +60,7 @@ export default function CadastroDiarioDeAula({
       .post("diario/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/atividade/portal");
+        router.push("/turma/diario/listar");
         console.log("ok");
       })
       .catch((err) => {

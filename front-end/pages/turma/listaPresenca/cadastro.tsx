@@ -10,25 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { DatePicker } from '@mantine/dates';
 import styles from '../../../styles/listapresenca.module.css'
 import Button from '@mui/material/Button';
-
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+import { useRouter } from "next/router";
 
 interface CadastroProps{
   listaAluno?:[any];
@@ -36,13 +18,19 @@ interface CadastroProps{
 }
 
 export default function Cadastro({listaAluno,error}:CadastroProps) {
-  const[alunos,setAlunos]=useState([])
+  const[alunos, setAlunoTurma]=useState([])
   const[alunosPresentes,setAlunosPresentes]=useState([])
-  useEffect(()=>{
-    if (listaAluno){
-      setAlunos(listaAluno)
+
+  const router = useRouter();
+  async function getAlunosTurma(){
+    const resAlunosTurma = await apiRequest.get("turma/" + router.query.id + "/alunos");
+    if (resAlunosTurma.data) {
+      setAlunoTurma(resAlunosTurma.data);
     }
-  },[])
+  }
+  useEffect(() => {
+    getAlunosTurma();
+  }, []);
   
 const handleCheck=(id)=>{
   const jaExiste=alunosPresentes.find(i=>i===id)
@@ -94,16 +82,3 @@ const handleCheck=(id)=>{
     </div>
   );
 }
-export async function getServerSideProps() {
-  const resAluno = await apiRequest.get('aluno') //lista de Alunos
-  if(!resAluno || !resAluno.data){
-    return {props: {error: 'Falha ao carregar conteúdo'}}
-  }
-
-  return {
-    props: {
-      listaAluno: resAluno.data,
-      error: null,
-    },
-  };
-  }

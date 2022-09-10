@@ -171,9 +171,6 @@ export default function Cadastro({
                     renderInput={(params) => <TextField {...params} />}
                   />
                 </LocalizationProvider>
-                <FormHelperText error>
-                  {errors.data_de_nascimento}
-                </FormHelperText>
               </Grid>
               <Grid item xs={12}>
                 <InputLabel id="professor">Professor</InputLabel>
@@ -227,6 +224,9 @@ export default function Cadastro({
                     </MenuItem>
                   ))}
                 </Select>
+                <FormHelperText error>
+                  {errors.curso}
+                </FormHelperText>
               </Grid>
             </Grid>
             <Button

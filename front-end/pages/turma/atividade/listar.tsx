@@ -13,16 +13,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function PortalDoAlunoNaTurma() {
+export default function PortalDaAtividade() {
   const [alunoTurma, setAlunoTurma] = useState<any>([]);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
   async function getAlunosTurma(){
     const resAlunosTurma = await apiRequest.get("turma/" + router.query.id + "/alunos");
     if (resAlunosTurma.data) {
       setAlunoTurma(resAlunosTurma.data);
-    }
-    else{
-      console.log('erro')
     }
   }
   useEffect(() => {
@@ -78,7 +76,7 @@ export default function PortalDoAlunoNaTurma() {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "aluno/cadastro", query: {turma_id: router.query.id}})}
+              onClick={() => router.push({pathname: "cadastro", query: turma})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
