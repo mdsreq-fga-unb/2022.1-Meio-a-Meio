@@ -66,22 +66,22 @@ export class TurmaController {
     return this.turmaService.removeDisciplina(+idTurma, disciplina);
   }
 
-  @Get(':id/alunos')
+  @Get('alunos/:id')
   listAlunosTurma(@Param('id') idTurma: string){
     return this.turmaService.listaAluno(+idTurma);
   }
 
-  @Get(':id/diarios')
+  @Get('diarios/:id')
   listDiariosDeAula(@Param('id') idTurma: string){
     return this.turmaService.listaRelatorioaDeAula(+idTurma);
   }
 
-  @Get(':id/disciplinas')
+  @Get('disciplinas/:id')
   listDisciplinas(@Param('id') idTurma: string){
     return this.turmaService.listaDisciplina(+idTurma);
   }
 
-  @Get(':id/listaPresenca')
+  @Get('listaPresenca/:id')
   listPresenca(@Param('id') idTurma: string){
     return this.turmaService.listaListaPresenca(+idTurma);
   }
