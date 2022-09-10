@@ -60,7 +60,7 @@ export default function CadastroDiarioDeAula({
       .post("diario/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/turma/diario/listar");
+        router.push("/turma/detalhes");
         console.log("ok");
       })
       .catch((err) => {
@@ -245,7 +245,7 @@ export default function CadastroDiarioDeAula({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="listar" variant="body2">
+                  <Link href="/turma/detalhes" variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>

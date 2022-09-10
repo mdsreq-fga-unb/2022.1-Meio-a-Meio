@@ -88,7 +88,7 @@ export default function PortalDoDiarioTurma() {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push("cadastro")}
+              onClick={() => router.push({pathname: "diario/cadastro", query: {turma_id: router.query.id}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
