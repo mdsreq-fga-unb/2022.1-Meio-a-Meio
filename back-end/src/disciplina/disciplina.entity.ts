@@ -23,7 +23,7 @@ export class Disciplina {
   @CreateDateColumn()
   create_at: Date;
 
-  @ManyToOne(()=> Professor, (professor)=> professor.disciplinas)
+  @ManyToOne(()=> Professor, (professor)=> professor.disciplinas, {nullable: true})
   professor: Professor;
 
   @ManyToOne(()=>Curso)
