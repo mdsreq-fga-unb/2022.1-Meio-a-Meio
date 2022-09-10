@@ -69,7 +69,7 @@ export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, error }
                         color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => apiRequest.put("turma/" + row.turma_id, { ...row })}
+                        onClick={() => apiRequest.post("turma/" + row.turma_id, { ...row })}
                       >
                         <DeleteIcon />
                       </IconButton>

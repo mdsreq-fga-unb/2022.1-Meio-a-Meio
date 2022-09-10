@@ -11,53 +11,51 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Select, MenuItem, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import Alert from '@mui/material/Alert';
 import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
-export default function Editar({listaProfessores, error}) {
+export default function Cadastro({listaProfessores, listaCursos, error}) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [professor, setProfessor] = useState<any>([]);
   console.log(router.query);
+  const [professor, setProfessor] = useState<any>([]);
+  const [curso, setCurso] = useState<any>([]);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  useEffect(() => {
+    if (Object.keys(router.query).length === 0) {
+      router.push("/disciplina/portal");
+    }
+    setData(router.query);
+  }, []);
   useEffect(() => {
     if (listaProfessores) {
       setProfessor(listaProfessores);
     }
-    console.log(listaProfessores);
-    console.log(error);
-    //erros
-  }, []);
-  
-  useEffect(() => {
-    if (Object.keys(router.query).length === 0) {
-      router.push("/curso/portal");
+    if (listaCursos) {
+      setCurso(listaCursos);
     }
-    setData(router.query);
+    //erros
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(data);
     event.preventDefault();
     if (handleCheckData()) {
       return;
     }
     apiRequest
-      .put("disciplina" + + router.query.id, { ...data })
+      .put("disciplina/" + router.query.id, { ...data })
       .then((result) => {
-        router.push("/disciplina/listar");
-        console.log("ok");
+        router.push("/disciplina/portal");
       })
       .catch((err) => {
-        console.log("errado", err.message);
+        setErrorMessage(err.response.data.message);
+        setClose(true);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,7 +73,7 @@ export default function Editar({listaProfessores, error}) {
   };
 
   const handleCheckData = () => {
-    const { nome_disciplina, carga_horaria, professor, localizacao } = data;
+    const { nome_disciplina, carga_horaria, curso } = data;
     let emptyFields: any = {};
 
     if (!nome_disciplina || nome_disciplina.length === 0) {
@@ -84,11 +82,8 @@ export default function Editar({listaProfessores, error}) {
     if (!carga_horaria || carga_horaria.length === 0) {
       emptyFields.carga_horaria = "Carga Horaria Vazia";
     }
-    if (!professor || professor.length === 0) {
-      emptyFields.professor = "Professor Vazio";
-    }
-    if (!localizacao || localizacao.length === 0) {
-      emptyFields.localizacao = "Localização Vazia";
+    if (!curso || curso.length === 0) {
+      emptyFields.curso = "Curso Vazio";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -117,7 +112,7 @@ export default function Editar({listaProfessores, error}) {
             {/* <Image src= "/images/logo.jpeg" width= '600px' height= '150px'/> */}
           </div>
           <Typography component="h1" variant="h5">
-           Edite os dados desejados aqui:
+            Insira os dados cadastrais da disciplina
           </Typography>
           <Box
             component="form"
@@ -155,9 +150,6 @@ export default function Editar({listaProfessores, error}) {
                 />
               </Grid><Grid item xs={12}>
                 <TextField
-                  required
-                  error={errors.localizacao ? true : false}
-                  helperText={errors.localizacao || null}
                   fullWidth
                   id="localizacao"
                   label="Localização"
@@ -167,12 +159,11 @@ export default function Editar({listaProfessores, error}) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="4" required>
+                <InputLabel id="professor">
                   Professor
                 </InputLabel>
                 <Select
                   fullWidth
-                  error={errors.professor ? true : false}
                   onChange={(e) =>
                     setData({ ...data, professor: e.target.value })
                   }
@@ -182,10 +173,33 @@ export default function Editar({listaProfessores, error}) {
                   {professor.map((i, index) => (
                     <MenuItem key={index} value={i.id}>
                       {i.nome_completo}
-                      {console.log('DIEFHOHIFE', i.nome_completo)}
                     </MenuItem>
                   ))}
                 </Select>
+              </Grid>
+              <Grid item xs={12}>
+                <InputLabel id="curso" required>
+                  Curso
+                </InputLabel>
+                <Select
+                  required
+                  fullWidth
+                  error={errors.curso ? true : false}
+                  onChange={(e) =>
+                    setData({ ...data, curso: e.target.value })
+                  }
+                  label={"Curso"}
+                  value={data ? data.curso : null}
+                >
+                  {curso.map((i, index) => (
+                    <MenuItem key={index} value={i.id}>
+                      {i.nome}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText error>
+                  {errors.curso}
+                </FormHelperText>
               </Grid>
             </Grid>
             <Button
@@ -194,7 +208,7 @@ export default function Editar({listaProfessores, error}) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Editar Disciplina
+              Cadastrar Disciplina
             </Button>
             <Collapse in={open}>
               <Alert
@@ -213,7 +227,7 @@ export default function Editar({listaProfessores, error}) {
                 }
                 sx={{ mb: 2 }}
               >
-                Alterações realizadas com sucesso!
+                Cadastro realizado com sucesso!
               </Alert>
             </Collapse>
             <Collapse in={close}>
@@ -233,7 +247,7 @@ export default function Editar({listaProfessores, error}) {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao editar o usuário!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">
@@ -252,13 +266,15 @@ export default function Editar({listaProfessores, error}) {
 
 export async function getServerSideProps() {
   const resProfessor = await apiRequest.get('professor') //lista de professoress
-  if(!resProfessor || !resProfessor.data){
+  const resCurso = await apiRequest.get('curso')
+  if(!resProfessor || !resCurso || !resProfessor.data || !resCurso.data){
     return {props: {error: 'Falha ao carregar conteúdo'}}
   }
 
   return {
     props: {
       listaProfessores: resProfessor.data,
+      listaCursos: resCurso.data,
       error: null,
     },
   };

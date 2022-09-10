@@ -11,7 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, SelectChangeEvent, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
+import { Select, MenuItem, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import CloseIcon from "@mui/icons-material/Close";
 
