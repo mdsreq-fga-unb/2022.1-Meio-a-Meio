@@ -5,13 +5,20 @@ import { Repository } from 'typeorm';
 import { CreateDisciplinaDto } from './dto/create-disciplina.dto';
 import { UpdateDisciplinaDto } from './dto/update-disciplina.dto';
 import { Disciplina } from './disciplina.entity';
+import { Curso } from 'src/curso/curso.entity';
 
 @Injectable()
 export class DisciplinaService {
 
   constructor(
     @Inject('DISCIPLINA_REPOSITORY')
-    private disciplinaRepository: Repository<Disciplina>
+    private disciplinaRepository: Repository<Disciplina>,
+
+    @Inject('CURSO_REPOSITORY')
+    private curosService: Repository<Curso>,
+
+    @Inject('PROFESSOR_REPOSITORY')
+    private professorService: Repository<Professor>
   ){}
 
 
@@ -23,11 +30,17 @@ export class DisciplinaService {
 
     try{
       const disciplina = new Disciplina();
-      disciplina.professor = createDisciplinaDto.professor;
+      //disciplina.professor = createDisciplinaDto.professor;
       disciplina.nome_disciplina = createDisciplinaDto.nome_disciplina;
       disciplina.carga_horaria = createDisciplinaDto.carga_horaria;
       disciplina.localizacao = createDisciplinaDto.localizacao;
+      //disciplina.curso = createDisciplinaDto.curso;
+      const curso = await this.curosService.findOne({where:{id:createDisciplinaDto.curso}})
+      disciplina.curso = curso;
 
+      const professor = await this.professorService.findOne({where:{id:createDisciplinaDto.professor}})
+      disciplina.professor = professor;
+      
       return this.disciplinaRepository.save(disciplina);
     } catch(error){
       throw new HttpException(`Erro ao cadastrar Disciplina.`, HttpStatus.BAD_REQUEST);
@@ -52,12 +65,15 @@ export class DisciplinaService {
   }
 
   async update(id: number, updateDisciplinaDto: UpdateDisciplinaDto) {
+
+    const professorR = await this.professorService.findOne({where: {id:updateDisciplinaDto.professor}})
+
     const up = await this.disciplinaRepository.update(
       id, 
       {
         nome_disciplina: updateDisciplinaDto.nome_disciplina,
         carga_horaria: updateDisciplinaDto.carga_horaria,
-        professor: updateDisciplinaDto.professor,
+        professor: professorR,
         localizacao: updateDisciplinaDto.localizacao
       });
     return up;
