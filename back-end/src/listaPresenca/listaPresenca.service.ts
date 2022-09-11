@@ -18,7 +18,7 @@ export class ListaPresencaService {
 
   async create(createListaPresencaDto: CreateListaPresencaDto) {
 
-    const turma = await this.turmaRepository.findOne({where:{id:createListaPresencaDto.turma.id}})
+    const turma = await this.turmaRepository.findOne({where:{id:createListaPresencaDto.turma}})
     if(!turma){
       throw new UnprocessableEntityException('Erro ao cadastrar lista de presença!, Turma informada não existe');
     }
@@ -28,7 +28,7 @@ export class ListaPresencaService {
     try{
 
       listaPresenca.data = new Date(createListaPresencaDto.data);
-      listaPresenca.turma = createListaPresencaDto.turma;
+      listaPresenca.turma = turma;
       await this.listaPresencaRepository.save(listaPresenca);
       return listaPresenca;
 
@@ -39,11 +39,11 @@ export class ListaPresencaService {
   }
 
   findAll() {
-    return `This action returns all listaPresenca`;
+    return this.listaPresencaRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} listaPresenca`;
+    return this.listaPresencaRepository.findOne({where:{id:id}});
   }
 
   update(id: number, updateListaPresencaDto: UpdateListaPresencaDto) {
