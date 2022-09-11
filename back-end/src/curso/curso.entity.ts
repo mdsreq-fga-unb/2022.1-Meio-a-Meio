@@ -27,5 +27,4 @@ export class Curso {
 
   @OneToMany(() => Turma, (turma)=> turma.curso)
   turmas: Turma[];
-
 }

@@ -66,16 +66,9 @@ export class CursoService {
 
   async enrollStudent(id: number, data: CursoAlunoDto) {
     const curso = await this.findCourseById(id);
-    if (!curso || curso.status === 0) {
-      throw new BadRequestException('Curso inválido!');
-    }
-
-    const aluno = await this.alunoService.findStudentById(data.aluno_id);
-    if (!aluno || aluno.status === 0) {
-      throw new BadRequestException("Aluno inválido!");
-    }
-
-    if(this.validateEnrolledInCourse(id, data.aluno_id)) {
+    await this.alunoService.findStudentById(data.aluno_id);
+  
+    if(await this.validateEnrolledInCourse(id, data.aluno_id)) {
       throw new BadRequestException("Aluno já cadastrado no curso " + curso.nome + "!");
     }
 

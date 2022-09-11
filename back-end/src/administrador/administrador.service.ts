@@ -4,6 +4,7 @@ import { RegisterGenerator } from '../util/register.generator';
 import { Injectable, Inject, BadRequestException, UnprocessableEntityException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { isCPF } from "brazilian-values";
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AdministradorService {
@@ -27,7 +28,7 @@ export class AdministradorService {
             let amount = (await this.administradorRepository.count()).valueOf();
             adm.matricula = generator.matriculaGenerator(amount, 2);
         }
-        else if (await this.validateIfMatriculaAlreadyExists(data.matricula)) {
+        else if (await this.findByMatricula(data.matricula)) {
             throw new BadRequestException('Matrícula já cadastrada! Verifique e tente novamente.');
         }
         else {
@@ -45,6 +46,7 @@ export class AdministradorService {
             adm.uf_rg_rne = data.uf_rg_rne;
             adm.orgao_emissor = data.orgao_emissor;
             adm.celular = data.celular;
+            adm.password = bcrypt.hashSync(data.password, 8);
 
             return this.administradorRepository.save(adm);
         } catch (error) {
@@ -58,17 +60,21 @@ export class AdministradorService {
 
     async findAdmById(id: number) {
         const adm = await this.administradorRepository.findOneBy({ id });
-        if(!adm) {
+        if (!adm) {
             throw new NotFoundException("Administrador inválido");
         }
         return adm;
     }
 
-    async validateIfCPFAlreadyExists(cpf: string) {
-        return await this.administradorRepository.findOneBy({ cpf });
+    async findByEmail(email: string): Promise<Administrador | undefined> {
+        return await this.administradorRepository.findOneBy({ email });
     }
 
-    async validateIfMatriculaAlreadyExists(matricula: string) {
+    async findByMatricula(matricula: string) {
         return await this.administradorRepository.findOneBy({ matricula });
+    }
+
+    async validateIfCPFAlreadyExists(cpf: string) {
+        return await this.administradorRepository.findOneBy({ cpf });
     }
 }

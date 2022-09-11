@@ -1,15 +1,29 @@
+import { Body, Controller, Post, Get, Param, UseGuards, Request } from '@nestjs/common';
 import { CreateAdmDto } from './dto/administrador.create.dto';
-import { AdministradorService } from './administrador.service';
-import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { Administrador } from './administrador.entity';
+import { AdministradorService } from './administrador.service';
+import { AuthService } from '../auth/auth.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { AuthGuard } from '@nestjs/passport';
+import { SkipAuth } from 'src/auth/public-key.decorator';
 
 @Controller('administrador')
 export class AdministradorController {
-  constructor(private readonly service: AdministradorService) {}
+  constructor(
+    private readonly service: AdministradorService,
+    private authService: AuthService
+  ) {}
 
   @Post()
   async create(@Body() data: CreateAdmDto) {
     return this.service.create(data);
+  }
+
+  @SkipAuth()
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Request() req) {    
+    return this.authService.login(req.user);
   }
 
   @Get()
