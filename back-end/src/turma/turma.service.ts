@@ -9,13 +9,21 @@ import { Aluno } from '../aluno/aluno.entity';
 import { DiarioDeAula } from '../diario_de_aula/diario_de_aula.entity';
 import { CreateAlunoDto } from '../aluno/dto/aluno.create.dto';
 import { Disciplina } from '../disciplina/disciplina.entity';
-import { Atividade } from 'src/atividade/atividade.entity';
+import { Atividade } from '../atividade/atividade.entity';
+import { Curso } from '../curso/curso.entity';
 
 @Injectable()
 export class TurmaService {
   constructor(
     @Inject('TURMA_REPOSITORY')
     private turmaRepository: Repository<Turma>,
+
+    @Inject('CURSO_REPOSITORY')
+    private curosService: Repository<Curso>,
+    
+    @Inject('DISCIPLINA_REPOSITORY')
+    private disciplinaService: Repository<Disciplina>,
+
     private readonly alunoService: AlunoService,
   
   ){}
@@ -27,10 +35,21 @@ export class TurmaService {
       turma.nome_turma = createTurmaDto.nome_turma;
       turma.status = createTurmaDto.status;
       turma.data = createTurmaDto.data;
-      turma.disciplinas = createTurmaDto.disciplinas;
+      //turma.disciplinas = createTurmaDto.disciplinas;
       turma.alunos = createTurmaDto.alunos;
       turma.listaPresenca = createTurmaDto.listaPresenca;
-      turma.curso = createTurmaDto.curso; 
+      //turma.curso = createTurmaDto.curso;
+
+      const curso = await this.curosService.findOne({where:{id:createTurmaDto.curso}});
+      turma.curso = curso;
+      //console.log(createTurmaDto.disciplinas);
+      if(createTurmaDto.disciplinas !== undefined){
+        const disciplina = await this.disciplinaService.findOne({where: {id:createTurmaDto.disciplinas}});
+        turma.disciplinas = [disciplina];
+        //console.log(disciplina);
+      }
+
+      //
 
       return await this.turmaRepository.save(turma);
     }
@@ -57,12 +76,16 @@ export class TurmaService {
   }
 
   async update(id: number, updateTurmaDto: UpdateTurmaDto) {
+    
+    const curso = await this.curosService.findOne({where:{id:updateTurmaDto.curso}});
+    const disciplina = await this.disciplinaService.findOne({where: {id:updateTurmaDto.disciplinas}});
+
     try{
       const turma = await this.turmaRepository.findOne({where:{id:id}});
       turma.nome_turma = updateTurmaDto.nome_turma;
       turma.status = updateTurmaDto.status;
       turma.data = updateTurmaDto.data;
-      turma.curso = updateTurmaDto.curso;
+      turma.curso = curso
 
       return this.turmaRepository.save(turma);
     }
@@ -247,5 +270,20 @@ export class TurmaService {
 
     const atividades = turma.atividade;
     return atividades;
+  }
+
+  async listaProfessoresDisciplinaTurma(idTurma: number){
+    const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{disciplinas:true}});
+
+    const disciplinas = turma.disciplinas;
+
+    var professores = [];
+    disciplinas.forEach(async (disciplina) =>{
+      const dis = await this.disciplinaService.findOne({where:{id:disciplina.id}, relations:{professor:true}});
+      professores.push(dis.professor);
+    })
+
+    console.log(professores)
+    return professores;
   }
 }
