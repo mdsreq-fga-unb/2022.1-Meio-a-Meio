@@ -17,6 +17,9 @@ export class Disciplina {
   @Column()
   carga_horaria: number;
 
+  @Column()
+  cursoId: number;
+
   @Column({default: 1})
   status: number;
 
