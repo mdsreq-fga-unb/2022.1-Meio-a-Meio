@@ -3,7 +3,6 @@ import { Atividade } from './atividade.entity';
 import { CreateAtividadeDto } from './dto/atividade.create.dto';
 import { AtividadeService } from './atividade.service';
 import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
-import { AtividadeAluno } from 'src/atividades_aluno/atividade_aluno.entity';
 
 @Controller('atividade')
 export class AtividadeController {
@@ -17,6 +16,11 @@ export class AtividadeController {
   @Put(':id')
   async enterNote(@Param('id') atividade_id: number, @Body() data: CreateAtividadeAlunoDto) {
     return this.service.enterNote(atividade_id, data);
+  }
+
+  @Get(':turma_id')
+  async findAllByTurma(@Param('turma_id') turma_id: number): Promise<Atividade[]> {
+    return this.service.findAllByTurma(turma_id);
   }
 
   @Get()

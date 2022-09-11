@@ -46,6 +46,10 @@ export class AtividadeService {
     return this.atividadeRepository.find();
   }
 
+  async findAllByTurma(turma_id: number) {
+    return await this.atividadeRepository.find({ where: { turma_id }});
+  }
+
   async findAtividadeById(id: number) {
     return await this.atividadeRepository.findOneBy({ id });
   }
