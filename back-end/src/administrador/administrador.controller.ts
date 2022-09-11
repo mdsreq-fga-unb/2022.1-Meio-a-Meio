@@ -3,9 +3,8 @@ import { CreateAdmDto } from './dto/administrador.create.dto';
 import { Administrador } from './administrador.entity';
 import { AdministradorService } from './administrador.service';
 import { AuthService } from '../auth/auth.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { AuthGuard } from '@nestjs/passport';
-import { SkipAuth } from 'src/auth/public-key.decorator';
+import { SkipAuth } from '../auth/public-key.decorator';
 
 @Controller('administrador')
 export class AdministradorController {

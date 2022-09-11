@@ -1,5 +1,5 @@
-import { PessoaDto } from 'src/pessoa/dto/pessoa.dto';
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail, IsBoolean } from "class-validator";
+import { PessoaDto } from '../../pessoa/dto/pessoa.dto';
+import { IsString, IsNotEmpty, IsOptional, IsBoolean } from "class-validator";
 
 export class CreateAlunoDto extends PessoaDto {
 

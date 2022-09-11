@@ -1,4 +1,4 @@
-import { Pessoa } from 'src/pessoa/pessoa.entity';
+import { Pessoa } from '../pessoa/pessoa.entity';
 import { Disciplina } from '../disciplina/disciplina.entity';
 import { Entity, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 

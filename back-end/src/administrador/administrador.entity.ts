@@ -1,5 +1,5 @@
-import { Pessoa } from 'src/pessoa/pessoa.entity';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Pessoa } from '../pessoa/pessoa.entity';
+import { Entity, Column } from 'typeorm';
 
 @Entity()
 export class Administrador extends Pessoa {

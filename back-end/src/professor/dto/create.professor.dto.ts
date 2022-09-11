@@ -1,4 +1,4 @@
-import { PessoaDto } from 'src/pessoa/dto/pessoa.dto';
+import { PessoaDto } from '../../pessoa/dto/pessoa.dto';
 import { IsString, IsNotEmpty, IsOptional, IsNumber, IsBoolean, IsEmail } from "class-validator";
 
 export class CreateProfessorDto extends PessoaDto {
