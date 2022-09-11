@@ -1,6 +1,6 @@
 import { IsString, MinLength, MaxLength, Validate } from "class-validator";
 import { PasswordValidation, PasswordValidationRequirement } from 'class-validator-password-check'
-import { PessoaDto } from "src/pessoa/dto/pessoa.dto";
+import { PessoaDto } from "../../pessoa/dto/pessoa.dto";
 
 var passwordRequirement: PasswordValidationRequirement = {
     mustContainLowerLetter: true,
