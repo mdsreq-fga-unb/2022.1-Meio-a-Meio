@@ -1,8 +1,9 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import styles from "../../../styles/Home.module.css";
+import Grid from "@mui/material/Grid";
 import Layout from "../../../component/layout";
 import apiRequest from "../../../util/apiRequest";
-import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -11,19 +12,21 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Link from "@mui/material/Link";
 
-export default function PortalDaAtividadeTurma() {
-  const [atividadeTurma, setAtividadeTurma] = useState<any>([]);
+export default function PortalDaPresencaTurma() {
+  const [presencaTurma, setPresencaTurma] = useState<any>([]);
   const router = useRouter();
-  async function getAtividadesTurma(){
-    const resAtividadesTurma = await apiRequest.get("atividade");
-    if (resAtividadesTurma.data) {
-      setAtividadeTurma(resAtividadesTurma.data);
+  async function getPresencasTurma(){
+    const resPresencassTurma = await apiRequest.get("turma/listaPresenca/" + router.query.id);
+    if (resPresencassTurma.data) {
+      setPresencaTurma(resPresencassTurma.data);
     }
   }
   useEffect(() => {
-    getAtividadesTurma();
+    getPresencasTurma();
   }, []);
 
   return (
@@ -34,7 +37,7 @@ export default function PortalDaAtividadeTurma() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Lista de Atividades</p>
+          <p className={styles.description}>Presenças</p>
           <div
             style={{
               alignItems: "center",
@@ -49,26 +52,26 @@ export default function PortalDaAtividadeTurma() {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Prova?</TableCell>
+                <TableCell align="center">Id</TableCell>
+                  <TableCell align="center">Data</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {atividadeTurma.map((row, index) => (
-                  <TableRow key={index}>
-                    <TableCell align="center">
-                      {row.nome}
-                    </TableCell>
-                    <TableCell align="center">
-                      {row.isTest}
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {presencaTurma.map((row, index) => (
+                    <TableRow key={index} >
+                      <TableCell component="th" scope="row" align="center">
+                        {row.id}
+                      </TableCell>
+                      <TableCell component="th" scope="row" align="center">
+                        {row.data}
+                      </TableCell>
+                    </TableRow>
+                  ))}
               </TableBody>
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "cadastro", query: turma})}
+              onClick={() => router.push({pathname: "listaPresenca/cadastro", query: {turma_id: router.query.id}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar

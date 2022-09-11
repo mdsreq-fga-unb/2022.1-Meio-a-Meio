@@ -32,7 +32,6 @@ export default function CadastroAlunosEmTurmas({
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [atividade, setTurma] = useState<any>([]);
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
@@ -42,6 +41,7 @@ export default function CadastroAlunosEmTurmas({
       setAluno(listaAlunos);
     }
     setData(router.query);
+    console.log(router.query)
     //erros
   }, []);
 
@@ -52,13 +52,14 @@ export default function CadastroAlunosEmTurmas({
       return;
     }
     apiRequest
-      .post("turma/addAluno/" + router.query.id, { ...data, turma_id: data.id })
+      .post("turma/addAluno/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
         router.push("/turma/detalhes");
         console.log("ok");
       })
       .catch((err) => {
+        console.log(data)
         setErrorMessage(err.response.data.message);
         setClose(true);
       });
@@ -137,10 +138,10 @@ export default function CadastroAlunosEmTurmas({
                 <TextField
                 disabled
                   fullWidth
-                  id="turma"
+                  id="nome_turma"
                   label="Turma"
-                  name="turma"
-                  autoComplete="turma"
+                  name="nome_turma"
+                  autoComplete="nome_turma"
                   onChange={handleText}
                   value={data ? data.nome_turma : ""}
                 />

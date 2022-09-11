@@ -20,7 +20,7 @@ export default function PortalDoDiarioTurma() {
   const [diarioTurma, setDiarioTurma] = useState<any>([]);
   const router = useRouter();
   async function getDiariosTurma(){
-    const resDiariosTurma = await apiRequest.get("turma/" + router.query.id + "/diarios");
+    const resDiariosTurma = await apiRequest.get("turma/diarios/" + router.query.id);
     if (resDiariosTurma.data) {
       setDiarioTurma(resDiariosTurma.data);
     }
@@ -60,28 +60,11 @@ export default function PortalDoDiarioTurma() {
               <TableBody>
                 {diarioTurma.map((row, index) => (
                     <TableRow key={index} >
-                      <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row" align="center">
                         {row.dataDiario}
                       </TableCell>
                       <TableCell align="center">{row.conteudo}</TableCell>
                       <TableCell align="center">{row.observacao}</TableCell>
-                      <TableCell align="center">
-                        <IconButton
-                          color="primary"
-                          aria-label="edit"
-                          component="label"
-                          onClick={() => router.push("/atividade/portal")}
-                        >
-                          <ModeEditIcon />
-                        </IconButton>
-                        <IconButton
-                          color="primary"
-                          aria-label="delete"
-                          component="label"
-                        >
-                          <DeleteIcon />
-                        </IconButton>
-                      </TableCell>
                     </TableRow>
                   ))}
               </TableBody>
@@ -93,13 +76,6 @@ export default function PortalDoDiarioTurma() {
             >
               Cadastrar
             </Button>
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Link href="/turma/detalhesTeste" variant="body2">
-                  Retornar ao Menu Principal
-                </Link>
-              </Grid>
-            </Grid>
           </div>
         </main>
       </Layout>

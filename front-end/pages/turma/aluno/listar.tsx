@@ -17,7 +17,7 @@ export default function PortalDoAlunoNaTurma() {
   const [alunoTurma, setAlunoTurma] = useState<any>([]);
   const router = useRouter();
   async function getAlunosTurma(){
-    const resAlunosTurma = await apiRequest.get("turma/" + router.query.id + "/alunos");
+    const resAlunosTurma = await apiRequest.get("turma/alunos/" + router.query.id); //bug - f5 os dados somem
     if (resAlunosTurma.data) {
       setAlunoTurma(resAlunosTurma.data);
     }
@@ -67,7 +67,7 @@ export default function PortalDoAlunoNaTurma() {
                         color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => apiRequest.delete("turma/removeAluno/" + row.turma_id, { ...row })}
+                        onClick={() => apiRequest.delete("turma/removeAluno/" + row.turma_id, { ...row.id })}
                       >
                         <DeleteIcon />
                       </IconButton>

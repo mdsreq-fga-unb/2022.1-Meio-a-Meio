@@ -46,14 +46,6 @@ export default function Cadastro() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-  const handleUfRegion = (e: SelectChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-    let tempErrors = errors;
-    delete tempErrors[e.target.name];
-    setErrors(tempErrors);
-    console.log(e.target.value);
-    console.log(e.target.name);
-  };
 
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
@@ -386,6 +378,7 @@ export default function Cadastro() {
               type="submit"
               fullWidth
               variant="contained"
+              onClick={() => router.push({pathname: "/seuPerfil", query: {administrador_id: router.query.id}})}
               sx={{ mt: 3, mb: 2 }}
             >
               Cadastrar Administrador

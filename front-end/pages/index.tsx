@@ -12,6 +12,10 @@ import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/router";
+import Alert from "@mui/material/Alert";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
 
 const theme = createTheme();
 
@@ -19,26 +23,9 @@ export default function Home() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [values, setValues] = React.useState({
-    password: "",
-    showPassword: false,
-  });
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-    let tempErrors = errors;
-    delete tempErrors[e.target.name];
-    setErrors(tempErrors);
-  };
-
+  const [open, setOpen] = useState(false);
+  const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     setData({ ...data, [e.target.name]: e.target.value });
     let tempErrors = errors;
@@ -46,11 +33,11 @@ export default function Home() {
     setErrors(tempErrors);
   };
   const handleCheckData = () => {
-    const { matricula, senha } = data;
+    const { email, senha } = data;
     let emptyFields: any = {};
 
-    if (!matricula || matricula.length === 0) {
-      emptyFields.matricula = "O campo de matrícula não pode ser vazio";
+    if (!email || email.length === 0) {
+      emptyFields.email = "O campo de e-mail não pode ser vazio";
     }
     if (!senha || senha.length === 0) {
       emptyFields.senha = "O campo de senha não pode ser vazio";
@@ -65,9 +52,21 @@ export default function Home() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
+      setClose(true);
       return;
     }
-    router.push("/docente/portal");
+    // apiRequest
+    //   .post("administrador", { ...data})
+    //   .then((result) => {
+    //     setOpen(true);
+    //     router.push("/docente/portal");
+    //     console.log("ok");
+    //   })
+    //   .catch((err) => {
+    //     setErrorMessage(err.response.data.message);
+    //     setClose(true);
+    //     console.log("errado", err);
+    //   });
   };
   return (
     <ThemeProvider theme={theme}>
@@ -135,6 +134,46 @@ export default function Home() {
               >
                 Entrar
               </Button>
+              <Collapse in={open}>
+              <Alert
+              severity="success"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setOpen(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                Login realizado com sucesso!
+              </Alert>
+            </Collapse>
+            <Collapse in={close}>
+              <Alert
+              severity="error"
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setClose(false);
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+                >
+                  {errorMessage}
+              </Alert>
+            </Collapse>
               <Grid container>
                 <Grid item xs>
                   <Link href="/administrador/esqueceuASenha" variant="body2">

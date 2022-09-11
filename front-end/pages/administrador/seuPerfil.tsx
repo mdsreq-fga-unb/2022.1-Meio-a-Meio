@@ -9,25 +9,19 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-export default function PerfilAdministrador({ listaAdms: listaAdms, error }) {
+export default function PerfilAdministrador() {
   const [administrador, setAdm] = useState<any>([]);
-  const [open, setOpen] = useState(false);
   const router = useRouter();
-  //   useEffect(() => {
-  //     if (listaAdms) {
-  //       setAdm(listaAdms);
-  //     }
-  //     console.log(listaAdms);
-  //     console.log(error);
-  //     //erros
-  //   }, []);
+  async function getDadosAdm(){
+    const resDadosAdm = await apiRequest.get("administrador/" + router.query.id);
+    if (resDadosAdm.data) {
+      setAdm(resDadosAdm.data);
+    }
+  }
+  useEffect(() => {
+    getDadosAdm();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -64,9 +58,6 @@ export default function PerfilAdministrador({ listaAdms: listaAdms, error }) {
               <TableBody>
                 {administrador.map((row, index) => (
                   <TableRow key={index} sx={{ display: "flex", flexDirection: "column" }}>
-                    <TableCell component="th" scope="row" align="right">
-                      {row.id}
-                    </TableCell>
                     <TableCell align="right">{row.nome_completo}</TableCell>
                     <TableCell align="right">{row.matricula || ""}</TableCell>
                     <TableCell align="right">{row.celular}</TableCell>
@@ -76,16 +67,6 @@ export default function PerfilAdministrador({ listaAdms: listaAdms, error }) {
                     </TableCell>
                     <TableCell align="right">{row.rg_rne}</TableCell>
                     <TableCell align="right">{row.email}</TableCell>
-                    <TableCell align="right">
-                      <IconButton
-                        color="primary"
-                        aria-label="edit"
-                        component="label"
-                        onClick={() => router.push("/administrador/editar")}
-                      >
-                        <ModeEditIcon />
-                      </IconButton>
-                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -96,16 +77,3 @@ export default function PerfilAdministrador({ listaAdms: listaAdms, error }) {
     </div>
   );
 }
-// export async function getServerSideProps() {
-//   const resAdms = await apiRequest.get("administrador");
-//   if (!resAdms || !resAdms.data) {
-//     return { props: { error: "Falha ao carregar conteúdo" } };
-//   }
-
-//   return {
-//     props: {
-//       listaAdms: resAdms.data,
-//       error: null,
-//     },
-//   };
-// }

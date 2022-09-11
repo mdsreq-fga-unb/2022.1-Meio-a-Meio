@@ -25,7 +25,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroAlunosEmTurmas({
+export default function CadastroAlunosEmCursos({
   listaAlunos: listaAlunos,
   error,
 }) {
@@ -58,6 +58,7 @@ export default function CadastroAlunosEmTurmas({
         setOpen(true);
         router.push("/curso/portal");
         console.log("ok");
+        console.log(data)
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);

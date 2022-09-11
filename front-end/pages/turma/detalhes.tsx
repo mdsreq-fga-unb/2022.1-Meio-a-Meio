@@ -5,6 +5,9 @@ import PortalDoAlunoNaTurma from "./aluno/listar";
 import apiRequest from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import PortalDoDiarioTurma from "./diario/listar";
+import CadastroListaPresenca from "./listaPresenca/cadastro";
+import PortalDaPresencaTurma from "./listaPresenca/listar";
+import PortalDaAtividadeTurma from "./atividade/listar";
 export default function MuiTabs  ()  {
   const[value, setValue] = useState('1')
   const [aluno, setAluno] = useState<any>([]);
@@ -28,9 +31,10 @@ export default function MuiTabs  ()  {
           </TabList>
         </Box>
         <TabPanel value='1'> <PortalDoAlunoNaTurma/> </TabPanel>
-        <TabPanel value='2'>Panel Two</TabPanel>
+        <TabPanel value='2'> <PortalDaPresencaTurma/> </TabPanel>
         <TabPanel value='3'> <PortalDoDiarioTurma/> </TabPanel>
-        <TabPanel value='4'>Panel Four</TabPanel>
+        <TabPanel value='4'><PortalDaAtividadeTurma/></TabPanel>
+        <TabPanel value='4'>Falta fazer esse painel</TabPanel>
       </TabContext>
     </Box>
 
