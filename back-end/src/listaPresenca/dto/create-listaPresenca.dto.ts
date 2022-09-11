@@ -8,7 +8,7 @@ export class CreateListaPresencaDto {
     data: Date;
 
     @IsNotEmpty()
-    turma: Turma
+    turma: number
 
     @IsOptional()
     alunos: Aluno[]
