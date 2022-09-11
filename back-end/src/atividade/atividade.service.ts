@@ -50,8 +50,23 @@ export class AtividadeService {
     return await this.atividadeRepository.find({ where: { turma_id }});
   }
 
+  async findAllScores(turma_id: number, aluno_id: number) {
+    let alunoTurmaActivities = []
+    const atividade = await this.findAtividadeByTurmaId(turma_id);
+    
+    for (const atv of atividade){
+      const next = await this.atividadeAlunoRepository.find({where: {atividade_id: atv.id, aluno_id: aluno_id}});
+      alunoTurmaActivities = alunoTurmaActivities.concat(next);      
+    }
+    return alunoTurmaActivities;
+  }
+
   async findAtividadeById(id: number) {
     return await this.atividadeRepository.findOneBy({ id });
+  }
+
+  async findAtividadeByTurmaId(turma_id: number){
+    return await this.atividadeRepository.find({ where: { turma_id }});
   }
 
   async enterNote(id: number, data: CreateAtividadeAlunoDto) {
