@@ -20,7 +20,7 @@ export default function PortalDoDiarioTurma() {
   const [diarioTurma, setDiarioTurma] = useState<any>([]);
   const router = useRouter();
   async function getDiariosTurma(){
-    const resDiariosTurma = await apiRequest.get("turma/diarios/" + router.query.id);
+    const resDiariosTurma = await apiRequest.get("turma/diarios/" + router.query.detalhes);
     if (resDiariosTurma.data) {
       setDiarioTurma(resDiariosTurma.data);
     }

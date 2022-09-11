@@ -27,6 +27,7 @@ const theme = createTheme();
 
 export default function CadastroAlunosEmTurmas({
   listaAlunos: listaAlunos,
+  turma,
   error,
 }) {
   const [data, setData] = useState<any>({});
@@ -40,8 +41,8 @@ export default function CadastroAlunosEmTurmas({
     if (listaAlunos) {
       setAluno(listaAlunos);
     }
-    setData(router.query);
-    console.log(router.query)
+    setData(turma);
+    console.log('aqui é o router.query: ', router.query)
     //erros
   }, []);
 
@@ -52,10 +53,11 @@ export default function CadastroAlunosEmTurmas({
       return;
     }
     apiRequest
-      .post("turma/addAluno/" + router.query.id, { ...data})
+      .post("turma/addAluno/" + router.query.turma_id, { ...data, turma_id: data.id})
       .then((result) => {
+        console.log(data)
         setOpen(true);
-        router.push("/turma/detalhes");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -139,7 +141,6 @@ export default function CadastroAlunosEmTurmas({
                 disabled
                   fullWidth
                   id="nome_turma"
-                  label="Turma"
                   name="nome_turma"
                   autoComplete="nome_turma"
                   onChange={handleText}
@@ -196,7 +197,7 @@ export default function CadastroAlunosEmTurmas({
             </Collapse> 
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/turma/detalhes" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -208,8 +209,9 @@ export default function CadastroAlunosEmTurmas({
     </ThemeProvider>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps({query}) {
   const resAluno = await apiRequest.get("aluno");
+  const resTurma = await apiRequest.get("turma/" + query.turma_id);
   if (!resAluno ||!resAluno.data ) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }
@@ -217,6 +219,7 @@ export async function getServerSideProps() {
   return {
     props: {
       listaAlunos: resAluno.data,
+      turma: resTurma.data,
       error: null,
     },
   };

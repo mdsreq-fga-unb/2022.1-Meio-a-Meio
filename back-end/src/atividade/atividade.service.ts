@@ -76,4 +76,8 @@ export class AtividadeService {
   async validateIfAlreadyExists(nome: string, isTest: boolean) {
     return await this.atividadeRepository.findOneBy({ nome, isTest });
   }
+
+  async findAllByTurma(turma_id: number) {
+    return await this.atividadeRepository.find({ where: { turma_id }});
+  }
 }

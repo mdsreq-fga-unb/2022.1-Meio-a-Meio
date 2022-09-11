@@ -37,7 +37,14 @@ export default function MuiTabs  ()  {
         <TabPanel value='4'>Falta fazer esse painel</TabPanel>
       </TabContext>
     </Box>
-
   );
+}
+
+export async function getServerSideProps({params}){
+  console.log('oooi')
+  console.log('params ', params)
+  return{
+    props:{}
+  };
 }
 

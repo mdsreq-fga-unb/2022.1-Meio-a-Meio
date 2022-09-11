@@ -12,6 +12,7 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, error}) {
   const [disciplina, setDisciplina] = useState<any>([]);
@@ -58,7 +59,16 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">{row.nome_disciplina}</TableCell>
+                    <TableCell align="center">
+                      {row.nome_disciplina}
+                      <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() => router.push({pathname: "/curso/aluno/cadastro", query: {...row}})}
+                      >
+                       < BuildCircleIcon color="primary"/>
+                      </IconButton>
+                    </TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"

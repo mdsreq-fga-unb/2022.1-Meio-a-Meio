@@ -65,7 +65,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/turma/detalhes", query: {...row}})}
+                        onClick={() => router.push({pathname: "/turma/[detalhes]", query: {detalhes: row.id}})}
                       >
                        < BuildCircleIcon color="primary"/>
                       </IconButton>

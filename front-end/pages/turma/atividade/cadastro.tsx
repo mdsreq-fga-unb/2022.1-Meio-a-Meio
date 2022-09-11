@@ -57,7 +57,7 @@ export default function CadastroAtividades({
       .post("atividade/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("atividade/listar");
+        router.push("/turma/detalhes");
         console.log("ok");
       })
       .catch((err) => {

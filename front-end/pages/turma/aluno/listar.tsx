@@ -17,7 +17,9 @@ export default function PortalDoAlunoNaTurma() {
   const [alunoTurma, setAlunoTurma] = useState<any>([]);
   const router = useRouter();
   async function getAlunosTurma(){
-    const resAlunosTurma = await apiRequest.get("turma/alunos/" + router.query.id); //bug - f5 os dados somem
+    console.log('router.quer aqui ', router.query)
+    
+    const resAlunosTurma = await apiRequest.get("turma/alunos/" + router.query.detalhes);
     if (resAlunosTurma.data) {
       setAlunoTurma(resAlunosTurma.data);
     }
@@ -67,7 +69,7 @@ export default function PortalDoAlunoNaTurma() {
                         color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => apiRequest.delete("turma/removeAluno/" + row.turma_id, { ...row.id })}
+                        onClick={() => apiRequest.delete("turma/removeAluno/" + router.query.detalhes, { Aluno: row.id })}
                       >
                         <DeleteIcon />
                       </IconButton>
@@ -78,7 +80,7 @@ export default function PortalDoAlunoNaTurma() {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "aluno/cadastro", query: {turma_id: router.query.id}})}
+              onClick={() => router.push({pathname: "aluno/cadastro", query: {turma_id: router.query.detalhes}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
@@ -88,4 +90,8 @@ export default function PortalDoAlunoNaTurma() {
       </Layout>
     </div>
   );
+}
+
+export async function getStaticProps({params}){
+  console.log('params ', params)
 }

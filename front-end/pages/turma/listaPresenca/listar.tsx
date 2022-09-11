@@ -20,7 +20,7 @@ export default function PortalDaPresencaTurma() {
   const [presencaTurma, setPresencaTurma] = useState<any>([]);
   const router = useRouter();
   async function getPresencasTurma(){
-    const resPresencassTurma = await apiRequest.get("turma/listaPresenca/" + router.query.id);
+    const resPresencassTurma = await apiRequest.get("turma/listaPresenca/" + router.query.detalhes);
     if (resPresencassTurma.data) {
       setPresencaTurma(resPresencassTurma.data);
     }

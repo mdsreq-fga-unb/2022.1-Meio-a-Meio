@@ -17,7 +17,7 @@ export default function PortalDaAtividadeTurma() {
   const [atividadeTurma, setAtividadeTurma] = useState<any>([]);
   const router = useRouter();
   async function getAtividadesTurma(){
-    const resAtividadesTurma = await apiRequest.get("atividade");
+    const resAtividadesTurma = await apiRequest.get("atividade/" + router.query.detalhes);
     if (resAtividadesTurma.data) {
       setAtividadeTurma(resAtividadesTurma.data);
     }
@@ -68,7 +68,7 @@ export default function PortalDaAtividadeTurma() {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "cadastro", query: turma})}
+              onClick={() => router.push({pathname: "atividade/cadastro", query: atividadeTurma})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
