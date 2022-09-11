@@ -16,7 +16,7 @@
 |16/08/2022 | 0.4 | Atualização do documento | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |17/08/2022 | 0.4 | Adição dos critérios de aceitação | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |23/08/2022 | 0.5 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
-
+|11/09/2022 | 0.6 | Retirada de requisitos | [Laura Pinos](https://github.com/laurapinos/)|
 ## Sumário
 
  - [Escopo do produto](#escopo-do-produto)
@@ -118,7 +118,6 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM30 |               O administrador deve ser capaz de matricular aluno em curso.       | *O aluno não deve estar matriculado no curso |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM31| O administrador deve ser registrar inadimplência de aluno. |*Somente o administrador pode registrar |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG1 |  O usuário deve ser capaz de acessar o sistema por login e senha.       |*Deve ser cadastrado inicialmente um usuario |   Alta    |
-| Gerenciamento Acadêmico | Funções gerais | FG2 |               O usuário deve ser capaz de gerar ficha de matrícula.         |*Deve estar cadastrado informações para ficha de matrícula|   Alta    |
 |Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.| *O aluno deve existir *Deve ser possível ver as informações de aluno em turma|   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG4 |               O usuário deve ser capaz de visualizar informações dos cursos.        | *Deve estar cadastrado informações     |Alta|
 | Gerenciamento Acadêmico | Funções gerais | FG5 |               O usuário deve ser capaz de visualizar informações das disciplinas.      |*Deve estar cadastrado informações de disciplinas|    Alta    |
@@ -126,12 +125,9 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções gerais | FG7 |               O usuário deve ser capaz de visualizar informações das disciplinas especiais.    |*Deve estar cadastrado informações de disciplinas especiais|   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG8 |               O usuário deve ser capaz de visualizar das turmas.       |*Deve estar cadastrado informações de turmas existentes|    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG9 |               O usuário deve ser capaz de visualizar calendário escolar.       |*Deve estar cadastrado informações de calendário|    Alta    |
-| Gerenciamento Acadêmico | Funções gerais | FG10 |               O usuário deve ser capaz de gerar histórico escolar.       | *O histórico deve conter a matrícula do aluno *O histórico deve se restringir ao curso que o aluno fez *o histórico deve mostrar disciplinas já cursadas e disciplinas previstas *O histórico deve mostrar as cargas horária das disciplina cursadas |    Alta    |
-| Gerenciamento Acadêmico | Funções gerais | FG11 |               O usuário deve ser capaz de gerar boletim.       | *O boletim deve ser referente ao último período *O boletim deve conter a matrícula,... |    Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG12 |               O usuário deve ser capaz de excluir um aluno de turma.       | *O aluno deve estar matriculado na disciplina *Somente o administrador ou orientador pode excluir um aluno de turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG13 |               O usuário deve ser capaz de cadastrar um professor em uma turma.       | *O professor deve existir *O professor não pode ser cadastra em uma turma mais de uma vez *Somente o orientador pode cadastrar o professor em turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG14 |               O usuário  deve ser capaz de excluir um professor de uma turma.       | *O professor deve existir *Somente o orientador pode excluir o professor de turma |     Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao aluno | FA1 |               O aluno deve ser capaz de solicitar matrícula em estágios.       |*Dever possuir informações para cadastrado de estágio|    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP1 |               O professor deve ser capaz de alterar suas informações.      |*Dever possuir informações cadastradas previamente|   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP2 |               O professor deve ser capaz de visualizar suas informações.      |*Dever possuir informações cadastradas previamente|    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP3 |               O professor deve ser capaz de cadastrar diário de aula.      |*Dever ser possível cadastradar informações de diário de aula|    Alta    |
