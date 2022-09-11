@@ -14,6 +14,7 @@ export class AdministradorController {
     private authService: AuthService
   ) {}
 
+  @SkipAuth()
   @Post()
   async create(@Body() data: CreateAdmDto) {
     return this.service.create(data);
@@ -31,7 +32,7 @@ export class AdministradorController {
     return this.service.findAll();
   }
 
-  @Get('id')
+  @Get(':id')
   async findOne(@Param('id') id: number) {
     return this.service.findAdmById(id);
   }

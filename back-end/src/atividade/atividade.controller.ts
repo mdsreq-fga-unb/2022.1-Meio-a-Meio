@@ -19,11 +19,6 @@ export class AtividadeController {
     return this.service.enterNote(atividade_id, data);
   }
 
-  @Get('/aluno/:aluno_id')
-  async findByStudent(@Param('aluno_id') aluno_id: number): Promise<AtividadeAluno[]> {
-    return this.service.findAtividadaByStudent(aluno_id);
-  }
-
   @Get()
   async findAll(): Promise<Atividade[]> {
     return this.service.findAll();

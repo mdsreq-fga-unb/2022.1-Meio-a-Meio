@@ -50,10 +50,6 @@ export class AtividadeService {
     return await this.atividadeRepository.findOneBy({ id });
   }
 
-  async findAtividadaByStudent(aluno_id: number) {
-    return await this.atividadeAlunoRepository.find({ where: { aluno_id }});
-  } 
-
   async enterNote(id: number, data: CreateAtividadeAlunoDto) {
     const atividade = await this.findAtividadeById(id);
     if(!atividade) {

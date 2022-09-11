@@ -20,6 +20,9 @@ export class AdministradorService {
         if ((await this.validateIfCPFAlreadyExists(data.cpf))) {
             throw new BadRequestException('CPF já cadastrado! Verifique os dados e tente novamente.');
         }
+        if((await this.findByEmail(data.email))) {
+            throw new BadRequestException('Email já cadastrado! Verifique os dados e tente novamente.');
+        }
 
         const adm = new Administrador();
 
@@ -55,7 +58,13 @@ export class AdministradorService {
     }
 
     async findAll() {
-        return await this.administradorRepository.find();
+        const allUsers =  await this.administradorRepository.find();
+        const allPasswordlessUsers = [];
+        allUsers.forEach((adm) => {
+            const { password, ...result } = adm;
+            allPasswordlessUsers.push(result);
+        })
+        return allPasswordlessUsers;
     }
 
     async findAdmById(id: number) {
@@ -63,7 +72,8 @@ export class AdministradorService {
         if (!adm) {
             throw new NotFoundException("Administrador inválido");
         }
-        return adm;
+        const { password, ...result } = adm;
+        return result;
     }
 
     async findByEmail(email: string): Promise<Administrador | undefined> {
