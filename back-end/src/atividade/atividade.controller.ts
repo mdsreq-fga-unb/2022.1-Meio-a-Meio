@@ -23,6 +23,11 @@ export class AtividadeController {
     return this.service.findAllByTurma(turma_id);
   }
 
+  @Get('listAllScores/:atividade_id')
+  async findAllByScores(@Param() param): Promise<Atividade[]> {
+    return this.service.findAllScores(param.atividade_id);
+  }
+
   @Get()
   async findAll(): Promise<Atividade[]> {
     return this.service.findAll();

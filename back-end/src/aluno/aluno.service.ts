@@ -70,7 +70,7 @@ export class AlunoService {
     const aluno = await this.alunoRepository.findOneBy({ id });
     if(!aluno || aluno.status === 0) {
       throw new NotFoundException("Aluno inválido!");
-    } 
+    }
     return aluno;
   }
 
