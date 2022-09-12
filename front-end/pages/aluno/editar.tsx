@@ -42,7 +42,6 @@ export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
   const [errorMessage, setErrorMessage] = useState<any>("");
@@ -55,7 +54,6 @@ export default function Editar() {
   }, []);
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, data_de_nascimento: formatedData });
   };
@@ -71,7 +69,6 @@ export default function Editar() {
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
@@ -110,7 +107,6 @@ export default function Editar() {
       sexo,
       status_financeiro,
     } = data;
-    console.log(data);
     let emptyFields: any = {};
 
     if (!nome_completo || nome_completo.length === 0) {

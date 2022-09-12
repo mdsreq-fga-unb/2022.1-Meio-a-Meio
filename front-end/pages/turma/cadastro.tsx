@@ -58,7 +58,6 @@ export default function Cadastro() {
     if (resCursos.data) {
       setCurso(resCursos.data);
     } else {
-      console.log("erro");
     }
   }
   useEffect(() => {
@@ -66,13 +65,11 @@ export default function Cadastro() {
   }, []);
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, data_de_nascimento: formatedData });
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(data);
     if (handleCheckData()) {
       return;
     }
@@ -80,12 +77,10 @@ export default function Cadastro() {
       .post("turma", { ...data })
       .then((result) => {
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {

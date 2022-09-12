@@ -35,18 +35,14 @@ export class TurmaService {
       turma.nome_turma = createTurmaDto.nome_turma;
       turma.status = createTurmaDto.status;
       turma.data = createTurmaDto.data;
-      //turma.disciplinas = createTurmaDto.disciplinas;
       turma.alunos = createTurmaDto.alunos;
       turma.listaPresenca = createTurmaDto.listaPresenca;
-      //turma.curso = createTurmaDto.curso;
 
       const curso = await this.curosService.findOne({where:{id:createTurmaDto.curso}});
       turma.curso = curso;
-      //console.log(createTurmaDto.disciplinas);
       if(createTurmaDto.disciplinas !== undefined){
         const disciplina = await this.disciplinaService.findOne({where: {id:createTurmaDto.disciplinas}});
         turma.disciplinas = [disciplina];
-        //console.log(disciplina);
       }
 
       //
@@ -60,7 +56,7 @@ export class TurmaService {
 
   async findAll() {
     const turmas = await this.turmaRepository.find({relations: {
-      alunos: true,//exibir alunos
+      alunos: true,
       diarioDeAula: true,
       disciplinas: true
   }})
@@ -106,7 +102,6 @@ export class TurmaService {
     }
 
     const alunoExiste = turma.alunos.filter((al)=>al.id === data.id);
-    console.log('aluno existe: ', data)
     
       if(alunoExiste.length != 0){
         throw new HttpException('Aluno já cadastrado na turma.', HttpStatus.BAD_REQUEST);
@@ -284,7 +279,6 @@ export class TurmaService {
       professores.push(dis.professor);
     })
 
-    console.log(professores)
     return professores;
   }
 }

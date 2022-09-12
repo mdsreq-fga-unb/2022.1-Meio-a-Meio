@@ -55,21 +55,17 @@ export default function CadastroDiarioDeAula() {
       setClose(true);
       return;
     }
-    console.log(data);
     apiRequest
       .post("diario/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
         router.back()
-        console.log("ok");
       })
       .catch((err) => {
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, dataDiario : formatedData });
   };

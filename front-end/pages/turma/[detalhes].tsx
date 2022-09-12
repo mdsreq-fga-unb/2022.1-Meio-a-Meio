@@ -36,11 +36,3 @@ export default function MuiTabs  ()  {
   );
 }
 
-export async function getServerSideProps({params}){
-  console.log('oooi')
-  console.log('params ', params)
-  return{
-    props:{}
-  };
-}
-

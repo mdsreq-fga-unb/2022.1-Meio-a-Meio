@@ -58,7 +58,6 @@ export function AuthProvider({ children }) {
 
     router.push("/docente/portal");
 
-    console.log('redirecionando');
   }
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, signIn, setUser }}>

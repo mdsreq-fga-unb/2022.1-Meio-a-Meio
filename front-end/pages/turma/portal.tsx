@@ -23,9 +23,7 @@ export default function PortalDaTurma() {
     const resTurmas = await apiRequest.get("turma");
     if (resTurmas.data) {
       setTurma(resTurmas.data);
-    } else {
-      console.log("erro");
-    }
+    } 
   }
   useEffect(() => {
     getTurma();

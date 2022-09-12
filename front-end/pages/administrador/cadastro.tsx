@@ -49,7 +49,6 @@ export default function Cadastro() {
 
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, data_de_nascimento: formatedData });
   };
@@ -58,22 +57,17 @@ export default function Cadastro() {
     event.preventDefault();
     if (handleCheckData()) {
       setClose(true);
-      console.log("bbbb");
-      console.log(data);
       return;
     }
-    console.log("aaaa");
     apiRequest
       .post("administrador", { ...data})
       .then((result) => {
         setOpen(true);
         router.push("/");
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
 
     const date = new FormData(event.currentTarget);
@@ -111,7 +105,6 @@ export default function Cadastro() {
       sexo,
       password,
     } = data;
-    console.log(data);
     let emptyFields: any = {};
 
     if (!nome_completo || nome_completo.length === 0) {

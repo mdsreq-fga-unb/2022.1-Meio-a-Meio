@@ -28,7 +28,6 @@ export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
   const router = useRouter();
-  console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
   const [errorMessage, setErrorMessage] = useState<any>("");
@@ -41,21 +40,17 @@ export default function Editar() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("aaaa");
     if(handleCheckData()){
-      console.log("bbbb");
       return;
     }
     apiRequest
       .put("curso/" + router.query.id, { ...data})
       .then((result) => {
         router.back()
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
 
     const date = new FormData(event.currentTarget);

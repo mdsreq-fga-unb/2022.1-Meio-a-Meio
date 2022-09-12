@@ -23,7 +23,6 @@ export default function PortalDoCurso() {
     if (resCursos.data) {
       setCurso(resCursos.data);
     } else {
-      console.log("erro");
     }
   }
   useEffect(() => {

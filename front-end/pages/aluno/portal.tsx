@@ -24,7 +24,6 @@ export default function ListaAlunosEmTurma() {
     if (resAlunos.data) {
       setAluno(resAlunos.data);
     } else {
-      console.log("erro");
     }
   }
   useEffect(() => {
@@ -72,7 +71,6 @@ export default function ListaAlunosEmTurma() {
                     <TableCell align="center">
                       {row.especializacao || ""}
                     </TableCell>
-                    {/* <TableCell align="center">{row.status_financeira}</TableCell> */}
                     <TableCell align="center">
                       <IconButton
                         color="primary"

@@ -43,8 +43,6 @@ export class TurmaController {
 
   @Delete('removeAluno/:id/:alunoId')
   removeAluno(@Param('id') idTurma: string, @Param('alunoId') idAluno: string){
-    console.log(idAluno)
-    console.log('id normal:', idTurma)
     return this.turmaService.removeAluno(+idTurma, parseInt(idAluno));
   }
 

@@ -29,12 +29,10 @@ export default function CadastroListaPresenca() {
   const [data, setData] = useState(new Date());
 
   const router = useRouter();
-  console.log(router.query.turma_id);
   async function getAlunosTurma() {
     const resAlunosTurma = await apiRequest.get(
       "turma/alunos/" + router.query.turma_id
     );
-    console.log(resAlunosTurma);
     if (resAlunosTurma.data) {
       setAlunoTurma(resAlunosTurma.data);
     }
@@ -54,7 +52,6 @@ export default function CadastroListaPresenca() {
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
@@ -64,7 +61,6 @@ export default function CadastroListaPresenca() {
 
   const handleCheck = (id) => {
     const jaExiste = alunosPresentes.find((i) => i === id);
-    console.log(jaExiste);
     if (jaExiste) {
       const listaFiltrada = alunosPresentes.filter((i) => i !== id);
       setAlunosPresentes(listaFiltrada);

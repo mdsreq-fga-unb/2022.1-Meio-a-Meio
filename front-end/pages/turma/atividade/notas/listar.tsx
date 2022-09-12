@@ -29,7 +29,6 @@ export default function PortalDaNota() {
     if (resNotas.data) {
       setNotas(resNotas.data);
     }
-    console.log(resNotas.data)
   }
   useEffect(() => {
     getNotas();

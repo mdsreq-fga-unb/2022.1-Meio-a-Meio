@@ -54,7 +54,6 @@ export default function Login() {
   };
 
   async function handleSignIn(data) {
-    console.log("data: ", data);
     await signIn(data)
   }
   return (
@@ -167,11 +166,6 @@ export default function Login() {
               </Alert>
             </Collapse>
             <Grid container>
-              {/* <Grid item xs>
-                  <Link href="/administrador/esqueceuASenha" variant="body2">
-                    Esqueceu a senha?
-                  </Link>
-                </Grid> */}
               <Grid item>
                 <Link href="/administrador/cadastro" variant="body2">
                   {"Não possui uma conta? Inscreva-se"}

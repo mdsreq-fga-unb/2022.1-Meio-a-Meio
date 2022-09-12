@@ -50,17 +50,14 @@ export default function CadastroAtividades() {
       setClose(true);
       return;
     }
-    console.log(data);
     apiRequest
       .post("atividade/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {

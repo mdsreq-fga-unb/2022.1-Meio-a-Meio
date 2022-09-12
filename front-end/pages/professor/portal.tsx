@@ -21,9 +21,7 @@ export default function TelaProfessores() {
     const resProfessores = await apiRequest.get("professor");
     if (resProfessores.data) {
       setProfessor(resProfessores.data);
-    } else {
-      console.log("erro");
-    }
+    } 
   }
   useEffect(() => {
     getProfessor();
@@ -57,7 +55,6 @@ export default function TelaProfessores() {
                   <TableCell align="center">Nome</TableCell>
                   <TableCell align="center">Matricula</TableCell>
                   <TableCell align="center">Especialização</TableCell>
-                  {/* <TableCell align="center">Especialista</TableCell> */}
                   <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
@@ -72,7 +69,6 @@ export default function TelaProfessores() {
                     <TableCell align="center">
                       {row.especializacao || ""}
                     </TableCell>
-                    {/* <TableCell align="center">{row.especialista}</TableCell> */}
                     <TableCell align="center">
                       <IconButton
                         color="primary"

@@ -56,13 +56,10 @@ export default function CadastroAlunosEmTurmas() {
     apiRequest
       .post("turma/addAluno/" + router.query.turma_id, { ...data, turma_id: data.id})
       .then((result) => {
-        console.log(data)
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
-        console.log(data)
         setErrorMessage(err.response.data.message);
         setClose(true);
       });

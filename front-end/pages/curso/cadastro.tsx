@@ -32,10 +32,8 @@ export default function Cadastro() {
   const [errorMessage, setErrorMessage] = useState<any>("");
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("aaaa");
     if(handleCheckData()){
       setClose(true)
-      console.log("bbbb");
       return;
     }
     apiRequest
@@ -43,12 +41,10 @@ export default function Cadastro() {
       .then((result) => {
         setOpen(true);
         router.back()
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
 
     const date = new FormData(event.currentTarget);

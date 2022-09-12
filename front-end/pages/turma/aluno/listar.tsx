@@ -22,24 +22,14 @@ export default function PortalDoAlunoNaTurma() {
     if (resAlunosTurma.data) {
       setAlunoTurma(resAlunosTurma.data);
     }
-    else{
-      console.log('erro')
-    }
+    
   }
   useEffect(() => {
     getAlunosTurma();
   }, []);
 
   const handleDelete = async(idAluno) => {
-    console.log(router.query.detalhes)
-    console.log(idAluno)
     apiRequest.delete(`turma/removeAluno/${router.query.detalhes}/${idAluno}`)
-    .then((data)=>{
-      console.log('data: ',data);
-    })
-    .catch((err) => {
-      console.log('erro: ', err);
-    })
   }
 
   return (

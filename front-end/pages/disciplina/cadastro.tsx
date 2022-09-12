@@ -35,7 +35,6 @@ export default function Cadastro() {
     if (resCurso.data) {
       setCurso(resCurso.data);
     } else {
-      console.log("erro");
     }
   }
   useEffect(() => {

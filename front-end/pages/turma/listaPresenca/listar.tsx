@@ -19,8 +19,6 @@ export default function PortalDaPresencaTurma() {
     const resPresencasTurma = await apiRequest.get("turma/listaPresenca/" + router.query.detalhes);
     if (resPresencasTurma.data) {
       setPresencaTurma(resPresencasTurma.data);
-      console.log(router.query.detalhes)
-      console.log('llalala: ', presencaTurma)
     }
   }
   useEffect(() => {

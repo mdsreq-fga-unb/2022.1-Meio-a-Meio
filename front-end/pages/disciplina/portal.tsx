@@ -23,7 +23,6 @@ export default function PortalDaDisciplina() {
     if (resDisciplinas.data) {
       setDisciplina(resDisciplinas.data);
     } else {
-      console.log("erro");
     }
   }
   useEffect(() => {

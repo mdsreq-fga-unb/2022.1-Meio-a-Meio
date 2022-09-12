@@ -39,7 +39,6 @@ export default function CadastroAlunosEmCursos() {
     if (resAluno.data) {
       setAluno(resAluno.data);
     } else {
-      console.log("erro");
     }
     setData(router.query);
   }
@@ -58,8 +57,6 @@ export default function CadastroAlunosEmCursos() {
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
-        console.log(data)
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);

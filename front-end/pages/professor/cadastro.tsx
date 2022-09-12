@@ -51,12 +51,9 @@ export default function Cadastro() {
     let tempErrors = errors;
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
-    console.log(e.target.value);
-    console.log(e.target.name);
   };
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, data_de_nascimento: formatedData });
   };
@@ -65,21 +62,17 @@ export default function Cadastro() {
     event.preventDefault();
     if (handleCheckData()) {
       setClose(true);
-      console.log("bbbb");
       return;
     }
-    console.log("aaaa");
     apiRequest
       .post("professor", { ...data})
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
 
     const date = new FormData(event.currentTarget);
@@ -119,7 +112,6 @@ export default function Cadastro() {
       sexo,
       especialista,
     } = data;
-    console.log(data);
     let emptyFields: any = {};
 
     if (!nome_completo || nome_completo.length === 0) {

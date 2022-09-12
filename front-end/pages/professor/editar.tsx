@@ -43,7 +43,6 @@ export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
 
@@ -59,12 +58,9 @@ export default function Editar() {
     let tempErrors = errors;
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
-    console.log(e.target.value);
-    console.log(e.target.name);
   };
 
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
     setData({ ...data, data_de_nascimento: formatedData });
   };
@@ -73,20 +69,16 @@ export default function Editar() {
     event.preventDefault();
     if (handleCheckData()) {
       setClose(true);
-      console.log("bbbb");
       return;
     }
-    console.log("aaaa");
     apiRequest
       .put("professor/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
         router.back();
-        console.log("ok");
       })
       .catch((err) => {
         setClose(true);
-        console.log("errado", err);
       });
 
     const date = new FormData(event.currentTarget);
@@ -122,7 +114,6 @@ export default function Editar() {
       sexo,
       especialista,
     } = data;
-    console.log(data);
     let emptyFields: any = {};
 
     if (!nome_completo || nome_completo.length === 0) {
