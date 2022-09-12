@@ -147,6 +147,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de editar uma turma.        | *A turma deve existir *Somento o orientador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP17 |               O professor deve ser capaz de editar uma nota em uma atividade.       | *Deve ser possível colocar apenas valores entre 0 e 10 *Somente o professor pode editar a nota de um aluno |   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP18 |               O professor deve ser capaz de mudar aluno de turma.       | *Somente o professor pode mudar aluno de turma *A turma deve existir |   Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP19 |               O professor deve ser capaz de cadastrar a lista de presença.       | *Somente o professor cadastrar a lista de presença *A lista só pode ser cadastrada no mesmo dia que foi gerada |   Alta    |
 
 
 #### Legenda:
