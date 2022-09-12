@@ -29,7 +29,7 @@
 | FG4   |   visualizar cursos            |
 | FP2   |   visualizar professor         |
 | FP4   |   visualizar diário de aula    |
-| FG3   |   visualizar aluno em turma    |
+| FG15  |   visualizar aluno em turma    |
 | FP8   |   visualizar notas de alunos   |
 | FG8   |   visualizar turma             |
 | FG5   |   visualizar disciplina        |
