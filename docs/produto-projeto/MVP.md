@@ -31,13 +31,13 @@
 | FP4   |   visualizar diário de aula    |
 | FG15  |   visualizar aluno em turma    |
 | FP8   |   visualizar notas de alunos   |
-| FG8   |   visualizar turma             |
-| FG5   |   visualizar disciplina        |
+| FP9   |   visualizar turma             |
+| FP10   |   visualizar disciplina        |
 | FP10  |   visualizar lista de presença |
 | FA1   |   matricular em estágio        |
 | FG1   |   realizar login               |
 | FGM3  |   atualizar alunos             |
-| FG4   |   atualizar cursos             |
+| FGM32 |   atualizar cursos             |
 | FP1   |   atualizar professor          |
 | FP16  |   atualizar turma              |
-| FGM24 |   atualizar disciplina         |
+| FP18  |   atualizar disciplina         |

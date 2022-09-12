@@ -129,6 +129,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções gerais | FG12 |               O usuário deve ser capaz de excluir um aluno de turma.       | *O aluno deve estar matriculado na disciplina *Somente o administrador ou orientador pode excluir um aluno de turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG13 |               O usuário deve ser capaz de cadastrar um professor em uma turma.       | *O professor deve existir *O professor não pode ser cadastra em uma turma mais de uma vez *Somente o orientador pode cadastrar o professor em turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG14 |               O usuário  deve ser capaz de excluir um professor de uma turma.       | *O professor deve existir *Somente o orientador pode excluir o professor de turma |     Alta    |
+| Gerenciamento Acadêmico | Funções gerais | FG15 |               O usuário deve ser capaz de visualizar informações de aluno em turma.       | *O aluno deve existir *A turma deve existir |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP1 |               O professor deve ser capaz de alterar suas informações.      |*Dever possuir informações cadastradas previamente|   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP2 |               O professor deve ser capaz de visualizar suas informações.      |*Dever possuir informações cadastradas previamente|    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP3 |               O professor deve ser capaz de cadastrar diário de aula.      |*Dever ser possível cadastradar informações de diário de aula|    Alta    |
@@ -147,6 +148,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de editar uma turma.        | *A turma deve existir *Somento o orientador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP17 |               O professor deve ser capaz de editar uma nota em uma atividade.       | *Deve ser possível colocar apenas valores entre 0 e 10 *Somente o professor pode editar a nota de um aluno |   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP18 |               O professor deve ser capaz de mudar aluno de turma.       | *Somente o professor pode mudar aluno de turma *A turma deve existir |   Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP19 |               O professor deve ser capaz de cadastrar a lista de presença.       | *Somente o professor cadastrar a lista de presença *A lista só pode ser cadastrada no mesmo dia que foi gerada |   Alta    |
 
 
 #### Legenda:
