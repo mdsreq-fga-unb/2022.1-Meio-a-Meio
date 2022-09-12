@@ -1,9 +1,9 @@
+import { Pessoa } from '../pessoa/pessoa.entity';
 import { Disciplina } from '../disciplina/disciplina.entity';
-import { Administrador } from './../administrador/administrador.entity';
 import { Entity, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class Professor extends Administrador {
+export class Professor extends Pessoa {
   @Column({ nullable: true })
   crm: string;
 

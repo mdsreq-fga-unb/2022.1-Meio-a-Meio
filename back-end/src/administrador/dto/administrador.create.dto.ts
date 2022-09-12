@@ -1,45 +1,18 @@
-import { IsNotEmpty, IsString, IsEmail, IsOptional } from "class-validator";
+import { IsString, MinLength, MaxLength, Validate } from "class-validator";
+import { PasswordValidation, PasswordValidationRequirement } from 'class-validator-password-check'
+import { PessoaDto } from "../../pessoa/dto/pessoa.dto";
 
-export class CreateAdmDto {
+var passwordRequirement: PasswordValidationRequirement = {
+    mustContainLowerLetter: true,
+    mustContainNumber: true,
+    mustContainSpecialCharacter: true,
+    mustContainUpperLetter: true
+}
+
+export class CreateAdmDto extends PessoaDto {
     @IsString()
-    @IsNotEmpty()
-    nome_completo: string;
-
-    @IsOptional()
-    @IsString()
-    matricula: string;
-
-    @IsString()
-    @IsNotEmpty()
-    sexo: string;
-
-    @IsNotEmpty()
-    data_de_nascimento: Date;
-
-    @IsString()
-    @IsNotEmpty()
-    nacionalidade: string;
-
-    @IsEmail()
-    @IsNotEmpty()
-    email: string;
-
-    @IsString()
-    @IsNotEmpty()
-    cpf: string;
-
-    @IsString()
-    @IsNotEmpty()
-    rg_rne: string;
-
-    @IsString()
-    @IsNotEmpty()
-    uf_rg_rne: string;
-
-    @IsString()
-    @IsNotEmpty()
-    orgao_emissor: string;
-
-    @IsNotEmpty()
-    celular: string;  
+    @MinLength(6)
+    @MaxLength(20)
+    @Validate(PasswordValidation, [passwordRequirement])
+    readonly password: string;
 }
