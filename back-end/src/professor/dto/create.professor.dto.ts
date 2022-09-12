@@ -1,7 +1,7 @@
-import { CreateAdmDto } from './../../administrador/dto/administrador.create.dto';
+import { PessoaDto } from '../../pessoa/dto/pessoa.dto';
 import { IsString, IsNotEmpty, IsOptional, IsNumber, IsBoolean, IsEmail } from "class-validator";
 
-export class CreateProfessorDto extends CreateAdmDto {
+export class CreateProfessorDto extends PessoaDto {
   @IsOptional()
   @IsString()
   crm: string;

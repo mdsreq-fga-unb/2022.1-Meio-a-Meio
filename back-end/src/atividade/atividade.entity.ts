@@ -16,5 +16,5 @@ export class Atividade {
     isTest: boolean;
 
     @ManyToOne(() => Turma, turma => turma.atividade)
-    turma: Turma[];
+    turma: Turma;
 }

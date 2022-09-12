@@ -1,7 +1,7 @@
-import { CreateAdmDto } from './../../administrador/dto/administrador.create.dto';
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail, IsBoolean } from "class-validator";
+import { PessoaDto } from '../../pessoa/dto/pessoa.dto';
+import { IsString, IsNotEmpty, IsOptional, IsBoolean } from "class-validator";
 
-export class CreateAlunoDto extends CreateAdmDto{
+export class CreateAlunoDto extends PessoaDto {
 
   @IsString()
   @IsNotEmpty()

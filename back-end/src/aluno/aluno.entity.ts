@@ -1,11 +1,11 @@
+import { Pessoa } from 'src/pessoa/pessoa.entity';
 import { Entity, Column, OneToMany } from 'typeorm';
 import { Endereco } from '../endereco/endereco.entity'
-import { Administrador } from '../administrador/administrador.entity';
 import { CursoAluno } from '../curso_aluno/curso_aluno.entity';
 import { AtividadeAluno } from '../atividades_aluno/atividade_aluno.entity';
 
 @Entity()
-export class Aluno extends Administrador {
+export class Aluno extends Pessoa {
   @Column()
   crm: string;
 
