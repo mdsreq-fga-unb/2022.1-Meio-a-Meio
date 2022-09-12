@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Home.module.css";
 import Grid from "@mui/material/Grid";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -15,15 +15,19 @@ import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-export default function PortalDoCurso({ listaCursos, error }) {
+export default function PortalDoCurso() {
   const [curso, setCurso] = useState<any>([]);
   const router = useRouter();
-  useEffect(() => {
-    if (listaCursos) {
-      setCurso(listaCursos);
+  async function getCurso() {
+    const resCursos = await apiRequest.get("curso");
+    if (resCursos.data) {
+      setCurso(resCursos.data);
+    } else {
+      console.log("erro");
     }
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getCurso();
   }, []);
 
   return (
@@ -108,36 +112,4 @@ export default function PortalDoCurso({ listaCursos, error }) {
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const resCursos = await apiRequest.get("curso");
-    if (!resCursos || !resCursos.data) {
-      return { props: { error: "Falha ao carregar conteúdo" } };
-    }
-
-    return {
-      props: {
-        listaCursos: resCursos.data,
-        error: null,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-    if (err.response.data.statusCode === 401) {
-      return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
-      };
-    }
-    return {
-      props: {
-        listaAlunos: [],
-        error: err.response.data.message,
-      },
-    };
-  }
 }

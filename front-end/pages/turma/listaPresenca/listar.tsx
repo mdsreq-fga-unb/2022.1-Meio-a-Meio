@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../../../styles/Home.module.css";
 import Grid from "@mui/material/Grid";
 import Layout from "../../../component/layout";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";

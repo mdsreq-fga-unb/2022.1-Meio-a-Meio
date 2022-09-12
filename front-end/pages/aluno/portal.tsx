@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -15,21 +14,21 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { redirect } from "next/dist/server/api-utils";
 import id from "date-fns/esm/locale/id/index.js";
+import { apiRequest } from "../../util/apiRequest";
 
-export default function ListaAlunosEmTurma({
-  listaAlunos: listaAlunos,
-  error,
-}) {
+export default function ListaAlunosEmTurma() {
   const [aluno, setAluno] = useState<any>([]);
-  const [open, setOpen] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+  async function getAluno() {
+    const resAlunos = await apiRequest.get("aluno");
+    if (resAlunos.data) {
+      setAluno(resAlunos.data);
+    } else {
+      console.log("erro");
     }
-    // console.log(listaAlunos);
-    // console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getAluno();
   }, []);
 
   return (
@@ -105,35 +104,4 @@ export default function ListaAlunosEmTurma({
       </Layout>
     </div>
   );
-}
-export async function getServerSideProps() {
-  try {
-    var resAlunos = await apiRequest.get("aluno");
-    if (!resAlunos || !resAlunos.data) {
-      console.log(resAlunos);
-      
-    }
-    return {
-      props: {
-        listaAlunos: [],
-        error: null,
-      },
-    };
-  } catch(err) {
-    console.log(err)
-      if (err.response.data.statusCode === 401) {
-        return {
-          redirect: {
-            destination: "/",
-            permanent: false,
-          },
-        };
-      }
-      return{
-        props: {
-          listaAlunos: [],
-          error: err.response.data.message,
-        },
-      };
-  }
 }

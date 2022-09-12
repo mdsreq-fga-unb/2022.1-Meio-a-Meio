@@ -22,7 +22,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import FormHelperText from "@mui/material/FormHelperText";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -45,10 +45,11 @@ export default function Editar() {
   console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
 
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
-      router.push("/aluno/portal");
+      router.back();
     }
     setData(router.query);
   }, []);
@@ -62,17 +63,19 @@ export default function Editar() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleCheckData()) {
+      setClose(true)
       return;
     }
     apiRequest
       .put("aluno/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/aluno/portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
-        console.log("errado", err);
+        setErrorMessage(err.response.data.message);
+        setClose(true);
       });
 
     const date = new FormData(event.currentTarget);
@@ -298,9 +301,6 @@ export default function Editar() {
               </Grid>
               <Grid item xs={1}>
                 <FormControl fullWidth>
-                  <InputLabel id="uf_rg_rne" required>
-                    UF
-                  </InputLabel>
                   <SelectUf
                     name={"uf_rg_rne"}
                     setValue={(i) => setData({ ...data, uf_rg_rne: i })}
@@ -342,9 +342,6 @@ export default function Editar() {
               </Grid>
               <Grid item xs={1}>
                 <FormControl fullWidth>
-                  <InputLabel id="uf_crm" required>
-                    UF
-                  </InputLabel>
                   <SelectUf
                     name={"uf_crm"}
                     setValue={(i) => setData({ ...data, uf_crm: i })}
@@ -504,12 +501,12 @@ export default function Editar() {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao editar o usuário!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/aluno/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Voltar ao Menu Principal
                 </Link>
               </Grid>

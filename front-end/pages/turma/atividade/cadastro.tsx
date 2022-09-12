@@ -18,7 +18,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -26,10 +26,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroAtividades({
-  listaTurmas: listaTurmas,
-  error,
-}) {
+export default function CadastroAtividades() {
   const [data, setData] = useState<any>({isTest: false});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -37,14 +34,15 @@ export default function CadastroAtividades({
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
 
-  useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
+  async function getPraAtividadeTurma() {
+    const resTurma = await apiRequest.get("turma");
+      if (resTurma.data) {
+        setTurma(resTurma.data);
+      }
     }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
-  }, []);
+    useEffect(() => {
+      getPraAtividadeTurma();
+    }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,7 +55,7 @@ export default function CadastroAtividades({
       .post("atividade/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/turma/detalhes");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -219,7 +217,7 @@ export default function CadastroAtividades({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="portal" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -230,17 +228,4 @@ export default function CadastroAtividades({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps() {
-  const resTurma = await apiRequest.get("turma");
-  if (!resTurma || !resTurma.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaTurmas: resTurma.data,
-      error: null,
-    },
-  };
 }

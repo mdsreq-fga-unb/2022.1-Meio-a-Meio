@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import Checkbox from "@mui/material/Checkbox";
 import { DatePicker } from "@mantine/dates";
 import styles from "../../../styles/listapresenca.module.css";

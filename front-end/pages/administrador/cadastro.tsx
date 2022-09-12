@@ -22,7 +22,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import FormHelperText from "@mui/material/FormHelperText";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -59,6 +59,7 @@ export default function Cadastro() {
     if (handleCheckData()) {
       setClose(true);
       console.log("bbbb");
+      console.log(data);
       return;
     }
     console.log("aaaa");
@@ -66,7 +67,7 @@ export default function Cadastro() {
       .post("administrador", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/docente/portal");
+        router.push("/");
         console.log("ok");
       })
       .catch((err) => {
@@ -81,6 +82,12 @@ export default function Cadastro() {
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     const clearText = e.target.value.replace(/\d/, "");
     setData({ ...data, [e.target.name]: clearText });
+    let tempErrors = errors;
+    delete tempErrors[e.target.name];
+    setErrors(tempErrors);
+  };
+  const handleSenha = (e: ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [e.target.name]: e.target.value });
     let tempErrors = errors;
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
@@ -102,7 +109,7 @@ export default function Cadastro() {
       email, 
       data_de_nascimento, 
       sexo,
-      senha,
+      password,
     } = data;
     console.log(data);
     let emptyFields: any = {};
@@ -136,8 +143,8 @@ export default function Cadastro() {
       emptyFields.data_de_nascimento =
         "O campo de data de nascimento não pode ser vazio";
     }
-    if (!senha || senha.length === 0) {
-      emptyFields.senha =
+    if (!password || password.length === 0) {
+      emptyFields.password =
         "O campo de senha não pode ser vazio";
     }
     if (!sexo || sexo.length === 0) {
@@ -353,15 +360,14 @@ export default function Cadastro() {
               <Grid item xs={3}>
                 <TextField
                   required
-                  error={errors.senha ? true : false}
-                  helperText={errors.senha || null}
+                  error={errors.password ? true : false}
+                  helperText={errors.password || null}
                   fullWidth
-                  name="senha"
+                  name="password"
                   label="Senha"
-                  type="senha"
-                  id="senha"
-                  onChange={handleText}
-                  value={data ? data.senha : ""}
+                  id="password"
+                  onChange={handleSenha}
+                  value={data ? data.password : ""}
                 />
               </Grid>
               <Grid item xs={6}>
@@ -378,7 +384,6 @@ export default function Cadastro() {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={() => router.push({pathname: "/seuPerfil", query: {administrador_id: router.query.id}})}
               sx={{ mt: 3, mb: 2 }}
             >
               Cadastrar Administrador
@@ -425,8 +430,8 @@ export default function Cadastro() {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/administrador/seuPerfil" variant="body2">
-                  Retornar ao Menu Principal
+                <Link href="/" variant="body2">
+                  Retornar a Tela de Login
                 </Link>
               </Grid>
             </Grid>

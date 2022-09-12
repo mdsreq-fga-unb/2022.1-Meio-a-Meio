@@ -22,7 +22,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import FormHelperText from "@mui/material/FormHelperText";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -49,7 +49,7 @@ export default function Editar() {
 
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
-      router.push("/professor/portal");
+      router.back();
     }
     setData(router.query);
   }, []);
@@ -78,10 +78,10 @@ export default function Editar() {
     }
     console.log("aaaa");
     apiRequest
-      .put("professor/" + router.query.id, { ...data}) //put + a rota de atualizaçao
+      .put("professor/" + router.query.id, { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/professor/portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -99,6 +99,7 @@ export default function Editar() {
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
   };
+
   const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const clearNumber = e.target.value.replace(/\D/, "");
     setData({ ...data, [e.target.name]: clearNumber });
@@ -311,9 +312,6 @@ export default function Editar() {
               </Grid>
               <Grid item xs={1}>
                 <FormControl fullWidth>
-                  <InputLabel id="uf_rg_rne" required>
-                    UF
-                  </InputLabel>
                   <SelectUf
                     name={"uf_rg_rne"}
                     setValue={(i) => setData({ ...data, uf_rg_rne: i })}
@@ -337,7 +335,7 @@ export default function Editar() {
                 />
               </Grid>
               <Grid item xs={2}>
-                <TextField
+              <TextField
                   required
                   inputProps={{
                     maxLength: 6,
@@ -355,13 +353,11 @@ export default function Editar() {
               </Grid>
               <Grid item xs={1}>
                 <FormControl fullWidth>
-                  <InputLabel id="uf_crm" required>
-                    UF
-                  </InputLabel>
                   <SelectUf
                     name={"uf_crm"}
                     setValue={(i) => setData({ ...data, uf_crm: i })}
                     initialValue={data.uf_crm}
+                    required
                   />
                   <FormHelperText error>{errors.uf_crm}</FormHelperText>
                 </FormControl>
@@ -521,7 +517,7 @@ export default function Editar() {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/professor/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>

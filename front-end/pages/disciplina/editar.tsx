@@ -10,14 +10,21 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import apiRequest from "../../util/apiRequest";
-import { Select, MenuItem, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
+import { apiRequest } from "../../util/apiRequest";
+import {
+  Select,
+  MenuItem,
+  Collapse,
+  Alert,
+  IconButton,
+  FormHelperText,
+} from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
-export default function Editar({listaProfessores, listaCursos, error}) {
+export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -28,20 +35,30 @@ export default function Editar({listaProfessores, listaCursos, error}) {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
 
+  async function getDadosParaEditarDisciplina() {
+    const resProfessor = await apiRequest.get("professor");
+    const resCurso = await apiRequest.get("curso");
+    if (resProfessor.data) {
+      setProfessor(resProfessor.data);
+    }
+    if (resCurso.data) {
+      setCurso(resCurso.data);
+    } else {
+      console.log("erro");
+    }
+  }
+  useEffect(() => {
+    getDadosParaEditarDisciplina();
+  }, []);
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
-      router.push("/disciplina/portal");
+      router.back();
     }
-    setData({...router.query, carga_horaria: +router.query.carga_horaria, curso: router.query.cursoId});
-    console.log('oia eu aqui ',{ ...router.query, curso: router.query.cursoId})
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
-    }
-    if (listaCursos) {
-      setCurso(listaCursos);
-      console.log(listaCursos)
-    }
-    //erros
+    setData({
+      ...router.query,
+      carga_horaria: +router.query.carga_horaria,
+      curso: router.query.cursoId,
+    });
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +69,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
     apiRequest
       .put("disciplina/" + router.query.id, { ...data })
       .then((result) => {
-        router.push("/disciplina/portal");
+        router.back();
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
@@ -70,7 +87,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
   const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
     const clearNumber = e.target.value.replace(/\D/, "");
     const stringToNumber = parseInt(clearNumber);
-    setData({ ...data, [e.target.name]: stringToNumber});
+    setData({ ...data, [e.target.name]: stringToNumber });
   };
 
   const handleCheckData = () => {
@@ -147,7 +164,8 @@ export default function Editar({listaProfessores, listaCursos, error}) {
                   value={data ? data.carga_horaria : ""}
                   type="number"
                 />
-              </Grid><Grid item xs={12}>
+              </Grid>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   id="localizacao"
@@ -158,9 +176,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
                 />
               </Grid>
               <Grid item xs={12}>
-                <InputLabel id="professor">
-                  Professor
-                </InputLabel>
+                <InputLabel id="professor">Professor</InputLabel>
                 <Select
                   fullWidth
                   onChange={(e) =>
@@ -184,9 +200,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
                   required
                   fullWidth
                   error={errors.curso ? true : false}
-                  onChange={(e) =>
-                    setData({ ...data, curso: e.target.value })
-                  }
+                  onChange={(e) => setData({ ...data, curso: e.target.value })}
                   label={"Curso"}
                   value={data ? data.curso : null}
                 >
@@ -196,9 +210,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
                     </MenuItem>
                   ))}
                 </Select>
-                <FormHelperText error>
-                  {errors.curso}
-                </FormHelperText>
+                <FormHelperText error>{errors.curso}</FormHelperText>
               </Grid>
             </Grid>
             <Button
@@ -211,7 +223,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
             </Button>
             <Collapse in={open}>
               <Alert
-              severity="success"
+                severity="success"
                 action={
                   <IconButton
                     aria-label="close"
@@ -231,7 +243,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
             </Collapse>
             <Collapse in={close}>
               <Alert
-              severity="error"
+                severity="error"
                 action={
                   <IconButton
                     aria-label="close"
@@ -251,7 +263,7 @@ export default function Editar({listaProfessores, listaCursos, error}) {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/disciplina/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
@@ -261,20 +273,4 @@ export default function Editar({listaProfessores, listaCursos, error}) {
       </Container>
     </ThemeProvider>
   );
-}
-
-export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get('professor') //lista de professoress
-  const resCurso = await apiRequest.get('curso')
-  if(!resProfessor || !resCurso || !resProfessor.data || !resCurso.data){
-    return {props: {error: 'Falha ao carregar conteúdo'}}
-  }
-
-  return {
-    props: {
-      listaProfessores: resProfessor.data,
-      listaCursos: resCurso.data,
-      error: null,
-    },
-  };
 }

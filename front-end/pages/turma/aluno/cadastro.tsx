@@ -17,7 +17,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -25,11 +25,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroAlunosEmTurmas({
-  listaAlunos: listaAlunos,
-  turma,
-  error,
-}) {
+export default function CadastroAlunosEmTurmas() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -37,14 +33,19 @@ export default function CadastroAlunosEmTurmas({
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
   const [errorMessage, setErrorMessage] = useState<any>("");
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+
+  async function getAlunoTurma() {
+    const resAluno = await apiRequest.get("aluno");
+  const resTurma = await apiRequest.get("turma/" + router.query.turma_id);
+    if (resAluno.data) {
+      setAluno(resAluno.data);
     }
-    setData(turma);
-    console.log('aqui é o router.query: ', router.query)
-    //erros
+    setData(resTurma.data)
+  }
+  useEffect(() => {
+    getAlunoTurma();
   }, []);
+
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -208,19 +209,4 @@ export default function CadastroAlunosEmTurmas({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps({query}) {
-  const resAluno = await apiRequest.get("aluno");
-  const resTurma = await apiRequest.get("turma/" + query.turma_id);
-  if (!resAluno ||!resAluno.data ) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAluno.data,
-      turma: resTurma.data,
-      error: null,
-    },
-  };
 }

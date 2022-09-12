@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import IconButton from '@mui/material/IconButton';
 import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
@@ -32,12 +32,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const theme = createTheme();
 
-export default function Cadastro({
-  listaDisciplinas: listaDisciplinas,
-  listaProfessores: listaProfessores,
-  listaCursos: listaCursos,
-  error,
-}) {
+export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const [professor, setProfessor] = useState<any>([]);
@@ -48,21 +43,28 @@ export default function Cadastro({
   const [errorMessage, setErrorMessage] = useState<any>("");
   const router = useRouter();
 
+  async function getDadosPraEditar() {
+    const resProfessor = await apiRequest.get("professor");
+    const resDisciplina = await apiRequest.get("disciplina");
+    const resCursos = await apiRequest.get("curso");
+    if (resProfessor.data) {
+      setProfessor(resProfessor.data);
+    }
+    if (resDisciplina.data) {
+      setDisciplina(resDisciplina.data);
+    }
+    if (resCursos.data) {
+      setCurso(resCursos.data);
+    } else {
+      console.log("erro");
+    }
+  }
   useEffect(() => {
-    if (listaDisciplinas) {
-      setDisciplina(listaDisciplinas);
-    }
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
-    }
-    if (listaCursos) {
-      setCurso(listaCursos);
-    }
-    //erros
+    getDadosPraEditar();
   }, []);
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
-      router.push("/disciplina/portal");
+      router.back();
     }
     setData(router.query);
   }, []);
@@ -80,7 +82,7 @@ export default function Cadastro({
     apiRequest
       .put("turma/" + router.query.id, { ...data })
       .then((result) => {
-        router.push("/turma/portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -281,7 +283,7 @@ export default function Cadastro({
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/turma/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
@@ -291,30 +293,4 @@ export default function Cadastro({
       </Container>
     </ThemeProvider>
   );
-}
-
-export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get("professor"); //lista de professores
-  const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
-  const resCursos = await apiRequest.get("curso");
-  console.log("aaa", resDisciplina);
-  if (
-    !resProfessor ||
-    !resDisciplina ||
-    !resCursos ||
-    !resProfessor.data ||
-    !resDisciplina.data ||
-    !resCursos.data
-  ) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaProfessores: resProfessor.data,
-      listaDisciplinas: resDisciplina.data,
-      listaCursos: resCursos.data,
-      error: null,
-    },
-  };
 }

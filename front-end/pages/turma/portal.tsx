@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -14,17 +14,21 @@ import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
+export default function PortalDaTurma() {
   const [turma, setTurma] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
+  
+  async function getTurma() {
+    const resTurmas = await apiRequest.get("turma");
+    if (resTurmas.data) {
+      setTurma(resTurmas.data);
+    } else {
+      console.log("erro");
     }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getTurma();
   }, []);
   return (
     <div className={styles.container}>
@@ -106,36 +110,4 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const resTurmas = await apiRequest.get("turma");
-    if (!resTurmas || !resTurmas.data) {
-      return { props: { error: "Falha ao carregar conteúdo" } };
-    }
-
-    return {
-      props: {
-        listaTurmas: resTurmas.data,
-        error: null,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-    if (err.response.data.statusCode === 401) {
-      return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
-      };
-    }
-    return {
-      props: {
-        listaAlunos: [],
-        error: err.response.data.message,
-      },
-    };
-  }
 }

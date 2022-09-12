@@ -17,18 +17,15 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
+import { apiRequest } from "../../../util/apiRequest";
 const theme = createTheme();
 
-export default function CadastroAlunosEmCursos({
-  listaAlunos: listaAlunos,
-  error,
-}) {
+export default function CadastroAlunosEmCursos() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -37,13 +34,17 @@ export default function CadastroAlunosEmCursos({
   const [close, setClose] = useState(false);
   const [errorMessage, setErrorMessage] = useState<any>("");
   
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+  async function getAlunoNoCurso() {
+    const resAluno = await apiRequest.get("aluno");
+    if (resAluno.data) {
+      setAluno(resAluno.data);
+    } else {
+      console.log("erro");
     }
     setData(router.query);
-    console.log(router.query.id);
-    //erros
+  }
+  useEffect(() => {
+    getAlunoNoCurso();
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -56,7 +57,7 @@ export default function CadastroAlunosEmCursos({
       .post("curso/" + router.query.id, {...data, curso_id: data.id})
       .then((result) => {
         setOpen(true);
-        router.push("/curso/portal");
+        router.back();
         console.log("ok");
         console.log(data)
       })
@@ -140,7 +141,6 @@ export default function CadastroAlunosEmCursos({
                   disabled
                   fullWidth
                   id="nome"
-                  label="Curso"
                   name="nome"
                   autoComplete="nome"
                   onChange={handleText}
@@ -197,7 +197,7 @@ export default function CadastroAlunosEmCursos({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/curso/portal" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -208,17 +208,4 @@ export default function CadastroAlunosEmCursos({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps() {
-  const resAluno = await apiRequest.get("aluno");
-  if (!resAluno ||!resAluno.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAluno.data,
-      error: null,
-    },
-  };
 }

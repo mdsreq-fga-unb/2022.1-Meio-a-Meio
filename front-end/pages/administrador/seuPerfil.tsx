@@ -1,22 +1,22 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import { useRouter } from "next/router";
-import React, { useState, ChangeEvent, useEffect } from "react";
+import React, { useState, ChangeEvent, useEffect, useContext } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
+import { AuthContext } from "../../context/AuthContext";
+import { parseCookies } from "nookies";
+import { getAPIClient } from "../../util/axios";
 
-export default function PerfilAdministrador({ dadosAdm }) {
+export default function PerfilAdministrador() {
   const [administrador, setAdm] = useState<any>([]);
   const router = useRouter();
-
-  useEffect(() => {
-    setAdm(dadosAdm);
-  }, []);
+  const { user } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
@@ -45,7 +45,7 @@ export default function PerfilAdministrador({ dadosAdm }) {
                     Nome
                   </TableCell>
                   <TableCell align="right">
-                    {administrador?.nome_completo}
+                    {user.nome_completo}
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -53,40 +53,40 @@ export default function PerfilAdministrador({ dadosAdm }) {
                     Matrícula
                   </TableCell>
                   <TableCell align="right">
-                    {administrador?.matricula || ""}
+                    {user.matricula || ""}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" variant="head">
                     Celular
                   </TableCell>
-                  <TableCell align="right">{administrador?.celular}</TableCell>
+                  <TableCell align="right">{user.celular}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" variant="head">
                     CPF
                   </TableCell>
-                  <TableCell align="right">{administrador?.cpf}</TableCell>
+                  <TableCell align="right">{user.cpf}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" variant="head">
                     Data de Nascimento
                   </TableCell>
                   <TableCell align="right">
-                    {administrador?.data_de_nascimento}
+                    {user.data_de_nascimento}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" variant="head">
                     RG/RNE
                   </TableCell>
-                  <TableCell align="right">{administrador?.rg_rne}</TableCell>
+                  <TableCell align="right">{user.rg_rne}</TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell align="left" variant="head">
                     Email
                   </TableCell>
-                  <TableCell align="right">{administrador?.email}</TableCell>
+                  <TableCell align="right">{user.email}</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ display: "flex", flexDirection: "column" }}
@@ -98,14 +98,4 @@ export default function PerfilAdministrador({ dadosAdm }) {
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps({ query }) {
-  const resDadosAdm = await apiRequest.get("administrador/" + query.id); //pegar a partir do login
-  return {
-    props: {
-      dadosAdm: resDadosAdm.data,
-      error: null,
-    },
-  };
 }

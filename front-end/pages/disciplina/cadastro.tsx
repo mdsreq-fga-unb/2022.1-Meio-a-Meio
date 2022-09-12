@@ -10,14 +10,14 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import { Select, MenuItem, Collapse, Alert, IconButton, FormHelperText } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
-export default function Cadastro({listaProfessores, listaCursos, error}) {
+export default function Cadastro() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -26,14 +26,20 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
   const [errorMessage, setErrorMessage] = useState<any>("");
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  async function getDadosParaEditarDisciplina() {
+    const resProfessor = await apiRequest.get("professor");
+    const resCurso = await apiRequest.get("curso");
+    if (resProfessor.data) {
+      setProfessor(resProfessor.data);
+    }
+    if (resCurso.data) {
+      setCurso(resCurso.data);
+    } else {
+      console.log("erro");
+    }
+  }
   useEffect(() => {
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
-    }
-    if (listaCursos) {
-      setCurso(listaCursos);
-    }
-    //erros
+    getDadosParaEditarDisciplina();
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -44,7 +50,7 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
     apiRequest
       .post("disciplina", { ...data })
       .then((result) => {
-        router.push("/disciplina/portal");
+        router.back();
       })
       .catch((err) => {
         setErrorMessage(err.response.data.message);
@@ -245,7 +251,7 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/disciplina/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
@@ -255,20 +261,4 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
       </Container>
     </ThemeProvider>
   );
-}
-
-export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get('professor') //lista de professoress
-  const resCurso = await apiRequest.get('curso')
-  if(!resProfessor || !resCurso || !resProfessor.data || !resCurso.data){
-    return {props: {error: 'Falha ao carregar conteúdo'}}
-  }
-
-  return {
-    props: {
-      listaProfessores: resProfessor.data,
-      listaCursos: resCurso.data,
-      error: null,
-    },
-  };
 }

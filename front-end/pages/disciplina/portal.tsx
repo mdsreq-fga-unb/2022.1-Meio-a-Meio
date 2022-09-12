@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -14,21 +14,22 @@ import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-export default function PortalDaDisciplina({
-  listaDisciplinas: listaDisciplinas,
-  error,
-}) {
+export default function PortalDaDisciplina() {
   const [disciplina, setDisciplina] = useState<any>([]);
   const router = useRouter();
-  useEffect(() => {
-    if (listaDisciplinas) {
-      setDisciplina(listaDisciplinas);
-      console.log(disciplina);
+
+  async function getDisciplina() {
+    const resDisciplinas = await apiRequest.get("disciplina");
+    if (resDisciplinas.data) {
+      setDisciplina(resDisciplinas.data);
+    } else {
+      console.log("erro");
     }
-    console.log(listaDisciplinas);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getDisciplina();
   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -99,36 +100,4 @@ export default function PortalDaDisciplina({
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  try {
-    const resDisciplinas = await apiRequest.get("disciplina");
-    if (!resDisciplinas || !resDisciplinas.data) {
-      return { props: { error: "Falha ao carregar conteúdo" } };
-    }
-
-    return {
-      props: {
-        listaDisciplinas: resDisciplinas.data,
-        error: null,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-    if (err.response.data.statusCode === 401) {
-      return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
-      };
-    }
-    return {
-      props: {
-        listaAlunos: [],
-        error: err.response.data.message,
-      },
-    };
-  }
 }

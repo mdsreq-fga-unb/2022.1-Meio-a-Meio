@@ -22,7 +22,7 @@ import FormControl from "@mui/material/FormControl";
 import NativeSelect from "@mui/material/NativeSelect";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import FormHelperText from "@mui/material/FormHelperText";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -73,7 +73,7 @@ export default function Cadastro() {
       .post("professor", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push("/professor/portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -518,7 +518,7 @@ export default function Cadastro() {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/professor/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>

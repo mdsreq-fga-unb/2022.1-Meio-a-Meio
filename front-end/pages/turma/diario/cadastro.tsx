@@ -18,7 +18,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Checkbox from "@mui/material/Checkbox";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import FormHelperText from "@mui/material/FormHelperText";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -30,24 +30,24 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 const theme = createTheme();
 
-export default function CadastroDiarioDeAula({
-  listaTurmas: listaTurmas,
-  error,
-}) {
+export default function CadastroDiarioDeAula() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
   const [turma, setTurma] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-  useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
+  
+  async function getPraDiarioTurma() {
+  const resTurma = await apiRequest.get("turma/" + router.query.turma_id);
+    if (resTurma.data) {
+      setTurma(resTurma.data);
     }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getPraDiarioTurma();
   }, []);
+
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -60,7 +60,7 @@ export default function CadastroDiarioDeAula({
       .post("diario/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/turma/detalhes");
+        router.back()
         console.log("ok");
       })
       .catch((err) => {
@@ -245,7 +245,7 @@ export default function CadastroDiarioDeAula({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/turma/detalhes" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -256,18 +256,4 @@ export default function CadastroDiarioDeAula({
       </Container>
     </ThemeProvider>
   );
-}
-
-export async function getServerSideProps() {
-  const resTurma = await apiRequest.get("turma");
-  if (!resTurma || !resTurma.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaTurmas: resTurma.data,
-      error: null,
-    },
-  };
 }

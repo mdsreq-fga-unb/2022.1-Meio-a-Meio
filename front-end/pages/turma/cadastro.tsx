@@ -15,11 +15,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import apiRequest from "../../util/apiRequest";
-import IconButton from '@mui/material/IconButton';
-import Alert from '@mui/material/Alert';
-import Collapse from '@mui/material/Collapse';
+import { apiRequest } from "../../util/apiRequest";
+import IconButton from "@mui/material/IconButton";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import Moment from "moment";
+
 import {
   Select,
   MenuItem,
@@ -32,12 +34,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 const theme = createTheme();
 
-export default function Cadastro({
-  listaDisciplinas: listaDisciplinas,
-  listaProfessores: listaProfessores,
-  listaCursos: listaCursos,
-  error,
-}) {
+export default function Cadastro() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const [professor, setProfessor] = useState<any>([]);
@@ -48,22 +45,26 @@ export default function Cadastro({
   const [errorMessage, setErrorMessage] = useState<any>("");
   const router = useRouter();
 
+  async function getDadosPraCadastro() {
+    const resProfessor = await apiRequest.get("professor");
+    const resDisciplina = await apiRequest.get("disciplina");
+    const resCursos = await apiRequest.get("curso");
+    if (resProfessor.data) {
+      setProfessor(resProfessor.data);
+    }
+    if (resDisciplina.data) {
+      setDisciplina(resDisciplina.data);
+    }
+    if (resCursos.data) {
+      setCurso(resCursos.data);
+    } else {
+      console.log("erro");
+    }
+  }
   useEffect(() => {
-    if (listaDisciplinas) {
-      setDisciplina(listaDisciplinas);
-    }
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
-    }
-    if (listaCursos) {
-      setCurso(listaCursos);
-    }
-    console.log(listaDisciplinas);
-    console.log(listaProfessores);
-    console.log(listaCursos);
-    console.log(error);
-    //erros
+    getDadosPraCadastro();
   }, []);
+
   const handleDate = (e: SelectChangeEvent<HTMLInputElement>) => {
     console.log(e);
     const formatedData = Moment(e).format("yyyy/MM/DD");
@@ -78,7 +79,7 @@ export default function Cadastro({
     apiRequest
       .post("turma", { ...data })
       .then((result) => {
-        router.push("/turma/portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -224,9 +225,7 @@ export default function Cadastro({
                     </MenuItem>
                   ))}
                 </Select>
-                <FormHelperText error>
-                  {errors.curso}
-                </FormHelperText>
+                <FormHelperText error>{errors.curso}</FormHelperText>
               </Grid>
             </Grid>
             <Button
@@ -239,7 +238,7 @@ export default function Cadastro({
             </Button>
             <Collapse in={open}>
               <Alert
-              severity="success"
+                severity="success"
                 action={
                   <IconButton
                     aria-label="close"
@@ -259,7 +258,7 @@ export default function Cadastro({
             </Collapse>
             <Collapse in={close}>
               <Alert
-              severity="error"
+                severity="error"
                 action={
                   <IconButton
                     aria-label="close"
@@ -279,7 +278,7 @@ export default function Cadastro({
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/turma/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                   Retornar ao Menu Principal
                 </Link>
               </Grid>
@@ -289,30 +288,4 @@ export default function Cadastro({
       </Container>
     </ThemeProvider>
   );
-}
-
-export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get("professor"); //lista de professores
-  const resDisciplina = await apiRequest.get("disciplina"); //lista de disciplinas
-  const resCursos = await apiRequest.get("curso");
-  console.log("aaa", resDisciplina);
-  if (
-    !resProfessor ||
-    !resDisciplina ||
-    !resCursos ||
-    !resProfessor.data ||
-    !resDisciplina.data ||
-    !resCursos.data
-  ) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaProfessores: resProfessor.data,
-      listaDisciplinas: resDisciplina.data,
-      listaCursos: resCursos.data,
-      error: null,
-    },
-  };
 }

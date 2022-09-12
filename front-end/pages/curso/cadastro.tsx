@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import IconButton from '@mui/material/IconButton';
 import Alert from '@mui/material/Alert';
 import Collapse from '@mui/material/Collapse';
@@ -42,7 +42,7 @@ export default function Cadastro() {
       .post("curso", { ...data})
       .then((result) => {
         setOpen(true);
-        router.push('/curso/portal')
+        router.back()
         console.log("ok");
       })
       .catch((err) => {
@@ -176,7 +176,7 @@ export default function Cadastro() {
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/curso/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                 Retornar ao Menu Principal
                 </Link>
               </Grid>

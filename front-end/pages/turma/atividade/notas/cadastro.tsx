@@ -17,7 +17,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../../util/apiRequest";
+import {apiRequest} from "../../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -25,10 +25,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroNotas({
-  listaAlunos: listaAlunos,
-  error,
-}) {
+export default function CadastroNotas() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -37,14 +34,16 @@ export default function CadastroNotas({
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
   
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+  async function getAlunosPraNotas() {
+    const resAluno = await apiRequest.get("aluno");
+      if (resAluno.data) {
+        setAluno(resAluno.data);
+      }
+      setData({atividade_id: router.query.atividade_id, nome: router.query.nome})
     }
-    setData({atividade_id: router.query.atividade_id, nome: router.query.nome})
-    console.log(error);
-    //erros
-  }, []);
+    useEffect(() => {
+      getAlunosPraNotas();
+    }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -233,17 +232,4 @@ export default function CadastroNotas({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps(query) {
-  const resAluno = await apiRequest.get("aluno");
-  if (!resAluno |!resAluno.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAluno.data,
-      error: null,
-    },
-  };
 }
