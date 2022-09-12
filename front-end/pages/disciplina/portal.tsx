@@ -20,6 +20,7 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
   useEffect(() => {
     if (listaDisciplinas) {
       setDisciplina(listaDisciplinas);
+      console.log(disciplina)
     }
     console.log(listaDisciplinas);
     console.log(error);
@@ -50,6 +51,7 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
+                  <TableCell align="center">Professor</TableCell>
                   <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
@@ -61,20 +63,16 @@ export default function PortalDaDisciplina({listaDisciplinas: listaDisciplinas, 
                     </TableCell>
                     <TableCell align="center">
                       {row.nome_disciplina}
-                      <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => router.push({pathname: "/curso/aluno/cadastro", query: {...row}})}
-                      >
-                       < BuildCircleIcon color="primary"/>
-                      </IconButton>
+                    </TableCell>
+                    <TableCell align="center">
+                      {row.professor?.nome_completo || ""}
                     </TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/disciplina/editar", query: {...row}})}
+                        onClick={() => router.push({pathname: "/disciplina/editar", query: {...row, professor: row.professor?.id}})}
                       >
                         <ModeEditIcon />
                       </IconButton>

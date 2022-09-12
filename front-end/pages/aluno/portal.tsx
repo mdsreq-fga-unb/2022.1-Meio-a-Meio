@@ -55,7 +55,6 @@ export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) 
                   <TableCell align="center">Nome</TableCell>
                   <TableCell align="center">Matricula</TableCell>
                   <TableCell align="center">Especialização</TableCell>
-                  {/* <TableCell align="center">Status</TableCell> */}
                   <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>

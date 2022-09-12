@@ -17,7 +17,6 @@ export default function PortalDoAlunoNaTurma() {
   const [alunoTurma, setAlunoTurma] = useState<any>([]);
   const router = useRouter();
   async function getAlunosTurma(){
-    console.log('router.quer aqui ', router.query)
     
     const resAlunosTurma = await apiRequest.get("turma/alunos/" + router.query.detalhes);
     if (resAlunosTurma.data) {
@@ -90,8 +89,4 @@ export default function PortalDoAlunoNaTurma() {
       </Layout>
     </div>
   );
-}
-
-export async function getStaticProps({params}){
-  console.log('params ', params)
 }

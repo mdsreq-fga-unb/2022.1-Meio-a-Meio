@@ -8,6 +8,7 @@ import PortalDoDiarioTurma from "./diario/listar";
 import CadastroListaPresenca from "./listaPresenca/cadastro";
 import PortalDaPresencaTurma from "./listaPresenca/listar";
 import PortalDaAtividadeTurma from "./atividade/listar";
+import PortalDaNota from "./atividade/notas/listar";
 export default function MuiTabs  ()  {
   const[value, setValue] = useState('1')
   const [aluno, setAluno] = useState<any>([]);
@@ -34,7 +35,7 @@ export default function MuiTabs  ()  {
         <TabPanel value='2'> <PortalDaPresencaTurma/> </TabPanel>
         <TabPanel value='3'> <PortalDoDiarioTurma/> </TabPanel>
         <TabPanel value='4'><PortalDaAtividadeTurma/></TabPanel>
-        <TabPanel value='4'>Falta fazer esse painel</TabPanel>
+        <TabPanel value='5'> <PortalDaNota/> </TabPanel>
       </TabContext>
     </Box>
   );

@@ -10,17 +10,12 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 
-export default function PerfilAdministrador() {
+export default function PerfilAdministrador({ dadosAdm }) {
   const [administrador, setAdm] = useState<any>([]);
   const router = useRouter();
-  async function getDadosAdm(){
-    const resDadosAdm = await apiRequest.get("administrador/" + router.query.id);
-    if (resDadosAdm.data) {
-      setAdm(resDadosAdm.data);
-    }
-  }
+
   useEffect(() => {
-    getDadosAdm();
+    setAdm(dadosAdm);
   }, []);
 
   return (
@@ -45,35 +40,72 @@ export default function PerfilAdministrador() {
               aria-label="a dense table"
             >
               <TableHead>
-                <TableRow sx={{ display: "flex", flexDirection: "column" }}>
-                  <TableCell align="left">Nome</TableCell>
-                  <TableCell align="left">Matrícula</TableCell>
-                  <TableCell align="left">Celular</TableCell>
-                  <TableCell align="left">CPF</TableCell>
-                  <TableCell align="left">Data de Nascimento</TableCell>
-                  <TableCell align="left">RG/RNE</TableCell>
-                  <TableCell align="left">Email</TableCell>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    Nome
+                  </TableCell>
+                  <TableCell align="right">
+                    {administrador?.nome_completo}
+                  </TableCell>
                 </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    Matrícula
+                  </TableCell>
+                  <TableCell align="right">
+                    {administrador?.matricula || ""}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    Celular
+                  </TableCell>
+                  <TableCell align="right">{administrador?.celular}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    CPF
+                  </TableCell>
+                  <TableCell align="right">{administrador?.cpf}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    Data de Nascimento
+                  </TableCell>
+                  <TableCell align="right">
+                    {administrador?.data_de_nascimento}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    RG/RNE
+                  </TableCell>
+                  <TableCell align="right">{administrador?.rg_rne}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell align="left" variant="head">
+                    Email
+                  </TableCell>
+                  <TableCell align="right">{administrador?.email}</TableCell>
+                </TableRow>
+                <TableRow
+                  sx={{ display: "flex", flexDirection: "column" }}
+                ></TableRow>
               </TableHead>
-              <TableBody>
-                {administrador.map((row, index) => (
-                  <TableRow key={index} sx={{ display: "flex", flexDirection: "column" }}>
-                    <TableCell align="right">{row.nome_completo}</TableCell>
-                    <TableCell align="right">{row.matricula || ""}</TableCell>
-                    <TableCell align="right">{row.celular}</TableCell>
-                    <TableCell align="right">{row.cpf}</TableCell>
-                    <TableCell align="right">
-                      {row.data_de_nascimento}
-                    </TableCell>
-                    <TableCell align="right">{row.rg_rne}</TableCell>
-                    <TableCell align="right">{row.email}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
             </Table>
           </div>
         </main>
       </Layout>
     </div>
   );
+}
+
+export async function getServerSideProps({ query }) {
+  const resDadosAdm = await apiRequest.get("administrador/" + query.id); //pegar a partir do login
+  return {
+    props: {
+      dadosAdm: resDadosAdm.data,
+      error: null,
+    },
+  };
 }

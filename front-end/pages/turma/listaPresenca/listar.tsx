@@ -11,18 +11,16 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Link from "@mui/material/Link";
 
 export default function PortalDaPresencaTurma() {
   const [presencaTurma, setPresencaTurma] = useState<any>([]);
   const router = useRouter();
   async function getPresencasTurma(){
-    const resPresencassTurma = await apiRequest.get("turma/listaPresenca/" + router.query.detalhes);
-    if (resPresencassTurma.data) {
-      setPresencaTurma(resPresencassTurma.data);
+    const resPresencasTurma = await apiRequest.get("turma/listaPresenca/" + router.query.detalhes);
+    if (resPresencasTurma.data) {
+      setPresencaTurma(resPresencasTurma.data);
+      console.log(router.query.detalhes)
+      console.log('llalala: ', presencaTurma)
     }
   }
   useEffect(() => {
@@ -71,7 +69,7 @@ export default function PortalDaPresencaTurma() {
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "listaPresenca/cadastro", query: {turma_id: router.query.id}})}
+              onClick={() => router.push({pathname: "listaPresenca/cadastro", query: {turma_id: router.query.detalhes}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar

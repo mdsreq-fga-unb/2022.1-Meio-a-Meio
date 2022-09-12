@@ -17,7 +17,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const theme = createTheme();
 
-export default function Cadastro({listaProfessores, listaCursos, error}) {
+export default function Editar({listaProfessores, listaCursos, error}) {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -27,18 +27,19 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
   const [errorMessage, setErrorMessage] = useState<any>("");
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
       router.push("/disciplina/portal");
     }
-    setData(router.query);
-  }, []);
-  useEffect(() => {
+    setData({...router.query, carga_horaria: +router.query.carga_horaria, curso: router.query.cursoId});
+    console.log('oia eu aqui ',{ ...router.query, curso: router.query.cursoId})
     if (listaProfessores) {
       setProfessor(listaProfessores);
     }
     if (listaCursos) {
       setCurso(listaCursos);
+      console.log(listaCursos)
     }
     //erros
   }, []);
@@ -128,7 +129,6 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
                   helperText={errors.nome_disciplina || null}
                   fullWidth
                   id="nome_disciplina"
-                  label="Nome da Disciplina"
                   name="nome_disciplina"
                   autoComplete="nome_disciplina"
                   onChange={handleText}
@@ -142,7 +142,6 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
                   helperText={errors.carga_horaria || null}
                   fullWidth
                   id="carga_horaria"
-                  label="Carga Horária"
                   name="carga_horaria"
                   onChange={handleNumber}
                   value={data ? data.carga_horaria : ""}
@@ -208,7 +207,7 @@ export default function Cadastro({listaProfessores, listaCursos, error}) {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Cadastrar Disciplina
+              Editar Disciplina
             </Button>
             <Collapse in={open}>
               <Alert

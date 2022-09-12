@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../../../styles/Home.module.css";
+import styles from "../../../../styles/Home.module.css";
 import Layout from "../../../../component/layout";
 import apiRequest from "../../../../util/apiRequest";
 import { useRouter } from "next/router";
@@ -16,21 +16,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 
 
-export default function PortalDoAlunoNaTurma({ listaAlunos: listaAlunos, listaAtividades: listaAtividades, error }) {
+export default function PortalDaNota() {
   const [aluno, setAluno] = useState<any>([]);
+  const [notas, setNotas] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  async function getNotas(){
+    const resNotas = await apiRequest.get("atividade/listAllScores/" + router.query.detalhes);
+    if (resNotas.data) {
+      setNotas(resNotas.data);
+    }
+  }
   useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
-    }
-    if (listaAtividades) {
-      setAluno(listaAtividades);
-    }
-    
-    console.log(listaAlunos);
-    console.log(error);
-    //erros
+    getNotas();
   }, []);
 
   return (
