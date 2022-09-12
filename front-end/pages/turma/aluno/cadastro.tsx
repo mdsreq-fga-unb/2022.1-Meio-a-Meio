@@ -71,10 +71,10 @@ export default function CadastroAlunosEmTurmas({
   };
 
   const handleCheckData = () => {
-    const { aluno_id } = data;
+    const { id } = data;
     let emptyFields: any = {};
-    if (!aluno_id || aluno_id.length === 0) {
-      emptyFields.aluno_id = "Aluno Inválido";
+    if (!id || id.length === 0) {
+      emptyFields.id = "Aluno Inválido";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -112,18 +112,18 @@ export default function CadastroAlunosEmTurmas({
             <Grid container spacing={2}>
             <Grid item xs={4}>
                 <FormControl sx={{ m: 0, minWidth: 150 }}>
-                  <InputLabel id="aluno_id" required>
+                  <InputLabel id="id" required>
                     Aluno
                   </InputLabel>
                   <Select
                     required
                     fullWidth
-                    error={errors.aluno_id ? true : false}
+                    error={errors.id ? true : false}
                     onChange={(e) =>
-                      setData({ ...data, aluno_id: e.target.value })
+                      setData({ ...data, id: e.target.value })
                     }
                     label={"Aluno"}
-                    value={data ? data.aluno_id : ""}
+                    value={data ? data.id : ""}
                   >
                     {aluno.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
@@ -132,7 +132,7 @@ export default function CadastroAlunosEmTurmas({
                     ))}
                   </Select>
                   <FormHelperText error>
-                  {errors.aluno_id}
+                  {errors.id}
                 </FormHelperText>
                 </FormControl>
               </Grid>

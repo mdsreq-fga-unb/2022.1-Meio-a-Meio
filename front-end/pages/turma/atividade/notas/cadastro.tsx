@@ -27,7 +27,6 @@ const theme = createTheme();
 
 export default function CadastroNotas({
   listaAlunos: listaAlunos,
-  listaAtividades: listaAtividades,
   error,
 }) {
   const [data, setData] = useState<any>({});
@@ -42,10 +41,7 @@ export default function CadastroNotas({
     if (listaAlunos) {
       setAluno(listaAlunos);
     }
-    if (listaAtividades) {
-      setAtividade(listaAtividades);
-    }
-    console.log(listaAtividades);
+    setData({atividade_id: router.query.atividade_id, nome: router.query.nome})
     console.log(error);
     //erros
   }, []);
@@ -60,7 +56,7 @@ export default function CadastroNotas({
       .put("atividade/" + data.atividade_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("portal");
+        router.back();
         console.log("ok");
       })
       .catch((err) => {
@@ -82,13 +78,10 @@ export default function CadastroNotas({
   };
 
   const handleCheckData = () => {
-    const { aluno_id, atividade_id, nota } = data;
+    const { aluno_id, nota } = data;
     let emptyFields: any = {};
     if (!aluno_id || aluno_id.length === 0) {
       emptyFields.aluno_id = "Aluno Inválido";
-    }
-    if (!atividade_id || atividade_id.length === 0) {
-      emptyFields.atividade_id = "Atividade Inválida";
     }
     if (!nota || nota.length === 0) {
       emptyFields.nota = "Nota Inválida";
@@ -155,30 +148,15 @@ export default function CadastroNotas({
                 </FormControl>
               </Grid>
               <Grid item xs={4}>
-                <FormControl sx={{ m: 0, minWidth: 150 }}>
-                  <InputLabel id="atividade" required>
-                    Atividade
-                  </InputLabel>
-                  <Select
-                    required
-                    fullWidth
-                    error={errors.atividade_id ? true : false}
-                    onChange={(e) =>
-                      setData({ ...data, atividade_id: e.target.value })
-                    }
-                    label={"Atividade"}
-                    value={data ? data.atividade_id : ""}
-                  >
-                    {atividade.map((i, index) => (
-                      <MenuItem key={index} value={i.id}>
-                        {i.nome}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                  <FormHelperText error>
-                  {errors.atividade_id}
-                </FormHelperText>
-                </FormControl>
+                <TextField
+                disabled
+                  fullWidth
+                  id="nome"
+                  name="nome"
+                  autoComplete="nome"
+                  onChange={handleText}
+                  value={data ? data.nome : ""}
+                />
               </Grid>
               <Grid item xs={2.15}>
                 <TextField
@@ -244,7 +222,7 @@ export default function CadastroNotas({
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="portal" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -256,17 +234,15 @@ export default function CadastroNotas({
     </ThemeProvider>
   );
 }
-export async function getServerSideProps() {
+export async function getServerSideProps(query) {
   const resAluno = await apiRequest.get("aluno");
-  const resAtividade = await apiRequest.get("atividade");
-  if (!resAluno || !resAtividade ||!resAluno.data || !resAtividade.data) {
+  if (!resAluno |!resAluno.data) {
     return { props: { error: "Falha ao carregar conteúdo" } };
   }
 
   return {
     props: {
       listaAlunos: resAluno.data,
-      listaAtividades: resAtividade.data,
       error: null,
     },
   };

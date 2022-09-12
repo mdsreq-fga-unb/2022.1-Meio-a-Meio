@@ -16,10 +16,11 @@ import Alert from "@mui/material/Alert";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const theme = createTheme();
 
-export default function Home() {
+export default function Login() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
@@ -98,13 +99,14 @@ export default function Home() {
                 margin="normal"
                 required
                 fullWidth
-                id="matricula"
-                label="Matrícula"
-                name="matricula"
-                autoComplete="matricula"
-                value={data ? data.matricula : ""}
-                error={errors.matricula ? true : false}
-                helperText={errors.matricula || null}
+                id="email"
+                label="E-mail"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={data ? data.email : ""}
+                error={errors.email ? true : false}
+                helperText={errors.email || null}
                 onChange={handleText}
                 autoFocus
               />
@@ -112,20 +114,20 @@ export default function Home() {
                 margin="normal"
                 required
                 fullWidth
-                name="senha"
+                name="password"
                 label="Senha"
                 type="password"
-                id="senha"
+                id="password"
                 autoComplete="current-password"
-                value={data ? data.senha : ""}
-                error={errors.senha ? true : false}
-                helperText={errors.senha || null}
+                value={data ? data.password : ""}
+                error={errors.password ? true : false}
+                helperText={errors.password || null}
                 onChange={handleText}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Lembre-se de mim"
-              />
+              /> 
               <Button
                 type="submit"
                 fullWidth
@@ -175,11 +177,11 @@ export default function Home() {
               </Alert>
             </Collapse>
               <Grid container>
-                <Grid item xs>
+                {/* <Grid item xs>
                   <Link href="/administrador/esqueceuASenha" variant="body2">
                     Esqueceu a senha?
                   </Link>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Link href="/administrador/cadastro" variant="body2">
                     {"Não possui uma conta? Inscreva-se"}

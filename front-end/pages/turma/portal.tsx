@@ -12,7 +12,7 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
 export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
   const [turma, setTurma] = useState<any>([]);
@@ -61,13 +61,18 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                       {row.id}
                     </TableCell>
                     <TableCell align="center">
-                    {row.nome_turma}
+                      {row.nome_turma}
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/turma/[detalhes]", query: {detalhes: row.id}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/turma/[detalhes]",
+                            query: { detalhes: row.id },
+                          })
+                        }
                       >
-                       < BuildCircleIcon color="primary"/>
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
                     </TableCell>
                     <TableCell align="center">
@@ -75,7 +80,12 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/turma/editar", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/turma/editar",
+                            query: { ...row },
+                          })
+                        }
                       >
                         <ModeEditIcon />
                       </IconButton>
@@ -99,15 +109,33 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
 }
 
 export async function getServerSideProps() {
-  const resTurmas = await apiRequest.get("turma");
-  if (!resTurmas || !resTurmas.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
+  try {
+    const resTurmas = await apiRequest.get("turma");
+    if (!resTurmas || !resTurmas.data) {
+      return { props: { error: "Falha ao carregar conteúdo" } };
+    }
 
-  return {
-    props: {
-      listaTurmas: resTurmas.data,
-      error: null,
-    },
-  };
+    return {
+      props: {
+        listaTurmas: resTurmas.data,
+        error: null,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    if (err.response.data.statusCode === 401) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+    return {
+      props: {
+        listaAlunos: [],
+        error: err.response.data.message,
+      },
+    };
+  }
 }

@@ -13,19 +13,23 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
-
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
 
 export default function PortalDaNota() {
   const [aluno, setAluno] = useState<any>([]);
   const [notas, setNotas] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  async function getNotas(){
-    const resNotas = await apiRequest.get("atividade/listAllScores/" + router.query.detalhes);
+  async function getNotas() {
+    const resNotas = await apiRequest.get(
+      "atividade/listAllScores/" + router.query.idAtividade
+    );
     if (resNotas.data) {
       setNotas(resNotas.data);
     }
+    console.log(resNotas.data)
   }
   useEffect(() => {
     getNotas();
@@ -55,57 +59,36 @@ export default function PortalDaNota() {
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Aluno</TableCell>
-                  <TableCell align="center">Atividade</TableCell>
                   <TableCell align="center">Nota</TableCell>
-                  <TableCell align="center">Deletar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {aluno.map((row, index) => (
+                {notas.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
-                    <TableCell align="center">{row.nome_turma || ""}</TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                        onClick={() => apiRequest.put("turma/" + row.turma_id, { ...row })}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
+                    <TableCell align="center">{row.nome_completo}</TableCell>
+                    <TableCell align="center">{row.nota || ""}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
+
             <Button
               variant="outlined"
-              onClick={() => router.push("cadastro")}
+              onClick={() => router.push({pathname: "cadastro", query: {atividade_id: router.query.idAtividade, nome: router.query.nomeAtividade}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
             </Button>
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Link onClick={() => router.back()} variant="body2">
+                  Retornar ao Menu Principal
+                </Link>
+              </Grid>
+            </Grid>
           </div>
         </main>
       </Layout>
     </div>
   );
-}
-export async function getServerSideProps() {
-  const resAlunos = await apiRequest.get("aluno");
-  const resAtividades = await apiRequest.get("atividade");
-  if (!resAlunos || !resAtividades || !resAlunos.data || !resAtividades.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAlunos.data,
-      listaAtividades: resAtividades.data,
-      error: null,
-    },
-  };
 }

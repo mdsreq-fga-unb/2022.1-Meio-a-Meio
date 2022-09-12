@@ -12,9 +12,8 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
-
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
 export default function PortalDoCurso({ listaCursos, error }) {
   const [curso, setCurso] = useState<any>([]);
@@ -67,18 +66,28 @@ export default function PortalDoCurso({ listaCursos, error }) {
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/curso/aluno/cadastro", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/curso/aluno/cadastro",
+                            query: { ...row },
+                          })
+                        }
                       >
-                       < BuildCircleIcon color="primary"/>
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
-                      </TableCell>
+                    </TableCell>
                     <TableCell align="center">{row.unidade || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/curso/editar",
+                            query: { ...row },
+                          })
+                        }
                       >
                         <ModeEditIcon />
                       </IconButton>
@@ -102,15 +111,33 @@ export default function PortalDoCurso({ listaCursos, error }) {
 }
 
 export async function getServerSideProps() {
-  const resCursos = await apiRequest.get("curso");
-  if (!resCursos || !resCursos.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
+  try {
+    const resCursos = await apiRequest.get("curso");
+    if (!resCursos || !resCursos.data) {
+      return { props: { error: "Falha ao carregar conteúdo" } };
+    }
 
-  return {
-    props: {
-      listaCursos: resCursos.data,
-      error: null,
-    },
-  };
+    return {
+      props: {
+        listaCursos: resCursos.data,
+        error: null,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    if (err.response.data.statusCode === 401) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+    return {
+      props: {
+        listaAlunos: [],
+        error: err.response.data.message,
+      },
+    };
+  }
 }

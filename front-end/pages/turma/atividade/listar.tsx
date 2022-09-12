@@ -11,7 +11,8 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
 export default function PortalDaAtividadeTurma() {
   const [atividadeTurma, setAtividadeTurma] = useState<any>([]);
@@ -58,6 +59,18 @@ export default function PortalDaAtividadeTurma() {
                   <TableRow key={index}>
                     <TableCell align="center">
                       {row.nome}
+                      <IconButton
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() =>
+                          router.push({
+                            pathname: "atividade/notas/listar",
+                            query: { idAtividade: row.id, nomeAtividade: row.nome },
+                          })
+                        }
+                      >
+                        <BuildCircleIcon color="primary" />
+                      </IconButton>
                     </TableCell>
                     <TableCell align="center">
                       {row.isTest}

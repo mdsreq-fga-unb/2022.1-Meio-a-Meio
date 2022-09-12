@@ -66,9 +66,7 @@ export default function TelaProfessores({
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
+                    <TableCell align="center">{row.nome_completo}</TableCell>
                     <TableCell align="center">{row.matricula || ""}</TableCell>
                     <TableCell align="center">
                       {row.especializacao || ""}
@@ -108,15 +106,33 @@ export default function TelaProfessores({
 }
 
 export async function getServerSideProps() {
-  const resProfessores = await apiRequest.get("professor");
-  if (!resProfessores || !resProfessores.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
+  try {
+    const resProfessores = await apiRequest.get("professor");
+    if (!resProfessores || !resProfessores.data) {
+      return { props: { error: "Falha ao carregar conteúdo" } };
+    }
 
-  return {
-    props: {
-      listaProfessores: resProfessores.data,
-      error: null,
-    },
-  };
+    return {
+      props: {
+        listaProfessores: resProfessores.data,
+        error: null,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    if (err.response.data.statusCode === 401) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
+    return {
+      props: {
+        listaAlunos: [],
+        error: err.response.data.message,
+      },
+    };
+  }
 }

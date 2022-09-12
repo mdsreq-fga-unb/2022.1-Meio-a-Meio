@@ -41,9 +41,11 @@ export class TurmaController {
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
 
-  @Delete('removeAluno/:id')
-  removeAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
-    return this.turmaService.removeAluno(+idTurma, idAluno);
+  @Delete('removeAluno/:id/:alunoId')
+  removeAluno(@Param('id') idTurma: string, @Param('alunoId') idAluno: string){
+    console.log(idAluno)
+    console.log('id normal:', idTurma)
+    return this.turmaService.removeAluno(+idTurma, parseInt(idAluno));
   }
 
   @Post('addDiario/:id')

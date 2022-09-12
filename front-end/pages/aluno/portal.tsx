@@ -12,10 +12,14 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import { redirect } from "next/dist/server/api-utils";
+import id from "date-fns/esm/locale/id/index.js";
 
-
-export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) {
+export default function ListaAlunosEmTurma({
+  listaAlunos: listaAlunos,
+  error,
+}) {
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -23,8 +27,8 @@ export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) 
     if (listaAlunos) {
       setAluno(listaAlunos);
     }
-    console.log(listaAlunos);
-    console.log(error);
+    // console.log(listaAlunos);
+    // console.log(error);
     //erros
   }, []);
 
@@ -64,9 +68,7 @@ export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) 
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
+                    <TableCell align="center">{row.nome_completo}</TableCell>
                     <TableCell align="center">{row.matricula || ""}</TableCell>
                     <TableCell align="center">
                       {row.especializacao || ""}
@@ -77,7 +79,12 @@ export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) 
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/aluno/editar", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/aluno/editar",
+                            query: { ...row },
+                          })
+                        }
                       >
                         <ModeEditIcon />
                       </IconButton>
@@ -100,15 +107,33 @@ export default function ListaAlunosEmTurma({ listaAlunos: listaAlunos, error }) 
   );
 }
 export async function getServerSideProps() {
-  const resAlunos = await apiRequest.get("aluno");
-  if (!resAlunos || !resAlunos.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
+  try {
+    var resAlunos = await apiRequest.get("aluno");
+    if (!resAlunos || !resAlunos.data) {
+      console.log(resAlunos);
+      
+    }
+    return {
+      props: {
+        listaAlunos: [],
+        error: null,
+      },
+    };
+  } catch(err) {
+    console.log(err)
+      if (err.response.data.statusCode === 401) {
+        return {
+          redirect: {
+            destination: "/",
+            permanent: false,
+          },
+        };
+      }
+      return{
+        props: {
+          listaAlunos: [],
+          error: err.response.data.message,
+        },
+      };
   }
-
-  return {
-    props: {
-      listaAlunos: resAlunos.data,
-      error: null,
-    },
-  };
 }

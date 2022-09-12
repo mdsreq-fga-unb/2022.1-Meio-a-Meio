@@ -106,6 +106,7 @@ export class TurmaService {
     }
 
     const alunoExiste = turma.alunos.filter((al)=>al.id === data.id);
+    console.log('aluno existe: ', data)
     
       if(alunoExiste.length != 0){
         throw new HttpException('Aluno já cadastrado na turma.', HttpStatus.BAD_REQUEST);
@@ -125,13 +126,13 @@ export class TurmaService {
     return turma;
   }
 
-  async removeAluno(idTurma: number, idAluno: Aluno){
+  async removeAluno(idTurma: number, idAluno: number){
     const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{alunos:true}});
     if(!turma){
       throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
     }
 
-    turma.alunos = turma.alunos.filter((aluno)=>{ return aluno.id !== idAluno.id});
+    turma.alunos = turma.alunos.filter((aluno)=>{ return aluno.id !== idAluno});
     
     this.turmaRepository.save(turma);
     return turma;

@@ -30,6 +30,18 @@ export default function PortalDoAlunoNaTurma() {
     getAlunosTurma();
   }, []);
 
+  const handleDelete = async(idAluno) => {
+    console.log(router.query.detalhes)
+    console.log(idAluno)
+    apiRequest.delete(`turma/removeAluno/${router.query.detalhes}/${idAluno}`)
+    .then((data)=>{
+      console.log('data: ',data);
+    })
+    .catch((err) => {
+      console.log('erro: ', err);
+    })
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -68,7 +80,7 @@ export default function PortalDoAlunoNaTurma() {
                         color="primary"
                         aria-label="delete"
                         component="label"
-                        onClick={() => apiRequest.delete("turma/removeAluno/" + router.query.detalhes, { Aluno: row.id })}
+                        onClick={() => handleDelete(row.id)}
                       >
                         <DeleteIcon />
                       </IconButton>

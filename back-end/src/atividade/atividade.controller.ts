@@ -32,8 +32,4 @@ export class AtividadeController {
   async findAll(): Promise<Atividade[]> {
     return this.service.findAll();
   }
-  @Get(':turma_id')
-  async findAllByTurma(@Param('turma_id') turma_id: number): Promise<Atividade[]> {
-    return this.service.findAllByTurma(turma_id);
-  }
 }
