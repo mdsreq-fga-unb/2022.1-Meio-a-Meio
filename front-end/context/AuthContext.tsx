@@ -43,7 +43,12 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    getToken();
+    if(!user) {
+      router.push("/");
+    }
+    else{ 
+      getToken();
+    }
   }, []);
   
   async function signIn({ username, password }: SignInData) {
