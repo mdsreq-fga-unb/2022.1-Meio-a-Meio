@@ -258,12 +258,11 @@ pensada para executar
 Nível de Teste:
 
 - Aceitação: Simula a experiência do usuário
-- Sistema: Testa do comportamento de todo um sistema
 
 Técnica de Teste:
 
+- Manual: Não envolva ferramenta de automação
 - Caixa Branca: Teste de condição
-- Caixa Preta:
 
 ### Equipe de desenvolvimento: 
 
@@ -272,9 +271,9 @@ Técnica de Teste:
 
 ### Cliente: 
 
-- Manual 
 - Funcional
-- Aceitação/Sistema
+- Aceitação
+- Manual 
 
 ### Professor: 
 
@@ -282,11 +281,6 @@ Técnica de Teste:
 - Aceitação 
 - Manual
 
-### Cliente: 
-
-- Aceitação 
-- Caixa Preta/ Caixa Branca 
-- Manual
 
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
