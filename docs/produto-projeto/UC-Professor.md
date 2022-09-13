@@ -35,3 +35,5 @@ A2
   *RF30	Deverá ser possível visualizar notas de alunos.*<br></br>
   *RF31	Deverá ser possível registrar lista de presença em aula.*<br></br>
   *RF32	Deverá ser possível visualizar lista de presença em aula*<br></br>
+
+Para visualizar o Caso de uso [clique aqui](docs/produto-projeto/casos-de-uso.md)
