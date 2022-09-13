@@ -31,6 +31,7 @@
 |03/08/2022 | 1.9 | Atualização dos processos e procedimentos | [Bruna Lima](https://github.com/libruna) |
 |04/08/2022 | 2.0 | Ajustes no Planejamento das Fases do Projeto | [Bruna Lima](https://github.com/libruna) |
 |06/09/2022 | 2.1 | Atualização Planejamento das Fases e/ou Iterações do Projeto   | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+|13/09/2022 | 2.2 | Entregas unidade 3 e 4   | [Samuel Sato](https://github.com/samuel-sato)|
 
 ## Sumário
 
