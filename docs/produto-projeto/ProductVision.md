@@ -245,6 +245,43 @@ Com base nas caracteristicas dos frameworks utilizados e especificação da apli
 Todas as resquisições feitas pelo usuário são processadas pelo controller, manipuladas pelo model e são vistas pela view.
 ![metricas](../assets/mvc.png)
 
+### 3.3.3 Diagrama de Classes
+![diagrama-classes](../assets/diagrama_de_classes.png)
+
+
+### 3.4 Estratégia de Testes
+Tipo de Teste:
+- Funcional: Avalia se a aplicação faz, de fato, o que ela é
+pensada para executar
+
+Nível de Teste:
+- Aceitação: Simula a experiência do usuário
+- Sistema: Testa do comportamento de todo um sistema
+
+Técnica de Teste:
+- Caixa Branca: Teste de condição
+- Caixa Preta:
+
+Equipe de desenvolvimento: 
+
+- Caixa branca: Teste de condição
+- Funcional
+
+Cliente: 
+- Manual 
+- Funcional
+- Aceitação/Sistema
+
+Professor: 
+- Funcional 
+- Aceitação 
+- Manual
+
+Cliente: 
+- Aceitação 
+- Caixa Preta/ Caixa Branca 
+- Manual
+
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
 Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.
@@ -308,6 +345,7 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
    - Centralizar forma de comunicação entre os times
    - Buscar sanar dúvidas de forma mais rápida
 
+---
 ### 5.2 Unidade 2 
 ### 5.2.1 MDS 
 
@@ -324,15 +362,24 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
    - Resolução de desencontros de tempo e horário
    - Distribuição de responsabilidades
-
- <!--### 5.3 Unidade 3 
+---
+ ### 5.3 Unidade 3 
  ### 5.3.1 MDS 
+   - Conhecimentos sobre boas práticas de programação
+   - Arquitetura de MVC
+   - Construção de protótipo de baixa fidelidade
+   - Boas práticas de trabalho em grupo: Soft Skills
  ### 5.3.2 Requisitos 
  ### 5.3.3 MDS-Requisitos 
+   - Resolução de conflitos de equipe
+---
  ### 5.4 Unidade 4 
  ### 5.4.1 MDS 
+   - Estratégias para resolução de Testes
  ### 5.4.2 Requisitos 
- ### 5.4.3 MDS-Requisitos  -->
+ ### 5.4.3 MDS-Requisitos
+   - Resolução de conflitos de equipe
 
+---
 ## REFERÊNCIAS BIBLIOGRÁFICAS 
 PRESSMAN, R S. Engenharia de Software. 6.ed. São Paulo: Mc Graw Hill Internacional, 2006
