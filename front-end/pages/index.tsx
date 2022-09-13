@@ -113,10 +113,6 @@ export default function Login() {
               helperText={errors.password || null}
               onChange={handleText}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Lembre-se de mim"
-            />
             <Button
               type="submit"
               fullWidth
