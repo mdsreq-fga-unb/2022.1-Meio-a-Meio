@@ -148,7 +148,7 @@ Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
    | 3 | Equipe de desenvolvimento com conhecimento técnico baixo | Marginal |
    | 4 | Disparidade de velocidade de implantação entre equipes de desenvolvimento | Crítico |
    | 5 | Atraso do MVP 1 | Crítico |
-   
+
 ### 2.5 Critérios de Replanejamento
 
  - Alteração significativa nas regras de negocio do produto ou de escopo.
@@ -382,29 +382,42 @@ As etapas da metodologia ágil em que as atividades são feitas estão descritas
 
    - Resolução de desencontros de tempo e horário
    - Distribuição de responsabilidades
+   
 ---
  ### 5.3 Unidade 3 
  ### 5.3.1 MDS 
+ 
    - Conhecimentos sobre boas práticas de programação
    - Arquitetura de MVC
    - Construção de protótipo de baixa fidelidade
    - Boas práticas de trabalho em grupo: Soft Skills
+   
  ### 5.3.2 Requisitos 
    - Melhor entendimento sobre PBB e BDD
    - Mlehor comunicação com o cliente
+   - A importância da comunicação 
+   - A importância de ter um código bem documentado
  ### 5.3.3 MDS-Requisitos 
    - Resolução de conflitos de equipe
    - Separação de front e back-end não funciona
    - MDS precisam de ajuda intensa de Requisitos
    - Melhor entendimento sobre responsabilidades da equipe
+   - Resolução de conflitos de equipe
+   
 ---
  ### 5.4 Unidade 4 
  ### 5.4.1 MDS 
+ 
+
    - Estratégias para resolução de Testes
  ### 5.4.2 Requisitos
    - Fazer acordos, não só entre as esquipes, desde o começo de projetos
    - Fazer questão que todos estão na mesma página
+   - Outras formas de estruturar os requisitos 
+   - A importância das HardSkills para um desenvolver 
+
  ### 5.4.3 MDS-Requisitos
+ 
    - Resolução de conflitos de equipe
 
 ---
