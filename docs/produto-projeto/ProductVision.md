@@ -251,33 +251,39 @@ Todas as resquisições feitas pelo usuário são processadas pelo controller, m
 
 ### 3.4 Estratégia de Testes
 Tipo de Teste:
+
 - Funcional: Avalia se a aplicação faz, de fato, o que ela é
 pensada para executar
 
 Nível de Teste:
+
 - Aceitação: Simula a experiência do usuário
 - Sistema: Testa do comportamento de todo um sistema
 
 Técnica de Teste:
+
 - Caixa Branca: Teste de condição
 - Caixa Preta:
 
-Equipe de desenvolvimento: 
+### Equipe de desenvolvimento: 
 
-- Caixa branca: Teste de condição
+- Caixa branca
 - Funcional
 
-Cliente: 
+### Cliente: 
+
 - Manual 
 - Funcional
 - Aceitação/Sistema
 
-Professor: 
+### Professor: 
+
 - Funcional 
 - Aceitação 
 - Manual
 
-Cliente: 
+### Cliente: 
+
 - Aceitação 
 - Caixa Preta/ Caixa Branca 
 - Manual
