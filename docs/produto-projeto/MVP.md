@@ -13,7 +13,7 @@
 | FP14  |   registrar lista de presença  |
 | FP16  |   registrar diário de aula     |
 | FGM30 |   matricular aluno em curso    |
-| FGM26 |   mudar professor de turma     |
+| FGM26 |   mudar professor de disciplina     |
 | FP18  |   mudar aluno de turma         |
 | FGM31 |   registrar inadimplência      |
 
