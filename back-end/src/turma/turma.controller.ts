@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
 import { TurmaService } from './turma.service';
 import { CreateTurmaDto } from './dto/create-turma.dto';
 import { UpdateTurmaDto } from './dto/update-turma.dto';
@@ -26,7 +26,7 @@ export class TurmaController {
     return this.turmaService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateTurmaDto: UpdateTurmaDto) {
     return this.turmaService.update(+id, updateTurmaDto);
   }
@@ -41,9 +41,9 @@ export class TurmaController {
     return this.turmaService.addAluno(+idTurma, idAluno);
   }
 
-  @Delete('removeAluno/:id')
-  removeAluno(@Param('id') idTurma: string, @Body() idAluno: Aluno){
-    return this.turmaService.removeAluno(+idTurma, idAluno);
+  @Delete('removeAluno/:id/:alunoId')
+  removeAluno(@Param('id') idTurma: string, @Param('alunoId') idAluno: string){
+    return this.turmaService.removeAluno(+idTurma, parseInt(idAluno));
   }
 
   @Post('addDiario/:id')
