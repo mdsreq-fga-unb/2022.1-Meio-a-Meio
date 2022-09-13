@@ -17,6 +17,8 @@
 |17/08/2022 | 0.4 | Adição dos critérios de aceitação | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |23/08/2022 | 0.5 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |11/09/2022 | 0.6 | Retirada de requisitos | [Laura Pinos](https://github.com/laurapinos/)|
+|12/09/2022 | 0.7 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+
 ## Sumário
 
  - [Escopo do produto](#escopo-do-produto)
@@ -148,7 +150,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de editar uma turma.        | *A turma deve existir *Somento o orientador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP17 |               O professor deve ser capaz de editar uma nota em uma atividade.       | *Deve ser possível colocar apenas valores entre 0 e 10 *Somente o professor pode editar a nota de um aluno |   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP18 |               O professor deve ser capaz de mudar aluno de turma.       | *Somente o professor pode mudar aluno de turma *A turma deve existir |   Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP19 |               O professor deve ser capaz de cadastrar a lista de presença.       | *Somente o professor cadastrar a lista de presença *A lista só pode ser cadastrada no mesmo dia que foi gerada |   Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP19 |               O professor deve ser capaz de cadastrar a lista de presença.       | *Somente o professor cadastrar a lista de presença |   Alta    |
 
 
 #### Legenda:
@@ -157,5 +159,4 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 - Baixa - Funcionalidade desejável e complementar ao sistema
 - FGM - Função para administrador
 - FG - Funções gerais
-- FB - Função para professor
-- FA - Função para aluno
+- FP - Função para professor
