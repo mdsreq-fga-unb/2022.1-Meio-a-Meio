@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function getAPIClient(ctx?: any) {
   const { "nextauth-token": token } = parseCookies(ctx);
-  const apiRequest = axios.create({ baseURL: "http://localhost:8080/" });
+  const apiRequest = axios.create({ baseURL: process.env.BASE_URL||"http://localhost:8080/" });
 
   apiRequest.interceptors.request.use(config => {
     const token = localStorage.getItem('token');
