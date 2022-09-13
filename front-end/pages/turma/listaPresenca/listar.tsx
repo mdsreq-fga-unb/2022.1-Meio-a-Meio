@@ -11,22 +11,18 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Link from "@mui/material/Link";
 
-export default function PortalDoDiarioTurma() {
-  const [diarioTurma, setDiarioTurma] = useState<any>([]);
+export default function PortalDaPresencaTurma() {
+  const [presencaTurma, setPresencaTurma] = useState<any>([]);
   const router = useRouter();
-  async function getDiariosTurma(){
-    const resDiariosTurma = await apiRequest.get("turma/diarios/" + router.query.detalhes);
-    if (resDiariosTurma.data) {
-      setDiarioTurma(resDiariosTurma.data);
+  async function getPresencasTurma(){
+    const resPresencasTurma = await apiRequest.get("turma/listaPresenca/" + router.query.detalhes);
+    if (resPresencasTurma.data) {
+      setPresencaTurma(resPresencasTurma.data);
     }
   }
   useEffect(() => {
-    getDiariosTurma();
+    getPresencasTurma();
   }, []);
 
   return (
@@ -37,7 +33,7 @@ export default function PortalDoDiarioTurma() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Diarios</p>
+          <p className={styles.description}>Presenças</p>
           <div
             style={{
               alignItems: "center",
@@ -52,26 +48,26 @@ export default function PortalDoDiarioTurma() {
             >
               <TableHead>
                 <TableRow>
+                <TableCell align="center">Id</TableCell>
                   <TableCell align="center">Data</TableCell>
-                  <TableCell align="center">Conteúdo</TableCell>
-                  <TableCell align="center">Observações</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {diarioTurma.map((row, index) => (
+                {presencaTurma.map((row, index) => (
                     <TableRow key={index} >
                       <TableCell component="th" scope="row" align="center">
-                        {row.dataDiario}
+                        {row.id}
                       </TableCell>
-                      <TableCell align="center">{row.conteudo}</TableCell>
-                      <TableCell align="center">{row.observacao}</TableCell>
+                      <TableCell component="th" scope="row" align="center">
+                        {row.data}
+                      </TableCell>
                     </TableRow>
                   ))}
               </TableBody>
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "diario/cadastro", query: {turma_id: router.query.id}})}
+              onClick={() => router.push({pathname: "listaPresenca/cadastro", query: {turma_id: router.query.detalhes}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar

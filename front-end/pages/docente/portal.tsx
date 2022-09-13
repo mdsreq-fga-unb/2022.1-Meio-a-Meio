@@ -2,7 +2,6 @@ import * as React from "react";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from '../../component/layout'
-
 export default function Inicio() {
   return (
     <div className={styles.container}>

@@ -1,7 +1,7 @@
 import Head from "next/head";
-import styles from "../../../styles/Home.module.css";
-import Layout from "../../../component/layout";
-import {apiRequest} from "../../../util/apiRequest";
+import styles from "../../../../styles/Home.module.css";
+import Layout from "../../../../component/layout";
+import {apiRequest} from "../../../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -11,26 +11,28 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
 
-export default function PortalDoAlunoNaTurma() {
-  const [alunoTurma, setAlunoTurma] = useState<any>([]);
+export default function PortalDaNota() {
+  const [aluno, setAluno] = useState<any>([]);
+  const [notas, setNotas] = useState<any>([]);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
-  async function getAlunosTurma(){
-    
-    const resAlunosTurma = await apiRequest.get("turma/alunos/" + router.query.detalhes);
-    if (resAlunosTurma.data) {
-      setAlunoTurma(resAlunosTurma.data);
+  async function getNotas() {
+    const resNotas = await apiRequest.get(
+      "atividade/listAllScores/" + router.query.idAtividade
+    );
+    if (resNotas.data) {
+      setNotas(resNotas.data);
     }
-    
   }
   useEffect(() => {
-    getAlunosTurma();
+    getNotas();
   }, []);
-
-  const handleDelete = async(idAluno) => {
-    apiRequest.delete(`turma/removeAluno/${router.query.detalhes}/${idAluno}`)
-  }
 
   return (
     <div className={styles.container}>
@@ -40,7 +42,7 @@ export default function PortalDoAlunoNaTurma() {
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Alunos</p>
+          <p className={styles.description}>Notas</p>
           <div
             style={{
               alignItems: "center",
@@ -55,37 +57,34 @@ export default function PortalDoAlunoNaTurma() {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Deletar</TableCell>
+                  <TableCell align="center">Aluno</TableCell>
+                  <TableCell align="center">Nota</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {alunoTurma.map((row, index) => (
+                {notas.map((row, index) => (
                   <TableRow key={index}>
-                    <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
-                    <TableCell align="center">
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                        onClick={() => handleDelete(row.id)}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </TableCell>
+                    <TableCell align="center">{row.nome_completo}</TableCell>
+                    <TableCell align="center">{row.nota || ""}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
+
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "aluno/cadastro", query: {turma_id: router.query.detalhes}})}
+              onClick={() => router.push({pathname: "cadastro", query: {atividade_id: router.query.idAtividade, nome: router.query.nomeAtividade}})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
             </Button>
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Link onClick={() => router.back()} variant="body2">
+                  Retornar ao Menu Principal
+                </Link>
+              </Grid>
+            </Grid>
           </div>
         </main>
       </Layout>

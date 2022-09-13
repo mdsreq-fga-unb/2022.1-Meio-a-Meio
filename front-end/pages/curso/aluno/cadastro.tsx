@@ -17,33 +17,33 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
+import { apiRequest } from "../../../util/apiRequest";
 const theme = createTheme();
 
-export default function CadastroAlunosEmTurmas({
-  listaAlunos: listaAlunos,
-  error,
-}) {
+export default function CadastroAlunosEmCursos() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [curso, setCurso] = useState<any>([]);
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+  async function getAlunoNoCurso() {
+    const resAluno = await apiRequest.get("aluno");
+    if (resAluno.data) {
+      setAluno(resAluno.data);
+    } else {
     }
     setData(router.query);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getAlunoNoCurso();
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -53,24 +53,18 @@ export default function CadastroAlunosEmTurmas({
       return;
     }
     apiRequest
-      .put("curso/" + data.curso_id, { ...data })
+      .post("curso/" + router.query.id, {...data, curso_id: data.id})
       .then((result) => {
         setOpen(true);
-        router.push("/curso/portal");
-        console.log("ok");
+        router.back();
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
     setData({...data,[e.target.name]: e.target.value});
-  };
-
-  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearNumber = e.target.value.replace(/\D/, "");
-    setData({ ...data, [e.target.name]: clearNumber });
   };
 
   const handleCheckData = () => {
@@ -144,7 +138,6 @@ export default function CadastroAlunosEmTurmas({
                   disabled
                   fullWidth
                   id="nome"
-                  label="Nome do Curso"
                   name="nome"
                   autoComplete="nome"
                   onChange={handleText}
@@ -196,12 +189,12 @@ export default function CadastroAlunosEmTurmas({
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar a nota!
+                {errorMessage}
               </Alert>
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/curso/aluno/listar" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -212,19 +205,4 @@ export default function CadastroAlunosEmTurmas({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps() {
-  const resAluno = await apiRequest.get("aluno");
-  const resCurso = await apiRequest.get("curso");
-  if (!resAluno || !resCurso ||!resAluno.data || !resCurso.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAluno.data,
-      listaCursos: resCurso.data,
-      error: null,
-    },
-  };
 }

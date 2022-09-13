@@ -17,7 +17,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -25,30 +25,27 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroAlunosEmTurmas({
-  listaAlunos: listaAlunos,
-  listaTurmas: listaTurmas,
-  error,
-}) {
+export default function CadastroAlunosEmTurmas() {
   const [data, setData] = useState<any>({});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [atividade, setTurma] = useState<any>([]);
   const [aluno, setAluno] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-  
+  const [errorMessage, setErrorMessage] = useState<any>("");
+
+  async function getAlunoTurma() {
+    const resAluno = await apiRequest.get("aluno");
+  const resTurma = await apiRequest.get("turma/" + router.query.turma_id);
+    if (resAluno.data) {
+      setAluno(resAluno.data);
+    }
+    setData(resTurma.data)
+  }
   useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
-    }
-    if (listaTurmas) {
-        setTurma(listaTurmas);
-    }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
+    getAlunoTurma();
   }, []);
+
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,35 +54,25 @@ export default function CadastroAlunosEmTurmas({
       return;
     }
     apiRequest
-      .put("turma/" + data.turma_id, { ...data })
+      .post("turma/addAluno/" + router.query.turma_id, { ...data, turma_id: data.id})
       .then((result) => {
         setOpen(true);
-        router.push("/turma/portal");
-        console.log("ok");
+        router.back();
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearText = e.target.value.replace(/\d/, "");
-    setData({ ...data, [e.target.name]: clearText });
-    let tempErrors = errors;
-    delete tempErrors[e.target.name];
-    setErrors(tempErrors);
-  };
-
-  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearNumber = e.target.value.replace(/\D/, "");
-    setData({ ...data, [e.target.name]: clearNumber });
+    setData({...data,[e.target.name]: e.target.value});
   };
 
   const handleCheckData = () => {
-    const { aluno_id } = data;
+    const { id } = data;
     let emptyFields: any = {};
-    if (!aluno_id || aluno_id.length === 0) {
-      emptyFields.aluno_id = "Aluno Inválido";
+    if (!id || id.length === 0) {
+      emptyFields.id = "Aluno Inválido";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -123,18 +110,18 @@ export default function CadastroAlunosEmTurmas({
             <Grid container spacing={2}>
             <Grid item xs={4}>
                 <FormControl sx={{ m: 0, minWidth: 150 }}>
-                  <InputLabel id="aluno_id" required>
+                  <InputLabel id="id" required>
                     Aluno
                   </InputLabel>
                   <Select
                     required
                     fullWidth
-                    error={errors.aluno_id ? true : false}
+                    error={errors.id ? true : false}
                     onChange={(e) =>
-                      setData({ ...data, aluno_id: e.target.value })
+                      setData({ ...data, id: e.target.value })
                     }
                     label={"Aluno"}
-                    value={data ? data.aluno_id : ""}
+                    value={data ? data.id : ""}
                   >
                     {aluno.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
@@ -143,23 +130,19 @@ export default function CadastroAlunosEmTurmas({
                     ))}
                   </Select>
                   <FormHelperText error>
-                  {errors.aluno_id}
+                  {errors.id}
                 </FormHelperText>
                 </FormControl>
               </Grid>
               <Grid item xs={3}>
                 <TextField
                 disabled
-                  required
                   fullWidth
-                  id="turma"
-                  label="Turma"
-                  name="turma"
-                  autoComplete="turma"
-                  onChange={(e) =>
-                    setData({ ...data, turma_id: e.target.value })
-                  }
-                  value={data ? data.turma_id : ""}
+                  id="nome_turma"
+                  name="nome_turma"
+                  autoComplete="nome_turma"
+                  onChange={handleText}
+                  value={data ? data.nome_turma : ""}
                 />
               </Grid>
               <Button
@@ -207,12 +190,12 @@ export default function CadastroAlunosEmTurmas({
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar a nota!
+                {errorMessage}
               </Alert>
-            </Collapse>
+            </Collapse> 
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/turma/aluno/listar" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -223,19 +206,4 @@ export default function CadastroAlunosEmTurmas({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps() {
-  const resAluno = await apiRequest.get("aluno");
-  const resTurma = await apiRequest.get("turma");
-  if (!resAluno || !resTurma ||!resAluno.data || !resTurma.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAluno.data,
-      listaTurmas: resTurma.data,
-      error: null,
-    },
-  };
 }

@@ -34,11 +34,6 @@ const data = [
     title: "Início",
   },
   {
-    href: "/administrador/seuPerfil",
-    icon: <AccountCircleIcon fontSize="small" />,
-    title: "Seu Perfil",
-  },
-  {
     href: "/aluno/portal",
     icon: <GroupIcon fontSize="small" />,
     title: "Alunos",
@@ -94,7 +89,6 @@ export default function NavBar(props) {
         onClose?.();
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [router.asPath]
   );
   return (

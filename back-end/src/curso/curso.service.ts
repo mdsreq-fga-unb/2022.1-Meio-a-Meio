@@ -76,6 +76,7 @@ export class CursoService {
       const curso_aluno = new CursoAluno();
       curso_aluno.aluno_id = data.aluno_id;
       curso_aluno.curso_id = id;
+      
 
       return this.cursoAlunoRepository.save(curso_aluno);
     } catch (error) {

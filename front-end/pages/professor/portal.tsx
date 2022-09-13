@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -12,24 +11,22 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+import { apiRequest } from "../../util/apiRequest";
 
-export default function TelaProfessores({
-  listaProfessores: listaProfessores,
-  error,
-}) {
+export default function TelaProfessores() {
   const [professor, setProfessor] = useState<any>([]);
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  async function getProfessor() {
+    const resProfessores = await apiRequest.get("professor");
+    if (resProfessores.data) {
+      setProfessor(resProfessores.data);
+    } 
+  }
   useEffect(() => {
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
-    }
-    console.log(listaProfessores);
-    console.log(error);
-    //erros
+    getProfessor();
   }, []);
+  
 
   return (
     <div className={styles.container}>
@@ -58,8 +55,7 @@ export default function TelaProfessores({
                   <TableCell align="center">Nome</TableCell>
                   <TableCell align="center">Matricula</TableCell>
                   <TableCell align="center">Especialização</TableCell>
-                  {/* <TableCell align="center">Especialista</TableCell> */}
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -68,14 +64,11 @@ export default function TelaProfessores({
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
+                    <TableCell align="center">{row.nome_completo}</TableCell>
                     <TableCell align="center">{row.matricula || ""}</TableCell>
                     <TableCell align="center">
                       {row.especializacao || ""}
                     </TableCell>
-                    {/* <TableCell align="center">{row.especialista}</TableCell> */}
                     <TableCell align="center">
                       <IconButton
                         color="primary"
@@ -89,13 +82,6 @@ export default function TelaProfessores({
                         }
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>
@@ -114,18 +100,4 @@ export default function TelaProfessores({
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const resProfessores = await apiRequest.get("professor");
-  if (!resProfessores || !resProfessores.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaProfessores: resProfessores.data,
-      error: null,
-    },
-  };
 }

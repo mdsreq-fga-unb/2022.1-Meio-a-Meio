@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../../styles/Home.module.css";
 import Layout from "../../../component/layout";
-import apiRequest from "../../../util/apiRequest";
+import {apiRequest} from "../../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -12,21 +12,19 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-
-export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }) {
-  const [aluno, setAluno] = useState<any>([]);
-  const [open, setOpen] = useState(false);
+export default function PortalDaAtividadeTurma() {
+  const [atividadeTurma, setAtividadeTurma] = useState<any>([]);
   const router = useRouter();
-  useEffect(() => {
-    if (listaAlunos) {
-      setAluno(listaAlunos);
+  async function getAtividadesTurma(){
+    const resAtividadesTurma = await apiRequest.get("atividade/" + router.query.detalhes);
+    if (resAtividadesTurma.data) {
+      setAtividadeTurma(resAtividadesTurma.data);
     }
-    console.log(listaAlunos);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getAtividadesTurma();
   }, []);
 
   return (
@@ -37,7 +35,7 @@ export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p className={styles.description}>Alunos</p>
+          <p className={styles.description}>Lista de Atividades</p>
           <div
             style={{
               alignItems: "center",
@@ -53,26 +51,28 @@ export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }
               <TableHead>
                 <TableRow>
                   <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Curso</TableCell>
-                  <TableCell align="center">Deletar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {aluno.map((row, index) => (
+                {atividadeTurma.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell align="center">
-                      {row.nome_completo}
-                    </TableCell>
-                    <TableCell align="center">{row.nome || ""}</TableCell>
-                    <TableCell align="center">
+                      {row.nome}
                       <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                        onClick={() => apiRequest.put("curso/" + row.curso_id, { ...row })}
+                        aria-label="expand row"
+                        size="small"
+                        onClick={() =>
+                          router.push({
+                            pathname: "atividade/notas/listar",
+                            query: { idAtividade: row.id, nomeAtividade: row.nome },
+                          })
+                        }
                       >
-                        <DeleteIcon />
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
+                    </TableCell>
+                    <TableCell align="center">
+                      {row.isTest}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -80,7 +80,7 @@ export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }
             </Table>
             <Button
               variant="outlined"
-              onClick={() => router.push({pathname: "cadastro", query: {...curso}})}
+              onClick={() => router.push({pathname: "atividade/cadastro", query: atividadeTurma})}
               sx={{ alignSelf: "center" }}
             >
               Cadastrar
@@ -90,17 +90,4 @@ export default function PortalDoAlunoNoCurso({ listaAlunos: listaAlunos, error }
       </Layout>
     </div>
   );
-}
-export async function getServerSideProps() {
-  const resAlunos = await apiRequest.get("aluno");
-  if (!resAlunos || !resAlunos.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaAlunos: resAlunos.data,
-      error: null,
-    },
-  };
 }

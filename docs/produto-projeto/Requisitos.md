@@ -17,6 +17,8 @@
 |17/08/2022 | 0.4 | Adição dos critérios de aceitação | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |23/08/2022 | 0.5 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
 |11/09/2022 | 0.6 | Retirada de requisitos | [Laura Pinos](https://github.com/laurapinos/)|
+|12/09/2022 | 0.7 | Atualização do backlog | [Nicolas Roberto](https://github.com/Nicolas-Roberto/)|
+
 ## Sumário
 
  - [Escopo do produto](#escopo-do-produto)
@@ -116,7 +118,8 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM28 |               O administrador deve ser capaz de excluir professor de disciplina.       | *Disciplina não pode estar com status de cursada *Turma não pode estar formada |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM29 |               O administrador deve ser capaz de excluir disciplina de uma turma.       | *Disciplina não pode estar em andamento ou cursada *Turma não pode estar formada |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM30 |               O administrador deve ser capaz de matricular aluno em curso.       | *O aluno não deve estar matriculado no curso |     Alta    |
-| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM31| O administrador deve ser registrar inadimplência de aluno. |*Somente o administrador pode registrar |     Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM31| O administrador deve ser capaz de registrar inadimplência de aluno. |*Somente o administrador pode registrar |     Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao administrador | FGM32| O administrador deve ser capaz de alterar informações dos curso. |*Todos os campos devem ser preenchidos *Somente o administrador pode editar as informações de um curso	 |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG1 |  O usuário deve ser capaz de acessar o sistema por login e senha.       |*Deve ser cadastrado inicialmente um usuario |   Alta    |
 |Gerenciamento Acadêmico | Funções gerais | FG3 |               O usuário deve ser capaz de visualizar informações dos alunos.| *O aluno deve existir *Deve ser possível ver as informações de aluno em turma|   Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG4 |               O usuário deve ser capaz de visualizar informações dos cursos.        | *Deve estar cadastrado informações     |Alta|
@@ -128,6 +131,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções gerais | FG12 |               O usuário deve ser capaz de excluir um aluno de turma.       | *O aluno deve estar matriculado na disciplina *Somente o administrador ou orientador pode excluir um aluno de turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG13 |               O usuário deve ser capaz de cadastrar um professor em uma turma.       | *O professor deve existir *O professor não pode ser cadastra em uma turma mais de uma vez *Somente o orientador pode cadastrar o professor em turma |     Alta    |
 | Gerenciamento Acadêmico | Funções gerais | FG14 |               O usuário  deve ser capaz de excluir um professor de uma turma.       | *O professor deve existir *Somente o orientador pode excluir o professor de turma |     Alta    |
+| Gerenciamento Acadêmico | Funções gerais | FG15 |               O usuário deve ser capaz de visualizar informações de aluno em turma.       | *O aluno deve existir *A turma deve existir |     Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP1 |               O professor deve ser capaz de alterar suas informações.      |*Dever possuir informações cadastradas previamente|   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP2 |               O professor deve ser capaz de visualizar suas informações.      |*Dever possuir informações cadastradas previamente|    Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP3 |               O professor deve ser capaz de cadastrar diário de aula.      |*Dever ser possível cadastradar informações de diário de aula|    Alta    |
@@ -146,6 +150,7 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP16 |               O professor deve ser capaz de editar uma turma.        | *A turma deve existir *Somento o orientador pode editar uma turma |      Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP17 |               O professor deve ser capaz de editar uma nota em uma atividade.       | *Deve ser possível colocar apenas valores entre 0 e 10 *Somente o professor pode editar a nota de um aluno |   Alta    |
 | Gerenciamento Acadêmico | Funções relacionadas ao professor | FP18 |               O professor deve ser capaz de mudar aluno de turma.       | *Somente o professor pode mudar aluno de turma *A turma deve existir |   Alta    |
+| Gerenciamento Acadêmico | Funções relacionadas ao professor | FP19 |               O professor deve ser capaz de cadastrar a lista de presença.       | *Somente o professor cadastrar a lista de presença |   Alta    |
 
 
 #### Legenda:
@@ -154,5 +159,4 @@ Este backlog foi produzido de acordo com a abordagem ágil e seguindo a perspect
 - Baixa - Funcionalidade desejável e complementar ao sistema
 - FGM - Função para administrador
 - FG - Funções gerais
-- FB - Função para professor
-- FA - Função para aluno
+- FP - Função para professor

@@ -35,18 +35,14 @@ export class TurmaService {
       turma.nome_turma = createTurmaDto.nome_turma;
       turma.status = createTurmaDto.status;
       turma.data = createTurmaDto.data;
-      //turma.disciplinas = createTurmaDto.disciplinas;
       turma.alunos = createTurmaDto.alunos;
       turma.listaPresenca = createTurmaDto.listaPresenca;
-      //turma.curso = createTurmaDto.curso;
 
       const curso = await this.curosService.findOne({where:{id:createTurmaDto.curso}});
       turma.curso = curso;
-      //console.log(createTurmaDto.disciplinas);
       if(createTurmaDto.disciplinas !== undefined){
         const disciplina = await this.disciplinaService.findOne({where: {id:createTurmaDto.disciplinas}});
         turma.disciplinas = [disciplina];
-        //console.log(disciplina);
       }
 
       //
@@ -60,7 +56,7 @@ export class TurmaService {
 
   async findAll() {
     const turmas = await this.turmaRepository.find({relations: {
-      alunos: true,//exibir alunos
+      alunos: true,
       diarioDeAula: true,
       disciplinas: true
   }})
@@ -125,13 +121,13 @@ export class TurmaService {
     return turma;
   }
 
-  async removeAluno(idTurma: number, idAluno: Aluno){
+  async removeAluno(idTurma: number, idAluno: number){
     const turma = await this.turmaRepository.findOne({where:{id:idTurma}, relations:{alunos:true}});
     if(!turma){
       throw new HttpException('Turma informada não existe.', HttpStatus.BAD_REQUEST);
     }
 
-    turma.alunos = turma.alunos.filter((aluno)=>{ return aluno.id !== idAluno.id});
+    turma.alunos = turma.alunos.filter((aluno)=>{ return aluno.id !== idAluno});
     
     this.turmaRepository.save(turma);
     return turma;
@@ -283,7 +279,6 @@ export class TurmaService {
       professores.push(dis.professor);
     })
 
-    console.log(professores)
     return professores;
   }
 }

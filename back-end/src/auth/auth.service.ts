@@ -17,7 +17,7 @@ export class AuthService {
       const { password, ...result } = adm;
       return result;
     }
-    return null;''
+    return null;
   }
 
   async login(adm: any) {

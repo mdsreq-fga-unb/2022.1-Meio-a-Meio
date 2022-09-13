@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import { useRouter } from "next/router";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
@@ -12,20 +12,21 @@ import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
+export default function PortalDaTurma() {
   const [turma, setTurma] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  
+  async function getTurma() {
+    const resTurmas = await apiRequest.get("turma");
+    if (resTurmas.data) {
+      setTurma(resTurmas.data);
+    } 
+  }
   useEffect(() => {
-    if (listaTurmas) {
-      setTurma(listaTurmas);
-    }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
+    getTurma();
   }, []);
   return (
     <div className={styles.container}>
@@ -52,7 +53,7 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell align="center">Nome</TableCell>
-                  <TableCell align="center">Opções</TableCell>
+                  <TableCell align="center">Editar</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -62,13 +63,18 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                       {row.id}
                     </TableCell>
                     <TableCell align="center">
-                    {row.nome}
+                      {row.nome_turma}
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/turma/detalhesTeste", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/turma/[detalhes]",
+                            query: { detalhes: row.id },
+                          })
+                        }
                       >
-                       < BuildCircleIcon color="primary"/>
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
                     </TableCell>
                     <TableCell align="center">
@@ -76,16 +82,14 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/turma/editar", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/turma/editar",
+                            query: { ...row },
+                          })
+                        }
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>
@@ -104,18 +108,4 @@ export default function PortalDaTurma({ listaTurmas: listaTurmas, error }) {
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const resTurmas = await apiRequest.get("turma");
-  if (!resTurmas || !resTurmas.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaTurmas: resTurmas.data,
-      error: null,
-    },
-  };
 }

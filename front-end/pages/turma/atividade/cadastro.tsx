@@ -17,7 +17,8 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
-import apiRequest from "../../../util/apiRequest";
+import Checkbox from "@mui/material/Checkbox";
+import {apiRequest} from "../../../util/apiRequest";
 import Alert from "@mui/material/Alert";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -25,30 +26,23 @@ import CloseIcon from "@mui/icons-material/Close";
 import FormHelperText from "@mui/material/FormHelperText";
 const theme = createTheme();
 
-export default function CadastroProfessoresEmTurmas({
-    listaProfessores: listaProfessores,
-  listaTurmas: listaTurmas,
-  error,
-}) {
-  const [data, setData] = useState<any>({});
+export default function CadastroAtividades() {
+  const [data, setData] = useState<any>({isTest: false});
   const [errors, setErrors] = useState<any>({});
   const router = useRouter();
-  const [atividade, setTurma] = useState<any>([]);
-  const [professor, setProfessor] = useState<any>([]);
+  const [turma, setTurma] = useState<any>([]);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-  
-  useEffect(() => {
-    if (listaProfessores) {
-      setProfessor(listaProfessores);
+
+  async function getPraAtividadeTurma() {
+    const resTurma = await apiRequest.get("turma");
+      if (resTurma.data) {
+        setTurma(resTurma.data);
+      }
     }
-    if (listaTurmas) {
-        setTurma(listaTurmas);
-    }
-    console.log(listaTurmas);
-    console.log(error);
-    //erros
-  }, []);
+    useEffect(() => {
+      getPraAtividadeTurma();
+    }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,15 +51,13 @@ export default function CadastroProfessoresEmTurmas({
       return;
     }
     apiRequest
-      .put("turma/" + data.turma_id, { ...data })
+      .post("atividade/" + data.turma_id, { ...data })
       .then((result) => {
         setOpen(true);
-        router.push("/turma/professor/listar");
-        console.log("ok");
+        router.back();
       })
       .catch((err) => {
         setClose(true);
-        console.log("errado", err);
       });
   };
   const handleText = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,17 +67,17 @@ export default function CadastroProfessoresEmTurmas({
     delete tempErrors[e.target.name];
     setErrors(tempErrors);
   };
-
-  const handleNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    const clearNumber = e.target.value.replace(/\D/, "");
-    setData({ ...data, [e.target.name]: clearNumber });
-  };
-
   const handleCheckData = () => {
-    const { professor_id } = data;
+    const {
+      nome,
+      turma_id,
+    } = data;
     let emptyFields: any = {};
-    if (!professor_id || professor_id.length === 0) {
-      emptyFields.professor_id = "Professor Inválido";
+    if (!nome || nome.length === 0) {
+      emptyFields.nome_atividade = "Atividade Inválida";
+    }
+    if (!turma_id || turma_id.length === 0) {
+      emptyFields.turma_id = "Turma Inválida";
     }
     if (Object.keys(emptyFields).length > 0) {
       setErrors(emptyFields);
@@ -112,7 +104,7 @@ export default function CadastroProfessoresEmTurmas({
             </Head>
           </div>
           <Typography component="h1" variant="h5">
-            Cadastro de Alunos
+            Cadastro de Atividades
           </Typography>
           <Box
             component="form"
@@ -120,47 +112,56 @@ export default function CadastroProfessoresEmTurmas({
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid container spacing={1}>
+              <Grid item xs={4}>
+                <TextField
+                  required
+                  error={errors.nome_atividade ? true : false}
+                  helperText={errors.nome_atividade || null}
+                  fullWidth
+                  id="nome"
+                  label="Atividade"
+                  name="nome"
+                  autoComplete="nome"
+                  onChange={handleText}
+                  value={data ? data.nome_atividade : ""}
+                />
+              </Grid>
+              <Grid item xs={4}>
                 <FormControl sx={{ m: 0, minWidth: 150 }}>
-                  <InputLabel id="professor_id" required>
-                    Professor
+                  <InputLabel id="turma_id" required>
+                    Turma
                   </InputLabel>
                   <Select
                     required
                     fullWidth
-                    error={errors.professor_id ? true : false}
+                    error={errors.turma_id ? true : false}
                     onChange={(e) =>
-                      setData({ ...data, professor_id: e.target.value })
+                      setData({ ...data, turma_id: e.target.value })
                     }
-                    label={"Aluno"}
-                    value={data ? data.professor_id : ""}
+                    label={"Turma"}
+                    value={data ? data.turma_id : ""}
                   >
-                    {professor.map((i, index) => (
+                    {turma.map((i, index) => (
                       <MenuItem key={index} value={i.id}>
-                        {i.nome_completo}
+                        {i.nome_turma}
                       </MenuItem>
                     ))}
                   </Select>
                   <FormHelperText error>
-                  {errors.professor_id}
+                  {errors.turma_id}
                 </FormHelperText>
                 </FormControl>
               </Grid>
-              <Grid item xs={3}>
-                <TextField
-                disabled
-                  required
-                  fullWidth
-                  id="turma"
-                  label="Turma"
-                  name="turma"
-                  autoComplete="turma"
-                  onChange={(e) =>
-                    setData({ ...data, turma_id: e.target.value })
-                  }
-                  value={data ? data.turma_id : ""}
-                />
+              <Grid item xs={2.5}>
+                <FormControl fullWidth>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Prova?"
+                    onChange={(e) => setData({ ...data, isTest: e.target.checked })}
+                    value={data ? data.isTest : null}
+                  />
+                </FormControl>
               </Grid>
               <Button
                 type="submit"
@@ -168,7 +169,7 @@ export default function CadastroProfessoresEmTurmas({
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Cadastrar Aluno
+                Cadastrar Atividade
               </Button>
               <Collapse in={open}>
               <Alert
@@ -207,12 +208,12 @@ export default function CadastroProfessoresEmTurmas({
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao cadastrar a nota!
+                Falha ao cadastrar a atividade!
               </Alert>
             </Collapse>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/turma/professor/listar" variant="body2">
+                  <Link onClick={() => router.back()} variant="body2">
                     Retornar ao Menu Principal
                   </Link>
                 </Grid>
@@ -223,19 +224,4 @@ export default function CadastroProfessoresEmTurmas({
       </Container>
     </ThemeProvider>
   );
-}
-export async function getServerSideProps() {
-  const resProfessor = await apiRequest.get("professor");
-  const resTurma = await apiRequest.get("turma");
-  if (!resProfessor || !resTurma ||!resProfessor.data || !resTurma.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-        listaProfessores: resProfessor.data,
-      listaTurmas: resTurma.data,
-      error: null,
-    },
-  };
 }

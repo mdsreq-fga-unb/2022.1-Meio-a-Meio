@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Home.module.css";
 import Grid from "@mui/material/Grid";
 import Layout from "../../component/layout";
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -12,19 +12,21 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import BuildCircleIcon from '@mui/icons-material/BuildCircle';
-export default function PortalDoCurso({ listaCursos, error }) {
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
+
+export default function PortalDoCurso() {
   const [curso, setCurso] = useState<any>([]);
   const router = useRouter();
-  useEffect(() => {
-    if (listaCursos) {
-      setCurso(listaCursos);
+  async function getCurso() {
+    const resCursos = await apiRequest.get("curso");
+    if (resCursos.data) {
+      setCurso(resCursos.data);
+    } else {
     }
-    console.log(listaCursos);
-    console.log(error);
-    //erros
+  }
+  useEffect(() => {
+    getCurso();
   }, []);
 
   return (
@@ -67,27 +69,30 @@ export default function PortalDoCurso({ listaCursos, error }) {
                       <IconButton
                         aria-label="expand row"
                         size="small"
-                        onClick={() => router.push({pathname: "/curso/detalhesTeste", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/curso/aluno/cadastro",
+                            query: { ...row },
+                          })
+                        }
                       >
-                       < BuildCircleIcon color="primary"/>
+                        <BuildCircleIcon color="primary" />
                       </IconButton>
-                      </TableCell>
+                    </TableCell>
                     <TableCell align="center">{row.unidade || ""}</TableCell>
                     <TableCell align="center">
                       <IconButton
                         color="primary"
                         aria-label="edit"
                         component="label"
-                        onClick={() => router.push({pathname: "/curso/editar", query: {...row}})}
+                        onClick={() =>
+                          router.push({
+                            pathname: "/curso/editar",
+                            query: { ...row },
+                          })
+                        }
                       >
                         <ModeEditIcon />
-                      </IconButton>
-                      <IconButton
-                        color="primary"
-                        aria-label="delete"
-                        component="label"
-                      >
-                        <DeleteIcon />
                       </IconButton>
                     </TableCell>
                   </TableRow>
@@ -106,18 +111,4 @@ export default function PortalDoCurso({ listaCursos, error }) {
       </Layout>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const resCursos = await apiRequest.get("curso");
-  if (!resCursos || !resCursos.data) {
-    return { props: { error: "Falha ao carregar conteúdo" } };
-  }
-
-  return {
-    props: {
-      listaCursos: resCursos.data,
-      error: null,
-    },
-  };
 }

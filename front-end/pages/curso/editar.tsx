@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Image from 'next/image';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-import apiRequest from "../../util/apiRequest";
+import {apiRequest} from "../../util/apiRequest";
 import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import Alert from '@mui/material/Alert';
@@ -28,31 +28,29 @@ export default function Editar() {
   const [data, setData] = useState<any>({});
   const [errors , setErrors] = useState<any>({});
   const router = useRouter();
-  console.log(router.query);
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<any>("");
   useEffect(() => {
     if (Object.keys(router.query).length === 0) {
-      router.push("/curso/portal");
+      router.back();
     }
     setData(router.query);
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("aaaa");
     if(handleCheckData()){
-      console.log("bbbb");
       return;
     }
     apiRequest
       .put("curso/" + router.query.id, { ...data})
       .then((result) => {
-        router.push('/curso/portal')
-        console.log("ok");
+        router.back()
       })
       .catch((err) => {
-        console.log("errado", err);
+        setErrorMessage(err.response.data.message);
+        setClose(true);
       });
 
     const date = new FormData(event.currentTarget);
@@ -175,12 +173,12 @@ export default function Editar() {
                 }
                 sx={{ mb: 2 }}
               >
-                Falha ao editar o usuário!
+                {errorMessage}
               </Alert>
             </Collapse>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/curso/portal" variant="body2">
+                <Link onClick={() => router.back()} variant="body2">
                 Retornar ao Menu Principal
                 </Link>
               </Grid>
