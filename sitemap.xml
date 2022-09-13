@@ -116,7 +116,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade-03_MDS/diagrama-classes/</loc>
+         <lastmod>2022-09-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade-03_MDS/prototipo-baixa-fidelidade/</loc>
+         <lastmod>2022-09-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade-03_MDS/report_code_clean/</loc>
+         <lastmod>2022-09-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade-03_MDS/report_softskill_equipe/</loc>
+         <lastmod>2022-09-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mdsreq-fga-unb.github.io/2022.1-Meio-a-Meio/unidade-04_MDS/report-estrat%C3%A9gia-testes/</loc>
          <lastmod>2022-09-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
