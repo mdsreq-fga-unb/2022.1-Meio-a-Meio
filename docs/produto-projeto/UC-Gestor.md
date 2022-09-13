@@ -34,4 +34,4 @@ A2
   *RF3	Deverá ser possível alterar de informações dos alunos.*<br></br>
   *FGM12 O administrador deve ser capaz de excluir aluno.*<br></br>
  
-Para visualizar o Caso de uso [clique aqui](docs/produto-projeto/casos-de-uso.md)
+Para visualizar o Caso de uso [clique aqui](./casos-de-uso.md)
