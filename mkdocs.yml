@@ -17,6 +17,9 @@ nav:
   - 'Contribuir': 'https://github.com/mdsreq-fga-unb/2022.1-Meio-a-Meio/blob/main/CODE_OF_CONDUCT.md'
   - 'Pbb e Bdd': ./produto-projeto/PBB.md
   - 'USM': ./produto-projeto/US-Mapping.md
+  - 'UC diagrama': ./produto-projeto/casos-de-uso.md
+  - 'UC professor': ./produto-projeto/US-Professor.md
+  - 'US Gestor': ./produto-projeto/US-Gestor.md
 
 - Sprints planing:
   - 'Sprint 01': Sprints/Sprint01/SprintPlanning.md
