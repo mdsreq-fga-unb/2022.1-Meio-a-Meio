@@ -141,12 +141,28 @@ Figura 1, Tabela de Previsão de Riscos (PRESSMAN,2006)
 
    Os riscos seram  revistos ao final de cada Sprint e atualizados após a analise da equipe.
      
+   Historico de riscos:
+
+   |Sprint|Risco encontrado|nivel|
+   |--|--|--|
+   | 3 | Equipe de desenvolvimento com conhecimento técnico baixo | Marginal |
+   | 4 | Disparidade de velocidade de implantação entre equipes de desenvolvimento | Crítico |
+   | 5 | Atraso do MVP 1 | Crítico |
+
 ### 2.5 Critérios de Replanejamento
 
  - Alteração significativa nas regras de negocio do produto ou de escopo.
  - Desistência de um membro da equipe do projeto.
  - 2 sprints seguidas com tarefas atrasadas, indicação de processos errados.
  - 3 sprints com requisitos repetidos, indicação de requisitos errados.
+
+   Historico de replanejamento:
+     
+  |Sprint| Solução encontrada | Resultado esperado |
+  |--|--|--|
+  | 3 | Fornecimento de materiais tecnicos voltados para o desenvolvimento do projeto | Capacitação da equipe |
+  | 4 | Auxilio ativo mais presente de requisitos na equipe de mds | Igualar a velocidade de implantação das equipes |
+  | 5 | Disruptura dos grupos de front e back-edn | implementação correta |
 
 ### 2.6 MVP canvas
 
@@ -286,6 +302,7 @@ Técnica de Teste:
 ## PROCESSO DE ENGENHARIA DE REQUISITOS 
 
 Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do cliente e do time.
+As etapas da metodologia ágil em que as atividades são feitas estão descritas [aqui](./Ciclo-de-vida.md)
 
 ### 4.1 Elicitação de Requisitos 
 
@@ -320,6 +337,8 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 |----|----|----|----|----|
 |Padronização| Padronizar nome e identificação | Github | integrantes de Requisitos | nome e identificação padronizados |
 |Armazenamento| Registrar no github-pages | Github | integrantes de Requisitos | requisitos atualizados no Gitpages |
+
+
 
 ## LIÇÕES APRENDIDAS
 
@@ -374,11 +393,15 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
    - Boas práticas de trabalho em grupo: Soft Skills
    
  ### 5.3.2 Requisitos 
- 
+   - Melhor entendimento sobre PBB e BDD
+   - Mlehor comunicação com o cliente
    - A importância da comunicação 
    - A importância de ter um código bem documentado
- 
  ### 5.3.3 MDS-Requisitos 
+   - Resolução de conflitos de equipe
+   - Separação de front e back-end não funciona
+   - MDS precisam de ajuda intensa de Requisitos
+   - Melhor entendimento sobre responsabilidades da equipe
    - Resolução de conflitos de equipe
    
 ---
@@ -387,11 +410,11 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
  
 
    - Estratégias para resolução de Testes
-   
  ### 5.4.2 Requisitos
-
-  - Outras formas de estruturar os requisitos 
-  - A importância das HardSkills para um desenvolver 
+   - Fazer acordos, não só entre as esquipes, desde o começo de projetos
+   - Fazer questão que todos estão na mesma página
+   - Outras formas de estruturar os requisitos 
+   - A importância das HardSkills para um desenvolver 
 
  ### 5.4.3 MDS-Requisitos
  
