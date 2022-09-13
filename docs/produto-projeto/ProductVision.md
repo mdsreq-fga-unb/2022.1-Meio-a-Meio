@@ -363,22 +363,38 @@ Abordagem escolhida foi a abordagem agil, tendo em vista a necessidade do client
 
    - Resolução de desencontros de tempo e horário
    - Distribuição de responsabilidades
+   
 ---
  ### 5.3 Unidade 3 
  ### 5.3.1 MDS 
+ 
    - Conhecimentos sobre boas práticas de programação
    - Arquitetura de MVC
    - Construção de protótipo de baixa fidelidade
    - Boas práticas de trabalho em grupo: Soft Skills
+   
  ### 5.3.2 Requisitos 
+ 
+   - A importância da comunicação 
+   - A importância de ter um código bem documentado
+ 
  ### 5.3.3 MDS-Requisitos 
    - Resolução de conflitos de equipe
+   
 ---
  ### 5.4 Unidade 4 
  ### 5.4.1 MDS 
+ 
+
    - Estratégias para resolução de Testes
- ### 5.4.2 Requisitos 
+   
+ ### 5.4.2 Requisitos
+
+  - Outras formas de estruturar os requisitos 
+  - A importância das HardSkills para um desenvolver 
+
  ### 5.4.3 MDS-Requisitos
+ 
    - Resolução de conflitos de equipe
 
 ---
