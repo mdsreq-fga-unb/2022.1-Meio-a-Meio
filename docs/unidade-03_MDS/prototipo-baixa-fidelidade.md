@@ -1,0 +1,6 @@
+![dashboard](../assets/prototipo-dashboard.jpeg)
+![diarioAula](../assets/prototipo-registro-diariodeaula.jpeg)
+![pessoa](../assets/prototipo-cadastro-pessoa.jpeg)
+![disciplina](../assets/prototipo-cadastro-disciplina.jpeg)
+![atividade](../assets/prototipo-cadastro-atividade.jpeg)
+![nota](../assets/prototipo-registro-nota.jpeg)

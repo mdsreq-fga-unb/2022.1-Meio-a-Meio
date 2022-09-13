@@ -26,9 +26,16 @@
   - [Video de Apresentação Requisitos](https://youtu.be/KKSIrfcIbdQ)
 
   Unidade 3
-  -
-  -
+
+  - [Modelo de Classes](./unidade-03_MDS/diagrama-classes.md)
+  - [Protótipo de baixa fidelidade](./unidade-03_MDS/prototipo-baixa-fidelidade.md)
+  - [Report práticas Clean Code](./unidade-03_MDS/report_code_clean.md)
+  - [Report Soft Skills Equipe](./unidade-03_MDS/report_softskill_equipe.md)
+
+  Unidade 4
   
+  - [Estratégias de Teste](./unidade-04_MDS/report-estrat%C3%A9gia-testes.md)
+
   <h2>Sobre contribuir</h2>
   
   - [Politica de commits](./produto-projeto/commit_policy)
