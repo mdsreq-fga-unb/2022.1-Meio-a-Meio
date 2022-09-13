@@ -35,6 +35,8 @@
   Unidade 4
   
   - [Estratégias de Teste](./unidade-04_MDS/report-estrat%C3%A9gia-testes.md)
+  - [Plataforma](https://galdi-dash.herokuapp.com/)
+  - [Uc Diagrama](./produto-projeto/casos-de-uso.md)
 
   <h2>Sobre contribuir</h2>
   
