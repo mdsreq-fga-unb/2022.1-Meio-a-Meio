@@ -11,13 +11,13 @@ Duração da Sprint: 30/08/2022  à 13/09/2022
 | **#1** | Todos  | Done  |  
 | **#2** | REQ   | Done |   
 | **#3** | REQ  | Done  |   
-| **#4** | REQ  | A Fazer  |   
-| **#5** | REQ   | A Fazer  |   
-| **#6** | MDS  |A Fazer  |   
-| **#7** | MDS  | A Fazer  |   
-| **#8** | MDS  | A Fazer  |   
-| **#9** | MDS  | A Fazer  |   
-| **#10** | MDS  | A Fazer  |   
+| **#4** | REQ  | Done  |   
+| **#5** | REQ   | Done  |   
+| **#6** | MDS  | Done  |   
+| **#7** | MDS  | Done  |   
+| **#8** | MDS  | Done  |   
+| **#9** | MDS  | Done  |   
+| **#10** | MDS  | Done  |   
 
 - Pontos do planning: Sem pontos
 - Pontos entregues: Sem pontos
@@ -25,13 +25,13 @@ Duração da Sprint: 30/08/2022  à 13/09/2022
 
 ## Retrospectiva
 #### Pontos positivos
-- Desc.
+- Boa comunicação entre todos.
 
 #### Pontos negativos
-- Desc.
+- Muitas dívidas anteriores.
 
 #### Dívidas técnicas
 - Sem dívida
 
 ### Análise do Scrum Master
- Desc.
+ Apesar dos emprevístos a equipe foi capaz de entragar o que foi proposto.
